@@ -1,0 +1,53 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.oswald-title {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    /* Light gray */
+    color: #212529;
+    margin: 0;
+    padding: 0;
+}
+
+#about {
+    background-image: url("../../public/images/background.jpg");
+}
+
+.bg-yellow {
+    background-color: rgb(255, 255, 180);
+}
+
+section {
+    scroll-margin-top: 100px;
+}
+
+h2 {
+    font-weight: 600;
+    color: #0d1b2a;
+    /* Navy */
+}
+
+.navbar-dark .nav-link,
+.navbar-dark h2 {
+    color: white !important;
+}
+
+.btn-dark {
+    background-color: #0d1b2a;
+    border-color: #0d1b2a;
+}
+
+.btn-dark:hover {
+    background-color: #1a2d40;
+    border-color: #1a2d40;
+}
