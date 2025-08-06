@@ -1,30 +1,13 @@
-"use client";
-import { useEffect, useState } from "react";
-
-const ScrollToTop = () => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => {
-      setVisible(window.scrollY > 300);
-    };
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
+import Link from "next/link";
+import React from "react";
+const BackToTop = () => {
   return (
-    visible && (
-      <button
-        className="btn btn-dark position-fixed bottom-0 end-0 m-4 shadow"
-        onClick={scrollToTop}
-        style={{ zIndex: 1000 }}
-      >
-        ↑
-      </button>
-    )
+    <div id="back-to-top" className=" p-2 bg-dark text-center mt-5">
+      <Link href="#about" className="btn-top btn border-0">
+        <h5 className="text-white oswald">BACK TO TOP</h5>
+      </Link>
+    </div>
   );
 };
 
-export default ScrollToTop;
+export default BackToTop;

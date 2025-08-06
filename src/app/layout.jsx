@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
         </style>
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

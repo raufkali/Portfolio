@@ -1,0 +1,25 @@
+ .bg-light-blue {
+     background-color: #beeaeeff;
+ }
+
+ .skill-category {
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .skills-row:hover .skills-card {
+     opacity: 0.4;
+ }
+
+ .skills-row .skills-card:hover {
+     opacity: 1;
+ }
+
+ .skill-category:hover {
+     transform: scale(1.03);
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+     background-color: #cafbffff;
+ }
+
+ .card-title i {
+     font-size: 1.2rem;
+ }

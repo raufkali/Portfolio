@@ -1,0 +1,9 @@
+.nav-link:hover {
+    font-weight: bold;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}

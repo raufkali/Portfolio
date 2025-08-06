@@ -1,0 +1,17 @@
+.hobby-card {
+    min-width: 130px;
+    transition: transform 0.3s ease;
+}
+
+.hobby-card:hover {
+    transform: scale(1.05);
+    background-color: #cefdedff !important;
+}
+
+.hobby-row:hover .hobby-card {
+    opacity: 0.4;
+}
+
+.hobby-row .hobby-card:hover {
+    opacity: 1;
+}

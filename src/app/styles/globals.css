@@ -7,8 +7,18 @@ html {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
+    text-decoration: underline;
 }
 
+
+
+
+.oswald {
+    font-family: "Oswald";
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -17,6 +27,7 @@ body {
     color: #212529;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 #about {
@@ -50,4 +61,10 @@ h2 {
 .btn-dark:hover {
     background-color: #1a2d40;
     border-color: #1a2d40;
+}
+
+.about-icon:hover {
+    transform: scale(1.05);
+    cursor: default;
+    color: #33597c;
 }
