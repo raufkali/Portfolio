@@ -11,6 +11,9 @@ const poppins = Poppins({
 export const metadata = {
   title: "Rauf Ahmad Portfolio",
   description: "My personal portfolio made with Next.js + Bootstrap",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
