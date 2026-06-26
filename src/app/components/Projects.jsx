@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { portfolioData } from "@/lib/portfolioData";
+import { portfolioData } from "../../../lib/portfolioData";
 import "./Projects.css";
 
 const Projects = () => {

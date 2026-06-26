@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { portfolioData } from "@/lib/portfolioData";
+import { portfolioData } from "../../../lib/portfolioData";
 import "./WhatsAppWidget.css";
 
 const WhatsAppWidget = () => {

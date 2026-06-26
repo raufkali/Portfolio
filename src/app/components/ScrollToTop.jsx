@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { portfolioData } from "@/lib/portfolioData";
+import { portfolioData } from "../../../lib/portfolioData";
 import "./ScrollToTop.css";
 
 const ScrollToTop = () => {

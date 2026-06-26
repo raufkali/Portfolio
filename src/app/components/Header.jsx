@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { portfolioData } from "@/lib/portfolioData";
+import { portfolioData } from "../../../lib/portfolioData";
 import "./Header.css";
 
 const Header = () => {

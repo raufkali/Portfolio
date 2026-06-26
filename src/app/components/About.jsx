@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
-import profilePic from "@/public/images/profile.jpg";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { portfolioData } from "@/lib/portfolioData";
+import { portfolioData } from "../../../lib/portfolioData";
 import "./About.css";
 
 const About = () => {
@@ -62,7 +61,7 @@ const About = () => {
               <div className="profile-image-container">
                 <div className="profile-image-border">
                   <Image
-                    src={profilePic}
+                    src={"/images/profile.jpg"}
                     alt={name}
                     className="profile-image"
                     width={300}
