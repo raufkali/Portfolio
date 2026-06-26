@@ -2,35 +2,40 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { portfolioData } from "@/lib/portfolioData";
 import "./Hobbies.css";
-const hobbies = [
-  { icon: "fas fa-chess", label: "Chess" },
-  { icon: "fas fa-code", label: "Programming" },
-  { icon: "fas fa-flask", label: "Exploring Technologies" },
-  { icon: "fas fa-language", label: "German Language" },
-  { icon: "fas fa-globe-europe", label: "Cultural Awareness" },
-  { icon: "fas fa-comments", label: "Communication Skills" },
-  { icon: "fas fa-running", label: "Physical Fitness" },
-];
 
 const Hobbies = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({ duration: 800, once: false });
   }, []);
 
+  const { hobbies } = portfolioData;
+
   return (
-    <section id="hobbies" className="container py-5" data-aos="fade-up">
-      <h2 className="text-center mb-5 oswald-title">HOBBIES & INTERESTS</h2>
-      <div className="hobby-row d-flex gap-4 px-2">
-        {hobbies.map((hobby, index) => (
-          <div
-            key={index}
-            className="text-center px-3 py-4 bg-white mb-3 shadow-sm rounded hobby-card"
-          >
-            <i className={`${hobby.icon} fa-2x mb-2 hobby-icon`}></i>
-            <div>{hobby.label}</div>
-          </div>
-        ))}
+    <section id="hobbies" className="hobbies-section">
+      <div className="container">
+        <h2
+          className="oswald-title text-center text-white mb-5"
+          data-aos="fade-down"
+        >
+          HOBBIES & INTERESTS
+        </h2>
+        <div className="row g-4 justify-content-center">
+          {hobbies.map((hobby, index) => (
+            <div
+              className="col-lg-3 col-md-4 col-6"
+              key={index}
+              data-aos="flip-left"
+              data-aos-delay={index * 50}
+            >
+              <div className="hobby-card glass text-center p-4 rounded-4">
+                <i className={`${hobby.icon} hobby-icon`}></i>
+                <p className="text-white mt-2 mb-0">{hobby.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

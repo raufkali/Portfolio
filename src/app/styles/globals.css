@@ -1,20 +1,64 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+/* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Glass morphism base styles */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-dark {
+    background: rgba(13, 27, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-dark {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
+}
+
+.gradient-gold {
+    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+}
+
+/* Typography */
 .oswald-title {
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
     text-decoration: underline;
+    text-decoration-color: #667eea;
+    text-underline-offset: 10px;
 }
 
-
-
-
 .oswald {
-    font-family: "Oswald";
+    font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
@@ -22,49 +66,140 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-    /* Light gray */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     color: #212529;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-#about {
-    background-image: url("../../public/images/background.jpg");
-}
-
-.bg-yellow {
-    background-color: rgb(255, 255, 180);
-}
-
+/* Section spacing */
 section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 80px;
+    padding: 80px 0;
 }
 
 h2 {
     font-weight: 600;
     color: #0d1b2a;
-    /* Navy */
 }
 
-.navbar-dark .nav-link,
-.navbar-dark h2 {
-    color: white !important;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-.btn-dark {
-    background-color: #0d1b2a;
-    border-color: #0d1b2a;
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
-.btn-dark:hover {
-    background-color: #1a2d40;
-    border-color: #1a2d40;
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 5px;
 }
 
-.about-icon:hover {
-    transform: scale(1.05);
-    cursor: default;
-    color: #33597c;
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Animation classes */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+    }
+}
+
+@keyframes slide-in-left {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    section {
+        padding: 50px 0;
+    }
+}
+
+/* Add to globals.css - at the bottom of the file */
+
+/* Ensure proper spacing at bottom */
+main {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Make sure footer stays at bottom */
+#contact {
+    margin-bottom: 0;
+}
+
+/* Fix for any overflow issues */
+* {
+    box-sizing: border-box;
+}
+
+/* Ensure smooth scrolling on all elements */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    /* Account for fixed header */
 }

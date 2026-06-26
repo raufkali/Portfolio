@@ -1,25 +1,58 @@
- .bg-light-blue {
-     background-color: #beeaeeff;
- }
+/* components/Skills.css */
+.skills-section {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
+    padding: 80px 0;
+}
 
- .skill-category {
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
- }
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
 
- .skills-row:hover .skills-card {
-     opacity: 0.4;
- }
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(102, 126, 234, 0.3);
+}
 
- .skills-row .skills-card:hover {
-     opacity: 1;
- }
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
- .skill-category:hover {
-     transform: scale(1.03);
-     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-     background-color: #cafbffff;
- }
+.skill-icon {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
- .card-title i {
-     font-size: 1.2rem;
- }
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-item {
+    padding: 6px 14px;
+    background: rgba(102, 126, 234, 0.15);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: rgba(102, 126, 234, 0.3);
+    transform: scale(1.05);
+}

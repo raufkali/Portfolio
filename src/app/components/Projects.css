@@ -1,0 +1,102 @@
+/* components/Projects.css */
+.projects-section {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
+    padding: 80px 0;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    border-color: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+    color: white;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-badge.completed {
+    background: #10b981;
+    color: white;
+}
+
+.status-badge.in-progress {
+    background: #f59e0b;
+    color: white;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    padding: 4px 12px;
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    color: #667eea;
+}
+
+.highlights-list {
+    list-style: none;
+    padding: 0;
+}
+
+.highlights-list li {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 5px 0;
+    display: flex;
+    align-items: flex-start;
+    font-size: 0.95rem;
+}

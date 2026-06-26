@@ -1,0 +1,83 @@
+/* components/ScrollToTop.css */
+
+/* Scroll to top button - Fixed positioning */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 150px;
+    /* Increased to make room for WhatsApp widget */
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9997;
+    /* Lower than WhatsApp widget */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInUp 0.4s ease;
+}
+
+.scroll-to-top-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 35px rgba(102, 126, 234, 0.6);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.scroll-to-top-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Footer styles */
+.footer {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
+    padding: 30px 0 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.text-white-60 {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .scroll-to-top-btn {
+        bottom: 150px;
+        /* Adjusted for mobile */
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top-btn {
+        bottom: 150px;
+        right: 15px;
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,305 @@
+export const portfolioData = {
+  personal: {
+    name: "Rauf Ahmad",
+    title:
+      "Full Stack MERN Developer | Next.js Developer | Desktop Application Developer",
+    tagline: "Transforming ideas into scalable, production-ready solutions",
+    description:
+      "I craft modern, scalable web applications with a focus on user experience and clean code. Specializing in full-stack development with React, Node.js, and MongoDB, I transform ideas into production-ready solutions. Passionate about AI integration and emerging technologies.",
+    location: "Badwan Bala, Dir Lower, KPK, Pakistan",
+    email: "ahmadraufbd@gmail.com",
+    phone: "+92 3469258704",
+    linkedin: "https://www.linkedin.com/in/rufiii",
+    github: "https://github.com/raufkali",
+    whatsapp: "+923469258704",
+  },
+  stats: [
+    { number: "10+", label: "Projects Completed" },
+    { number: "3+", label: "Years Experience" },
+    { number: "15+", label: "Technologies" },
+  ],
+  experience: [
+    {
+      id: 1,
+      position: "Front-End Developer Intern",
+      company: "Internship Pakistan",
+      duration: "July 2025 - October 2025",
+      type: "Internship",
+      description:
+        "Developed responsive web interfaces and worked on real-world frontend projects.",
+      responsibilities: [
+        "Developed responsive web interfaces using React.js, JavaScript, and Bootstrap",
+        "Worked on real-world frontend projects and UI implementation",
+        "Collaborated on modern web application development practices",
+        "Improved frontend performance, responsiveness, and user experience",
+      ],
+    },
+    {
+      id: 2,
+      position: "Full Stack Web Developer",
+      company: "Freelance",
+      duration: "Jan 2023 - Present",
+      type: "Freelance",
+      description:
+        "Developing custom web applications, RESTful APIs, and e-commerce platforms for clients.",
+      responsibilities: [
+        "Developed custom web applications for clients",
+        "Built RESTful APIs and backend services",
+        "Created e-commerce platforms and management systems",
+        "Integrated payment gateways and authentication systems",
+        "Developed desktop applications based on client requirements",
+      ],
+    },
+  ],
+  projects: [
+    {
+      id: 1,
+      title: "Smart E-Commerce Marketplace",
+      description:
+        "Multi-vendor marketplace platform with real-time chat, payment gateway integration, and dispute management.",
+      technologies: ["Next.js", "React.js", "Node.js", "MongoDB", "Stripe"],
+      startDate: "Mar 2024",
+      endDate: "Jun 2024",
+      status: "Completed",
+      role: "Full Stack Developer",
+      highlights: [
+        "Multi-vendor architecture with role-based access",
+        "Stripe payment integration with automated workflows",
+        "Real-time buyer-seller chat system",
+        "Admin dashboard with analytics",
+      ],
+    },
+    {
+      id: 2,
+      title: "Cosmetics E-Commerce Store",
+      description:
+        "Complete cosmetics e-commerce platform with inventory management, shopping cart, and admin dashboard.",
+      technologies: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Bootstrap",
+      ],
+      startDate: "Jan 2024",
+      endDate: "Mar 2024",
+      status: "Completed",
+      role: "Full Stack Developer",
+      highlights: [
+        "Product catalog management system",
+        "Real-time inventory tracking",
+        "Responsive design for all devices",
+        "Payment gateway integration",
+      ],
+    },
+    {
+      id: 3,
+      title: "Finance Management Desktop App",
+      description:
+        "Desktop application for financial tracking with income/expense management and financial analytics.",
+      technologies: ["Python", "PyQt/Tkinter", "SQLite"],
+      startDate: "Nov 2023",
+      endDate: "Jan 2024",
+      status: "Completed",
+      role: "Desktop Developer",
+      highlights: [
+        "Income/expense tracking module",
+        "Automated financial reports",
+        "Analytics dashboard with charts",
+        "Data export functionality",
+      ],
+    },
+    {
+      id: 4,
+      title: "School Management System",
+      description:
+        "Role-based management system for schools with student, teacher, and administration modules.",
+      technologies: ["Next.js", "Node.js", "Express.js", "MongoDB"],
+      startDate: "Aug 2023",
+      endDate: "Nov 2023",
+      status: "Completed",
+      role: "Full Stack Developer",
+      highlights: [
+        "Role-based access control system",
+        "Attendance management module",
+        "Academic tracking and grading",
+        "Multi-module architecture",
+      ],
+    },
+    {
+      id: 5,
+      title: "Blog Platform",
+      description:
+        "Feature-rich blog platform with authentication, content management, and user dashboard.",
+      technologies: ["MERN Stack", "JWT", "MongoDB"],
+      startDate: "Jun 2023",
+      endDate: "Aug 2023",
+      status: "Completed",
+      role: "Full Stack Developer",
+      highlights: [
+        "Secure user authentication system",
+        "Content creation and management",
+        "Comment system with moderation",
+        "User dashboard and analytics",
+      ],
+    },
+    {
+      id: 6,
+      title: "Student Management System",
+      description:
+        "Complete student record management system with CRUD operations and role-based access.",
+      technologies: ["MERN Stack", "MongoDB"],
+      startDate: "Apr 2023",
+      endDate: "Jun 2023",
+      status: "Completed",
+      role: "Full Stack Developer",
+      highlights: [
+        "Complete CRUD operations",
+        "Secure authentication system",
+        "Role-based access control",
+        "Comprehensive data management",
+      ],
+    },
+  ],
+  education: [
+    {
+      id: 1,
+      degree: "Bachelor of Science in Computer Science (BSCS)",
+      institution: "GDC Gulabad",
+      year: "In Progress - 8th Semester",
+      cgpa: "3.87 / 4.00",
+      status: "Currently Enrolled",
+    },
+    {
+      id: 2,
+      degree: "Intermediate (FSc)",
+      institution: "FG College Batkhela",
+      year: "2024",
+      percentage: "74%",
+      status: "Completed",
+    },
+    {
+      id: 3,
+      degree: "Secondary School Certificate (SSC)",
+      institution: "GIBS Chakdara",
+      year: "2022",
+      percentage: "79%",
+      status: "Completed",
+    },
+  ],
+  skills: [
+    {
+      category: "MERN Stack Development",
+      icon: "fas fa-layer-group",
+      items: ["MongoDB", "Express.js", "React.js", "Node.js", "Next.js"],
+    },
+    {
+      category: "Frontend Development",
+      icon: "fas fa-code",
+      items: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Bootstrap",
+        "Next.js",
+        "Tailwind CSS",
+      ],
+    },
+    {
+      category: "Backend Development",
+      icon: "fas fa-server",
+      items: [
+        "Node.js",
+        "Express.js",
+        "RESTful APIs",
+        "Authentication",
+        "API Design",
+      ],
+    },
+    {
+      category: "Databases",
+      icon: "fas fa-database",
+      items: ["MongoDB", "MySQL", "Firebase", "Data Modeling"],
+    },
+    {
+      category: "Programming Languages",
+      icon: "fas fa-terminal",
+      items: ["JavaScript", "Python", "C++", "Bash", "PHP"],
+    },
+    {
+      category: "Desktop Application Development",
+      icon: "fas fa-desktop",
+      items: ["Electron.js", "React.js", "Python Desktop Apps", "PyQt/Tkinter"],
+    },
+    {
+      category: "Tools & Technologies",
+      icon: "fas fa-tools",
+      items: [
+        "Git & GitHub",
+        "VS Code",
+        "Docker",
+        "Postman",
+        "Figma",
+        "Stripe API",
+      ],
+    },
+    {
+      category: "Operating Systems & Security",
+      icon: "fas fa-shield-alt",
+      items: ["Windows", "Linux", "Kali Linux", "Cybersecurity Basics"],
+    },
+  ],
+  certifications: [
+    {
+      id: 1,
+      category: "Programming & Development",
+      items: [
+        "Open Weaver – Basics of Python",
+        "HackerRank – Problem Solving",
+        "HackerRank – Python",
+        "HackerRank – JavaScript",
+        "Google – Python Crash Course",
+        "Google – Automating Real-World Tasks with Python",
+        "Google – Using Python to Interact with the Operating System",
+      ],
+    },
+    {
+      id: 2,
+      category: "Cybersecurity",
+      items: [
+        "Google – Foundations of Cybersecurity",
+        "Google – Connect and Protect",
+        "Google – Cyber Guidelines",
+        "Google – Play It Safe",
+        "Google – Tools of the Trade: Linux and Security",
+      ],
+    },
+    {
+      id: 3,
+      category: "Professional Development",
+      items: [
+        "Introduction to Career Skills in Software Development (CompTIA / LinkedIn Learning)",
+        "DigiSkills.pk – Freelancing Training Certificate",
+        "Market Demand of AI and Data Science",
+        "NGO Leadership and Communication Training",
+      ],
+    },
+  ],
+  hobbies: [
+    { icon: "fas fa-chess", label: "Chess" },
+    { icon: "fas fa-code", label: "Programming" },
+    { icon: "fas fa-flask", label: "Exploring Technologies" },
+    { icon: "fas fa-language", label: "German Language" },
+    { icon: "fas fa-globe-europe", label: "Cultural Awareness" },
+    { icon: "fas fa-comments", label: "Communication Skills" },
+    { icon: "fas fa-dumbbell", label: "Physical Fitness" },
+  ],
+  languages: [
+    { language: "English", level: "Professional Working Proficiency" },
+    { language: "Urdu", level: "Native/Fluent" },
+    { language: "Pashto", level: "Native/Fluent" },
+    { language: "German", level: "A2 – B1" },
+  ],
+};
+
+export default portfolioData;

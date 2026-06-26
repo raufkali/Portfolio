@@ -1,0 +1,113 @@
+/* components/Experience.css */
+.experience-section {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
+    padding: 80px 0;
+    position: relative;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: 50%;
+    padding: 0 40px;
+}
+
+.timeline-item.left {
+    left: 0;
+    padding-right: 60px;
+}
+
+.timeline-item.right {
+    left: 50%;
+    padding-left: 60px;
+}
+
+.timeline-item .timeline-content {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-badge {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.timeline-item.left .timeline-badge {
+    right: -25px;
+}
+
+.timeline-item.right .timeline-badge {
+    left: -25px;
+}
+
+.timeline-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.responsibilities-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.responsibilities-list li {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 5px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+        left: 0 !important;
+    }
+
+    .timeline-item .timeline-badge {
+        left: -5px !important;
+        right: auto !important;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}

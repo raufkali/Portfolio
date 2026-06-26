@@ -12,9 +12,11 @@
     "@fortawesome/fontawesome-free": "^7.0.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.7",
+    "framer-motion": "^12.42.0",
     "next": "15.4.5",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-intersection-observer": "^10.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -2,9 +2,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./styles/globals.css";
 import { Poppins } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-// fonts
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata = {
   title: "Rauf Ahmad Portfolio",
@@ -15,12 +18,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-        </style>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body>{children}</body>
+      <body className={poppins.className}>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

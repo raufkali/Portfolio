@@ -1,13 +1,55 @@
-import Link from "next/link";
-import React from "react";
-const BackToTop = () => {
+"use client";
+import { useState, useEffect } from "react";
+import { portfolioData } from "@/lib/portfolioData";
+import "./ScrollToTop.css";
+
+const ScrollToTop = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div id="back-to-top" className=" p-2 bg-dark text-center mt-5">
-      <Link href="#about" className="btn-top btn border-0">
-        <h5 className="text-white oswald">BACK TO TOP</h5>
-      </Link>
-    </div>
+    <>
+      {visible && (
+        <button
+          onClick={scrollToTop}
+          className="scroll-to-top-btn"
+          aria-label="Scroll to top"
+        >
+          <i className="fas fa-arrow-up"></i>
+        </button>
+      )}
+      <footer className="footer">
+        <div className="container text-center">
+          <p className="text-white-60 mb-0">
+            © {new Date().getFullYear()} {portfolioData.personal.name}. All
+            rights reserved.
+          </p>
+          <p className="text-white-60 small mt-1">
+            Made with <i className="fas fa-heart text-danger"></i> using Next.js
+          </p>
+        </div>
+      </footer>
+    </>
   );
 };
 
-export default BackToTop;
+export default ScrollToTop;
