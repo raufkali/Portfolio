@@ -100,3 +100,119 @@
     align-items: flex-start;
     font-size: 0.95rem;
 }
+
+/* Project Links */
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.github-link-wrapper {
+    display: inline-flex;
+}
+
+.github-link,
+.demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+}
+
+.github-link {
+    background: #24292e;
+    color: white;
+}
+
+.github-link:hover {
+    background: #2f363d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(36, 41, 46, 0.3);
+    color: white;
+}
+
+.github-link i {
+    font-size: 1.1rem;
+}
+
+.demo-link {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.demo-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+.demo-link i {
+    font-size: 0.9rem;
+}
+
+/* Private Repository Badge */
+.private-repo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: not-allowed;
+    user-select: none;
+}
+
+.private-repo i {
+    color: #f0c040;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .project-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .github-link,
+    .demo-link,
+    .private-repo {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .demo-link.ms-2 {
+        margin-left: 0 !important;
+    }
+}
+
+/* Glass effect for project cards (if not already defined) */
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.glass:hover {
+    transform: translateY(-5px);
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}

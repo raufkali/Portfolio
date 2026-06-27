@@ -62,7 +62,7 @@ const Projects = () => {
                 <p className="text-white-70">{project.description}</p>
                 <div className="project-meta text-light">
                   <span className="text-white-60">
-                    <i className="far fa-calendar me-2 "></i>
+                    <i className="far fa-calendar me-2"></i>
                     {project.startDate} - {project.endDate}
                   </span>
                   <span className="text-white-60 ms-3">
@@ -85,6 +85,41 @@ const Projects = () => {
                     </li>
                   ))}
                 </ul>
+
+                {/* Project Links Section */}
+                <div className="project-links mt-4">
+                  {/* GitHub Link */}
+                  {project.githubLink && (
+                    <div className="github-link-wrapper">
+                      {project.githubLink === "private" ? (
+                        <span className="private-repo">
+                          <i className="fas fa-lock"></i> Private Repository
+                        </span>
+                      ) : (
+                        <a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="github-link"
+                        >
+                          <i className="fab fa-github"></i> View Code
+                        </a>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Live Demo Link */}
+                  {project.liveDemo && (
+                    <a
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="demo-link ms-2"
+                    >
+                      <i className="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
