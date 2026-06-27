@@ -62,7 +62,7 @@ const About = () => {
                 <div className="profile-image-border">
                   <Image
                     src={"/images/profile.jpg"}
-                    alt={name}
+                    alt="Rauf Ahmad Badwan - MERN Stack Developer Portfolio"
                     className="profile-image"
                     width={300}
                     height={300}

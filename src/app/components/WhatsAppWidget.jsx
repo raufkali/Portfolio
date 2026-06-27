@@ -8,7 +8,11 @@ const WhatsAppWidget = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [message, setMessage] = useState("");
   const [notificationCount, setNotificationCount] = useState(0);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
   const widgetRef = useRef(null);
+  const chatWindowRef = useRef(null);
+  const chatBodyRef = useRef(null);
+  const messageInputRef = useRef(null);
   const { personal } = portfolioData;
 
   useEffect(() => {
@@ -31,6 +35,61 @@ const WhatsAppWidget = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Handle keyboard visibility
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleResize = () => {
+      if (window.visualViewport) {
+        const heightDiff = window.innerHeight - window.visualViewport.height;
+        const isKeyboardOpen = heightDiff > 150; // Threshold for keyboard
+        setIsKeyboardVisible(isKeyboardOpen);
+
+        if (chatWindowRef.current) {
+          if (isKeyboardOpen) {
+            chatWindowRef.current.classList.add("keyboard-visible");
+            // Scroll to bottom of chat body
+            setTimeout(() => {
+              if (chatBodyRef.current) {
+                chatBodyRef.current.scrollTop =
+                  chatBodyRef.current.scrollHeight;
+              }
+            }, 100);
+          } else {
+            chatWindowRef.current.classList.remove("keyboard-visible");
+          }
+        }
+      }
+    };
+
+    // Use visualViewport API for better keyboard detection
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleResize);
+    } else {
+      // Fallback for older browsers
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleResize);
+      } else {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, [isOpen]);
+
+  // Focus input when chat opens
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        if (messageInputRef.current) {
+          messageInputRef.current.focus();
+        }
+      }, 300);
+    }
+  }, [isOpen]);
 
   const toggleWidget = () => {
     setIsOpen(!isOpen);
@@ -57,6 +116,16 @@ const WhatsAppWidget = () => {
       e.preventDefault();
       handleSendMessage();
     }
+  };
+
+  const handleQuickReply = (reply) => {
+    setMessage(reply);
+    // Focus input after setting message
+    setTimeout(() => {
+      if (messageInputRef.current) {
+        messageInputRef.current.focus();
+      }
+    }, 100);
   };
 
   const quickReplies = [
@@ -86,7 +155,7 @@ const WhatsAppWidget = () => {
 
           {/* Chat Window */}
           {isOpen && (
-            <div className="whatsapp-chat-window">
+            <div className="whatsapp-chat-window" ref={chatWindowRef}>
               {/* Header */}
               <div className="chat-header">
                 <div className="chat-header-info">
@@ -107,17 +176,17 @@ const WhatsAppWidget = () => {
               </div>
 
               {/* Chat Body */}
-              <div className="chat-body">
+              <div className="chat-body" ref={chatBodyRef}>
                 {/* Welcome Message */}
                 <div className="message received">
                   <div className="message-content">
                     <p>👋 Hi there! I'm {personal.name}</p>
-                    <p className="message-time">
+                    <span className="message-time">
                       {new Date().toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}
-                    </p>
+                    </span>
                   </div>
                 </div>
 
@@ -127,12 +196,12 @@ const WhatsAppWidget = () => {
                       I'd love to connect with you! Feel free to ask me anything
                       about my work or projects.
                     </p>
-                    <p className="message-time">
+                    <span className="message-time">
                       {new Date().toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}
-                    </p>
+                    </span>
                   </div>
                 </div>
 
@@ -144,9 +213,7 @@ const WhatsAppWidget = () => {
                       <button
                         key={index}
                         className="quick-reply-btn"
-                        onClick={() => {
-                          setMessage(reply);
-                        }}
+                        onClick={() => handleQuickReply(reply)}
                       >
                         {reply}
                       </button>
@@ -158,11 +225,12 @@ const WhatsAppWidget = () => {
               {/* Chat Footer */}
               <div className="chat-footer">
                 <textarea
+                  ref={messageInputRef}
                   className="message-input"
                   placeholder="Type your message..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={handleKeyPress}
                   rows={1}
                 />
                 <button

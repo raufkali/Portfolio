@@ -430,7 +430,7 @@
     }
 }
 
-/* Mobile Phones */
+/* Mobile Phones - FIXED KEYBOARD ISSUE */
 @media (max-width: 480px) {
     .whatsapp-widget {
         bottom: 80px;
@@ -457,7 +457,7 @@
         font-size: 0.75rem;
     }
 
-    /* Chat window - full width on mobile */
+    /* Chat window - full width on mobile with better keyboard handling */
     .whatsapp-chat-window {
         position: fixed;
         top: 0;
@@ -466,12 +466,37 @@
         bottom: 0;
         width: 100vw;
         max-width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
+        height: 100dvh;
+        /* Use dynamic viewport height */
+        max-height: 100dvh;
+        /* Use dynamic viewport height */
         border-radius: 0;
         bottom: auto;
         right: auto;
         animation: slideUpMobile 0.3s ease;
+        /* Prevent window from being pushed by keyboard */
+        transform: translateY(0);
+        transition: height 0.3s ease;
+    }
+
+    /* When keyboard is visible, adjust chat height */
+    .whatsapp-chat-window.keyboard-visible {
+        height: calc(100dvh - 250px);
+        /* Adjust based on keyboard height */
+        top: auto;
+        bottom: 0;
+        border-radius: 20px 20px 0 0;
+        animation: slideUpKeyboard 0.3s ease;
+    }
+
+    @keyframes slideUpKeyboard {
+        from {
+            transform: translateY(100%);
+        }
+
+        to {
+            transform: translateY(0);
+        }
     }
 
     @keyframes slideUpMobile {
@@ -514,6 +539,8 @@
     /* Chat body - more padding */
     .chat-body {
         padding: 15px;
+        flex: 1;
+        overflow-y: auto;
     }
 
     .message-content {
@@ -558,10 +585,14 @@
         flex-shrink: 0;
     }
 
-    /* Footer - compact */
+    /* Footer - compact with keyboard safety */
     .chat-footer {
         padding: 10px 12px;
         gap: 8px;
+        flex-shrink: 0;
+        /* Prevent footer from being pushed up on iOS */
+        position: relative;
+        z-index: 10;
     }
 
     .message-input {
@@ -569,6 +600,8 @@
         padding: 8px 14px;
         min-height: 36px;
         border-radius: 20px;
+        /* Prevent zoom on focus in iOS */
+        font-size: 16px;
     }
 
     .send-button {
@@ -646,6 +679,10 @@
     .whatsapp-chat-window {
         height: 85vh;
         max-height: 85vh;
+    }
+
+    .whatsapp-chat-window.keyboard-visible {
+        height: calc(85vh - 200px);
     }
 
     .chat-body {
