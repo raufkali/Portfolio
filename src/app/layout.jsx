@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./styles/globals.css";
 import { Poppins } from "next/font/google";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -107,12 +106,6 @@ export const metadata = {
     email: true,
     address: true,
     telephone: true,
-  },
-
-  verification: {
-    google: "your-google-site-verification-code", // Add your Google Search Console code
-    // yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
   },
 
   category: "technology",
