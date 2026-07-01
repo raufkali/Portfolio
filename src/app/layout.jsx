@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap", // Added for better font loading performance
 });
 
 export const metadata = {
@@ -15,9 +16,8 @@ export const metadata = {
     template: "%s | Rauf Ahmad",
   },
   description:
-    "Rauf Ahmad - Full Stack MERN Developer, Next.js Expert, and Desktop Application Developer. Specializing in React, Node.js, MongoDB, and modern web technologies.",
+    "Rauf Ahmad is a Full Stack MERN Developer from Pakistan specializing in React, Next.js, Node.js, MongoDB and modern web applications. Visit Rauf Ahmad's portfolio...",
 
-  // Keywords for SEO
   keywords: [
     "Rauf Ahmad",
     "Rauf Ahmad Mern Stack",
@@ -34,9 +34,33 @@ export const metadata = {
     "Freelance Developer",
     "MongoDB Developer",
     "JavaScript Developer",
+    "Rauf Badwan",
+    "ahmad rauf",
+    "mr rauf",
+    "raufkali",
+    "rufi boy",
+    "Mr Rufi Boy",
+    "rufi Boi",
+    "its rufi boy",
+    "rufiii",
+    "rauf ahmad khan",
+    "rauf khan",
+    "rauf ahmad gulabad",
+    "gulabad college",
+    "gulabad college student",
+    "gdc gulabad",
+    "gdc gulabad student",
+    "university of malakand",
+    "uom student",
+    "malakand university",
+    "malakand university student",
+    "badwan bala",
+    "badwan bala dir lower",
+    "dir lower",
+    "khyber pakhtunkhwa",
+    "pakistan",
   ],
 
-  // Icons (using Font Awesome profile icon)
   icons: {
     icon: [
       {
@@ -46,10 +70,7 @@ export const metadata = {
       },
     ],
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
   },
-
-  // Open Graph (Facebook, LinkedIn, etc.)
   openGraph: {
     title: "Rauf Ahmad - Full Stack MERN Developer",
     description:
@@ -58,7 +79,7 @@ export const metadata = {
     siteName: "Rauf Ahmad Portfolio",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/profile.jpg",
         width: 1200,
         height: 630,
         alt: "Rauf Ahmad - Full Stack Developer",
@@ -68,18 +89,6 @@ export const metadata = {
     type: "website",
   },
 
-  // Twitter Card
-  twitter: {
-    card: "summary_large_image",
-    title: "Rauf Ahmad - Full Stack MERN Developer",
-    description:
-      "Portfolio of Rauf Ahmad - Full Stack MERN Developer, Next.js Expert, and Desktop Application Developer.",
-    images: ["/twitter-image.jpg"],
-    creator: "@rufiii",
-    site: "@rufiii",
-  },
-
-  // Other meta tags
   robots: {
     index: true,
     follow: true,
@@ -97,9 +106,7 @@ export const metadata = {
   },
 
   authors: [{ name: "Rauf Ahmad" }],
-
   creator: "Rauf Ahmad",
-
   publisher: "Rauf Ahmad",
 
   formatDetection: {
@@ -115,6 +122,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Preconnect for faster Google Fonts loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         {/* Google Fonts */}
         <link
           href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
@@ -127,7 +142,7 @@ export default function RootLayout({ children }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
 
-        {/* Schema Markup for better SEO */}
+        {/* Enhanced Schema Markup */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -161,11 +176,6 @@ export default function RootLayout({ children }) {
                 "JavaScript",
                 "Python",
                 "Desktop Application Development",
-                "Rauf Ahmad Gulabad",
-                "Gulabad College",
-                "University of Malakand",
-                "UOM student",
-                "gdc gulabad student",
               ],
               alumniOf: {
                 "@type": "EducationalOrganization",
