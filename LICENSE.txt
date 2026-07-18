@@ -1,0 +1,35 @@
+PROPRIETARY SOFTWARE LICENSE
+Copyright (c) Rauf Ahmad
+
+All rights reserved.
+
+1. GRANT OF RIGHTS
+   This project and all its associated files, source code, documentation, and assets (collectively, the "Work") are the exclusive property of the copyright holder. No rights are granted to any person or entity except as explicitly stated herein.
+
+2. RESTRICTIONS
+   a. **No Copying, Distribution, or Reproduction**  
+      You may NOT copy, distribute, sublicense, lease, lend, rent, or transfer the Work, in whole or in part, by any means, without prior written permission from the copyright holder.
+
+   b. **No Whole‑Work Copy‑Pasting**  
+      You may NOT copy the entire Work or substantial portions thereof and republish, repurpose, or reuse them as your own, whether for personal, educational, or commercial use. "Whole copy‑paste" is strictly prohibited and non‑negotiable.
+
+   c. **Modifications and Improvements**  
+      You are permitted to make improvements, patches, or modifications to the Work only after you have received explicit written consent from the copyright holder via email. Such modifications must be submitted back to the copyright holder for review and possible inclusion.
+
+3. PERMISSION REQUEST
+   To request permission to use, copy, modify, or distribute any part of the Work, please send an email to:  
+   **ahmadraufbd@gmail.com**  
+   Include a detailed description of your intended use, the scope of your request, and any proposed modifications.
+
+4. DERIVATIVE WORKS
+   Any derivative work based on the Work, or any portion thereof, shall remain the exclusive property of the original copyright holder and is subject to the same restrictions as set forth in this License.
+
+5. DISCLAIMER OF WARRANTY
+   THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE WORK OR THE USE OR OTHER DEALINGS IN THE WORK.
+
+6. GOVERNING LAW
+   This License shall be governed by and construed in accordance with the laws of your jurisdiction, without regard to its conflict of laws principles.
+
+---
+
+By using, viewing, or interacting with this Work, you agree to be bound by the terms of this License.
