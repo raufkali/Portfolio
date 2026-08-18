@@ -1,82 +1,248 @@
 "use client";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { portfolioData } from "../../../lib/portfolioData";
+
+import { useEffect, useState } from "react";
 import "./Header.css";
+
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Work", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
+
+  /* ============================================================
+     SCROLL + ACTIVE SECTION
+     ============================================================ */
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      const sections = navItems
+        .filter((item) => item.href !== "#contact")
+        .map((item) => document.querySelector(item.href))
+        .filter(Boolean);
+
+      let currentSection = "about";
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= 160) {
+          currentSection = section.id;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  // Lock body scroll when menu is open
+  /* ============================================================
+     LOCK BODY SCROLL WHEN MOBILE MENU IS OPEN
+     ============================================================ */
+
   useEffect(() => {
-    document.body.classList.toggle("menu-open", menuOpen);
-    return () => document.body.classList.remove("menu-open");
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  /* ============================================================
+     CLOSE MOBILE MENU
+     ============================================================ */
 
-  const { name } = portfolioData.personal;
+  const handleNavigation = () => {
+    setMenuOpen(false);
+  };
+
+  /* ============================================================
+     TOGGLE MOBILE MENU
+     ============================================================ */
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
   return (
-    <header className={`header ${scrolled ? "scrolled" : ""}`}>
-      <nav className="container navbar">
-        <Link href="#about" className="navbar-brand oswald">
-          {name}
-        </Link>
+    <header
+      className={`site-header ${
+        scrolled ? "site-header-scrolled" : ""
+      } ${menuOpen ? "menu-is-open" : ""}`}
+    >
+      {/* ========================================================
+          HEADER / NAVBAR
+          THIS MUST ALWAYS STAY ABOVE THE MOBILE OVERLAY
+          ======================================================== */}
+
+      <div className="header-inner">
+        {/* ======================================================
+            BRAND
+            ====================================================== */}
+
+        <a href="#about" className="header-brand" onClick={handleNavigation}>
+          <span className="brand-mark">RAUF AHMAD</span>
+
+          <span className="brand-cursor" aria-hidden="true"></span>
+        </a>
+
+        {/* ======================================================
+            DESKTOP NAVIGATION
+            ====================================================== */}
+
+        <nav className="desktop-navigation" aria-label="Main navigation">
+          {navItems.map((item, index) => {
+            const sectionId = item.href.replace("#", "");
+
+            const isActive = activeSection === sectionId;
+
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`nav-link ${isActive ? "nav-link-active" : ""}`}
+                onClick={handleNavigation}
+              >
+                <span className="nav-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* ======================================================
+            DESKTOP CONTACT
+            ====================================================== */}
+
+        <a
+          href="#contact"
+          className="header-contact"
+          onClick={handleNavigation}
+        >
+          <span>Let's talk</span>
+
+          <span className="contact-arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+
+        {/* ======================================================
+            MOBILE TOGGLE
+            HAMBURGER → X
+
+            This stays inside .header-inner so it is ALWAYS
+            visible above the mobile navigation overlay.
+            ====================================================== */}
 
         <button
-          className={`navbar-toggler ${menuOpen ? "active" : ""}`}
           type="button"
+          className={`menu-toggle ${menuOpen ? "menu-toggle-active" : ""}`}
           onClick={toggleMenu}
-          aria-label="Toggle navigation"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span></span>
+          <span></span>
         </button>
+      </div>
 
-        {/* Mobile menu – custom controlled */}
-        <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-          <ul className="navbar-nav">
-            <li>
-              <Link href="#about" onClick={closeMenu}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="#about-info" onClick={closeMenu}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="#experience" onClick={closeMenu}>
-                Experience
-              </Link>
-            </li>
-            <li>
-              <Link href="#projects" onClick={closeMenu}>
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link href="#skills" onClick={closeMenu}>
-                Skills
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" onClick={closeMenu}>
-                Contact
-              </Link>
-            </li>
-          </ul>
+      {/* ========================================================
+          MOBILE NAVIGATION OVERLAY
+
+          IMPORTANT:
+          This is BELOW .header-inner visually.
+          ======================================================== */}
+
+      <div
+        id="mobile-navigation"
+        className={`mobile-navigation ${
+          menuOpen ? "mobile-navigation-open" : ""
+        }`}
+        aria-hidden={!menuOpen}
+      >
+        <div className="mobile-navigation-inner">
+          {/* ====================================================
+              LABEL
+              ==================================================== */}
+
+          <div className="mobile-menu-label">
+            <span className="mobile-menu-line"></span>
+
+            <span>Navigation</span>
+          </div>
+
+          {/* ====================================================
+              MOBILE NAVIGATION
+              ==================================================== */}
+
+          <nav className="mobile-nav-list">
+            {navItems.map((item, index) => {
+              const sectionId = item.href.replace("#", "");
+
+              const isActive = activeSection === sectionId;
+
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={handleNavigation}
+                  className={`mobile-nav-link ${
+                    isActive ? "mobile-nav-link-active" : ""
+                  }`}
+                >
+                  <span className="mobile-nav-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <span className="mobile-nav-text">{item.label}</span>
+
+                  <span className="mobile-nav-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* ====================================================
+              FOOTER
+              ==================================================== */}
+
+          <div className="mobile-menu-footer">
+            <span>Full Stack Developer</span>
+
+            <span className="mobile-availability">
+              <span className="availability-dot" aria-hidden="true"></span>
+              Available for work
+            </span>
+          </div>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };

@@ -1,27 +1,107 @@
-/* components/Contact.css */
+/* ============================================================
+   CONTACT — CYBERPUNK NEON THEME
+   ============================================================ */
+
 .contact-section {
-    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
-    padding: 60px 0;
+    background: var(--bg-contact);
+    padding: var(--section-padding) 0;
+    position: relative;
     overflow: hidden;
+    border-left: 4px solid var(--neon-green);
 }
 
+/* ---------- Grid & Orbs ---------- */
+.contact-section .grid-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(0, 255, 65, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+}
+
+.glow-orb-contact {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.glow-orb-contact-1 {
+    top: -10%;
+    left: 10%;
+    background: radial-gradient(circle, var(--neon-green), transparent 70%);
+    animation: orbFloat 16s ease-in-out infinite;
+}
+
+.glow-orb-contact-2 {
+    bottom: -10%;
+    right: 10%;
+    background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
+    animation: orbFloat 20s ease-in-out infinite reverse;
+}
+
+/* ---------- Title ---------- */
+.section-title-contact {
+    font-family: "Fira Code", "Space Grotesk", monospace;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem !important;
+    position: relative;
+}
+
+.section-title-contact::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background: var(--neon-green);
+    box-shadow: 0 0 30px var(--neon-green);
+}
+
+/* ============================================================
+   CONTACT CARDS (glass)
+   ============================================================ */
 .contact-info,
 .contact-form {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(16, 18, 36, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px;
     height: 100%;
-    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    border-left: 4px solid transparent;
 }
 
+.contact-info:hover,
+.contact-form:hover {
+    border-color: var(--border-hover);
+    border-left-color: var(--neon-cyan);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.06), 0 20px 50px rgba(0, 0, 0, 0.4);
+    transform: translateY(-4px);
+}
+
+/* ---------- Contact Info Items ---------- */
 .contact-item {
     display: flex;
     align-items: center;
     gap: 15px;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border);
 }
 
 .contact-item:last-child {
@@ -29,195 +109,150 @@
 }
 
 .contact-item i {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     width: 35px;
     text-align: center;
-    flex-shrink: 0;
+    color: var(--neon-cyan);
+    transition: color 0.3s;
 }
 
-.contact-item>div {
-    flex: 1;
-    min-width: 0;
+.contact-item:hover i {
+    color: var(--neon-green);
 }
 
-.contact-item>div span {
-    word-break: break-word;
+.contact-item .text-white-60 {
+    font-size: 0.75rem;
+    font-family: "Fira Code", monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
 }
 
-.whatsapp-color {
-    color: #25D366;
+.contact-item .text-white,
+.contact-item a {
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
 }
 
-.gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.contact-item a:hover {
+    color: var(--neon-cyan);
 }
 
+/* ---------- Form Inputs (terminal style) ---------- */
 .glass-input {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 12px 20px;
+    background: rgba(16, 18, 36, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    color: var(--text-primary);
+    font-family: "Fira Code", monospace;
+    font-size: 0.9rem;
     width: 100%;
+    transition: all 0.3s ease;
+    outline: none;
 }
 
 .glass-input:focus {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
-    color: white;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    background: rgba(0, 255, 255, 0.02);
 }
 
 .glass-input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.glass-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px rgba(13, 27, 42, 0.8) inset !important;
-    -webkit-text-fill-color: white !important;
+    color: var(--text-muted);
 }
 
 .form-label {
+    color: var(--text-secondary);
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-family: "Fira Code", monospace;
+    letter-spacing: 0.04em;
 }
 
-.btn-success {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+/* ---------- Submit Button (neon) ---------- */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--accent-gradient);
+    color: #0a0b1a;
     border: none;
+    padding: 14px 30px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-family: "Fira Code", monospace;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    font-weight: 600;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
+    width: 100%;
 }
 
-.btn-success:hover {
+.btn-whatsapp:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 0 50px rgba(0, 255, 65, 0.3);
 }
 
-.btn-success:disabled {
-    opacity: 0.7;
+.btn-whatsapp:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
     transform: none;
 }
 
-/* Mobile Responsive */
-@media (max-width: 992px) {
-    .contact-section {
-        padding: 50px 0;
-    }
-
-    .contact-info,
-    .contact-form {
-        padding: 25px !important;
-    }
+.whatsapp-color {
+    color: #25D366 !important;
 }
 
-@media (max-width: 768px) {
-    .contact-section {
-        padding: 40px 0;
-    }
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
 
     .contact-info,
     .contact-form {
-        padding: 20px !important;
-    }
-
-    .contact-item {
-        padding: 10px 0;
-        gap: 12px;
-    }
-
-    .contact-item i {
-        font-size: 1.1rem;
-        width: 30px;
-    }
-
-    .contact-item>div span {
-        font-size: 0.9rem;
-    }
-
-    .glass-input {
-        padding: 10px 15px;
-        font-size: 0.95rem;
-    }
-
-    .btn-success {
-        font-size: 1rem;
-        padding: 12px;
+        padding: 24px;
     }
 }
 
 @media (max-width: 576px) {
-    .contact-section {
-        padding: 30px 0;
-    }
 
     .contact-info,
     .contact-form {
-        padding: 15px !important;
+        padding: 18px 16px;
     }
 
     .contact-item {
-        padding: 8px 0;
-        gap: 10px;
+        padding: 10px 0;
     }
 
     .contact-item i {
-        font-size: 1rem;
-        width: 25px;
-    }
-
-    .contact-item>div span {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
+        width: 30px;
     }
 
     .glass-input {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-    }
-
-    .btn-success {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
-
-    h3 {
-        font-size: 1.3rem;
+        font-size: 0.8rem;
+        padding: 10px 14px;
     }
 }
 
-/* Prevent overflow */
-.row.g-4 {
-    margin-right: 0;
-    margin-left: 0;
-}
+/* ---------- Animations (shared) ---------- */
+@keyframes orbFloat {
 
-.row.g-4>* {
-    padding-right: calc(var(--bs-gutter-x) * 0.5);
-    padding-left: calc(var(--bs-gutter-x) * 0.5);
-}
-
-/* Container fix */
-.container {
-    padding-left: 15px;
-    padding-right: 15px;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-/* Fix for very small screens */
-@media (max-width: 400px) {
-    .contact-item {
-        flex-wrap: wrap;
-        gap: 5px;
+    0%,
+    100% {
+        transform: translate(0, 0);
     }
 
-    .contact-item i {
-        width: 100%;
-        text-align: left;
+    50% {
+        transform: translate(30px, -25px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

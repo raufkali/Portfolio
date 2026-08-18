@@ -14,43 +14,44 @@ const Experience = () => {
 
   return (
     <section id="experience" className="experience-section">
+      {/* Background decorations (optional – remove if you prefer cleaner) */}
+      <div className="grid-overlay"></div>
+      <div className="glow-orb-exp glow-orb-exp-1"></div>
+      <div className="glow-orb-exp glow-orb-exp-2"></div>
+
       <div className="container">
-        <h2
-          className="oswald-title text-center text-white mb-5"
-          data-aos="fade-down"
-        >
-          EXPERIENCE
+        <h2 className="section-title-exp" data-aos="fade-down">
+          Experience
         </h2>
-        <div className="timeline text-light">
+
+        <div className="exp-list">
           {experience.map((exp, index) => (
             <div
               key={exp.id}
-              className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}
-              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              className="exp-card"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
-              <div className="timeline-content glass p-4 rounded-4">
-                <div className="timeline-badge">
-                  <i className="fas fa-briefcase"></i>
+              <div className="exp-header">
+                <div className="exp-header-left">
+                  <h3 className="exp-position">{exp.position}</h3>
+                  <h4 className="exp-company">{exp.company}</h4>
                 </div>
-                <h3 className="text-white">{exp.position}</h3>
-                <h4 className="text-white-70">{exp.company}</h4>
-                <div className="timeline-meta">
-                  <span className="badge bg-primary">{exp.type}</span>
-                  <span className="text-white-60 ms-3">
-                    <i className="far fa-calendar-alt me-2"></i>
-                    {exp.duration}
+                <div className="exp-meta">
+                  <span className="badge-type">{exp.type}</span>
+                  <span className="exp-duration">
+                    <i className="far fa-calendar-alt"></i> {exp.duration}
                   </span>
                 </div>
-                <p className="text-white-70 mt-3">{exp.description}</p>
-                <ul className="responsibilities-list">
-                  {exp.responsibilities.map((item, i) => (
-                    <li key={i}>
-                      <i className="fas fa-check-circle text-success me-2"></i>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
+
+              <p className="exp-description">{exp.description}</p>
+
+              <ul className="exp-responsibilities">
+                {exp.responsibilities.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

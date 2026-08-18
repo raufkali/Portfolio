@@ -13,28 +13,42 @@ const Projects = () => {
   const { projects } = portfolioData;
   const [filter, setFilter] = useState("All");
 
-  const technologies = [
-    "All",
-    ...new Set(projects.flatMap((p) => p.technologies)),
-  ];
+  // Get unique technologies (flatten and deduplicate)
+  const allTechs = projects.flatMap((p) => p.technologies);
+  const technologies = ["All", ...new Set(allTechs)];
+
   const filteredProjects =
     filter === "All"
       ? projects
       : projects.filter((p) => p.technologies.includes(filter));
 
+  // Map status to class
+  const getStatusClass = (status) => {
+    const map = {
+      Completed: "completed",
+      "In Development": "in-development",
+      "In Progress": "in-progress",
+    };
+    return map[status] || "";
+  };
+
   return (
     <section id="projects" className="projects-section">
+      {/* Background decorations */}
+      <div className="grid-overlay"></div>
+      <div className="glow-orb-proj glow-orb-proj-1"></div>
+      <div className="glow-orb-proj glow-orb-proj-2"></div>
+
       <div className="container">
-        <h2
-          className="oswald-title text-center text-white mb-4"
-          data-aos="fade-down"
-        >
-          PROJECTS
+        <h2 className="section-title-proj" data-aos="fade-down">
+          Projects
         </h2>
-        <div className="filter-buttons text-center mb-5" data-aos="fade-up">
-          {technologies.slice(0, 6).map((tech, index) => (
+
+        {/* Filter Buttons */}
+        <div className="filter-buttons" data-aos="fade-up">
+          {technologies.map((tech) => (
             <button
-              key={index}
+              key={tech}
               className={`filter-btn ${filter === tech ? "active" : ""}`}
               onClick={() => setFilter(tech)}
             >
@@ -42,58 +56,58 @@ const Projects = () => {
             </button>
           ))}
         </div>
+
+        {/* Project Grid */}
         <div className="row g-4">
           {filteredProjects.map((project, index) => (
             <div
-              className="col-lg-6"
+              className="col-lg-4 col-md-6"
               key={project.id}
               data-aos="fade-up"
-              data-aos-delay={index * 100}
+              data-aos-delay={index * 80}
             >
-              <div className="project-card glass p-4 rounded-4 h-100">
+              <div className="project-card">
                 <div className="project-header">
-                  <h3 className="text-white">{project.title}</h3>
+                  <h3 className="project-title">{project.title}</h3>
                   <span
-                    className={`status-badge ${project.status.toLowerCase()}`}
+                    className={`status-badge ${getStatusClass(project.status)}`}
                   >
                     {project.status}
                   </span>
                 </div>
-                <p className="text-white-70">{project.description}</p>
-                <div className="project-meta text-light">
-                  <span className="text-white-60">
-                    <i className="far fa-calendar me-2"></i>
-                    {project.startDate} - {project.endDate}
+                <p className="project-description">{project.description}</p>
+
+                <div className="project-meta">
+                  <span>
+                    <i className="far fa-calendar-alt"></i>
+                    {project.startDate} – {project.endDate}
                   </span>
-                  <span className="text-white-60 ms-3">
-                    <i className="fas fa-user me-2"></i>
+                  <span>
+                    <i className="fas fa-user"></i>
                     {project.role}
                   </span>
                 </div>
-                <div className="tech-tags mt-3">
+
+                <div className="tech-tags">
                   {project.technologies.map((tech, i) => (
                     <span key={i} className="tech-tag">
                       {tech}
                     </span>
                   ))}
                 </div>
-                <ul className="highlights-list mt-3">
+
+                <ul className="highlights-list">
                   {project.highlights.map((highlight, i) => (
-                    <li key={i}>
-                      <i className="fas fa-check-circle text-success me-2"></i>
-                      {highlight}
-                    </li>
+                    <li key={i}>{highlight}</li>
                   ))}
                 </ul>
 
-                {/* Project Links Section */}
-                <div className="project-links mt-4">
-                  {/* GitHub Link */}
+                <div className="project-links">
                   {project.githubLink && (
-                    <div className="github-link-wrapper">
+                    <div>
                       {project.githubLink === "private" ? (
                         <span className="private-repo">
-                          <i className="fas fa-lock"></i> Private Repository
+                          <i className="fas fa-lock"></i> Private
                         </span>
                       ) : (
                         <a
@@ -102,21 +116,19 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="github-link"
                         >
-                          <i className="fab fa-github"></i> View Code
+                          <i className="fab fa-github"></i> Code
                         </a>
                       )}
                     </div>
                   )}
-
-                  {/* Live Demo Link */}
                   {project.liveDemo && (
                     <a
                       href={project.liveDemo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="demo-link ms-2"
+                      className="demo-link"
                     >
-                      <i className="fas fa-external-link-alt"></i> Live Demo
+                      <i className="fas fa-external-link-alt"></i> Demo
                     </a>
                   )}
                 </div>

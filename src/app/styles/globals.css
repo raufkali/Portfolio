@@ -1,205 +1,456 @@
-/* globals.css */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 
-/* Smooth scroll behavior */
-html {
-    scroll-behavior: smooth;
+:root {
+    /* ----- Backgrounds (now layered & vibrant) ----- */
+    --bg-hero: #111332;
+    /* deep navy for hero */
+    --bg-about: #0d0f2b;
+    /* violet-tinted */
+    --bg-skills: #111333;
+    /* rich indigo */
+    --bg-projects: #0e1028;
+    /* dark blue-purple */
+    --bg-contact: #0a0c20;
+    /* almost black with blue hue */
+
+    /* ----- Surfaces (lighter for contrast) ----- */
+    --surface: #15183a;
+    --surface-hover: #1e2250;
+    --surface-elevated: #252a5a;
+
+    /* ----- Neon Accents ----- */
+    --neon-green: #00ff41;
+    --neon-cyan: #00ffff;
+    --neon-pink: #ff00ff;
+    --neon-purple: #b388ff;
+    --neon-yellow: #ffe600;
+
+    /* Gradient combos */
+    --accent-gradient: linear-gradient(135deg, #00ff41 0%, #00ffff 70%);
+    --glitch-gradient: linear-gradient(45deg, #ff00ff, #00ffff, #00ff41);
+
+    /* ----- Text ----- */
+    --text-primary: #e8edf5;
+    --text-secondary: #a0b0d0;
+    --text-muted: #6a7a9a;
+    --text-subtle: #3a4a6a;
+
+    /* ----- Borders & Glows ----- */
+    --border: rgba(0, 255, 65, 0.15);
+    --border-hover: rgba(0, 255, 65, 0.4);
+    --glow-neon: 0 0 30px rgba(0, 255, 65, 0.3);
+    --shadow-neon: 0 0 60px rgba(0, 255, 65, 0.15);
+
+    /* ----- Radius & spacing (same) ----- */
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --section-padding: 100px;
 }
 
+/* ============================================================
+   RESET & BODY
+   ============================================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Glass morphism base styles */
-.glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-}
-
-.glass-dark {
-    background: rgba(13, 27, 42, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* Gradient backgrounds */
-.gradient-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.gradient-secondary {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.gradient-dark {
-    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
-}
-
-.gradient-gold {
-    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
-}
-
-/* Typography */
-.oswald-title {
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    text-decoration: underline;
-    text-decoration-color: #667eea;
-    text-underline-offset: 10px;
-}
-
-.oswald {
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #212529;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    min-height: 100vh;
-}
-
-/* Section spacing */
-section {
-    scroll-margin-top: 80px;
-    padding: 80px 0;
-}
-
-h2 {
-    font-weight: 600;
-    color: #0d1b2a;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-}
-
-/* Animation classes */
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-@keyframes pulse-glow {
-
-    0%,
-    100% {
-        box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
-    }
-
-    50% {
-        box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
-    }
-}
-
-@keyframes slide-in-left {
-    from {
-        transform: translateX(-100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slide-in-right {
-    from {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fade-in-up {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* Responsive utilities */
-@media (max-width: 768px) {
-    section {
-        padding: 50px 0;
-    }
-}
-
-/* Add to globals.css - at the bottom of the file */
-
-/* Ensure proper spacing at bottom */
-main {
-    min-height: 100vh;
-    position: relative;
-}
-
-/* Make sure footer stays at bottom */
-#contact {
-    margin-bottom: 0;
-}
-
-/* Fix for any overflow issues */
-* {
-    box-sizing: border-box;
-}
-
-/* Ensure smooth scrolling on all elements */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
-    /* Account for fixed header */
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Fira Code", "Space Grotesk", monospace, sans-serif;
+    background: var(--bg-hero);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ---- Scanline overlay (subtle) ---- */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0.03) 2px,
+            rgba(0, 0, 0, 0.03) 4px);
+    z-index: 9999;
+}
+
+/* ============================================================
+   SECTION DISTINCTION — Each section gets unique background
+   ============================================================ */
+#hero {
+    background: var(--bg-hero);
+}
+
+#about {
+    background: var(--bg-about);
+}
+
+#skills {
+    background: var(--bg-skills);
+}
+
+#projects {
+    background: var(--bg-projects);
+}
+
+#contact {
+    background: var(--bg-contact);
+}
+
+/* Add a neon left border to each section */
+section {
+    position: relative;
+    padding: var(--section-padding) 0;
+    border-left: 4px solid transparent;
+    transition: border-color 0.4s;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 3px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    filter: blur(4px);
+    transition: opacity 0.4s;
+}
+
+section:hover::before {
+    opacity: 1;
+}
+
+/* Unique accent per section (optional) */
+#hero {
+    border-left-color: var(--neon-green);
+}
+
+#about {
+    border-left-color: var(--neon-cyan);
+}
+
+#skills {
+    border-left-color: var(--neon-pink);
+}
+
+#projects {
+    border-left-color: var(--neon-purple);
+}
+
+#contact {
+    border-left-color: var(--neon-yellow);
+}
+
+/* ============================================================
+   TYPOGRAPHY — Hackers love monospace
+   ============================================================ */
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Fira Code", "Space Grotesk", monospace;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ---- Blinking cursor (for fun) ---- */
+.cursor-blink {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--neon-green);
+    animation: blink 1s step-end infinite;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ---- Glitch text (hover effect) ---- */
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text:hover {
+    animation: glitch 0.3s linear 2;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-3px, 2px);
+    }
+
+    40% {
+        transform: translate(3px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, 3px);
+    }
+
+    80% {
+        transform: translate(2px, -3px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* ============================================================
+   GRADIENT TEXT (Neon)
+   ============================================================ */
+.gradient-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ============================================================
+   BUTTONS — Neon glow & terminal style
+   ============================================================ */
+.btn-primary-custom {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 2px solid var(--neon-green);
+    border-radius: var(--radius-pill);
+    background: rgba(0, 255, 65, 0.05);
+    color: var(--neon-green);
+    font-family: "Fira Code", monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+}
+
+.btn-primary-custom:hover {
+    background: var(--neon-green);
+    color: #0a0b1a;
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.5);
+    transform: scale(1.05);
+}
+
+.btn-outline-custom {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--neon-cyan);
+    font-family: "Fira Code", monospace;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+    background: var(--neon-cyan);
+    color: #0a0b1a;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+}
+
+/* ============================================================
+   CARDS — with neon borders and glitch overlay
+   ============================================================ */
+.card-premium {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-premium:hover {
+    border-color: var(--neon-green);
+    box-shadow: var(--glow-neon), var(--shadow-neon);
+    transform: translateY(-8px);
+}
+
+.card-premium::after {
+    content: ">";
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-family: "Fira Code", monospace;
+    color: var(--neon-green);
+    opacity: 0.2;
+    font-size: 1.8rem;
+}
+
+/* ============================================================
+   BADGES / TECH TAGS — Cyberpunk style
+   ============================================================ */
+.badge-tech {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: rgba(0, 255, 65, 0.05);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-family: "Fira Code", monospace;
+    transition: all 0.2s;
+}
+
+.badge-tech:hover {
+    background: rgba(0, 255, 65, 0.15);
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+/* ============================================================
+   GRID BACKGROUND (neon grid)
+   ============================================================ */
+.grid-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+}
+
+/* ============================================================
+   ANIMATIONS — Glitch, flicker, matrix rain (optional)
+   ============================================================ */
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+
+    3% {
+        opacity: 0.4;
+    }
+
+    6% {
+        opacity: 1;
+    }
+
+    7% {
+        opacity: 0.2;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.flicker {
+    animation: flicker 6s infinite;
+}
+
+/* Matrix rain character (just for fun) */
+.matrix-char {
+    display: inline-block;
+    color: var(--neon-green);
+    opacity: 0.2;
+    font-family: "Fira Code", monospace;
+    animation: rain 2s linear infinite;
+}
+
+@keyframes rain {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* ============================================================
+   SECTION DIVIDER — neon line
+   ============================================================ */
+.section-divider {
+    width: 80%;
+    margin: 0 auto;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+}
+
+/* ============================================================
+   REDUCED MOTION & RESPONSIVE (keep as before)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 70px;
+    }
+
+    section {
+        border-left-width: 2px;
+    }
 }

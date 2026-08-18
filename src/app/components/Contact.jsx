@@ -13,7 +13,7 @@ const Contact = () => {
     AOS.init({
       duration: 800,
       once: false,
-      disable: window.innerWidth < 768 ? true : false, // Disable AOS on mobile
+      disable: window.innerWidth < 768 ? true : false,
     });
   }, []);
 
@@ -40,23 +40,28 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-section">
+      {/* Background decorations */}
+      <div className="grid-overlay"></div>
+      <div className="glow-orb-contact glow-orb-contact-1"></div>
+      <div className="glow-orb-contact glow-orb-contact-2"></div>
+
       <div className="container">
-        <h2
-          className="oswald-title text-center text-white mb-5"
-          data-aos="fade-down"
-        >
-          CONTACT ME
+        <h2 className="section-title-contact" data-aos="fade-down">
+          Contact Me
         </h2>
+
         <div className="row g-4">
+          {/* Left – Contact Info */}
           <div className="col-lg-5" data-aos="fade-right" data-aos-offset="200">
-            <div className="contact-info glass p-4 p-lg-5 rounded-4 h-100">
+            <div className="contact-info">
               <h3 className="text-white mb-4">Let's Connect</h3>
               <p className="text-white-70 mb-4">
                 I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your visions.
               </p>
+
               <div className="contact-item">
-                <i className="fas fa-envelope gradient-text"></i>
+                <i className="fas fa-envelope"></i>
                 <div>
                   <span className="text-white-60 d-block">Email</span>
                   <span
@@ -67,6 +72,7 @@ const Contact = () => {
                   </span>
                 </div>
               </div>
+
               <div className="contact-item">
                 <i className="fab fa-whatsapp whatsapp-color"></i>
                 <div>
@@ -81,15 +87,17 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
+
               <div className="contact-item">
-                <i className="fas fa-phone gradient-text"></i>
+                <i className="fas fa-phone"></i>
                 <div>
                   <span className="text-white-60 d-block">Phone</span>
                   <span className="text-white">{personal.phone}</span>
                 </div>
               </div>
+
               <div className="contact-item">
-                <i className="fab fa-linkedin gradient-text"></i>
+                <i className="fab fa-linkedin"></i>
                 <div>
                   <span className="text-white-60 d-block">LinkedIn</span>
                   <a
@@ -103,8 +111,9 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
+
               <div className="contact-item">
-                <i className="fab fa-github gradient-text"></i>
+                <i className="fab fa-github"></i>
                 <div>
                   <span className="text-white-60 d-block">GitHub</span>
                   <a
@@ -123,7 +132,7 @@ const Contact = () => {
                   href={`https://wa.me/${personal.whatsapp.replace("+", "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-success btn-lg w-100 rounded-pill"
+                  className="btn btn-whatsapp"
                 >
                   <i className="fab fa-whatsapp me-2"></i>
                   Chat on WhatsApp
@@ -131,18 +140,21 @@ const Contact = () => {
               </div>
             </div>
           </div>
+
+          {/* Right – Form */}
           <div className="col-lg-7" data-aos="fade-left" data-aos-offset="200">
-            <div className="contact-form glass p-4 p-lg-5 rounded-4">
+            <div className="contact-form">
               <h3 className="text-white mb-4">Send Me a Message</h3>
               <p className="text-white-70 mb-4">
                 Fill in the form below and I'll get back to you via WhatsApp
               </p>
+
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label className="form-label text-white-70">Your Name</label>
+                  <label className="form-label">Your Name</label>
                   <input
                     type="text"
-                    className="form-control form-control-lg glass-input"
+                    className="glass-input"
                     value={form.name}
                     placeholder="Enter your name"
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -150,12 +162,10 @@ const Contact = () => {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label text-white-70">
-                    Email Address
-                  </label>
+                  <label className="form-label">Email Address</label>
                   <input
                     type="email"
-                    className="form-control form-control-lg glass-input"
+                    className="glass-input"
                     placeholder="Enter your email"
                     value={form.email}
                     onChange={(e) =>
@@ -165,9 +175,9 @@ const Contact = () => {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label text-white-70">Message</label>
+                  <label className="form-label">Message</label>
                   <textarea
-                    className="form-control form-control-lg glass-input"
+                    className="glass-input"
                     rows="5"
                     placeholder="Enter your message"
                     value={form.message}
@@ -179,7 +189,7 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-success btn-lg w-100 rounded-pill"
+                  className="btn-whatsapp"
                   disabled={submitted}
                 >
                   {submitted ? (

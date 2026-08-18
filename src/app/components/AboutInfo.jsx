@@ -7,49 +7,40 @@ import "./AboutInfo.css";
 
 const AboutInfo = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
+    AOS.init({ duration: 1000, once: false });
   }, []);
 
-  const { description, stats } = portfolioData;
+  const { stats, aboutDetails } = portfolioData;
 
   return (
-    <section id="about-info" className="about-info-section">
-      <div className="container py-5">
-        <h2 className="oswald-title text-center mb-5" data-aos="fade-down">
-          ABOUT ME
-        </h2>
-        <div className="row g-4">
-          <div className="col-lg-8" data-aos="fade-right">
-            <div className="glass p-5 rounded-4 h-100">
-              <p className="lead mb-4">{description}</p>
-              <div className="row g-3 mt-3">
-                {stats.map((stat, index) => (
-                  <div className="col-md-4" key={index}>
-                    <div className="stat-card text-center p-3 rounded-3">
-                      <h3 className="display-4 fw-bold gradient-text">
-                        {stat.number}
-                      </h3>
-                      <p className="text-muted mb-0">{stat.label}</p>
-                    </div>
-                  </div>
-                ))}
+    <section className="about-info-section" id="about-info">
+      <div className="grid-overlay"></div>
+      <div className="glow-orb-info glow-orb-info-1"></div>
+      <div className="glow-orb-info glow-orb-info-2"></div>
+
+      <div className="container">
+        {/* Stats Row */}
+        <div className="row g-4" data-aos="fade-up">
+          {stats.map((stat, index) => (
+            <div className="col-md-4 col-6" key={index}>
+              <div className="stat-card">
+                <div className="stat-number">{stat.number}</div>
+                <p>{stat.label}</p>
               </div>
             </div>
-          </div>
-          <div className="col-lg-4" data-aos="fade-left">
-            <div className="glass p-5 rounded-4 h-100 d-flex flex-column justify-content-center">
-              <div className="info-item mb-4">
-                <i className="fas fa-map-marker-alt gradient-text me-3"></i>
-                <span>{portfolioData.personal.location}</span>
-              </div>
-              <div className="info-item mb-4">
-                <i className="fas fa-envelope gradient-text me-3"></i>
-                <span>{portfolioData.personal.email}</span>
-              </div>
-              <div className="info-item">
-                <i className="fas fa-phone gradient-text me-3"></i>
-                <span>{portfolioData.personal.phone}</span>
-              </div>
+          ))}
+        </div>
+
+        {/* Info List (terminal style) */}
+        <div className="row mt-5" data-aos="fade-up" data-aos-delay="200">
+          <div className="col-lg-8 mx-auto">
+            <div className="info-list">
+              {aboutDetails.map((item, index) => (
+                <div className="info-item" key={index}>
+                  <span className="info-label">{item.label}</span>
+                  <span className="info-value">{item.value}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

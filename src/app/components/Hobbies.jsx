@@ -14,13 +14,16 @@ const Hobbies = () => {
 
   return (
     <section id="hobbies" className="hobbies-section">
+      {/* Background decorations */}
+      <div className="grid-overlay"></div>
+      <div className="glow-orb-hobbies glow-orb-hobbies-1"></div>
+      <div className="glow-orb-hobbies glow-orb-hobbies-2"></div>
+
       <div className="container">
-        <h2
-          className="oswald-title text-center text-white mb-5"
-          data-aos="fade-down"
-        >
-          HOBBIES & INTERESTS
+        <h2 className="section-title-hobbies" data-aos="fade-down">
+          Hobbies & Interests
         </h2>
+
         <div className="row g-4 justify-content-center">
           {hobbies.map((hobby, index) => (
             <div
@@ -29,9 +32,9 @@ const Hobbies = () => {
               data-aos="flip-left"
               data-aos-delay={index * 50}
             >
-              <div className="hobby-card glass text-center p-4 rounded-4">
+              <div className="hobby-card">
                 <i className={`${hobby.icon} hobby-icon`}></i>
-                <p className="text-white mt-2 mb-0">{hobby.label}</p>
+                <p>{hobby.label}</p>
               </div>
             </div>
           ))}

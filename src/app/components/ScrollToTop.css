@@ -1,37 +1,51 @@
-/* components/ScrollToTop.css */
+/* ============================================================
+   SCROLL-TO-TOP — CYBERPUNK NEON (positioned at bottom)
+   ============================================================ */
 
-/* Scroll to top button - Fixed positioning */
 .scroll-to-top-btn {
     position: fixed;
-    bottom: 150px;
-    /* Increased to make room for WhatsApp widget */
+    bottom: 30px;
+    /* sits near the bottom edge */
     right: 30px;
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
+    background: rgba(16, 18, 36, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--neon-cyan);
+    border: 1.5px solid var(--neon-cyan);
     font-size: 1.3rem;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.15), inset 0 0 25px rgba(0, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 9997;
-    /* Lower than WhatsApp widget */
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: fadeInUp 0.4s ease;
+    animation: fadeInUp 0.4s ease, pulse-ring 2.5s ease-in-out infinite;
+    max-width: calc(100vw - 60px);
 }
 
 .scroll-to-top-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 35px rgba(102, 126, 234, 0.6);
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-6px) scale(1.08);
+    background: var(--accent-gradient);
+    color: #0a0b1a;
+    border-color: transparent;
+    box-shadow: 0 0 50px rgba(0, 255, 65, 0.4), 0 0 80px rgba(0, 255, 255, 0.2);
 }
 
-.scroll-to-top-btn:active {
-    transform: scale(0.95);
+/* ---------- Animations ---------- */
+@keyframes pulse-ring {
+
+    0%,
+    100% {
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.15), inset 0 0 25px rgba(0, 255, 255, 0.05);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.25), 0 0 60px rgba(0, 255, 255, 0.08), inset 0 0 30px rgba(0, 255, 255, 0.08);
+    }
 }
 
 @keyframes fadeInUp {
@@ -46,25 +60,29 @@
     }
 }
 
-/* Footer styles */
+/* ---------- Footer (cyberpunk style) ---------- */
 .footer {
-    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
+    background: var(--bg-hero);
     padding: 30px 0 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 0;
+    border-top: 1px solid var(--border);
     position: relative;
-    z-index: 1;
 }
 
-.text-white-60 {
-    color: rgba(255, 255, 255, 0.6);
+.footer .text-white-60 {
+    color: var(--text-muted);
+    font-family: "Fira Code", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
 }
 
-/* Mobile responsiveness */
+.footer .text-danger {
+    color: var(--neon-pink) !important;
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
     .scroll-to-top-btn {
-        bottom: 150px;
-        /* Adjusted for mobile */
+        bottom: 25px;
         right: 20px;
         width: 48px;
         height: 48px;
@@ -74,10 +92,17 @@
 
 @media (max-width: 480px) {
     .scroll-to-top-btn {
-        bottom: 150px;
+        bottom: 20px;
         right: 15px;
         width: 44px;
         height: 44px;
         font-size: 1rem;
+    }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-to-top-btn {
+        animation: none !important;
     }
 }

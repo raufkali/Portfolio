@@ -14,25 +14,28 @@ const Skills = () => {
 
   return (
     <section id="skills" className="skills-section">
+      {/* Background decorations */}
+      <div className="grid-overlay"></div>
+      <div className="glow-orb-skills glow-orb-skills-1"></div>
+      <div className="glow-orb-skills glow-orb-skills-2"></div>
+
       <div className="container">
-        <h2
-          className="oswald-title text-center text-white mb-5"
-          data-aos="fade-down"
-        >
-          SKILLS
+        <h2 className="section-title-skills" data-aos="fade-down">
+          Skills
         </h2>
+
         <div className="row g-4">
           {skills.map((category, index) => (
             <div
               className="col-lg-4 col-md-6"
               key={index}
               data-aos="fade-up"
-              data-aos-delay={index * 50}
+              data-aos-delay={index * 80}
             >
-              <div className="skill-card glass p-4 rounded-4 h-100">
+              <div className="skill-card">
                 <div className="skill-header">
                   <i className={`${category.icon} skill-icon`}></i>
-                  <h5 className="text-white mb-0">{category.category}</h5>
+                  <h5>{category.category}</h5>
                 </div>
                 <div className="skill-items">
                   {category.items.map((skill, i) => (

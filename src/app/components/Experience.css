@@ -1,113 +1,250 @@
-/* components/Experience.css */
+/* ============================================================
+   EXPERIENCE — MODERN CARD LAYOUT (Neon Theme)
+   ============================================================ */
+
 .experience-section {
-    background: linear-gradient(135deg, #0d1b2a 0%, #1a2d40 100%);
-    padding: 80px 0;
+    background: var(--bg-skills);
+    padding: var(--section-padding) 0;
     position: relative;
+    overflow: hidden;
+    border-left: 4px solid var(--neon-purple);
 }
 
-.timeline {
-    position: relative;
-    padding: 20px 0;
-}
-
-.timeline::before {
-    content: '';
+/* ---------- Subtle grid background (optional) ---------- */
+.experience-section .grid-overlay {
     position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(179, 136, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(179, 136, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+}
+
+/* ---------- Glow orbs (purple & cyan) ---------- */
+.glow-orb-exp {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.glow-orb-exp-1 {
+    top: -10%;
+    left: -5%;
+    background: radial-gradient(circle, var(--neon-purple), transparent 70%);
+    animation: orbFloat 16s ease-in-out infinite;
+}
+
+.glow-orb-exp-2 {
+    bottom: -10%;
+    right: -5%;
+    background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
+    animation: orbFloat 20s ease-in-out infinite reverse;
+}
+
+/* ---------- Section Title ---------- */
+.section-title-exp {
+    font-family: "Fira Code", "Space Grotesk", monospace;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 3rem !important;
+    position: relative;
+}
+
+.section-title-exp::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, #667eea, #764ba2);
-    border-radius: 2px;
+    width: 60px;
+    height: 3px;
+    background: var(--neon-purple);
+    box-shadow: 0 0 20px var(--neon-purple);
 }
 
-.timeline-item {
+/* ============================================================
+   EXPERIENCE CARDS (VERTICAL STACK)
+   ============================================================ */
+.exp-card {
     position: relative;
-    margin-bottom: 50px;
-    width: 50%;
-    padding: 0 40px;
-}
-
-.timeline-item.left {
-    left: 0;
-    padding-right: 60px;
-}
-
-.timeline-item.right {
-    left: 50%;
-    padding-left: 60px;
-}
-
-.timeline-item .timeline-content {
-    position: relative;
-    background: rgba(255, 255, 255, 0.05);
+    z-index: 2;
+    background: rgba(16, 18, 36, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    margin-bottom: 30px;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    /* Left border accent */
+    border-left: 4px solid transparent;
 }
 
-.timeline-badge {
-    position: absolute;
-    top: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.exp-card:hover {
+    border-color: var(--border-hover);
+    border-left-color: var(--neon-cyan);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.06), 0 20px 50px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+/* ---------- Card Header ---------- */
+.exp-header {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.timeline-item.left .timeline-badge {
-    right: -25px;
-}
-
-.timeline-item.right .timeline-badge {
-    left: -25px;
-}
-
-.timeline-meta {
-    display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 10px 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
 }
 
-.responsibilities-list {
+.exp-header-left {
+    flex: 1;
+}
+
+.exp-position {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.exp-company {
+    font-family: "Fira Code", monospace;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--neon-cyan);
+    margin: 2px 0 0;
+}
+
+.exp-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-family: "Fira Code", monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.exp-meta .badge-type {
+    background: rgba(0, 255, 65, 0.12);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    border-radius: var(--radius-pill);
+    padding: 4px 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.exp-meta .exp-duration i {
+    margin-right: 6px;
+    color: var(--neon-cyan);
+}
+
+/* ---------- Description ---------- */
+.exp-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 16px 0 14px;
+}
+
+/* ---------- Responsibilities (terminal style) ---------- */
+.exp-responsibilities {
     list-style: none;
     padding: 0;
-    margin-top: 15px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
 }
 
-.responsibilities-list li {
-    color: rgba(255, 255, 255, 0.7);
-    padding: 5px 0;
+.exp-responsibilities li {
     display: flex;
     align-items: flex-start;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-family: "Fira Code", monospace;
+    padding: 3px 0;
 }
 
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 20px;
+.exp-responsibilities li::before {
+    content: ">";
+    color: var(--neon-green);
+    font-weight: 700;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .exp-responsibilities {
+        grid-template-columns: 1fr;
     }
 
-    .timeline-item {
-        width: 100%;
-        padding-left: 60px !important;
-        padding-right: 0 !important;
-        left: 0 !important;
+    .exp-position {
+        font-size: 1.2rem;
     }
 
-    .timeline-item .timeline-badge {
-        left: -5px !important;
-        right: auto !important;
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+    .exp-company {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .exp-card {
+        padding: 20px 16px;
+    }
+
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .exp-meta {
+        font-size: 0.7rem;
+    }
+
+    .exp-responsibilities li {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes orbFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -25px);
+    }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

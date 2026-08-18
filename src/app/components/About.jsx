@@ -15,6 +15,11 @@ const About = () => {
 
   return (
     <section id="about" className="about-section">
+      <div className="grid-overlay"></div>
+
+      {/* Glow orbs */}
+      <div className="glow-orb-about glow-orb-1"></div>
+      <div className="glow-orb-about glow-orb-2"></div>
       <div className="container">
         <div className="row align-items-center min-vh-100">
           {/* Left Content */}
