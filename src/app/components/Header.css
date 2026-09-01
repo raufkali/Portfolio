@@ -1,327 +1,312 @@
 /* ============================================================
-   MULTI-THEME HEADER (Neo-Extremism, Minimalism, Cyberpunk)
-   ============================================================ */
+   HEADER
+============================================================ */
 
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10000 !important;
-  padding: 16px 24px;
-  transition: padding 0.35s ease, background 0.35s ease;
+
+  width: 100%;
+  z-index: 1000;
+
+  background: transparent;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  border-bottom: 1px solid transparent;
 }
+
+.site-header-scrolled {
+  background: var(--background, #ffffff);
+  border-bottom-color: var(--border, rgba(0, 0, 0, 0.08));
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
 
 /* ============================================================
-   HEADER INNER CONTAINER
-   ============================================================ */
+   HEADER INNER
+============================================================ */
+
 .header-inner {
-  width: min(1200px, 100%);
-  margin: 0 auto;
+  width: 100%;
+  height: 76px;
+
+  padding: 0 32px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  min-height: 64px;
-  padding: 8px 12px 8px 22px;
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  gap: 24px;
 }
 
-/* Neo-Extremism Header (Light Neo-Brutalism) */
-[data-theme="neoextremism"] .header-inner {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2.5px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-}
-
-[data-theme="neoextremism"] .site-header-scrolled .header-inner {
-  background: #FFFFFF;
-  box-shadow: 5px 5px 0px #000000;
-}
-
-/* Minimalism Header (Clean Light) */
-[data-theme="minimalism"] .header-inner {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="minimalism"] .site-header-scrolled .header-inner {
-  background: rgba(255, 255, 255, 0.98);
-  border-color: #CBD5E1;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* Cyberpunk Header (Dark Neon) */
-[data-theme="cyberpunk"] .header-inner {
-  background: rgba(10, 11, 26, 0.85);
-  border: 1px solid rgba(0, 255, 65, 0.25);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0, 255, 65, 0.1);
-}
-
-[data-theme="cyberpunk"] .site-header-scrolled .header-inner {
-  background: rgba(10, 11, 26, 0.95);
-  border-color: rgba(0, 255, 65, 0.45);
-  box-shadow: 0 0 25px rgba(0, 255, 65, 0.15), 0 15px 50px rgba(0, 0, 0, 0.6);
-}
-
-.site-header-scrolled .header-inner {
-  min-height: 56px;
-}
 
 /* ============================================================
    BRAND
-   ============================================================ */
+============================================================ */
+
 .header-brand {
-  display: flex;
+  flex-shrink: 0;
+
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+
+  color: var(--foreground, #111111);
+
   text-decoration: none;
-  position: relative;
-  z-index: 10001;
+  white-space: nowrap;
 }
 
 .brand-mark {
-  font-family: var(--font-main);
+  font-family: var(--font-mono, monospace);
+
+  font-size: 14px;
   font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: -0.03em;
-  transition: transform 0.2s;
+
+  letter-spacing: 0.12em;
+
+  transition: opacity 0.2s ease;
 }
 
-[data-theme="neoextremism"] .brand-mark {
-  color: #000000;
-  text-shadow: 1px 1px 0px #FFE600;
-}
-
-[data-theme="minimalism"] .brand-mark {
-  color: #0F172A;
-  letter-spacing: -0.04em;
-}
-
-[data-theme="cyberpunk"] .brand-mark {
-  background: linear-gradient(135deg, #00FF41 0%, #00FFFF 70%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.header-brand:hover .brand-mark {
+  opacity: 0.65;
 }
 
 .brand-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1.1rem;
-  background: var(--accent-primary);
-  margin-left: 3px;
-  animation: blink 1s step-end infinite;
+  width: 6px;
+  height: 6px;
+
+  background: var(--primary, currentColor);
+
+  border-radius: 50%;
+
+  animation: brandPulse 1.8s ease-in-out infinite;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+@keyframes brandPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
 }
+
 
 /* ============================================================
    DESKTOP NAVIGATION
-   ============================================================ */
+============================================================ */
+
 .desktop-navigation {
+  flex: 1;
+
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 2px;
+
+  gap: 4px;
 }
 
 .nav-link {
   position: relative;
+
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: var(--text-muted);
-  font-family: var(--font-main);
-  font-size: 0.82rem;
-  font-weight: 600;
+  gap: 7px;
+
+  padding: 9px 13px;
+
+  color: var(--muted-foreground, #777);
+
   text-decoration: none;
-  transition: all 0.25s ease;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
-  transform: translateY(-1px);
-}
-
-.nav-number {
-  color: var(--accent-secondary);
-  font-size: 0.68rem;
-  font-weight: 700;
-  font-family: var(--font-code);
+  color: var(--foreground, #111);
 }
 
 .nav-link-active {
-  color: var(--text-primary);
+  color: var(--foreground, #111);
 }
 
-[data-theme="neoextremism"] .nav-link-active {
-  color: #000000;
-  background: #FFE600;
-  border: 1.5px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
+.nav-link-active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 13px;
+  right: 13px;
+  bottom: 3px;
+
+  height: 2px;
+
+  background: currentColor;
 }
 
-[data-theme="minimalism"] .nav-link-active {
-  color: #0F172A;
-  background: #F1F5F9;
+.nav-number {
+  font-family: var(--font-mono, monospace);
+
+  font-size: 9px;
   font-weight: 700;
+
+  opacity: 0.45;
 }
 
-[data-theme="cyberpunk"] .nav-link-active {
-  color: var(--neon-cyan, #00FFFF);
-  background: rgba(0, 255, 255, 0.06);
-}
 
 /* ============================================================
-   ACTIONS (Theme Switcher + CV + Contact)
-   ============================================================ */
+   HEADER ACTIONS
+============================================================ */
+
 .header-actions {
+  flex-shrink: 0;
+
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* THEME SWITCHER DROPDOWN */
+
+/* ============================================================
+   THEME SWITCHER
+============================================================ */
+
 .theme-switcher-container {
   position: relative;
 }
 
 .theme-switcher-btn {
-  display: inline-flex;
+  height: 40px;
+
+  display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 7px 13px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-main);
-  font-size: 0.76rem;
-  font-weight: 700;
+  gap: 8px;
+
+  padding: 0 12px;
+
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--foreground, #111);
+
   cursor: pointer;
-  transition: all 0.25s ease;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
-[data-theme="neoextremism"] .theme-switcher-btn {
-  background: #FFE600;
-  color: #000000;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="neoextremism"] .theme-switcher-btn:hover {
-  background: #FFF04D;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="minimalism"] .theme-switcher-btn {
-  background: #F8FAFC;
-  color: #0F172A;
-  border: 1px solid #E2E8F0;
-}
-
-[data-theme="minimalism"] .theme-switcher-btn:hover {
-  background: #F1F5F9;
-  border-color: #CBD5E1;
-}
-
-[data-theme="cyberpunk"] .theme-switcher-btn {
-  background: rgba(0, 255, 65, 0.08);
-  color: var(--neon-green, #00FF41);
-  border: 1px solid var(--neon-green, #00FF41);
-  font-family: var(--font-code);
-}
-
-[data-theme="cyberpunk"] .theme-switcher-btn:hover {
-  background: rgba(0, 255, 65, 0.18);
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+.theme-switcher-btn:hover {
+  background: var(--muted, rgba(0, 0, 0, 0.04));
+  border-color: var(--foreground, #111);
 }
 
 .theme-arrow {
-  font-size: 0.65rem;
-  transition: transform 0.25s ease;
+  font-size: 9px;
+
+  transition: transform 0.2s ease;
 }
 
 .theme-arrow.open {
   transform: rotate(180deg);
 }
 
-/* Dropdown Menu */
+
+/* ============================================================
+   THEME DROPDOWN
+============================================================ */
+
 .theme-dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+
+  top: calc(100% + 10px);
   right: 0;
-  width: 230px;
-  border-radius: var(--radius-md);
-  padding: 8px;
-  z-index: 10005;
-  animation: fadeInDropdown 0.2s ease;
+
+  width: 250px;
+
+  padding: 7px;
+
+  background: var(--background, #fff);
+
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.12);
+
+  animation: dropdownIn 0.18s ease;
 }
 
-@keyframes fadeInDropdown {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
 
-[data-theme="neoextremism"] .theme-dropdown-menu {
-  background: #FFFFFF;
-  border: 2.5px solid #000000;
-  box-shadow: 5px 5px 0px #000000;
-}
-
-[data-theme="minimalism"] .theme-dropdown-menu {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-}
-
-[data-theme="cyberpunk"] .theme-dropdown-menu {
-  background: #0d0f28;
-  border: 1.5px solid var(--neon-cyan, #00ffff);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 10px 40px rgba(0, 0, 0, 0.7);
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .theme-dropdown-header {
-  padding: 4px 8px 8px;
-  font-size: 0.7rem;
+  padding: 9px 10px 7px;
+
+  font-family: var(--font-mono, monospace);
+
+  font-size: 9px;
   font-weight: 700;
-  color: var(--text-muted);
+
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 6px;
+  letter-spacing: 0.12em;
+
+  opacity: 0.5;
 }
 
 .theme-option {
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
-  border-radius: 6px;
+
+  padding: 10px;
+
+  border: 0;
+  border-radius: 8px;
+
   background: transparent;
-  border: none;
+  color: var(--foreground, #111);
+
   cursor: pointer;
+
   text-align: left;
-  transition: all 0.2s ease;
-  color: var(--text-secondary);
+
+  transition: background 0.2s ease;
 }
 
-.theme-option:hover {
-  background: var(--surface-hover);
-  color: var(--text-primary);
-}
-
+.theme-option:hover,
 .theme-option.active {
-  background: var(--surface-hover);
-  color: var(--text-primary);
-  font-weight: 700;
+  background: var(--muted, rgba(0, 0, 0, 0.05));
 }
 
 .theme-option-left {
@@ -331,451 +316,578 @@
 }
 
 .theme-color-dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
+
   border-radius: 50%;
+
   flex-shrink: 0;
-  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .theme-option-text {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .theme-option-name {
-  font-size: 0.8rem;
+  font-size: 12px;
   font-weight: 700;
 }
 
 .theme-option-sub {
-  font-size: 0.68rem;
-  color: var(--text-muted);
+  font-size: 10px;
+
+  opacity: 0.5;
 }
 
 .theme-check {
-  font-size: 0.75rem;
-  color: var(--accent-secondary);
+  font-size: 11px;
 }
+
 
 /* ============================================================
-   DOWNLOAD CV BUTTON (Navbar)
-   ============================================================ */
+   CV BUTTON
+============================================================ */
+
 .header-cv-btn {
+  height: 40px;
+
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 13px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-main);
-  font-size: 0.76rem;
-  font-weight: 700;
+  gap: 8px;
+
+  padding: 0 12px;
+
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+  border-radius: 8px;
+
+  color: var(--foreground, #111);
+  background: transparent;
+
   text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-[data-theme="neoextremism"] .header-cv-btn {
-  background: var(--accent-pink);
-  color: #FFFFFF;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="neoextremism"] .header-cv-btn:hover {
-  background: #FF4DAB;
-  color: #FFFFFF;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="minimalism"] .header-cv-btn {
-  background: #F0F9FF;
-  color: #0284C7;
-  border: 1px solid #BAE6FD;
-}
-
-[data-theme="minimalism"] .header-cv-btn:hover {
-  background: #E0F2FE;
-  color: #0369A1;
-}
-
-[data-theme="cyberpunk"] .header-cv-btn {
-  background: rgba(255, 0, 255, 0.12);
-  color: #FF00FF;
-  border: 1px solid #FF00FF;
-  font-family: var(--font-code);
-}
-
-[data-theme="cyberpunk"] .header-cv-btn:hover {
-  background: #FF00FF;
-  color: #0A0B1A;
-  box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+.header-cv-btn:hover {
+  background: var(--foreground, #111);
+  color: var(--background, #fff);
+  border-color: var(--foreground, #111);
 }
 
 .cv-download-icon {
-  font-size: 0.68rem;
-  opacity: 0.8;
+  font-size: 9px;
+  opacity: 0.55;
 }
+
 
 /* ============================================================
-   DESKTOP CONTACT BUTTON
-   ============================================================ */
+   CONTACT BUTTON
+============================================================ */
+
 .header-contact {
+  height: 40px;
+
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-main);
-  font-size: 0.78rem;
-  font-weight: 700;
+  gap: 9px;
+
+  padding: 0 14px;
+
+  border-radius: 8px;
+
+  background: var(--foreground, #111);
+  color: var(--background, #fff);
+
   text-decoration: none;
-  transition: all 0.25s ease;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-[data-theme="neoextremism"] .header-contact {
-  background: var(--accent-cyan);
-  color: #000000;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="neoextremism"] .header-contact:hover {
-  background: #54F4FF;
-  color: #000000;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="minimalism"] .header-contact {
-  background: #0F172A;
-  color: #FFFFFF;
-  border: 1px solid #0F172A;
-}
-
-[data-theme="minimalism"] .header-contact:hover {
-  background: #1E293B;
-  color: #FFFFFF;
+.header-contact:hover {
   transform: translateY(-1px);
-}
-
-[data-theme="cyberpunk"] .header-contact {
-  background: rgba(0, 255, 255, 0.08);
-  color: #00FFFF;
-  border: 1px solid #00FFFF;
-  font-family: var(--font-code);
-}
-
-[data-theme="cyberpunk"] .header-contact:hover {
-  background: #00FFFF;
-  color: #0A0B1A;
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.5);
+  opacity: 0.88;
 }
 
 .contact-arrow {
-  font-size: 0.95rem;
-  transition: transform 0.25s;
+  font-size: 14px;
 }
 
-.header-contact:hover .contact-arrow {
-  transform: translate(2px, -2px);
-}
 
 /* ============================================================
-   MOBILE TOGGLE BUTTON
-   ============================================================ */
+   MOBILE TOGGLE
+============================================================ */
+
 .menu-toggle {
   display: none;
-  position: relative;
-  z-index: 10001 !important;
-  width: 38px;
-  height: 38px;
-  padding: 6px;
+
+  width: 42px;
+  height: 42px;
+
+  margin-left: auto;
+
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 6px;
-  background: var(--surface);
-  border: var(--border-width) solid var(--border);
+
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
   border-radius: 8px;
+
+  background: transparent;
+  color: var(--foreground, #111);
+
   cursor: pointer;
-  transition: all 0.25s ease;
 }
 
 .menu-toggle span {
   display: block;
-  width: 20px;
-  height: 2.5px;
-  background: var(--text-primary);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-  transform-origin: center;
+
+  width: 17px;
+  height: 1.5px;
+
+  background: currentColor;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
 }
 
-.menu-toggle-active span:nth-child(1) {
-  transform: translateY(4.25px) rotate(45deg);
-  background: var(--accent-secondary);
+.menu-toggle-active span:first-child {
+  transform: translateY(3.75px) rotate(45deg);
 }
 
-.menu-toggle-active span:nth-child(2) {
-  transform: translateY(-4.25px) rotate(-45deg);
-  background: var(--accent-secondary);
+.menu-toggle-active span:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
 }
+
 
 /* ============================================================
-   MOBILE NAVIGATION OVERLAY
-   ============================================================ */
-.mobile-navigation {
+   MOBILE BACKDROP
+============================================================ */
+
+.mobile-backdrop {
   position: fixed;
+
   inset: 0;
-  z-index: 9990 !important;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 95px 20px 30px;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+
+  background: rgba(0, 0, 0, 0.38);
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.35s ease;
-  overflow-y: auto;
+
   pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
-[data-theme="neoextremism"] .mobile-navigation {
-  background: rgba(253, 251, 247, 0.98);
-}
-
-[data-theme="minimalism"] .mobile-navigation {
-  background: rgba(250, 250, 250, 0.98);
-}
-
-[data-theme="cyberpunk"] .mobile-navigation {
-  background: rgba(10, 11, 20, 0.96);
-}
-
-.mobile-navigation-open {
+.mobile-backdrop-visible {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+
   pointer-events: auto;
 }
 
+
+/* ============================================================
+   MOBILE SIDEBAR
+============================================================ */
+
+.mobile-navigation {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: min(390px, 88vw);
+
+  background: var(--background, #fff);
+
+  border-left: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+
+  transform: translateX(100%);
+
+  visibility: hidden;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.35s ease;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  z-index: 1100;
+}
+
+.mobile-navigation-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
 .mobile-navigation-inner {
-  width: 100%;
-  max-width: 440px;
+  min-height: 100dvh;
+
+  padding: 24px;
+
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding-bottom: 20px;
+}
+
+
+/* ============================================================
+   SIDEBAR HEADER
+============================================================ */
+
+.mobile-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 26px;
+
+  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+}
+
+.mobile-sidebar-header>div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-sidebar-kicker {
+  font-family: var(--font-mono, monospace);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  opacity: 0.45;
+}
+
+.mobile-sidebar-title {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.mobile-close {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 0;
+
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--foreground, #111);
+
+  cursor: pointer;
+}
+
+.mobile-close span {
+  width: 17px;
+  height: 1.5px;
+
+  background: currentColor;
+}
+
+.mobile-close span:first-child {
+  transform: rotate(45deg) translateY(1px);
+}
+
+.mobile-close span:last-child {
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+
+/* ============================================================
+   MOBILE NAV
+============================================================ */
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px 0;
+}
+
+.mobile-nav-link {
+  position: relative;
+
+  min-height: 62px;
+
+  display: grid;
+  grid-template-columns: 35px 1fr auto;
+
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 10px;
+
+  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.07));
+
+  color: var(--muted-foreground, #777);
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    padding 0.2s ease,
+    background 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link-active {
+  color: var(--foreground, #111);
+
+  background: var(--muted, rgba(0, 0, 0, 0.035));
+}
+
+.mobile-nav-link:hover {
+  padding-left: 15px;
+}
+
+.mobile-nav-number {
+  font-family: var(--font-mono, monospace);
+
+  font-size: 10px;
+
+  opacity: 0.45;
+}
+
+.mobile-nav-text {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mobile-nav-arrow {
+  font-size: 16px;
+
+  opacity: 0.45;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.mobile-nav-link:hover .mobile-nav-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.mobile-nav-link-active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 3px;
+  height: 24px;
+
+  transform: translateY(-50%);
+
+  background: currentColor;
+
+  border-radius: 0 3px 3px 0;
+}
+
+
+/* ============================================================
+   MOBILE THEME
+============================================================ */
+
+.mobile-theme-section {
+  padding: 22px 0;
 }
 
 .mobile-menu-label {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: var(--text-muted);
-  font-size: 0.7rem;
-  font-family: var(--font-code);
-  letter-spacing: 0.1em;
+  gap: 10px;
+
+  margin-bottom: 13px;
+
+  font-family: var(--font-mono, monospace);
+
+  font-size: 9px;
+  font-weight: 700;
+
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  opacity: 0.5;
 }
 
 .mobile-menu-line {
-  flex: 1;
+  width: 22px;
   height: 1px;
-  background: var(--border);
+
+  background: currentColor;
 }
 
-/* Mobile Theme Selector */
 .mobile-theme-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 7px;
 }
 
 .mobile-theme-pill {
+  min-height: 42px;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 10px 6px;
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  border: var(--border-width) solid var(--border);
-  color: var(--text-secondary);
-  font-size: 0.72rem;
-  font-weight: 700;
+  gap: 8px;
+
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--foreground, #111);
+
   cursor: pointer;
-  transition: all 0.2s ease;
-}
 
-.mobile-theme-pill i {
-  font-size: 1rem;
-}
-
-.mobile-theme-pill.active {
-  background: var(--accent-yellow);
-  color: #000000;
-  border-color: #000000;
-}
-
-[data-theme="minimalism"] .mobile-theme-pill.active {
-  background: #0F172A;
-  color: #FFFFFF;
-  border-color: #0F172A;
-}
-
-[data-theme="cyberpunk"] .mobile-theme-pill.active {
-  background: rgba(0, 255, 65, 0.15);
-  color: var(--neon-green, #00FF41);
-  border-color: var(--neon-green, #00FF41);
-}
-
-/* Mobile Nav List */
-.mobile-nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.mobile-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 16px;
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  border: var(--border-width) solid var(--border);
-  color: var(--text-secondary);
-  font-family: var(--font-main);
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.mobile-nav-link:hover,
-.mobile-nav-link-active {
-  background: var(--surface-hover);
-  color: var(--text-primary);
-  transform: translateX(4px);
-}
-
-.mobile-nav-number {
-  color: var(--accent-secondary);
-  font-family: var(--font-code);
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.mobile-nav-text {
-  flex: 1;
+.mobile-theme-pill:hover,
+.mobile-theme-pill.active {
+  background: var(--foreground, #111);
+  color: var(--background, #fff);
+  border-color: var(--foreground, #111);
 }
 
-.mobile-nav-arrow {
-  color: var(--text-muted);
-}
 
-/* Mobile Action Buttons (CV + Contact) */
+/* ============================================================
+   MOBILE ACTIONS
+============================================================ */
+
 .mobile-action-buttons {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 4px;
+
+  gap: 8px;
+
+  margin-top: auto;
 }
 
 .mobile-cv-btn,
 .mobile-contact-btn {
+  min-height: 46px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.88rem;
+  gap: 8px;
+
+  border-radius: 8px;
+
   text-decoration: none;
-  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .mobile-cv-btn {
-  background: var(--accent-pink);
-  color: #FFFFFF;
-  border: 2px solid #000000;
-}
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
 
-[data-theme="minimalism"] .mobile-cv-btn {
-  background: #F0F9FF;
-  color: #0284C7;
-  border: 1px solid #BAE6FD;
-}
-
-[data-theme="cyberpunk"] .mobile-cv-btn {
-  background: rgba(255, 0, 255, 0.15);
-  color: #FF00FF;
-  border: 1px solid #FF00FF;
+  color: var(--foreground, #111);
 }
 
 .mobile-contact-btn {
-  background: var(--accent-yellow);
-  color: #000000;
-  border: 2px solid #000000;
+  background: var(--foreground, #111);
+  color: var(--background, #fff);
 }
 
-[data-theme="minimalism"] .mobile-contact-btn {
-  background: #0F172A;
-  color: #FFFFFF;
-  border: 1px solid #0F172A;
-}
 
-[data-theme="cyberpunk"] .mobile-contact-btn {
-  background: var(--accent-gradient);
-  color: #0A0B1A;
-  border: none;
-}
+/* ============================================================
+   MOBILE FOOTER
+============================================================ */
 
-/* Mobile Footer */
 .mobile-menu-footer {
+  margin-top: 24px;
+  padding-top: 17px;
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  padding-top: 8px;
-  border-top: 1px solid var(--border);
+  flex-direction: column;
+  gap: 8px;
+
+  border-top: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+
+  font-family: var(--font-mono, monospace);
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  opacity: 0.5;
 }
 
 .mobile-availability {
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: var(--accent-green);
-  font-weight: 600;
+  gap: 7px;
 }
 
 .availability-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
+
   border-radius: 50%;
-  background: var(--accent-green);
-  box-shadow: 0 0 10px var(--accent-green);
-  animation: pulse 2s infinite;
+
+  background: #35b86b;
+
+  box-shadow: 0 0 0 3px rgba(53, 184, 107, 0.12);
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; transform: scale(0.95); }
-  50% { opacity: 1; transform: scale(1); }
-}
 
 /* ============================================================
-   RESPONSIVE BREAKPOINTS
-   ============================================================ */
-@media (max-width: 992px) {
-  .desktop-navigation {
+   TABLET / MOBILE
+============================================================ */
+
+@media (max-width: 900px) {
+
+  .header-inner {
+    height: 68px;
+
+    padding: 0 20px;
+  }
+
+  .desktop-navigation,
+  .header-actions {
     display: none;
   }
 
@@ -783,30 +895,62 @@
     display: flex;
   }
 
-  .theme-btn-label {
-    display: none;
-  }
-
-  .header-actions {
-    gap: 8px;
-  }
 }
 
-@media (max-width: 576px) {
-  .site-header {
-    padding: 10px 14px;
-  }
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
 
   .header-inner {
-    padding: 6px 8px 6px 14px;
-    min-height: 52px;
+    padding: 0 15px;
   }
 
   .brand-mark {
-    font-size: 1.15rem;
+    font-size: 12px;
   }
 
-  .header-contact {
-    display: none;
+  .mobile-navigation {
+    width: min(360px, 92vw);
   }
+
+  .mobile-navigation-inner {
+    padding: 20px;
+  }
+
+  .mobile-nav-link {
+    min-height: 58px;
+  }
+
+  .mobile-action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCE MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .site-header,
+  .mobile-navigation,
+  .mobile-backdrop,
+  .menu-toggle span,
+  .nav-link,
+  .mobile-nav-link,
+  .theme-option,
+  .theme-switcher-btn,
+  .header-contact {
+    transition: none !important;
+  }
+
+  .brand-cursor {
+    animation: none;
+  }
+
 }
