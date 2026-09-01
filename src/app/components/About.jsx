@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { useEffect } from "react";
 import AOS from "aos";
@@ -8,7 +9,7 @@ import "./About.css";
 
 const About = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000, once: false });
+    AOS.init({ duration: 900, once: false });
   }, []);
 
   const { name, title, tagline } = portfolioData.personal;
@@ -17,60 +18,71 @@ const About = () => {
     <section id="about" className="about-section">
       <div className="grid-overlay"></div>
 
-      {/* Glow orbs */}
-      <div className="glow-orb-about glow-orb-1"></div>
-      <div className="glow-orb-about glow-orb-2"></div>
+      {/* Glow / decorative shapes */}
+      <div className="theme-orb theme-orb-1"></div>
+      <div className="theme-orb theme-orb-2"></div>
+
       <div className="container">
-        <div className="row align-items-center min-vh-100">
+        <div className="row align-items-center min-vh-100 py-5">
           {/* Left Content */}
           <div className="col-lg-7 order-lg-1 order-2" data-aos="fade-right">
-            <div className="about-content glass p-4 p-lg-5 rounded-4">
-              <div className="badge-gradient mb-4 animate-pulse-glow">
-                <i className="fas fa-code me-2"></i>
-                Available for Projects
+            <div className="about-content-card">
+              {/* Status Badge */}
+              <div className="about-status-pill mb-4">
+                <span className="status-live-dot"></span>
+                <span>Available for Projects & Full-Time Roles</span>
               </div>
-              <h1 className="display-4 fw-bold mb-3 text-white">
+
+              {/* Main Headline */}
+              <h1 className="hero-title mb-3">
                 Hi, I'm <span className="gradient-text">{name}</span>
               </h1>
-              <h2 className="h4 mb-4 text-white-80">{title}</h2>
-              <p className="lead text-white-70 mb-4">{tagline}</p>
-              <div className="d-flex gap-3 flex-wrap">
-                <a
-                  href="#contact"
-                  className="btn btn-primary btn-lg rounded-pill px-5"
-                >
-                  <i className="fas fa-paper-plane me-2"></i>Hire Me
+
+              <h2 className="hero-subtitle mb-4">{title}</h2>
+
+              <p className="hero-tagline mb-4">{tagline}</p>
+
+              {/* Action Buttons: Hire Me, View Work, Download CV */}
+              <div className="hero-cta-group">
+                <a href="#contact" className="btn-primary-action">
+                  <i className="fas fa-paper-plane"></i>
+                  <span>Hire Me</span>
+                </a>
+                <a href="#projects" className="btn-secondary-action">
+                  <i className="fas fa-briefcase"></i>
+                  <span>View Work</span>
                 </a>
                 <a
-                  href="#projects"
-                  className="btn btn-outline-light btn-lg rounded-pill px-5"
+                  href="/cv.pdf"
+                  download="cv.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cv-action"
+                  aria-label="Download CV"
+                  title="Download Rauf Ahmad's CV"
                 >
-                  <i className="fas fa-briefcase me-2"></i>View Work
+                  <i className="fas fa-file-pdf"></i>
+                  <span>Download CV</span>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Profile Image - New Design */}
+          {/* Right Profile Image */}
           <div
-            className="col-lg-5 order-lg-2 order-1 text-center mb-4 mb-lg-0"
+            className="col-lg-5 order-lg-2 order-1 text-center mb-5 mb-lg-0"
             data-aos="fade-left"
           >
-            <div className="profile-wrapper">
-              {/* Decorative background shapes */}
-              <div className="shape shape-1"></div>
-              <div className="shape shape-2"></div>
-              <div className="shape shape-3"></div>
-
-              {/* Main profile image */}
-              <div className="profile-image-container">
-                <div className="profile-image-border">
+            <div className="hero-profile-wrapper">
+              {/* Profile Image Frame */}
+              <div className="profile-frame">
+                <div className="profile-img-inner">
                   <Image
-                    src={"/images/profile.jpg"}
-                    alt="Rauf Ahmad Badwan - MERN Stack Developer Portfolio"
-                    className="profile-image"
-                    width={300}
-                    height={300}
+                    src="/images/profile.jpg"
+                    alt={`${name} - Software Engineer & Full-Stack Developer`}
+                    className="profile-photo"
+                    width={320}
+                    height={320}
                     priority
                     style={{
                       width: "100%",
@@ -80,42 +92,50 @@ const About = () => {
                   />
                 </div>
 
-                {/* Floating status badge */}
-                <div className="status-badge-new">
-                  <span className="status-dot"></span>
-                  Available
+                {/* Floating Status Pill */}
+                <div className="profile-floating-badge">
+                  <span className="badge-pulse-indicator"></span>
+                  <span>Full Stack Dev</span>
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="social-links-new mt-4">
-                <a
-                  href={portfolioData.personal.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link-new"
-                >
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
+              <div className="hero-social-links mt-4">
                 <a
                   href={portfolioData.personal.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link-new"
+                  className="hero-social-btn"
+                  aria-label="GitHub Profile"
+                  title="GitHub"
                 >
                   <i className="fab fa-github"></i>
                 </a>
                 <a
-                  href={`https://wa.me/${portfolioData.personal.whatsapp.replace("+", "")}`}
+                  href={portfolioData.personal.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link-new"
+                  className="hero-social-btn"
+                  aria-label="LinkedIn Profile"
+                  title="LinkedIn"
+                >
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href={`https://wa.me/${portfolioData.personal.whatsapp.replace(/[^0-9]/g, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-social-btn"
+                  aria-label="WhatsApp Chat"
+                  title="WhatsApp"
                 >
                   <i className="fab fa-whatsapp"></i>
                 </a>
                 <a
                   href={`mailto:${portfolioData.personal.email}`}
-                  className="social-link-new"
+                  className="hero-social-btn"
+                  aria-label="Send Email"
+                  title="Email"
                 >
                   <i className="fas fa-envelope"></i>
                 </a>

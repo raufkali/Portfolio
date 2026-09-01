@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -14,15 +15,15 @@ const Skills = () => {
 
   return (
     <section id="skills" className="skills-section">
-      {/* Background decorations */}
       <div className="grid-overlay"></div>
-      <div className="glow-orb-skills glow-orb-skills-1"></div>
-      <div className="glow-orb-skills glow-orb-skills-2"></div>
+      <div className="theme-orb theme-orb-1"></div>
+      <div className="theme-orb theme-orb-2"></div>
 
       <div className="container">
-        <h2 className="section-title-skills" data-aos="fade-down">
-          Skills
-        </h2>
+        <div className="section-header-wrap" data-aos="fade-down">
+          <h2 className="section-title">Skills & Proficiencies</h2>
+          <p className="section-subtitle">Core technical stack, modern frameworks, backend databases, and DevOps tools</p>
+        </div>
 
         <div className="row g-4">
           {skills.map((category, index) => (
@@ -30,16 +31,19 @@ const Skills = () => {
               className="col-lg-4 col-md-6"
               key={index}
               data-aos="fade-up"
-              data-aos-delay={index * 80}
+              data-aos-delay={index * 60}
             >
-              <div className="skill-card">
-                <div className="skill-header">
-                  <i className={`${category.icon} skill-icon`}></i>
-                  <h5>{category.category}</h5>
+              <div className="skill-category-card">
+                <div className="skill-card-header">
+                  <div className="skill-icon-wrap">
+                    <i className={category.icon}></i>
+                  </div>
+                  <h3 className="skill-category-title">{category.category}</h3>
                 </div>
-                <div className="skill-items">
+
+                <div className="skill-items-grid">
                   {category.items.map((skill, i) => (
-                    <span key={i} className="skill-item">
+                    <span key={i} className="skill-tag-pill">
                       {skill}
                     </span>
                   ))}

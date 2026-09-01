@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./styles/globals.css";
+import { ThemeProvider } from "../context/ThemeContext";
 
 import { Poppins } from "next/font/google";
 
@@ -566,6 +567,20 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
+        {/* Anti-FOUC script for Theme initialization */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var savedTheme = localStorage.getItem('portfolio-theme');
+                  var theme = (savedTheme === 'minimalism' || savedTheme === 'cyberpunk' || savedTheme === 'neoextremism') ? savedTheme : 'neoextremism';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
       </head>
 
       {/* ========================================================
@@ -573,7 +588,9 @@ export default function RootLayout({ children }) {
           ======================================================== */}
 
       <body className={poppins.className}>
-        <main>{children}</main>
+        <ThemeProvider>
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

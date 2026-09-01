@@ -1,250 +1,209 @@
 /* ============================================================
-   EXPERIENCE — MODERN CARD LAYOUT (Neon Theme)
+   EXPERIENCE SECTION — MULTI-THEME
    ============================================================ */
 
 .experience-section {
-    background: var(--bg-skills);
-    padding: var(--section-padding) 0;
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid var(--neon-purple);
-}
-
-/* ---------- Subtle grid background (optional) ---------- */
-.experience-section .grid-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(179, 136, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(179, 136, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(circle at center, black, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
-}
-
-/* ---------- Glow orbs (purple & cyan) ---------- */
-.glow-orb-exp {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(60px);
-    pointer-events: none;
-    opacity: 0.25;
-}
-
-.glow-orb-exp-1 {
-    top: -10%;
-    left: -5%;
-    background: radial-gradient(circle, var(--neon-purple), transparent 70%);
-    animation: orbFloat 16s ease-in-out infinite;
-}
-
-.glow-orb-exp-2 {
-    bottom: -10%;
-    right: -5%;
-    background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
-    animation: orbFloat 20s ease-in-out infinite reverse;
-}
-
-/* ---------- Section Title ---------- */
-.section-title-exp {
-    font-family: "Fira Code", "Space Grotesk", monospace;
-    font-weight: 700;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    text-align: center;
-    color: var(--text-primary);
-    margin-bottom: 3rem !important;
-    position: relative;
-}
-
-.section-title-exp::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: var(--neon-purple);
-    box-shadow: 0 0 20px var(--neon-purple);
+  position: relative;
+  overflow: hidden;
 }
 
 /* ============================================================
-   EXPERIENCE CARDS (VERTICAL STACK)
+   EXPERIENCE CARDS
    ============================================================ */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 .exp-card {
-    position: relative;
-    z-index: 2;
-    background: rgba(16, 18, 36, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 28px 24px;
-    margin-bottom: 30px;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    /* Left border accent */
-    border-left: 4px solid transparent;
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  padding: 30px 28px;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.exp-card:hover {
-    border-color: var(--border-hover);
-    border-left-color: var(--neon-cyan);
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.06), 0 20px 50px rgba(0, 0, 0, 0.4);
-    transform: translateY(-5px);
+/* 1. NEO-EXTREMISM Exp Card (Light Neo-Brutalism) */
+[data-theme="neoextremism"] .exp-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
 }
 
-/* ---------- Card Header ---------- */
+[data-theme="neoextremism"] .exp-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #000000;
+}
+
+/* 2. MINIMALISM Exp Card (Light Minimalism) */
+[data-theme="minimalism"] .exp-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="minimalism"] .exp-card:hover {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+/* 3. CYBERPUNK Exp Card (Dark Neon) */
+[data-theme="cyberpunk"] .exp-card {
+  background: rgba(16, 18, 38, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 65, 0.22);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.06);
+}
+
+[data-theme="cyberpunk"] .exp-card:hover {
+  border-color: var(--neon-cyan, #00FFFF);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.2), 0 15px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+}
+
+/* Card Header */
 .exp-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.exp-header-left {
-    flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 12px;
 }
 
 .exp-position {
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: var(--text-primary);
-    margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2px;
 }
 
 .exp-company {
-    font-family: "Fira Code", monospace;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--neon-cyan);
-    margin: 2px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+[data-theme="neoextremism"] .exp-company span {
+  color: var(--accent-secondary);
+}
+
+[data-theme="minimalism"] .exp-company span {
+  color: #0284C7;
+}
+
+[data-theme="cyberpunk"] .exp-company {
+  color: var(--neon-cyan, #00FFFF);
 }
 
 .exp-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    font-family: "Fira Code", monospace;
-    font-size: 0.75rem;
-    color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
 }
 
-.exp-meta .badge-type {
-    background: rgba(0, 255, 65, 0.12);
-    color: var(--neon-green);
-    border: 1px solid var(--neon-green);
-    border-radius: var(--radius-pill);
-    padding: 4px 14px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+.badge-exp-type {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
 }
 
-.exp-meta .exp-duration i {
-    margin-right: 6px;
-    color: var(--neon-cyan);
+[data-theme="neoextremism"] .badge-exp-type {
+  background: var(--accent-yellow);
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
 }
 
-/* ---------- Description ---------- */
+[data-theme="minimalism"] .badge-exp-type {
+  background: #F1F5F9;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+}
+
+[data-theme="cyberpunk"] .badge-exp-type {
+  background: rgba(0, 255, 65, 0.12);
+  color: var(--neon-green, #00FF41);
+  border: 1px solid var(--neon-green, #00FF41);
+  font-family: var(--font-code);
+}
+
+.exp-duration {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
 .exp-description {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 16px 0 14px;
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
 }
 
-/* ---------- Responsibilities (terminal style) ---------- */
+/* Responsibilities */
+.exp-responsibilities-wrap {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.responsibilities-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
 .exp-responsibilities {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
 }
 
 .exp-responsibilities li {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    color: var(--text-secondary);
-    font-size: 0.88rem;
-    font-family: "Fira Code", monospace;
-    padding: 3px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
-.exp-responsibilities li::before {
-    content: ">";
-    color: var(--neon-green);
-    font-weight: 700;
-    opacity: 0.7;
-    flex-shrink: 0;
+.exp-bullet {
+  color: var(--accent-secondary);
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 992px) {
-    .exp-responsibilities {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 768px) {
+  .exp-card {
+    padding: 22px 18px;
+  }
 
-    .exp-position {
-        font-size: 1.2rem;
-    }
+  .exp-responsibilities {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 
-    .exp-company {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .exp-card {
-        padding: 20px 16px;
-    }
-
-    .exp-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .exp-meta {
-        font-size: 0.7rem;
-    }
-
-    .exp-responsibilities li {
-        font-size: 0.8rem;
-    }
-}
-
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
-@keyframes orbFloat {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(30px, -25px);
-    }
-}
-
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+  .exp-position {
+    font-size: 1.15rem;
+  }
 }

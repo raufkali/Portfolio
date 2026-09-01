@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -14,15 +15,15 @@ const Experience = () => {
 
   return (
     <section id="experience" className="experience-section">
-      {/* Background decorations (optional – remove if you prefer cleaner) */}
       <div className="grid-overlay"></div>
-      <div className="glow-orb-exp glow-orb-exp-1"></div>
-      <div className="glow-orb-exp glow-orb-exp-2"></div>
+      <div className="theme-orb theme-orb-1"></div>
+      <div className="theme-orb theme-orb-2"></div>
 
       <div className="container">
-        <h2 className="section-title-exp" data-aos="fade-down">
-          Experience
-        </h2>
+        <div className="section-header-wrap" data-aos="fade-down">
+          <h2 className="section-title">Work Experience</h2>
+          <p className="section-subtitle">Professional career history, engineering roles, and real-world project impact</p>
+        </div>
 
         <div className="exp-list">
           {experience.map((exp, index) => (
@@ -35,23 +36,31 @@ const Experience = () => {
               <div className="exp-header">
                 <div className="exp-header-left">
                   <h3 className="exp-position">{exp.position}</h3>
-                  <h4 className="exp-company">{exp.company}</h4>
+                  <h4 className="exp-company">
+                    <span>@</span> {exp.company}
+                  </h4>
                 </div>
                 <div className="exp-meta">
-                  <span className="badge-type">{exp.type}</span>
+                  <span className="badge-exp-type">{exp.type}</span>
                   <span className="exp-duration">
-                    <i className="far fa-calendar-alt"></i> {exp.duration}
+                    <i className="far fa-calendar-alt me-1"></i> {exp.duration}
                   </span>
                 </div>
               </div>
 
               <p className="exp-description">{exp.description}</p>
 
-              <ul className="exp-responsibilities">
-                {exp.responsibilities.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
+              <div className="exp-responsibilities-wrap">
+                <div className="responsibilities-title">Key Responsibilities & Achievements:</div>
+                <ul className="exp-responsibilities">
+                  {exp.responsibilities.map((item, i) => (
+                    <li key={i}>
+                      <span className="exp-bullet">›</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

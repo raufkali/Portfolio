@@ -1,129 +1,163 @@
 /* ============================================================
-   WHATSAPP WIDGET — NEON DIRECT (no chat window)
+   WHATSAPP FLOATING WIDGET — MULTI-THEME SUPPORT
    ============================================================ */
 
-.whatsapp-widget {
-    position: fixed;
-    z-index: 9988;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
-    transition: opacity 0.5s ease, transform 0.5s ease;
+.whatsapp-floating-widget {
+  position: fixed;
+  bottom: 95px;
+  right: 28px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
 }
 
-/* ---------- Main Button ---------- */
-.whatsapp-button {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: #ffffff;
-    border: none;
-    font-family: "Fira Code", "Space Grotesk", monospace;
-    font-weight: 600;
-    font-size: 4rem;
-    cursor: pointer;
-    box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    animation: float 3s ease-in-out infinite;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 5vh;
-    height: 5vh;
-    border-radius: 50%;
+/* Float Button Base */
+.whatsapp-float-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 10px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-main);
+  position: relative;
 }
 
-/* Neon glow layer */
-.whatsapp-button::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 50px;
-    background: linear-gradient(135deg, #25D366, #00ff41, #128C7E);
-    filter: blur(8px);
-    opacity: 0.6;
-    z-index: -1;
-    transition: opacity 0.4s;
+/* Icon Wrap */
+.whatsapp-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 1.45rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-.whatsapp-button:hover::before {
-    opacity: 1;
+.whatsapp-tooltip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.whatsapp-button:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 0 50px rgba(37, 211, 102, 0.6);
+.whatsapp-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 0 8px #25D366;
+  animation: waPulse 1.8s infinite;
 }
 
-.whatsapp-button .icon {
-    font-size: 1.8rem;
-    line-height: 1;
+@keyframes waPulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
 }
 
-.whatsapp-button .label {
-    font-size: 0.95rem;
-    white-space: nowrap;
+/* ------------------------------------------------------------
+   THEME SPECIFIC VARIATIONS
+   ------------------------------------------------------------ */
+
+/* 1. NEO-EXTREMISM (Light Neo-Brutalism) */
+[data-theme="neoextremism"] .whatsapp-float-btn {
+  background: #FFFFFF;
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
 }
 
-/* ---------- Animation ---------- */
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
+[data-theme="neoextremism"] .whatsapp-float-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+  background: #FFFDF9;
 }
 
-/* ---------- Responsive ---------- */
+[data-theme="neoextremism"] .whatsapp-icon-wrap {
+  border: 2px solid #000000;
+}
+
+/* 2. MINIMALISM (Light Luxury) */
+[data-theme="minimalism"] .whatsapp-float-btn {
+  background: #FFFFFF;
+  color: #0F172A;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="minimalism"] .whatsapp-float-btn:hover {
+  transform: translateY(-3px);
+  border-color: #CBD5E1;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* 3. CYBERPUNK (Dark Neon) */
+[data-theme="cyberpunk"] .whatsapp-float-btn {
+  background: rgba(10, 12, 30, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: #00FF41;
+  border: 1.5px solid #25D366;
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.35);
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .whatsapp-float-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 45px rgba(37, 211, 102, 0.65);
+}
+
+[data-theme="cyberpunk"] .whatsapp-icon-wrap {
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 768px) {
-    .whatsapp-widget {
-        bottom: 90px;
-        right: 20px;
-    }
+  .whatsapp-floating-widget {
+    bottom: 85px;
+    right: 20px;
+  }
 
-    .whatsapp-button {
-        gap: 8px;
-        font-size: 0.85rem;
-    }
+  .whatsapp-tooltip {
+    display: none;
+  }
 
-    .whatsapp-button .icon {
-        font-size: 1.5rem;
-    }
+  .whatsapp-float-btn {
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    justify-content: center;
+  }
 
-    .whatsapp-button .label {
-        font-size: 0.8rem;
-    }
+  .whatsapp-icon-wrap {
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .whatsapp-widget {
-        bottom: 80px;
-        right: 15px;
-        max-width: calc(100vw - 30px);
-    }
+  .whatsapp-floating-widget {
+    bottom: 80px;
+    right: 16px;
+  }
 
-    .whatsapp-button {
-        gap: 6px;
-        font-size: 0.75rem;
-    }
-
-    .whatsapp-button .icon {
-        font-size: 1.3rem;
-    }
-
-    .whatsapp-button .label {
-        font-size: 0.7rem;
-    }
-}
-
-/* Safe area for notched phones */
-@supports (padding: max(0px)) {
-    .whatsapp-widget {
-        bottom: max(100px, env(safe-area-inset-bottom, 100px));
-        right: max(30px, env(safe-area-inset-right, 30px));
-    }
+  .whatsapp-float-btn {
+    width: 46px;
+    height: 46px;
+  }
 }

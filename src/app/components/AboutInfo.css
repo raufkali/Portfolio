@@ -1,312 +1,209 @@
 /* ============================================================
-   ABOUT INFO — CYBERPUNK STATS / TERMINAL DASHBOARD
+   ABOUT INFO / STATS DASHBOARD — MULTI-THEME
    ============================================================ */
 
 .about-info-section {
-    background: var(--bg-about);
-    padding: var(--section-padding) 0;
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid var(--neon-pink);
-}
-
-/* ---------- Grid overlay (soft on mobile) ---------- */
-.about-info-section .grid-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(255, 0, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(circle at center, black, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
-}
-
-/* ---------- Glow orbs (hidden on mobile for clarity) ---------- */
-.glow-orb-info {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(60px);
-    pointer-events: none;
-    opacity: 0.2;
-}
-
-.glow-orb-info-1 {
-    top: -10%;
-    left: -5%;
-    background: radial-gradient(circle, var(--neon-pink), transparent 70%);
-    animation: orbFloat 16s ease-in-out infinite;
-}
-
-.glow-orb-info-2 {
-    bottom: -10%;
-    right: -5%;
-    background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
-    animation: orbFloat 20s ease-in-out infinite reverse;
+  position: relative;
+  overflow: hidden;
 }
 
 /* ============================================================
    STAT CARDS
    ============================================================ */
 .stat-card {
-    position: relative;
-    z-index: 2;
-    background: rgba(16, 18, 36, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 24px 16px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  padding: 28px 20px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.stat-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.1), 0 20px 50px rgba(0, 0, 0, 0.3);
+/* 1. NEO-EXTREMISM Stat Card */
+[data-theme="neoextremism"] .stat-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
+}
+
+[data-theme="neoextremism"] .stat-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px #000000;
+  border-color: #000000;
+}
+
+/* 2. MINIMALISM Stat Card */
+[data-theme="minimalism"] .stat-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="minimalism"] .stat-card:hover {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+/* 3. CYBERPUNK Stat Card */
+[data-theme="cyberpunk"] .stat-card {
+  background: rgba(16, 18, 38, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.08);
+}
+
+[data-theme="cyberpunk"] .stat-card:hover {
+  border-color: var(--neon-cyan, #00FFFF);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.25), 0 15px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
 .stat-number {
-    font-family: "Fira Code", monospace;
-    font-size: clamp(2.2rem, 6vw, 3.8rem);
-    font-weight: 700;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.stat-card p {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: clamp(0.8rem, 2vw, 0.95rem);
-    font-weight: 500;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0;
-}
-
-/* ---------- Optional icon (if used) ---------- */
-.stat-card i {
-    display: block;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: var(--neon-cyan);
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
-
-.stat-card:hover i {
-    opacity: 1;
+.stat-label {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 /* ============================================================
-   INFO LIST — terminal-style
+   INFO LIST CARD
    ============================================================ */
-.info-list {
-    background: rgba(16, 18, 36, 0.4);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    transition: border-color 0.3s;
+.info-list-card {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  transition: all 0.3s ease;
 }
 
-.info-list:hover {
-    border-color: var(--neon-cyan);
+/* 1. NEO-EXTREMISM Info Card */
+[data-theme="neoextremism"] .info-list-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+/* 2. MINIMALISM Info Card */
+[data-theme="minimalism"] .info-list-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+}
+
+/* 3. CYBERPUNK Info Card */
+[data-theme="cyberpunk"] .info-list-card {
+  background: rgba(16, 18, 38, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.08);
+}
+
+.info-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.info-header-tag {
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+.info-header-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.info-items-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .info-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    transition: border-color 0.3s;
-    font-family: "Fira Code", monospace;
-    font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
 }
 
 .info-item:last-child {
-    border-bottom: none;
-}
-
-.info-item:hover {
-    border-bottom-color: var(--neon-cyan);
+  border-bottom: none;
 }
 
 .info-label {
-    color: var(--text-muted);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-family: var(--font-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.info-label::before {
-    content: ">";
-    margin-right: 8px;
-    color: var(--neon-green);
-    opacity: 0.6;
+.info-arrow {
+  color: var(--accent-secondary);
+  font-weight: 800;
 }
 
 .info-value {
-    color: var(--text-primary);
-    font-weight: 600;
-    text-align: right;
-    word-break: break-word;
-}
-
-/* ---------- Special: status item with dot ---------- */
-.info-item:first-child .info-value {
-    color: var(--neon-green);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.info-item:first-child .info-value::after {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--neon-green);
-    box-shadow: 0 0 15px var(--neon-green);
-    animation: pulse 2s ease-in-out infinite;
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: right;
+  font-family: var(--font-main);
 }
 
 /* ============================================================
-   RESPONSIVE – MOBILE FIRST
+   RESPONSIVE
    ============================================================ */
-@media (max-width: 992px) {
-    .stat-number {
-        font-size: 2.6rem;
-    }
-
-    .info-item {
-        font-size: 0.85rem;
-        padding: 10px 0;
-    }
-
-    .info-list {
-        padding: 16px 18px;
-    }
-}
-
 @media (max-width: 768px) {
+  .stat-card {
+    padding: 18px 12px;
+  }
 
-    /* Stats: 2 per row, smaller padding */
-    .stat-card {
-        padding: 18px 12px;
-    }
+  .info-list-card {
+    padding: 18px 16px;
+  }
 
-    .stat-number {
-        font-size: 2.4rem;
-    }
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
 
-    .stat-card p {
-        font-size: 0.7rem;
-    }
-
-    /* Info list: stack labels above values */
-    .info-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-        padding: 10px 0;
-    }
-
-    .info-value {
-        text-align: left;
-        width: 100%;
-    }
-
-    .info-label {
-        font-size: 0.7rem;
-    }
-
-    .info-label::before {
-        margin-right: 4px;
-    }
-
-    /* Hide glow orbs on mobile to reduce visual clutter */
-    .glow-orb-info {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .stat-card {
-        padding: 14px 10px;
-    }
-
-    .stat-number {
-        font-size: 2rem;
-    }
-
-    .info-list {
-        padding: 12px 14px;
-    }
-
-    .info-item {
-        padding: 8px 0;
-    }
-
-    .info-value {
-        font-size: 0.85rem;
-    }
-}
-
-/* ============================================================
-   ANIMATIONS (shared)
-   ============================================================ */
-@keyframes orbFloat {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(20px, -15px);
-    }
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 0.6;
-        transform: scale(0.95);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+  .info-value {
+    text-align: left;
+  }
 }

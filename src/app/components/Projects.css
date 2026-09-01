@@ -1,416 +1,350 @@
 /* ============================================================
-   PROJECTS — CYBERPUNK SHOWCASE
+   PROJECTS SHOWCASE — MULTI-THEME
    ============================================================ */
 
 .projects-section {
-    background: var(--bg-projects);
-    padding: var(--section-padding) 0;
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid var(--neon-purple);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ---------- Grid & Orbs ---------- */
-.projects-section .grid-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(179, 136, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(179, 136, 255, 0.04) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(circle at center, black, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+/* Filter Pills */
+.project-filters-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2.8rem;
 }
 
-.glow-orb-proj {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    filter: blur(70px);
-    pointer-events: none;
-    opacity: 0.25;
+.project-filter-pill {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: var(--border-width) solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
 }
 
-.glow-orb-proj-1 {
-    top: -10%;
-    right: -10%;
-    background: radial-gradient(circle, var(--neon-purple), transparent 70%);
-    animation: orbFloat 16s ease-in-out infinite;
+/* 1. NEO-EXTREMISM Filters */
+[data-theme="neoextremism"] .project-filter-pill {
+  background: #FFFFFF;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
 }
 
-.glow-orb-proj-2 {
-    bottom: -10%;
-    left: -10%;
-    background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
-    animation: orbFloat 20s ease-in-out infinite reverse;
+[data-theme="neoextremism"] .project-filter-pill:hover {
+  background: #FFF04D;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
 }
 
-/* ---------- Title ---------- */
-.section-title-proj {
-    font-family: "Fira Code", "Space Grotesk", monospace;
-    font-weight: 700;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    text-align: center;
-    color: var(--text-primary);
-    margin-bottom: 2.5rem !important;
-    position: relative;
+[data-theme="neoextremism"] .project-filter-pill.active {
+  background: var(--accent-yellow);
+  color: #000000;
+  box-shadow: 3px 3px 0px #000000;
 }
 
-.section-title-proj::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70px;
-    height: 3px;
-    background: var(--neon-purple);
-    box-shadow: 0 0 30px var(--neon-purple);
+/* 2. MINIMALISM Filters */
+[data-theme="minimalism"] .project-filter-pill {
+  background: #FFFFFF;
+  color: var(--text-muted);
+  border: 1px solid #E2E8F0;
 }
 
-/* ============================================================
-   FILTER BUTTONS
-   ============================================================ */
-.filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 2.5rem;
+[data-theme="minimalism"] .project-filter-pill:hover {
+  background: #F8FAFC;
+  color: #0F172A;
+  border-color: #CBD5E1;
 }
 
-.filter-btn {
-    padding: 8px 22px;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--text-muted);
-    font-family: "Fira Code", monospace;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    letter-spacing: 0.03em;
+[data-theme="minimalism"] .project-filter-pill.active {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-color: #0F172A;
 }
 
-.filter-btn:hover {
-    border-color: var(--neon-cyan);
-    color: var(--text-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+/* 3. CYBERPUNK Filters */
+[data-theme="cyberpunk"] .project-filter-pill {
+  background: rgba(16, 18, 38, 0.6);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-family: var(--font-code);
 }
 
-.filter-btn.active {
-    border-color: var(--neon-green);
-    background: rgba(0, 255, 65, 0.08);
-    color: var(--neon-green);
-    box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
+[data-theme="cyberpunk"] .project-filter-pill:hover {
+  border-color: var(--neon-cyan, #00FFFF);
+  color: var(--text-primary);
+}
+
+[data-theme="cyberpunk"] .project-filter-pill.active {
+  background: rgba(0, 255, 65, 0.15);
+  color: var(--neon-green, #00FF41);
+  border-color: var(--neon-green, #00FF41);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.25);
 }
 
 /* ============================================================
    PROJECT CARDS
    ============================================================ */
-.project-card {
-    background: rgba(16, 18, 36, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 24px 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid transparent;
+.project-item-card {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.project-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 255, 65, 0.02), rgba(0, 255, 255, 0.02));
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s;
+/* 1. NEO-EXTREMISM Project Card */
+[data-theme="neoextremism"] .project-item-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
 }
 
-.project-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    border-color: var(--border-hover);
-    border-left-color: var(--neon-cyan);
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.08), 0 20px 50px rgba(0, 0, 0, 0.4);
+[data-theme="neoextremism"] .project-item-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px #000000;
 }
 
-.project-card:hover::before {
-    opacity: 1;
+/* 2. MINIMALISM Project Card */
+[data-theme="minimalism"] .project-item-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* ---------- Card Header ---------- */
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
+[data-theme="minimalism"] .project-item-card:hover {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
 }
 
-.project-title {
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    margin: 0;
-    line-height: 1.3;
+/* 3. CYBERPUNK Project Card */
+[data-theme="cyberpunk"] .project-item-card {
+  background: rgba(16, 18, 38, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.06);
 }
 
-/* ---------- Status Badges ---------- */
-.status-badge {
-    flex-shrink: 0;
-    padding: 4px 14px;
-    border-radius: var(--radius-pill);
-    font-size: 0.7rem;
-    font-weight: 600;
-    font-family: "Fira Code", monospace;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+[data-theme="cyberpunk"] .project-item-card:hover {
+  border-color: var(--neon-cyan, #00FFFF);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.2), 0 15px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
-.status-badge.completed {
-    background: rgba(0, 255, 65, 0.15);
-    color: var(--neon-green);
-    border: 1px solid var(--neon-green);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+.project-card-top {
+  display: flex;
+  flex-direction: column;
 }
 
-/* "In Development" status */
-.status-badge.in-development {
-    background: rgba(255, 230, 0, 0.12);
-    color: var(--neon-yellow);
-    border: 1px solid var(--neon-yellow);
-    box-shadow: 0 0 15px rgba(255, 230, 0, 0.1);
+.project-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
-.status-badge.in-progress {
-    background: rgba(255, 0, 255, 0.12);
-    color: var(--neon-pink);
-    border: 1px solid var(--neon-pink);
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+.project-card-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
 }
 
-/* ---------- Description ---------- */
-.project-description {
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-    line-height: 1.6;
-    flex: 1;
-    margin-bottom: 16px;
+.project-status-tag {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-/* ---------- Meta (dates & role) ---------- */
-.project-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    font-family: "Fira Code", monospace;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-bottom: 14px;
+[data-theme="neoextremism"] .project-status-tag {
+  border: 1.5px solid #000000;
 }
 
-.project-meta i {
-    margin-right: 4px;
-    color: var(--neon-cyan);
+.status-completed {
+  background: rgba(37, 211, 102, 0.15);
+  color: #16A34A;
+  border: 1px solid rgba(22, 163, 74, 0.3);
 }
 
-.project-meta span {
-    display: inline-flex;
-    align-items: center;
+.status-dev {
+  background: rgba(234, 179, 8, 0.15);
+  color: #CA8A04;
+  border: 1px solid rgba(202, 138, 4, 0.3);
 }
 
-/* ---------- Tech Tags ---------- */
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
+.status-progress {
+  background: rgba(219, 39, 119, 0.15);
+  color: #DB2777;
+  border: 1px solid rgba(219, 39, 119, 0.3);
 }
 
-.tech-tag {
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-    background: rgba(0, 255, 65, 0.05);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 0.7rem;
-    font-family: "Fira Code", monospace;
-    transition: all 0.2s;
+.project-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
 }
 
-.tech-tag:hover {
-    border-color: var(--neon-green);
-    color: var(--neon-green);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+.project-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  font-family: var(--font-code);
 }
 
-/* ---------- Highlights (terminal style) ---------- */
-.highlights-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 16px 0;
+/* Tech Badges */
+.project-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
-.highlights-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    color: var(--text-secondary);
-    font-size: 0.82rem;
-    font-family: "Fira Code", monospace;
-    padding: 3px 0;
+.project-tech-badge {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-code);
 }
 
-.highlights-list li::before {
-    content: ">";
-    color: var(--neon-green);
-    font-weight: 700;
-    opacity: 0.6;
-    flex-shrink: 0;
+/* Highlights */
+.project-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
 }
 
-.highlights-list li i {
-    display: none;
-    /* we use ::before instead */
+.project-highlights-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 4px;
 }
 
-/* ---------- Project Links ---------- */
-.project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: auto;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+.highlight-bullet {
+  color: var(--accent-secondary);
+  font-weight: 800;
 }
 
-.github-link,
-.demo-link,
-.private-repo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    font-family: "Fira Code", monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
+/* Actions Bottom */
+.project-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
 }
 
-.github-link {
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
+.project-action-link,
+.project-demo-link,
+.project-private-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.github-link:hover {
-    background: rgba(0, 255, 65, 0.08);
-    border-color: var(--neon-green);
-    color: var(--neon-green);
-    box-shadow: 0 0 25px rgba(0, 255, 65, 0.15);
-    transform: translateY(-2px);
+[data-theme="neoextremism"] .project-action-link {
+  background: #FFFFFF;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
 }
 
-.demo-link {
-    background: var(--accent-gradient);
-    color: #0a0b1a;
-    border: none;
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+[data-theme="neoextremism"] .project-action-link:hover {
+  background: #F4F4F0;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
 }
 
-.demo-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 40px rgba(0, 255, 65, 0.4);
+[data-theme="neoextremism"] .project-demo-link {
+  background: var(--accent-yellow);
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
 }
 
-.private-repo {
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--text-muted);
-    border: 1px dashed var(--border);
-    cursor: default;
+[data-theme="neoextremism"] .project-demo-link:hover {
+  background: #FFF04D;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
 }
 
-.private-repo i {
-    color: var(--neon-pink);
+[data-theme="minimalism"] .project-action-link {
+  background: #FFFFFF;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 992px) {
-    .project-card {
-        padding: 20px 16px;
-    }
-
-    .project-title {
-        font-size: 1.1rem;
-    }
+[data-theme="minimalism"] .project-action-link:hover {
+  background: #F8FAFC;
+  color: #0F172A;
 }
 
-@media (max-width: 768px) {
-    .filter-btn {
-        padding: 6px 16px;
-        font-size: 0.7rem;
-    }
-
-    .project-title {
-        font-size: 1rem;
-    }
-
-    .project-meta {
-        font-size: 0.65rem;
-        gap: 10px;
-    }
-
-    .tech-tag {
-        font-size: 0.65rem;
-        padding: 3px 10px;
-    }
-
-    .highlights-list li {
-        font-size: 0.75rem;
-    }
+[data-theme="minimalism"] .project-demo-link {
+  background: #0F172A;
+  color: #FFFFFF;
+  border: 1px solid #0F172A;
 }
 
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
-@keyframes orbFloat {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(30px, -25px);
-    }
+[data-theme="minimalism"] .project-demo-link:hover {
+  background: #1E293B;
 }
 
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+[data-theme="cyberpunk"] .project-action-link {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .project-demo-link {
+  background: var(--accent-gradient);
+  color: #0A0B1A;
+  border: none;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+  font-family: var(--font-code);
+}
+
+.project-private-badge {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  cursor: default;
 }

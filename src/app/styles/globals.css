@@ -1,456 +1,650 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap");
 
-:root {
-    /* ----- Backgrounds (now layered & vibrant) ----- */
-    --bg-hero: #111332;
-    /* deep navy for hero */
-    --bg-about: #0d0f2b;
-    /* violet-tinted */
-    --bg-skills: #111333;
-    /* rich indigo */
-    --bg-projects: #0e1028;
-    /* dark blue-purple */
-    --bg-contact: #0a0c20;
-    /* almost black with blue hue */
+/* ============================================================
+   1. THEME DEFINITIONS & CSS VARIABLES
+   ============================================================ */
 
-    /* ----- Surfaces (lighter for contrast) ----- */
-    --surface: #15183a;
-    --surface-hover: #1e2250;
-    --surface-elevated: #252a5a;
+/* ------------------------------------------------------------
+   THEME 1: NEO-EXTREMISM (Major Theme — Iconic Light Neo-Brutalism)
+   High contrast, creamy light paper background, pitch black ink,
+   thick 2.5px borders, hard 4px-6px drop shadows, electric pop colors
+   ------------------------------------------------------------ */
+:root,
+[data-theme="neoextremism"] {
+  --theme-name: "neoextremism";
 
-    /* ----- Neon Accents ----- */
-    --neon-green: #00ff41;
-    --neon-cyan: #00ffff;
-    --neon-pink: #ff00ff;
-    --neon-purple: #b388ff;
-    --neon-yellow: #ffe600;
+  /* Fonts */
+  --font-main: "Space Grotesk", "Plus Jakarta Sans", -apple-system, sans-serif;
+  --font-code: "Fira Code", monospace;
+  --font-display: "Space Grotesk", sans-serif;
 
-    /* Gradient combos */
-    --accent-gradient: linear-gradient(135deg, #00ff41 0%, #00ffff 70%);
-    --glitch-gradient: linear-gradient(45deg, #ff00ff, #00ffff, #00ff41);
+  /* Light Canvas & Section Backgrounds */
+  --bg-hero: #FDFBF7;
+  --bg-about: #F7F4EC;
+  --bg-skills: #FDFBF7;
+  --bg-projects: #F4F0E6;
+  --bg-contact: #EDE8DC;
+  --bg-subtle: #E8E2D4;
 
-    /* ----- Text ----- */
-    --text-primary: #e8edf5;
-    --text-secondary: #a0b0d0;
-    --text-muted: #6a7a9a;
-    --text-subtle: #3a4a6a;
+  /* Surfaces & Cards */
+  --surface: #FFFFFF;
+  --surface-hover: #FFFDF9;
+  --surface-elevated: #FFFFFF;
+  --surface-card: #FFFFFF;
 
-    /* ----- Borders & Glows ----- */
-    --border: rgba(0, 255, 65, 0.15);
-    --border-hover: rgba(0, 255, 65, 0.4);
-    --glow-neon: 0 0 30px rgba(0, 255, 65, 0.3);
-    --shadow-neon: 0 0 60px rgba(0, 255, 65, 0.15);
+  /* High-Contrast Neo-Brutalist Pop Colors */
+  --accent-yellow: #FFE600;
+  --accent-pink: #FF2E93;
+  --accent-cyan: #00F0FF;
+  --accent-green: #39FF14;
+  --accent-orange: #FF6B00;
+  --accent-purple: #B24BF3;
 
-    /* ----- Radius & spacing (same) ----- */
-    --radius-lg: 20px;
-    --radius-pill: 999px;
-    --section-padding: 100px;
+  /* Primary Accents */
+  --accent-primary: #FFE600;
+  --accent-secondary: #FF2E93;
+  --accent-gradient: linear-gradient(135deg, #FF2E93 0%, #FFE600 50%, #00F0FF 100%);
+  --accent-gradient-alt: linear-gradient(135deg, #39FF14 0%, #00F0FF 100%);
+
+  /* Text Hierarchy */
+  --text-primary: #000000;
+  --text-secondary: #1F2430;
+  --text-muted: #5A6275;
+  --text-subtle: #7E889B;
+  --text-dark: #000000;
+
+  /* Brutalist Borders & Shadows */
+  --border-width: 2.5px;
+  --border: #000000;
+  --border-bold: #000000;
+  --border-accent: #FFE600;
+  --border-hover: #000000;
+
+  --shadow-brutal: 4px 4px 0px #000000;
+  --shadow-brutal-sm: 2px 2px 0px #000000;
+  --shadow-brutal-lg: 6px 6px 0px #000000;
+  --shadow-brutal-accent: 4px 4px 0px #FFE600;
+  --shadow-brutal-pink: 4px 4px 0px #FF2E93;
+  --glow-effect: none;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --section-padding: 95px;
+
+  /* Section Left Borders */
+  --section-border-w: 4px;
+  --accent-hero-border: #FFE600;
+  --accent-about-border: #FF2E93;
+  --accent-skills-border: #00F0FF;
+  --accent-projects-border: #39FF14;
+  --accent-contact-border: #FFE600;
+}
+
+/* ------------------------------------------------------------
+   THEME 2: MINIMALISM (2nd Theme — Clean Monochromatic Light Luxury)
+   Pristine white canvas, soft slate typography, subtle borders, airy spacing
+   ------------------------------------------------------------ */
+[data-theme="minimalism"] {
+  --theme-name: "minimalism";
+
+  /* Fonts */
+  --font-main: "Plus Jakarta Sans", -apple-system, sans-serif;
+  --font-code: "Fira Code", monospace;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+
+  /* Light Minimal Backgrounds */
+  --bg-hero: #FAFAFA;
+  --bg-about: #F4F5F7;
+  --bg-skills: #FAFAFA;
+  --bg-projects: #F1F3F6;
+  --bg-contact: #EAECEF;
+  --bg-subtle: #E2E5E9;
+
+  /* Surfaces */
+  --surface: #FFFFFF;
+  --surface-hover: #F8FAFC;
+  --surface-elevated: #FFFFFF;
+  --surface-card: #FFFFFF;
+
+  /* Accents */
+  --accent-yellow: #D97706;
+  --accent-pink: #DB2777;
+  --accent-cyan: #0284C7;
+  --accent-green: #059669;
+  --accent-orange: #EA580C;
+  --accent-purple: #7C3AED;
+
+  /* Primary Theme Accents */
+  --accent-primary: #0F172A;
+  --accent-secondary: #475569;
+  --accent-gradient: linear-gradient(135deg, #0F172A 0%, #334155 100%);
+  --accent-gradient-alt: linear-gradient(135deg, #0284C7 0%, #4F46E5 100%);
+
+  /* Text */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+  --text-dark: #020617;
+
+  /* Minimal Borders & Shadows */
+  --border-width: 1px;
+  --border: #E2E8F0;
+  --border-bold: #CBD5E1;
+  --border-accent: #94A3B8;
+  --border-hover: #0F172A;
+
+  --shadow-brutal: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-brutal-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-brutal-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-brutal-accent: 0 0 20px rgba(15, 23, 42, 0.08);
+  --shadow-brutal-pink: 0 0 20px rgba(219, 39, 119, 0.1);
+  --glow-effect: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --section-padding: 100px;
+
+  /* Section Left Borders (Subtle) */
+  --section-border-w: 2px;
+  --accent-hero-border: #CBD5E1;
+  --accent-about-border: #CBD5E1;
+  --accent-skills-border: #CBD5E1;
+  --accent-projects-border: #CBD5E1;
+  --accent-contact-border: #CBD5E1;
+}
+
+/* ------------------------------------------------------------
+   THEME 3: CYBERPUNK (3rd Theme — Enhanced Dark Neon Matrix)
+   Deep indigo obsidian base, glowing matrix green, electric cyan, magenta
+   ------------------------------------------------------------ */
+[data-theme="cyberpunk"] {
+  --theme-name: "cyberpunk";
+
+  /* Fonts */
+  --font-main: "Fira Code", "Space Grotesk", monospace;
+  --font-code: "Fira Code", monospace;
+  --font-display: "Space Grotesk", monospace;
+
+  /* Backgrounds */
+  --bg-hero: #0a0b1a;
+  --bg-about: #0d0f2b;
+  --bg-skills: #111333;
+  --bg-projects: #0e1028;
+  --bg-contact: #080918;
+  --bg-subtle: #15183a;
+
+  /* Surfaces */
+  --surface: rgba(16, 18, 38, 0.75);
+  --surface-hover: rgba(28, 32, 64, 0.9);
+  --surface-elevated: rgba(37, 42, 90, 0.95);
+  --surface-card: rgba(16, 18, 36, 0.7);
+
+  /* Neon Accents */
+  --accent-yellow: #FFE600;
+  --accent-pink: #FF00FF;
+  --accent-cyan: #00FFFF;
+  --accent-green: #00FF41;
+  --accent-orange: #FF5500;
+  --accent-purple: #B388FF;
+
+  /* Primary Theme Accents */
+  --accent-primary: #00FF41;
+  --accent-secondary: #00FFFF;
+  --accent-gradient: linear-gradient(135deg, #00FF41 0%, #00FFFF 100%);
+  --accent-gradient-alt: linear-gradient(135deg, #FF00FF 0%, #00FFFF 100%);
+
+  /* Text */
+  --text-primary: #E8EDF5;
+  --text-secondary: #A0B0D0;
+  --text-muted: #6A7A9A;
+  --text-subtle: #3A4A6A;
+  --text-dark: #0A0B1A;
+
+  /* Neon Borders & Glows */
+  --border-width: 1px;
+  --border: rgba(0, 255, 65, 0.22);
+  --border-bold: rgba(0, 255, 65, 0.45);
+  --border-accent: #00FF41;
+  --border-hover: #00FFFF;
+
+  --shadow-brutal: 0 0 25px rgba(0, 255, 65, 0.25);
+  --shadow-brutal-sm: 0 0 15px rgba(0, 255, 65, 0.2);
+  --shadow-brutal-lg: 0 0 45px rgba(0, 255, 65, 0.35);
+  --shadow-brutal-accent: 0 0 35px rgba(0, 255, 255, 0.3);
+  --shadow-brutal-pink: 0 0 35px rgba(255, 0, 255, 0.3);
+  --glow-effect: 0 0 30px rgba(0, 255, 65, 0.35);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --section-padding: 100px;
+
+  /* Section Left Neon Borders */
+  --section-border-w: 4px;
+  --accent-hero-border: #00FF41;
+  --accent-about-border: #00FFFF;
+  --accent-skills-border: #FF00FF;
+  --accent-projects-border: #B388FF;
+  --accent-contact-border: #FFE600;
 }
 
 /* ============================================================
-   RESET & BODY
+   2. GLOBAL RESETS & FOUNDATION
    ============================================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
 }
 
 body {
-    min-height: 100vh;
-    font-family: "Fira Code", "Space Grotesk", monospace, sans-serif;
-    background: var(--bg-hero);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background: var(--bg-hero);
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  position: relative;
 }
 
-/* ---- Scanline overlay (subtle) ---- */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: repeating-linear-gradient(0deg,
-            rgba(0, 0, 0, 0) 0px,
-            rgba(0, 0, 0, 0) 2px,
-            rgba(0, 0, 0, 0.03) 2px,
-            rgba(0, 0, 0, 0.03) 4px);
-    z-index: 9999;
+/* Scanlines only for Cyberpunk theme */
+[data-theme="cyberpunk"] body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0.035) 2px,
+      rgba(0, 0, 0, 0.035) 4px);
+  z-index: 9999;
+}
+
+/* Neo-Extremism dot grid */
+[data-theme="neoextremism"] .grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  opacity: 0.8;
+}
+
+/* Cyberpunk grid */
+[data-theme="cyberpunk"] .grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+}
+
+/* Minimalist subtle grid */
+[data-theme="minimalism"] .grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.5;
 }
 
 /* ============================================================
-   SECTION DISTINCTION — Each section gets unique background
+   3. SECTION HEADINGS & SUBTITLES UNDER TITLES
    ============================================================ */
-#hero {
-    background: var(--bg-hero);
-}
-
-#about {
-    background: var(--bg-about);
-}
-
-#skills {
-    background: var(--bg-skills);
-}
-
-#projects {
-    background: var(--bg-projects);
-}
-
-#contact {
-    background: var(--bg-contact);
-}
-
-/* Add a neon left border to each section */
 section {
-    position: relative;
-    padding: var(--section-padding) 0;
-    border-left: 4px solid transparent;
-    transition: border-color 0.4s;
-}
-
-section::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10%;
-    height: 80%;
-    width: 3px;
-    background: var(--neon-cyan);
-    opacity: 0.3;
-    filter: blur(4px);
-    transition: opacity 0.4s;
-}
-
-section:hover::before {
-    opacity: 1;
-}
-
-/* Unique accent per section (optional) */
-#hero {
-    border-left-color: var(--neon-green);
+  position: relative;
+  padding: var(--section-padding) 0;
+  border-left: var(--section-border-w) solid transparent;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 #about {
-    border-left-color: var(--neon-cyan);
+  background: var(--bg-hero);
+  border-left-color: var(--accent-hero-border);
 }
 
-#skills {
-    border-left-color: var(--neon-pink);
+#about-info {
+  background: var(--bg-about);
+  border-left-color: var(--accent-about-border);
+}
+
+#experience {
+  background: var(--bg-skills);
+  border-left-color: var(--accent-skills-border);
 }
 
 #projects {
-    border-left-color: var(--neon-purple);
+  background: var(--bg-projects);
+  border-left-color: var(--accent-projects-border);
+}
+
+#skills {
+  background: var(--bg-skills);
+  border-left-color: var(--accent-skills-border);
+}
+
+#hobbies {
+  background: var(--bg-about);
+  border-left-color: var(--accent-about-border);
 }
 
 #contact {
-    border-left-color: var(--neon-yellow);
+  background: var(--bg-contact);
+  border-left-color: var(--accent-contact-border);
 }
 
-/* ============================================================
-   TYPOGRAPHY — Hackers love monospace
-   ============================================================ */
+/* Section Header Container with Subtitles UNDER Titles */
+.section-header-wrap {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-family: var(--font-main);
+  font-size: clamp(0.92rem, 1.8vw, 1.1rem);
+  color: var(--text-muted);
+  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+[data-theme="neoextremism"] .section-subtitle {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Typography */
 h1,
 h2,
 h3,
-h4 {
-    font-family: "Fira Code", "Space Grotesk", monospace;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-
-h1 {
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-}
-
-h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 p {
-    color: var(--text-secondary);
-    font-size: 1rem;
+  color: var(--text-secondary);
 }
 
-/* ---- Blinking cursor (for fun) ---- */
-.cursor-blink {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: var(--neon-green);
-    animation: blink 1s step-end infinite;
-    margin-left: 4px;
-}
-
-@keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-
-/* ---- Glitch text (hover effect) ---- */
-.glitch-text {
-    position: relative;
-    display: inline-block;
-}
-
-.glitch-text:hover {
-    animation: glitch 0.3s linear 2;
-}
-
-@keyframes glitch {
-    0% {
-        transform: translate(0);
-    }
-
-    20% {
-        transform: translate(-3px, 2px);
-    }
-
-    40% {
-        transform: translate(3px, -2px);
-    }
-
-    60% {
-        transform: translate(-2px, 3px);
-    }
-
-    80% {
-        transform: translate(2px, -3px);
-    }
-
-    100% {
-        transform: translate(0);
-    }
-}
-
-/* ============================================================
-   GRADIENT TEXT (Neon)
-   ============================================================ */
 .gradient-text {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Neo-Extremism Highlight */
+[data-theme="neoextremism"] .gradient-text {
+  background: linear-gradient(135deg, #FF2E93 0%, #FF6B00 50%, #FFE600 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cyberpunk Neon */
+[data-theme="cyberpunk"] .gradient-text {
+  background: linear-gradient(135deg, #00FF41 0%, #00FFFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.4));
+}
+
+/* Minimalist Clean */
+[data-theme="minimalism"] .gradient-text {
+  background: linear-gradient(135deg, #0F172A 0%, #475569 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ============================================================
-   BUTTONS — Neon glow & terminal style
+   4. BUTTONS & INTERACTION TOKENS
    ============================================================ */
-.btn-primary-custom {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 28px;
-    border: 2px solid var(--neon-green);
-    border-radius: var(--radius-pill);
-    background: rgba(0, 255, 65, 0.05);
-    color: var(--neon-green);
-    font-family: "Fira Code", monospace;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+
+/* Primary Button */
+.btn-primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 28px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
 }
 
-.btn-primary-custom:hover {
-    background: var(--neon-green);
-    color: #0a0b1a;
-    box-shadow: 0 0 40px rgba(0, 255, 65, 0.5);
-    transform: scale(1.05);
+/* Neo-Extremism Primary */
+[data-theme="neoextremism"] .btn-primary-action {
+  background: var(--accent-yellow);
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.btn-outline-custom {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 28px;
-    border: 2px solid var(--neon-cyan);
-    border-radius: var(--radius-pill);
-    background: transparent;
-    color: var(--neon-cyan);
-    font-family: "Fira Code", monospace;
-    font-weight: 600;
-    transition: all 0.3s ease;
+[data-theme="neoextremism"] .btn-primary-action:hover {
+  background: #FFF04D;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+  color: #000000;
 }
 
-.btn-outline-custom:hover {
-    background: var(--neon-cyan);
-    color: #0a0b1a;
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+[data-theme="neoextremism"] .btn-primary-action:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* Minimalism Primary */
+[data-theme="minimalism"] .btn-primary-action {
+  background: #0F172A;
+  color: #FFFFFF;
+  border: 1px solid #0F172A;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+}
+
+[data-theme="minimalism"] .btn-primary-action:hover {
+  background: #1E293B;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.2);
+}
+
+/* Cyberpunk Primary */
+[data-theme="cyberpunk"] .btn-primary-action {
+  background: rgba(0, 255, 65, 0.12);
+  color: #00FF41;
+  border: 1.5px solid #00FF41;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+  font-family: var(--font-code);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+[data-theme="cyberpunk"] .btn-primary-action:hover {
+  background: #00FF41;
+  color: #0A0B1A;
+  box-shadow: 0 0 45px rgba(0, 255, 65, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.btn-secondary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 28px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+}
+
+[data-theme="neoextremism"] .btn-secondary-action {
+  background: #FFFFFF;
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+[data-theme="neoextremism"] .btn-secondary-action:hover {
+  background: var(--accent-cyan);
+  color: #000000;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="minimalism"] .btn-secondary-action {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+[data-theme="minimalism"] .btn-secondary-action:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+  transform: translateY(-2px);
+}
+
+[data-theme="cyberpunk"] .btn-secondary-action {
+  background: transparent;
+  color: #00FFFF;
+  border: 1.5px solid #00FFFF;
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .btn-secondary-action:hover {
+  background: #00FFFF;
+  color: #0A0B1A;
+  box-shadow: 0 0 45px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Download CV Button */
+.btn-cv-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 28px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+}
+
+[data-theme="neoextremism"] .btn-cv-action {
+  background: var(--accent-pink);
+  color: #FFFFFF;
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+[data-theme="neoextremism"] .btn-cv-action:hover {
+  background: #FF4DAB;
+  color: #FFFFFF;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="minimalism"] .btn-cv-action {
+  background: #F0F9FF;
+  color: #0284C7;
+  border: 1px solid #BAE6FD;
+}
+
+[data-theme="minimalism"] .btn-cv-action:hover {
+  background: #E0F2FE;
+  color: #0369A1;
+  transform: translateY(-2px);
+}
+
+[data-theme="cyberpunk"] .btn-cv-action {
+  background: rgba(255, 0, 255, 0.1);
+  color: #FF00FF;
+  border: 1.5px solid #FF00FF;
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .btn-cv-action:hover {
+  background: #FF00FF;
+  color: #0A0B1A;
+  box-shadow: 0 0 45px rgba(255, 0, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 /* ============================================================
-   CARDS — with neon borders and glitch overlay
+   5. COMMON RESPONSIVE STYLES
    ============================================================ */
-.card-premium {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 30px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.card-premium:hover {
-    border-color: var(--neon-green);
-    box-shadow: var(--glow-neon), var(--shadow-neon);
-    transform: translateY(-8px);
-}
-
-.card-premium::after {
-    content: ">";
-    position: absolute;
-    top: 10px;
-    right: 16px;
-    font-family: "Fira Code", monospace;
-    color: var(--neon-green);
-    opacity: 0.2;
-    font-size: 1.8rem;
-}
-
-/* ============================================================
-   BADGES / TECH TAGS — Cyberpunk style
-   ============================================================ */
-.badge-tech {
-    display: inline-block;
-    padding: 6px 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-pill);
-    background: rgba(0, 255, 65, 0.05);
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    font-family: "Fira Code", monospace;
-    transition: all 0.2s;
-}
-
-.badge-tech:hover {
-    background: rgba(0, 255, 65, 0.15);
-    border-color: var(--neon-green);
-    color: var(--neon-green);
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-}
-
-/* ============================================================
-   GRID BACKGROUND (neon grid)
-   ============================================================ */
-.grid-background {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(circle at center, black, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
-}
-
-/* ============================================================
-   ANIMATIONS — Glitch, flicker, matrix rain (optional)
-   ============================================================ */
-@keyframes flicker {
-    0% {
-        opacity: 1;
-    }
-
-    3% {
-        opacity: 0.4;
-    }
-
-    6% {
-        opacity: 1;
-    }
-
-    7% {
-        opacity: 0.2;
-    }
-
-    8% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.flicker {
-    animation: flicker 6s infinite;
-}
-
-/* Matrix rain character (just for fun) */
-.matrix-char {
-    display: inline-block;
-    color: var(--neon-green);
-    opacity: 0.2;
-    font-family: "Fira Code", monospace;
-    animation: rain 2s linear infinite;
-}
-
-@keyframes rain {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-}
-
-/* ============================================================
-   SECTION DIVIDER — neon line
-   ============================================================ */
-.section-divider {
-    width: 80%;
-    margin: 0 auto;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-    filter: drop-shadow(0 0 10px var(--neon-cyan));
-}
-
-/* ============================================================
-   REDUCED MOTION & RESPONSIVE (keep as before)
-   ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
 @media (max-width: 768px) {
-    :root {
-        --section-padding: 70px;
-    }
+  :root {
+    --section-padding: 70px;
+  }
+}
 
-    section {
-        border-left-width: 2px;
-    }
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

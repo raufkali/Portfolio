@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { portfolioData } from "../../../lib/portfolioData";
 import "./ScrollToTop.css";
@@ -10,7 +11,7 @@ const ScrollToTop = () => {
     const toggleVisibility = () => {
       setVisible(window.scrollY > 300);
     };
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
@@ -24,19 +25,21 @@ const ScrollToTop = () => {
         <button
           onClick={scrollToTop}
           className="scroll-to-top-btn"
-          aria-label="Scroll to top"
+          aria-label="Scroll to top of page"
+          title="Scroll to top"
         >
           <i className="fas fa-arrow-up"></i>
         </button>
       )}
-      <footer className="footer">
+
+      <footer className="site-footer">
         <div className="container text-center">
-          <p className="text-white-60 mb-0">
+          <p className="footer-copyright mb-1">
             © {new Date().getFullYear()} {portfolioData.personal.name}. All
             rights reserved.
           </p>
-          <p className="text-white-60 small mt-1">
-            Made with <i className="fas fa-heart text-danger"></i> using Next.js
+          <p className="footer-subtext mb-0">
+            Engineered with <i className="fas fa-heart text-danger mx-1"></i> using Next.js & React
           </p>
         </div>
       </footer>

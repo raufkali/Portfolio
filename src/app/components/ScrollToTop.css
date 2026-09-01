@@ -1,108 +1,120 @@
 /* ============================================================
-   SCROLL-TO-TOP — CYBERPUNK NEON (positioned at bottom)
+   SCROLL TO TOP & SITE FOOTER — MULTI-THEME
    ============================================================ */
 
 .scroll-to-top-btn {
-    position: fixed;
-    bottom: 30px;
-    /* sits near the bottom edge */
-    right: 30px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background: rgba(16, 18, 36, 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: var(--neon-cyan);
-    border: 1.5px solid var(--neon-cyan);
-    font-size: 1.3rem;
-    cursor: pointer;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.15), inset 0 0 25px rgba(0, 255, 255, 0.05);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    z-index: 9997;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeInUp 0.4s ease, pulse-ring 2.5s ease-in-out infinite;
-    max-width: calc(100vw - 60px);
-}
-
-.scroll-to-top-btn:hover {
-    transform: translateY(-6px) scale(1.08);
-    background: var(--accent-gradient);
-    color: #0a0b1a;
-    border-color: transparent;
-    box-shadow: 0 0 50px rgba(0, 255, 65, 0.4), 0 0 80px rgba(0, 255, 255, 0.2);
-}
-
-/* ---------- Animations ---------- */
-@keyframes pulse-ring {
-
-    0%,
-    100% {
-        box-shadow: 0 0 25px rgba(0, 255, 255, 0.15), inset 0 0 25px rgba(0, 255, 255, 0.05);
-    }
-
-    50% {
-        box-shadow: 0 0 40px rgba(0, 255, 255, 0.25), 0 0 60px rgba(0, 255, 255, 0.08), inset 0 0 30px rgba(0, 255, 255, 0.08);
-    }
+  position: fixed;
+  bottom: 25px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+  z-index: 9997;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: fadeInUp 0.3s ease;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- Footer (cyberpunk style) ---------- */
-.footer {
-    background: var(--bg-hero);
-    padding: 30px 0 20px;
-    border-top: 1px solid var(--border);
-    position: relative;
+/* 1. NEO-EXTREMISM */
+[data-theme="neoextremism"] .scroll-to-top-btn {
+  background: var(--accent-yellow);
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
 }
 
-.footer .text-white-60 {
-    color: var(--text-muted);
-    font-family: "Fira Code", monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
+[data-theme="neoextremism"] .scroll-to-top-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+  background: #FFF04D;
 }
 
-.footer .text-danger {
-    color: var(--neon-pink) !important;
+/* 2. MINIMALISM */
+[data-theme="minimalism"] .scroll-to-top-btn {
+  background: #FFFFFF;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-/* ---------- Responsive ---------- */
+[data-theme="minimalism"] .scroll-to-top-btn:hover {
+  background: #F8FAFC;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+/* 3. CYBERPUNK */
+[data-theme="cyberpunk"] .scroll-to-top-btn {
+  background: rgba(16, 18, 38, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--neon-cyan, #00FFFF);
+  border: 1.5px solid var(--neon-cyan, #00FFFF);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+}
+
+[data-theme="cyberpunk"] .scroll-to-top-btn:hover {
+  background: var(--neon-cyan, #00FFFF);
+  color: #0A0B1A;
+  box-shadow: 0 0 45px rgba(0, 255, 255, 0.6);
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   SITE FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--bg-contact);
+  padding: 36px 0 28px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-copyright {
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.footer-subtext {
+  color: var(--text-muted);
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+}
+
+.footer-subtext .text-danger {
+  color: var(--accent-pink) !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 768px) {
-    .scroll-to-top-btn {
-        bottom: 25px;
-        right: 20px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.1rem;
-    }
+  .scroll-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .scroll-to-top-btn {
-        bottom: 20px;
-        right: 15px;
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
-    }
-}
-
-/* ---------- Reduced Motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-    .scroll-to-top-btn {
-        animation: none !important;
-    }
+  .scroll-to-top-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+  }
 }

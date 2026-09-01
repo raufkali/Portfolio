@@ -1,258 +1,332 @@
 /* ============================================================
-   CONTACT — CYBERPUNK NEON THEME
+   CONTACT SECTION — MULTI-THEME
    ============================================================ */
 
 .contact-section {
-    background: var(--bg-contact);
-    padding: var(--section-padding) 0;
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid var(--neon-green);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ---------- Grid & Orbs ---------- */
-.contact-section .grid-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(0, 255, 65, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 65, 0.04) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(circle at center, black, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+.contact-info-card,
+.contact-form-card {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  height: 100%;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.glow-orb-contact {
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    filter: blur(60px);
-    pointer-events: none;
-    opacity: 0.25;
+/* 1. NEO-EXTREMISM Contact Cards */
+[data-theme="neoextremism"] .contact-info-card,
+[data-theme="neoextremism"] .contact-form-card {
+  background: #FFFFFF;
+  border: 2.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
 }
 
-.glow-orb-contact-1 {
-    top: -10%;
-    left: 10%;
-    background: radial-gradient(circle, var(--neon-green), transparent 70%);
-    animation: orbFloat 16s ease-in-out infinite;
+[data-theme="neoextremism"] .contact-info-card:hover,
+[data-theme="neoextremism"] .contact-form-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #000000;
 }
 
-.glow-orb-contact-2 {
-    bottom: -10%;
-    right: 10%;
-    background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
-    animation: orbFloat 20s ease-in-out infinite reverse;
+/* 2. MINIMALISM Contact Cards */
+[data-theme="minimalism"] .contact-info-card,
+[data-theme="minimalism"] .contact-form-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* ---------- Title ---------- */
-.section-title-contact {
-    font-family: "Fira Code", "Space Grotesk", monospace;
-    font-weight: 700;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    text-align: center;
-    color: var(--text-primary);
-    margin-bottom: 2.5rem !important;
-    position: relative;
+[data-theme="minimalism"] .contact-info-card:hover,
+[data-theme="minimalism"] .contact-form-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
 }
 
-.section-title-contact::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70px;
-    height: 3px;
-    background: var(--neon-green);
-    box-shadow: 0 0 30px var(--neon-green);
+/* 3. CYBERPUNK Contact Cards */
+[data-theme="cyberpunk"] .contact-info-card,
+[data-theme="cyberpunk"] .contact-form-card {
+  background: rgba(16, 18, 38, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 65, 0.22);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.08);
+}
+
+[data-theme="cyberpunk"] .contact-info-card:hover,
+[data-theme="cyberpunk"] .contact-form-card:hover {
+  border-color: var(--neon-cyan, #00FFFF);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.2), 0 15px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+.contact-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.contact-card-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Contact Details List */
+.contact-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-detail-item:last-child {
+  border-bottom: none;
+}
+
+.contact-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+[data-theme="neoextremism"] .contact-icon-box {
+  background: #FFE600;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+[data-theme="minimalism"] .contact-icon-box {
+  background: #F8FAFC;
+  color: #0F172A;
+  border-color: #E2E8F0;
+}
+
+[data-theme="cyberpunk"] .contact-icon-box {
+  background: rgba(16, 18, 38, 0.9);
+  color: var(--neon-cyan, #00FFFF);
+  border-color: rgba(0, 255, 65, 0.3);
+}
+
+.contact-detail-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.contact-detail-val {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  word-break: break-all;
+}
+
+.contact-detail-val:hover {
+  color: var(--accent-secondary);
+}
+
+/* Direct WhatsApp Button */
+.btn-whatsapp-direct {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+[data-theme="neoextremism"] .btn-whatsapp-direct {
+  background: #25D366;
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+[data-theme="neoextremism"] .btn-whatsapp-direct:hover {
+  background: #2CEB72;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="minimalism"] .btn-whatsapp-direct {
+  background: #F0FDF4;
+  color: #16A34A;
+  border: 1px solid #BBF7D0;
+}
+
+[data-theme="minimalism"] .btn-whatsapp-direct:hover {
+  background: #DCFCE7;
+  color: #15803D;
+  transform: translateY(-2px);
+}
+
+[data-theme="cyberpunk"] .btn-whatsapp-direct {
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  border: 1.5px solid #25D366;
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .btn-whatsapp-direct:hover {
+  background: #25D366;
+  color: #0A0B1A;
+  box-shadow: 0 0 35px rgba(37, 211, 102, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Form Inputs */
+.form-input-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-custom-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+[data-theme="neoextremism"] .form-custom-input {
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+[data-theme="neoextremism"] .form-custom-input:focus {
+  border-color: #000000;
+  background: #FFFDF9;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+[data-theme="minimalism"] .form-custom-input {
+  border: 1px solid #E2E8F0;
+  background: #F8FAFC;
+}
+
+[data-theme="minimalism"] .form-custom-input:focus {
+  border-color: #0F172A;
+  background: #FFFFFF;
+}
+
+[data-theme="cyberpunk"] .form-custom-input {
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .form-custom-input:focus {
+  border-color: var(--neon-cyan, #00FFFF);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.form-custom-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Submit Message Button */
+.btn-submit-message {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
+}
+
+[data-theme="neoextremism"] .btn-submit-message {
+  background: var(--accent-yellow);
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  text-transform: uppercase;
+}
+
+[data-theme="neoextremism"] .btn-submit-message:hover:not(:disabled) {
+  background: #FFF04D;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+[data-theme="minimalism"] .btn-submit-message {
+  background: #0F172A;
+  color: #FFFFFF;
+  border: 1px solid #0F172A;
+}
+
+[data-theme="minimalism"] .btn-submit-message:hover:not(:disabled) {
+  background: #1E293B;
+  transform: translateY(-2px);
+}
+
+[data-theme="cyberpunk"] .btn-submit-message {
+  background: var(--accent-gradient);
+  color: #0A0B1A;
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .btn-submit-message:hover:not(:disabled) {
+  box-shadow: 0 0 35px rgba(0, 255, 65, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-submit-message:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* ============================================================
-   CONTACT CARDS (glass)
+   RESPONSIVE
    ============================================================ */
-.contact-info,
-.contact-form {
-    background: rgba(16, 18, 36, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 30px;
-    height: 100%;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    border-left: 4px solid transparent;
-}
-
-.contact-info:hover,
-.contact-form:hover {
-    border-color: var(--border-hover);
-    border-left-color: var(--neon-cyan);
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.06), 0 20px 50px rgba(0, 0, 0, 0.4);
-    transform: translateY(-4px);
-}
-
-/* ---------- Contact Info Items ---------- */
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.contact-item:last-child {
-    border-bottom: none;
-}
-
-.contact-item i {
-    font-size: 1.4rem;
-    width: 35px;
-    text-align: center;
-    color: var(--neon-cyan);
-    transition: color 0.3s;
-}
-
-.contact-item:hover i {
-    color: var(--neon-green);
-}
-
-.contact-item .text-white-60 {
-    font-size: 0.75rem;
-    font-family: "Fira Code", monospace;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-}
-
-.contact-item .text-white,
-.contact-item a {
-    font-weight: 500;
-    color: var(--text-primary);
-    text-decoration: none;
-}
-
-.contact-item a:hover {
-    color: var(--neon-cyan);
-}
-
-/* ---------- Form Inputs (terminal style) ---------- */
-.glass-input {
-    background: rgba(16, 18, 36, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 12px 18px;
-    color: var(--text-primary);
-    font-family: "Fira Code", monospace;
-    font-size: 0.9rem;
-    width: 100%;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-.glass-input:focus {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-    background: rgba(0, 255, 255, 0.02);
-}
-
-.glass-input::placeholder {
-    color: var(--text-muted);
-}
-
-.form-label {
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-size: 0.85rem;
-    font-family: "Fira Code", monospace;
-    letter-spacing: 0.04em;
-}
-
-/* ---------- Submit Button (neon) ---------- */
-.btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--accent-gradient);
-    color: #0a0b1a;
-    border: none;
-    padding: 14px 30px;
-    border-radius: var(--radius-pill);
-    font-weight: 700;
-    font-family: "Fira Code", monospace;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
-    width: 100%;
-}
-
-.btn-whatsapp:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 50px rgba(0, 255, 65, 0.3);
-}
-
-.btn-whatsapp:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.whatsapp-color {
-    color: #25D366 !important;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 992px) {
-
-    .contact-info,
-    .contact-form {
-        padding: 24px;
-    }
-}
-
-@media (max-width: 576px) {
-
-    .contact-info,
-    .contact-form {
-        padding: 18px 16px;
-    }
-
-    .contact-item {
-        padding: 10px 0;
-    }
-
-    .contact-item i {
-        font-size: 1.2rem;
-        width: 30px;
-    }
-
-    .glass-input {
-        font-size: 0.8rem;
-        padding: 10px 14px;
-    }
-}
-
-/* ---------- Animations (shared) ---------- */
-@keyframes orbFloat {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(30px, -25px);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+@media (max-width: 768px) {
+  .contact-info-card,
+  .contact-form-card {
+    padding: 22px 18px;
+  }
 }

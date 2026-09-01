@@ -1,1156 +1,812 @@
 /* ============================================================
-   CYBERPUNK HEADER — NEON / GLITCH / TERMINAL
-   ============================================================ */
-
-/* ============================================================
-   MAIN HEADER
+   MULTI-THEME HEADER (Neo-Extremism, Minimalism, Cyberpunk)
    ============================================================ */
 
 .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    /* IMPORTANT:
-       Header must always stay above mobile navigation */
-    z-index: 10000 !important;
-
-    padding: 16px 24px;
-
-    transition:
-        padding var(--transition-smooth, 0.4s cubic-bezier(0.22, 1, 0.36, 1)),
-        background var(--transition-smooth, 0.4s cubic-bezier(0.22, 1, 0.36, 1));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000 !important;
+  padding: 16px 24px;
+  transition: padding 0.35s ease, background 0.35s ease;
 }
 
-
 /* ============================================================
-   HEADER INNER
+   HEADER INNER CONTAINER
    ============================================================ */
-
 .header-inner {
-    width: min(1180px, 100%);
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    min-height: 64px;
-
-    padding: 8px 10px 8px 22px;
-
-    background: rgba(10, 11, 26, 0.75);
-
-    border: 1px solid rgba(0, 255, 65, 0.15);
-    border-radius: 18px;
-
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-
-    box-shadow:
-        0 12px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(0, 255, 65, 0.05);
-
-    transition:
-        all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 8px 12px 8px 22px;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Neo-Extremism Header (Light Neo-Brutalism) */
+[data-theme="neoextremism"] .header-inner {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
 
-/* ============================================================
-   SCROLLED STATE
-   ============================================================ */
+[data-theme="neoextremism"] .site-header-scrolled .header-inner {
+  background: #FFFFFF;
+  box-shadow: 5px 5px 0px #000000;
+}
+
+/* Minimalism Header (Clean Light) */
+[data-theme="minimalism"] .header-inner {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="minimalism"] .site-header-scrolled .header-inner {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: #CBD5E1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Cyberpunk Header (Dark Neon) */
+[data-theme="cyberpunk"] .header-inner {
+  background: rgba(10, 11, 26, 0.85);
+  border: 1px solid rgba(0, 255, 65, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0, 255, 65, 0.1);
+}
+
+[data-theme="cyberpunk"] .site-header-scrolled .header-inner {
+  background: rgba(10, 11, 26, 0.95);
+  border-color: rgba(0, 255, 65, 0.45);
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.15), 0 15px 50px rgba(0, 0, 0, 0.6);
+}
 
 .site-header-scrolled .header-inner {
-    min-height: 58px;
-
-    background: rgba(10, 11, 26, 0.92);
-
-    border-color: rgba(0, 255, 65, 0.3);
-
-    box-shadow:
-        0 15px 50px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(0, 255, 65, 0.05);
+  min-height: 56px;
 }
-
-
-/* ============================================================
-   MENU OPEN STATE
-   ============================================================ */
-
-/*
-   When mobile menu is open:
-   - Header remains visible
-   - Header stays above overlay
-   - Navbar gets stronger background
-   - Cyan border/glow makes it obvious
-*/
-
-.menu-is-open {
-    z-index: 10000 !important;
-}
-
-.menu-is-open .header-inner {
-    background: rgba(10, 11, 26, 0.98) !important;
-
-    border-color: var(--neon-cyan, #00ffff) !important;
-
-    box-shadow:
-        0 0 25px rgba(0, 255, 255, 0.2),
-        0 0 60px rgba(0, 255, 255, 0.08),
-        0 12px 40px rgba(0, 0, 0, 0.6);
-
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-}
-
-
-/* Keep brand bright when menu is open */
-
-.menu-is-open .brand-mark {
-    filter: brightness(1.15);
-}
-
 
 /* ============================================================
    BRAND
    ============================================================ */
-
 .header-brand {
-    display: flex;
-    align-items: center;
-
-    gap: 4px;
-
-    text-decoration: none;
-
-    position: relative;
-
-    z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  position: relative;
+  z-index: 10001;
 }
-
-
-/* Main brand */
 
 .brand-mark {
-    font-family: "Fira Code", monospace;
-
-    font-weight: 700;
-
-    font-size: 1.5rem;
-
-    background:
-        var(--accent-gradient,
-            linear-gradient(135deg,
-                #00ff41 0%,
-                #00ffff 70%));
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-
-    letter-spacing: -0.04em;
-
-    position: relative;
-
-    transition: transform 0.2s;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  transition: transform 0.2s;
 }
 
-
-/* Glitch effect */
-
-.brand-mark:hover {
-    animation: glitch 0.3s linear 2;
+[data-theme="neoextremism"] .brand-mark {
+  color: #000000;
+  text-shadow: 1px 1px 0px #FFE600;
 }
 
+[data-theme="minimalism"] .brand-mark {
+  color: #0F172A;
+  letter-spacing: -0.04em;
+}
 
-/* Blinking terminal cursor */
+[data-theme="cyberpunk"] .brand-mark {
+  background: linear-gradient(135deg, #00FF41 0%, #00FFFF 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .brand-cursor {
-    display: inline-block;
-
-    width: 2px;
-    height: 1.2rem;
-
-    background: var(--neon-green, #00ff41);
-
-    margin-left: 2px;
-
-    animation: blink 1s step-end infinite;
-
-    box-shadow:
-        0 0 12px var(--neon-green, #00ff41);
+  display: inline-block;
+  width: 2px;
+  height: 1.1rem;
+  background: var(--accent-primary);
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
 }
 
-
-/* Brand name */
-
-.brand-name {
-    display: flex;
-
-    gap: 6px;
-
-    font-family: "Space Grotesk", sans-serif;
-
-    font-weight: 600;
-
-    font-size: 1.1rem;
-
-    color: var(--text-primary, #e8edf5);
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
-
-
-.brand-name span:last-child {
-    color: var(--text-secondary, #a0b0d0);
-}
-
 
 /* ============================================================
    DESKTOP NAVIGATION
    ============================================================ */
-
 .desktop-navigation {
-    display: flex;
-
-    align-items: center;
-
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
-
 
 .nav-link {
-    position: relative;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    padding: 9px 14px;
-
-    border-radius: 10px;
-
-    color: var(--text-muted, #6a7a9a);
-
-    font-family: "Fira Code", monospace;
-
-    font-size: 0.8rem;
-
-    font-weight: 500;
-
-    text-decoration: none;
-
-    transition: all 0.25s ease;
-
-    isolation: isolate;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
 }
-
-
-/* Hover background */
-
-.nav-link::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: inherit;
-
-    background: rgba(0, 255, 65, 0.04);
-
-    opacity: 0;
-
-    transform: scale(0.92);
-
-    transition: all 0.25s ease;
-
-    z-index: -1;
-}
-
-
-.nav-link:hover::before {
-    opacity: 1;
-
-    transform: scale(1);
-}
-
 
 .nav-link:hover {
-    color: var(--text-primary, #e8edf5);
-
-    transform: translateY(-1px);
+  color: var(--text-primary);
+  transform: translateY(-1px);
 }
-
-
-/* Navigation numbers */
 
 .nav-number {
-    color: var(--neon-green, #00ff41);
-
-    opacity: 0.5;
-
-    font-size: 0.65rem;
-
-    font-weight: 700;
+  color: var(--accent-secondary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: var(--font-code);
 }
-
-
-/* ============================================================
-   ACTIVE DESKTOP LINK
-   ============================================================ */
 
 .nav-link-active {
-    color: var(--text-primary, #e8edf5);
+  color: var(--text-primary);
 }
 
-
-.nav-link-active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 3px;
-
-    width: 12px;
-
-    height: 2px;
-
-    background: var(--neon-cyan, #00ffff);
-
-    transform: translateX(-50%);
-
-    box-shadow:
-        0 0 20px var(--neon-cyan, #00ffff),
-        0 0 40px var(--neon-cyan, #00ffff);
-
-    border-radius: 2px;
-
-    animation: pulse 1.8s ease-in-out infinite;
+[data-theme="neoextremism"] .nav-link-active {
+  color: #000000;
+  background: #FFE600;
+  border: 1.5px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
 }
 
+[data-theme="minimalism"] .nav-link-active {
+  color: #0F172A;
+  background: #F1F5F9;
+  font-weight: 700;
+}
+
+[data-theme="cyberpunk"] .nav-link-active {
+  color: var(--neon-cyan, #00FFFF);
+  background: rgba(0, 255, 255, 0.06);
+}
+
+/* ============================================================
+   ACTIONS (Theme Switcher + CV + Contact)
+   ============================================================ */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* THEME SWITCHER DROPDOWN */
+.theme-switcher-container {
+  position: relative;
+}
+
+.theme-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+[data-theme="neoextremism"] .theme-switcher-btn {
+  background: #FFE600;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+[data-theme="neoextremism"] .theme-switcher-btn:hover {
+  background: #FFF04D;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
+}
+
+[data-theme="minimalism"] .theme-switcher-btn {
+  background: #F8FAFC;
+  color: #0F172A;
+  border: 1px solid #E2E8F0;
+}
+
+[data-theme="minimalism"] .theme-switcher-btn:hover {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+}
+
+[data-theme="cyberpunk"] .theme-switcher-btn {
+  background: rgba(0, 255, 65, 0.08);
+  color: var(--neon-green, #00FF41);
+  border: 1px solid var(--neon-green, #00FF41);
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .theme-switcher-btn:hover {
+  background: rgba(0, 255, 65, 0.18);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.theme-arrow {
+  font-size: 0.65rem;
+  transition: transform 0.25s ease;
+}
+
+.theme-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.theme-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 230px;
+  border-radius: var(--radius-md);
+  padding: 8px;
+  z-index: 10005;
+  animation: fadeInDropdown 0.2s ease;
+}
+
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+[data-theme="neoextremism"] .theme-dropdown-menu {
+  background: #FFFFFF;
+  border: 2.5px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
+}
+
+[data-theme="minimalism"] .theme-dropdown-menu {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="cyberpunk"] .theme-dropdown-menu {
+  background: #0d0f28;
+  border: 1.5px solid var(--neon-cyan, #00ffff);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+.theme-dropdown-header {
+  padding: 4px 8px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 6px;
+}
+
+.theme-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+}
+
+.theme-option:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.theme-option.active {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.theme-option-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-color-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.theme-option-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-option-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.theme-option-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.theme-check {
+  font-size: 0.75rem;
+  color: var(--accent-secondary);
+}
+
+/* ============================================================
+   DOWNLOAD CV BUTTON (Navbar)
+   ============================================================ */
+.header-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+[data-theme="neoextremism"] .header-cv-btn {
+  background: var(--accent-pink);
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+[data-theme="neoextremism"] .header-cv-btn:hover {
+  background: #FF4DAB;
+  color: #FFFFFF;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
+}
+
+[data-theme="minimalism"] .header-cv-btn {
+  background: #F0F9FF;
+  color: #0284C7;
+  border: 1px solid #BAE6FD;
+}
+
+[data-theme="minimalism"] .header-cv-btn:hover {
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+[data-theme="cyberpunk"] .header-cv-btn {
+  background: rgba(255, 0, 255, 0.12);
+  color: #FF00FF;
+  border: 1px solid #FF00FF;
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .header-cv-btn:hover {
+  background: #FF00FF;
+  color: #0A0B1A;
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+}
+
+.cv-download-icon {
+  font-size: 0.68rem;
+  opacity: 0.8;
+}
 
 /* ============================================================
    DESKTOP CONTACT BUTTON
    ============================================================ */
-
 .header-contact {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 10px 20px;
-
-    border:
-        1px solid var(--neon-cyan, #00ffff);
-
-    border-radius:
-        var(--radius-pill, 999px);
-
-    background:
-        rgba(0, 255, 255, 0.04);
-
-    color:
-        var(--neon-cyan, #00ffff);
-
-    font-family:
-        "Fira Code", monospace;
-
-    font-size: 0.75rem;
-
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition: all 0.3s ease;
-
-    box-shadow:
-        0 0 15px rgba(0, 255, 255, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
 }
 
-
-.header-contact:hover {
-    background:
-        var(--neon-cyan, #00ffff);
-
-    color: #0a0b1a;
-
-    box-shadow:
-        0 0 40px rgba(0, 255, 255, 0.4);
-
-    transform:
-        translateY(-2px);
+[data-theme="neoextremism"] .header-contact {
+  background: var(--accent-cyan);
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
 }
 
+[data-theme="neoextremism"] .header-contact:hover {
+  background: #54F4FF;
+  color: #000000;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
+}
+
+[data-theme="minimalism"] .header-contact {
+  background: #0F172A;
+  color: #FFFFFF;
+  border: 1px solid #0F172A;
+}
+
+[data-theme="minimalism"] .header-contact:hover {
+  background: #1E293B;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+[data-theme="cyberpunk"] .header-contact {
+  background: rgba(0, 255, 255, 0.08);
+  color: #00FFFF;
+  border: 1px solid #00FFFF;
+  font-family: var(--font-code);
+}
+
+[data-theme="cyberpunk"] .header-contact:hover {
+  background: #00FFFF;
+  color: #0A0B1A;
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.5);
+}
 
 .contact-arrow {
-    font-size: 1rem;
-
-    transition:
-        transform 0.3s;
+  font-size: 0.95rem;
+  transition: transform 0.25s;
 }
-
 
 .header-contact:hover .contact-arrow {
-    transform:
-        translate(3px, -3px);
+  transform: translate(2px, -2px);
 }
-
 
 /* ============================================================
-   MOBILE MENU TOGGLE
-   HAMBURGER → X
+   MOBILE TOGGLE BUTTON
    ============================================================ */
-
 .menu-toggle {
-    /* Hidden on desktop */
-    display: none;
-
-    position: relative;
-
-    /*
-       VERY IMPORTANT:
-       Higher than both the overlay and header
-    */
-    z-index: 10001 !important;
-
-    width: 36px;
-    height: 36px;
-
-    padding: 6px;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-    background:
-        rgba(0, 0, 0, 0.45);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 8px;
-
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    cursor: pointer;
-
-    transition:
-        all 0.25s ease;
+  display: none;
+  position: relative;
+  z-index: 10001 !important;
+  width: 38px;
+  height: 38px;
+  padding: 6px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
-
-
-/* Hamburger lines */
 
 .menu-toggle span {
-    display: block;
-
-    width: 20px;
-
-    height: 2.5px;
-
-    background:
-        var(--text-primary, #e8edf5);
-
-    border-radius: 2px;
-
-    transition:
-        all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-
-    transform-origin: center;
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
-
-
-/* Toggle hover */
-
-.menu-toggle:hover {
-    border-color:
-        rgba(0, 255, 255, 0.35);
-
-    background:
-        rgba(0, 255, 255, 0.06);
-
-    box-shadow:
-        0 0 20px rgba(0, 255, 255, 0.12);
-}
-
-
-.menu-toggle:hover span {
-    background:
-        var(--neon-cyan, #00ffff);
-}
-
-
-/* ============================================================
-   ACTIVE TOGGLE — X
-   ============================================================ */
-
-/*
-   Because the button stays above the mobile overlay,
-   the X will ALWAYS remain visible.
-*/
-
-.menu-toggle-active {
-    background:
-        rgba(0, 0, 0, 0.65);
-
-    border-color:
-        rgba(0, 255, 255, 0.35);
-
-    box-shadow:
-        0 0 20px rgba(0, 255, 255, 0.15);
-}
-
 
 .menu-toggle-active span:nth-child(1) {
-    transform:
-        translateY(4.75px) rotate(45deg);
-
-    background:
-        var(--neon-cyan, #00ffff);
-
-    box-shadow:
-        0 0 8px rgba(0, 255, 255, 0.6);
+  transform: translateY(4.25px) rotate(45deg);
+  background: var(--accent-secondary);
 }
-
 
 .menu-toggle-active span:nth-child(2) {
-    transform:
-        translateY(-4.75px) rotate(-45deg);
-
-    background:
-        var(--neon-cyan, #00ffff);
-
-    box-shadow:
-        0 0 8px rgba(0, 255, 255, 0.6);
+  transform: translateY(-4.25px) rotate(-45deg);
+  background: var(--accent-secondary);
 }
-
-
-.menu-toggle-active:hover span {
-    background:
-        var(--neon-pink, #ff00ff);
-
-    box-shadow:
-        0 0 10px rgba(255, 0, 255, 0.7);
-}
-
 
 /* ============================================================
    MOBILE NAVIGATION OVERLAY
    ============================================================ */
-
 .mobile-navigation {
-    position: fixed;
-
-    inset: 0;
-
-    /*
-       IMPORTANT:
-       Must stay BELOW header and toggle
-    */
-    z-index: 9990 !important;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding:
-        100px 24px 40px;
-
-    background:
-        rgba(10, 11, 26, 0.96);
-
-    backdrop-filter:
-        blur(30px);
-
-    -webkit-backdrop-filter:
-        blur(30px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(-15px);
-
-    transition:
-        all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-
-    /*
-       Make sure overlay doesn't interfere
-       with header pointer events
-    */
-    pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9990 !important;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 95px 20px 30px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.35s ease;
+  overflow-y: auto;
+  pointer-events: none;
 }
 
-
-/* Scanline effect */
-
-.mobile-navigation::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        repeating-linear-gradient(0deg,
-            rgba(0, 255, 65, 0.02) 0px,
-            rgba(0, 255, 65, 0.02) 1px,
-            transparent 1px,
-            transparent 3px);
-
-    pointer-events: none;
+[data-theme="neoextremism"] .mobile-navigation {
+  background: rgba(253, 251, 247, 0.98);
 }
 
+[data-theme="minimalism"] .mobile-navigation {
+  background: rgba(250, 250, 250, 0.98);
+}
 
-/* ============================================================
-   OPEN MOBILE NAVIGATION
-   ============================================================ */
+[data-theme="cyberpunk"] .mobile-navigation {
+  background: rgba(10, 11, 20, 0.96);
+}
 
 .mobile-navigation-open {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0);
-
-    pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
-
-
-/* ============================================================
-   MOBILE NAVIGATION CONTENT
-   ============================================================ */
 
 .mobile-navigation-inner {
-    position: relative;
-
-    z-index: 1;
-
-    width: 100%;
-
-    max-width: 420px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 24px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 20px;
 }
-
-
-/* ============================================================
-   MOBILE MENU LABEL
-   ============================================================ */
 
 .mobile-menu-label {
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-    color:
-        var(--text-muted, #6a7a9a);
-
-    font-size: 0.7rem;
-
-    font-family:
-        "Fira Code", monospace;
-
-    letter-spacing: 0.15em;
-
-    text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-family: var(--font-code);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-
-.mobile-menu-label .mobile-menu-line {
-    flex: 1;
-
-    height: 1px;
-
-    background:
-        var(--border,
-            rgba(0, 255, 65, 0.15));
+.mobile-menu-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
 }
 
+/* Mobile Theme Selector */
+.mobile-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
 
-/* ============================================================
-   MOBILE NAV LIST
-   ============================================================ */
+.mobile-theme-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 6px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
+.mobile-theme-pill i {
+  font-size: 1rem;
+}
+
+.mobile-theme-pill.active {
+  background: var(--accent-yellow);
+  color: #000000;
+  border-color: #000000;
+}
+
+[data-theme="minimalism"] .mobile-theme-pill.active {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-color: #0F172A;
+}
+
+[data-theme="cyberpunk"] .mobile-theme-pill.active {
+  background: rgba(0, 255, 65, 0.15);
+  color: var(--neon-green, #00FF41);
+  border-color: var(--neon-green, #00FF41);
+}
+
+/* Mobile Nav List */
 .mobile-nav-list {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-
-
-/* ============================================================
-   MOBILE NAV LINK
-   ============================================================ */
 
 .mobile-nav-link {
-    display: flex;
-
-    align-items: center;
-
-    gap: 16px;
-
-    padding: 16px 20px;
-
-    border:
-        1px solid transparent;
-
-    border-radius: 14px;
-
-    background:
-        rgba(255, 255, 255, 0.02);
-
-    color:
-        var(--text-secondary, #a0b0d0);
-
-    font-family:
-        "Fira Code", monospace;
-
-    font-size: 1rem;
-
-    text-decoration: none;
-
-    transition:
-        all 0.3s ease;
-
-    opacity: 0;
-
-    transform:
-        translateY(15px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
-
-
-/* Animated links when menu opens */
-
-.mobile-navigation-open .mobile-nav-link {
-    opacity: 1;
-
-    transform:
-        translateY(0);
-}
-
-
-/* Stagger animation */
-
-.mobile-nav-link:nth-child(1) {
-    transition-delay: 50ms;
-}
-
-.mobile-nav-link:nth-child(2) {
-    transition-delay: 90ms;
-}
-
-.mobile-nav-link:nth-child(3) {
-    transition-delay: 130ms;
-}
-
-.mobile-nav-link:nth-child(4) {
-    transition-delay: 170ms;
-}
-
-.mobile-nav-link:nth-child(5) {
-    transition-delay: 210ms;
-}
-
-
-/* Hover / active */
 
 .mobile-nav-link:hover,
 .mobile-nav-link-active {
-    background:
-        rgba(0, 255, 65, 0.06);
-
-    border-color:
-        rgba(0, 255, 65, 0.2);
-
-    color:
-        var(--text-primary, #e8edf5);
-
-    transform:
-        translateX(5px);
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  transform: translateX(4px);
 }
-
-
-/* ============================================================
-   MOBILE NAV NUMBERS
-   ============================================================ */
 
 .mobile-nav-number {
-    color:
-        var(--neon-green, #00ff41);
-
-    font-weight: 700;
-
-    font-size: 0.75rem;
-
-    opacity: 0.6;
-
-    min-width: 28px;
+  color: var(--accent-secondary);
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  font-weight: 700;
 }
-
-
-/* ============================================================
-   MOBILE NAV TEXT
-   ============================================================ */
 
 .mobile-nav-text {
-    flex: 1;
+  flex: 1;
 }
-
-
-/* ============================================================
-   MOBILE NAV ARROW
-   ============================================================ */
 
 .mobile-nav-arrow {
-    color:
-        var(--neon-cyan, #00ffff);
-
-    opacity: 0.4;
-
-    transition:
-        transform 0.3s;
+  color: var(--text-muted);
 }
 
-
-.mobile-nav-link:hover .mobile-nav-arrow {
-    transform:
-        translate(3px, -3px);
-
-    opacity: 1;
+/* Mobile Action Buttons (CV + Contact) */
+.mobile-action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
 }
 
+.mobile-cv-btn,
+.mobile-contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-/* ============================================================
-   MOBILE MENU FOOTER
-   ============================================================ */
+.mobile-cv-btn {
+  background: var(--accent-pink);
+  color: #FFFFFF;
+  border: 2px solid #000000;
+}
 
+[data-theme="minimalism"] .mobile-cv-btn {
+  background: #F0F9FF;
+  color: #0284C7;
+  border: 1px solid #BAE6FD;
+}
+
+[data-theme="cyberpunk"] .mobile-cv-btn {
+  background: rgba(255, 0, 255, 0.15);
+  color: #FF00FF;
+  border: 1px solid #FF00FF;
+}
+
+.mobile-contact-btn {
+  background: var(--accent-yellow);
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+[data-theme="minimalism"] .mobile-contact-btn {
+  background: #0F172A;
+  color: #FFFFFF;
+  border: 1px solid #0F172A;
+}
+
+[data-theme="cyberpunk"] .mobile-contact-btn {
+  background: var(--accent-gradient);
+  color: #0A0B1A;
+  border: none;
+}
+
+/* Mobile Footer */
 .mobile-menu-footer {
-    margin-top: 20px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    font-size: 0.75rem;
-
-    color:
-        var(--text-muted, #6a7a9a);
-
-    font-family:
-        "Fira Code", monospace;
-
-    border-top:
-        1px solid var(--border,
-            rgba(0, 255, 65, 0.15));
-
-    padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
 }
-
-
-/* ============================================================
-   AVAILABILITY
-   ============================================================ */
 
 .mobile-availability {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-green);
+  font-weight: 600;
 }
-
 
 .availability-dot {
-    width: 6px;
-
-    height: 6px;
-
-    border-radius: 50%;
-
-    background:
-        var(--neon-green, #00ff41);
-
-    box-shadow:
-        0 0 12px var(--neon-green, #00ff41);
-
-    animation:
-        pulse 2s ease-in-out infinite;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 10px var(--accent-green);
+  animation: pulse 2s infinite;
 }
-
-
-/* ============================================================
-   RESPONSIVE — TABLET / MOBILE
-   ============================================================ */
-
-@media (max-width: 991.98px) {
-
-    .site-header {
-        padding:
-            12px 16px;
-
-        /*
-           Extra safety:
-           header always stays above overlay
-        */
-        z-index: 10000 !important;
-    }
-
-
-    .header-inner {
-        min-height: 60px;
-
-        padding:
-            8px 16px;
-
-        border-radius: 16px;
-    }
-
-
-    /* Hide desktop navigation */
-
-    .desktop-navigation,
-    .header-contact {
-        display: none;
-    }
-
-
-    /* Show mobile toggle */
-
-    .menu-toggle {
-        display: flex;
-    }
-
-
-    /* Hide full brand name */
-
-    .brand-name {
-        display: none;
-    }
-}
-
-
-/* ============================================================
-   RESPONSIVE — SMALL MOBILE
-   ============================================================ */
-
-@media (max-width: 576px) {
-
-    .site-header {
-        padding:
-            10px 12px;
-
-        z-index: 10000 !important;
-    }
-
-
-    .header-inner {
-        min-height: 54px;
-
-        padding:
-            6px 12px;
-
-        border-radius: 14px;
-    }
-
-
-    .brand-mark {
-        font-size:
-            1.3rem;
-    }
-
-
-    .brand-cursor {
-        height:
-            1rem;
-    }
-
-
-    .menu-toggle {
-        width: 36px;
-
-        height: 36px;
-    }
-
-
-    .mobile-navigation {
-        padding:
-            80px 16px 30px;
-    }
-}
-
-
-/* ============================================================
-   EXTRA SMALL DEVICES
-   ============================================================ */
-
-@media (max-width: 380px) {
-
-    .site-header {
-        padding:
-            8px 10px;
-    }
-
-
-    .header-inner {
-        min-height: 52px;
-
-        padding:
-            5px 10px;
-    }
-
-
-    .brand-mark {
-        font-size:
-            1.2rem;
-    }
-
-
-    .menu-toggle {
-        width: 34px;
-
-        height: 34px;
-    }
-
-
-    .mobile-navigation-inner {
-        max-width:
-            100%;
-    }
-
-
-    .mobile-nav-link {
-        padding:
-            14px 16px;
-
-        font-size:
-            0.9rem;
-    }
-}
-
-
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
-
-
-/* Cursor blink */
-
-@keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-
-
-/* Neon pulse */
 
 @keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 0.6;
-
-        transform:
-            scale(0.95);
-    }
-
-    50% {
-        opacity: 1;
-
-        transform:
-            scale(1);
-    }
+  0%, 100% { opacity: 0.6; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1); }
 }
-
-
-/* Glitch */
-
-@keyframes glitch {
-
-    0% {
-        transform:
-            translate(0);
-    }
-
-    20% {
-        transform:
-            translate(-2px, 1px);
-    }
-
-    40% {
-        transform:
-            translate(2px, -1px);
-    }
-
-    60% {
-        transform:
-            translate(-1px, 2px);
-    }
-
-    80% {
-        transform:
-            translate(1px, -2px);
-    }
-
-    100% {
-        transform:
-            translate(0);
-    }
-}
-
 
 /* ============================================================
-   REDUCED MOTION
+   RESPONSIVE BREAKPOINTS
    ============================================================ */
+@media (max-width: 992px) {
+  .desktop-navigation {
+    display: none;
+  }
 
-@media (prefers-reduced-motion: reduce) {
+  .menu-toggle {
+    display: flex;
+  }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration:
-            0.01ms !important;
+  .theme-btn-label {
+    display: none;
+  }
 
-        animation-iteration-count:
-            1 !important;
+  .header-actions {
+    gap: 8px;
+  }
+}
 
-        transition-duration:
-            0.01ms !important;
+@media (max-width: 576px) {
+  .site-header {
+    padding: 10px 14px;
+  }
 
-        scroll-behavior:
-            auto !important;
-    }
+  .header-inner {
+    padding: 6px 8px 6px 14px;
+    min-height: 52px;
+  }
+
+  .brand-mark {
+    font-size: 1.15rem;
+  }
+
+  .header-contact {
+    display: none;
+  }
 }
