@@ -11,22 +11,22 @@ export const THEMES = [
     color: "#FFFFFF",
     accent: "#94A3B8",
   },
-  {
-    id: "neoextremism",
-    name: "Neo-Extremism",
-    subtitle: "Bold & High-Contrast",
-    icon: "fa-solid fa-bolt",
-    color: "#FFE600",
-    accent: "#FF2E93",
-  },
-  {
-    id: "cyberpunk",
-    name: "Cyberpunk",
-    subtitle: "Neon & Futuristic",
-    icon: "fa-solid fa-terminal",
-    color: "#00FF41",
-    accent: "#00FFFF",
-  },
+  // {
+  //   id: "neoextremism",
+  //   name: "Neo-Extremism",
+  //   subtitle: "Bold & High-Contrast",
+  //   icon: "fa-solid fa-bolt",
+  //   color: "#FFE600",
+  //   accent: "#FF2E93",
+  // },
+  // {
+  //   id: "cyberpunk",
+  //   name: "Cyberpunk",
+  //   subtitle: "Neon & Futuristic",
+  //   icon: "fa-solid fa-terminal",
+  //   color: "#00FF41",
+  //   accent: "#00FFFF",
+  // },
 ];
 
 const ThemeContext = createContext({
