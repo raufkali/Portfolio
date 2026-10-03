@@ -24,7 +24,7 @@
 
 .experience-header {
   max-width: 680px;
-  margin-bottom: 58px;
+  margin-bottom: 44px;
 }
 
 .experience-eyebrow {
@@ -77,11 +77,12 @@
 .experience-carousel {
   position: relative;
   width: 100%;
-  min-height: 560px;
+  min-height: 0;
+  /* ⬅️ was 560px */
 
   display: grid;
   grid-template-columns: 150px minmax(0, 860px) 150px;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 28px;
 
@@ -97,13 +98,14 @@
 .experience-preview {
   position: relative;
   width: 150px;
-  height: 260px;
+  height: auto;
+  min-height: 220px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  padding: 24px 18px;
+  padding: 20px 16px;
 
   background: #f5f7fa;
   border: 1px solid #e1e7ed;
@@ -166,7 +168,7 @@
 .preview-line {
   width: 24px;
   height: 1px;
-  margin: 16px 0;
+  margin: 14px 0;
   background: #0f2f50 !important;
 }
 
@@ -190,7 +192,8 @@
 .experience-card {
   position: relative;
   width: 100%;
-  min-height: 540px;
+  min-height: 0;
+  /* ⬅️ was 540px — lets height follow content */
 
   background: #ffffff;
   border: 1px solid #0f2f50 !important;
@@ -247,13 +250,14 @@
    ============================================================ */
 
 .experience-card-top {
-  min-height: 70px;
+  min-height: 56px;
+  /* ⬅️ was 70px */
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 34px;
+  padding: 0 28px;
 
   border-bottom: 1px solid #e1e7ed;
   background: #f5f7fa;
@@ -265,14 +269,14 @@
   gap: 5px;
 
   font-family: var(--font-code, "Fira Code", monospace);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #0f2f50 !important;
 }
 
 .experience-card-number span:first-child {
-  font-size: 1rem;
+  font-size: 0.96rem;
 }
 
 .number-divider {
@@ -290,8 +294,8 @@
    ============================================================ */
 
 .experience-arrow {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
 
   display: inline-flex;
   align-items: center;
@@ -328,7 +332,8 @@
    ============================================================ */
 
 .experience-card-content {
-  padding: 48px 58px 46px;
+  padding: 34px 44px 34px;
+  /* ⬅️ was 48px 58px 46px */
 }
 
 
@@ -341,10 +346,12 @@
   align-items: flex-start;
   justify-content: space-between;
 
-  gap: 40px;
+  gap: 32px;
 
-  padding-bottom: 28px;
-  margin-bottom: 28px;
+  padding-bottom: 20px;
+  /* ⬅️ was 28px */
+  margin-bottom: 20px;
+  /* ⬅️ was 28px */
 
   border-bottom: 1px solid #e1e7ed;
 }
@@ -357,10 +364,10 @@
 .experience-label {
   display: block;
 
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 
   font-family: var(--font-code, "Fira Code", monospace);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   color: #0f2f50 !important;
@@ -368,10 +375,10 @@
 }
 
 .experience-position {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 
   font-family: var(--font-display, "Amarante", serif);
-  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  font-size: clamp(1.45rem, 2.8vw, 1.95rem);
   font-weight: 400;
   line-height: 1.15;
 
@@ -382,7 +389,7 @@
   margin: 0;
 
   font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: 600;
 
   color: #5a6b7d;
@@ -398,7 +405,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -406,10 +413,10 @@
   display: inline-flex;
   align-items: center;
 
-  padding: 6px 11px;
+  padding: 5px 10px;
 
   font-family: var(--font-code, "Fira Code", monospace);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -426,7 +433,7 @@
   gap: 7px;
 
   font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 500;
 
   color: #5a6b7d;
@@ -447,11 +454,12 @@
 .experience-description {
   max-width: 740px;
 
-  margin: 0 0 34px;
+  margin: 0 0 22px;
+  /* ⬅️ was 34px */
 
   font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.94rem;
-  line-height: 1.85;
+  font-size: 0.9rem;
+  line-height: 1.8;
 
   color: #3d5064;
 }
@@ -464,12 +472,12 @@
 .experience-responsibilities-wrap {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .responsibilities-title {
   font-family: var(--font-code, "Fira Code", monospace);
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -486,8 +494,8 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  column-gap: 40px;
-  row-gap: 13px;
+  column-gap: 36px;
+  row-gap: 10px;
 }
 
 .experience-responsibilities li {
@@ -496,8 +504,8 @@
   gap: 10px;
 
   font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.85rem;
-  line-height: 1.65;
+  font-size: 0.83rem;
+  line-height: 1.6;
 
   color: #3d5064;
 }
@@ -520,11 +528,12 @@
 .experience-card-footer {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 
-  min-height: 46px;
+  min-height: 40px;
+  /* ⬅️ was 46px */
 
-  padding: 0 34px;
+  padding: 0 28px;
 
   border-top: 1px solid #e1e7ed;
   background: #f5f7fa;
@@ -557,7 +566,7 @@
   flex-shrink: 0;
 
   font-family: var(--font-code, "Fira Code", monospace);
-  font-size: 0.56rem;
+  font-size: 0.54rem;
   font-weight: 700;
   letter-spacing: 0.12em;
 
@@ -573,7 +582,7 @@
   display: flex;
   justify-content: center;
 
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .experience-dots {
@@ -630,8 +639,8 @@
 
   .experience-preview {
     width: 90px;
-    height: 220px;
-    padding: 18px 12px;
+    min-height: 200px;
+    padding: 16px 10px;
   }
 
   .preview-title {
@@ -639,7 +648,7 @@
   }
 
   .experience-card-content {
-    padding: 42px 46px;
+    padding: 30px 36px;
   }
 
   .experience-responsibilities {
@@ -649,7 +658,7 @@
 
 
 /* ============================================================
-   MOBILE
+   MOBILE — card + peek strips
    ============================================================ */
 
 @media (max-width: 767px) {
@@ -658,46 +667,122 @@
   }
 
   .experience-header {
-    margin-bottom: 38px;
+    margin-bottom: 32px;
   }
 
   .experience-title {
     font-size: 2rem;
   }
 
-  /*
-    Hide desktop previews on mobile.
-    The interaction becomes a full-width
-    iPhone-style swipe carousel.
-  */
+  /* ---- carousel becomes a card with peek strips ---- */
   .experience-carousel {
     display: block;
-    min-height: auto;
-  }
-
-  .experience-preview {
-    display: none;
+    position: relative;
+    min-height: 0;
+    padding: 0;
   }
 
   .experience-card {
     min-height: 0;
   }
 
+  /* peek strips floated on the card edges */
+  .experience-preview {
+    display: flex;
+
+    position: absolute;
+    top: 56px;
+    /* flush with bottom of card top bar */
+    bottom: 40px;
+    /* flush with top of card footer */
+
+    z-index: 5;
+
+    width: 22px;
+    height: auto;
+    min-height: 0;
+
+    padding: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #0f2f50;
+    border: 1px solid #0f2f50;
+    border-radius: 0;
+    opacity: 1;
+
+    transition: background-color 0.2s ease;
+  }
+
+  .experience-preview-left {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .experience-preview-right {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* disable desktop hover shift, use a simpler hover colour */
+  .experience-preview:hover,
+  .experience-preview-left:hover,
+  .experience-preview-right:hover {
+    transform: none;
+    background: #1a4a7a;
+    border-color: #1a4a7a;
+  }
+
+  /* hide all inner content of the strip */
+  .experience-preview .preview-index,
+  .experience-preview .preview-line,
+  .experience-preview .preview-title {
+    display: none;
+  }
+
+  /* kill the original vertical accent bar */
+  .experience-preview::after {
+    display: none;
+  }
+
+  /* chevron */
+  .experience-preview::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+  }
+
+  .experience-preview-left::before {
+    transform: rotate(-135deg);
+    margin-left: 3px;
+  }
+
+  .experience-preview-right::before {
+    transform: rotate(45deg);
+    margin-right: 3px;
+  }
+
+  /* ---- card content ---- */
   .experience-card-content {
-    padding: 32px 26px 34px;
+    padding: 22px 30px 26px;
+    /* extra side padding for peek strips */
   }
 
   .experience-card-top {
-    min-height: 62px;
-    padding: 0 20px;
+    min-height: 56px;
+    padding: 0 18px 0 30px;
+    /* leave room for left strip */
   }
 
   .experience-card-header {
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
 
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
   }
 
   .experience-card-header-right {
@@ -709,27 +794,27 @@
   }
 
   .experience-position {
-    font-size: 1.55rem;
+    font-size: 1.4rem;
   }
 
   .experience-description {
-    font-size: 0.88rem;
-    line-height: 1.75;
-    margin-bottom: 28px;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
   }
 
   .experience-responsibilities {
     grid-template-columns: 1fr;
-    row-gap: 10px;
+    row-gap: 9px;
   }
 
   .experience-responsibilities li {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
 
   .experience-card-footer {
-    min-height: 44px;
-    padding: 0 20px;
+    min-height: 40px;
+    padding: 0 18px 0 30px;
   }
 
   .experience-swipe-label {
@@ -748,11 +833,11 @@
   }
 
   .experience-header {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .experience-eyebrow {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .experience-title {
@@ -765,42 +850,52 @@
   }
 
   .experience-card-top {
-    padding: 0 16px;
+    padding: 0 16px 0 26px;
   }
 
   .experience-card-content {
-    padding: 28px 20px 30px;
+    padding: 20px 24px 22px;
   }
 
   .experience-position {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .experience-company {
-    font-size: 0.84rem;
+    font-size: 0.82rem;
   }
 
   .experience-card-header-right {
     align-items: flex-start;
     flex-direction: column;
-    gap: 9px;
+    gap: 8px;
   }
 
   .experience-description {
-    font-size: 0.84rem;
+    font-size: 0.83rem;
+    margin-bottom: 16px;
   }
 
   .experience-responsibilities li {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   .experience-arrow {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
   }
 
   .experience-card-footer {
-    padding: 0 16px;
+    padding: 0 16px 0 26px;
+  }
+
+  .experience-preview {
+    width: 20px;
+  }
+
+  .experience-preview::before {
+    width: 6px;
+    height: 6px;
   }
 }
 

@@ -1078,6 +1078,9 @@
 /* ============================================================
    MOBILE
    ============================================================ */
+/* ============================================================
+   MOBILE — same coverflow, scaled down
+   ============================================================ */
 
 @media (max-width: 767px) {
 
@@ -1095,19 +1098,14 @@
 
   .projects-subtitle {
     font-size: 0.84rem;
-
     line-height: 1.65;
   }
 
   .projects-filters {
     margin-bottom: 28px;
-
     flex-wrap: nowrap;
-
     overflow-x: auto;
-
     padding-bottom: 4px;
-
     scrollbar-width: none;
   }
 
@@ -1120,10 +1118,12 @@
   }
 
 
-  /* stage */
+  /* ----------------------------------------------------------
+     STAGE — smaller but same shape as desktop
+  ---------------------------------------------------------- */
 
   .projects-cinematic {
-    min-height: 625px;
+    min-height: 560px;
 
     margin-left: -4px;
     margin-right: -4px;
@@ -1137,117 +1137,141 @@
     font-size: 0.55rem;
   }
 
-
   .projects-coverflow {
-    top: 53%;
-
-    height: 545px;
+    top: 52%;
+    height: 470px;
   }
 
 
-  /* main mobile card */
+  /* ----------------------------------------------------------
+     CARD — scaled to fit three visible in coverflow
+  ---------------------------------------------------------- */
 
   .project-cover-card {
-    width: 76vw;
-
-    max-width: 410px;
-
-    height: 535px;
+    width: 64vw;
+    max-width: 260px;
+    height: 400px;
   }
-
 
   .project-cover-card-active {
+    /* less Z push than desktop so it doesn't blow up on small screens */
     transform:
-      translate3d(-50%,
-        -50%,
-        100px) rotateY(0deg) scale(1);
+      translate3d(-50%, -50%, 120px) rotateY(0deg) scale(1);
   }
 
-
-  /* preserve cover flow on mobile */
-
+  /* SAME angles and offsets as desktop — just smaller card */
   .project-cover-card-left {
     transform:
-      translate3d(-114%,
-        -50%,
-        -40px) rotateY(26deg) scale(0.78);
+      translate3d(-117%, -50%, -60px) rotateY(29deg) scale(0.82);
   }
 
   .project-cover-card-right {
     transform:
-      translate3d(14%,
-        -50%,
-        -40px) rotateY(-26deg) scale(0.78);
+      translate3d(17%, -50%, -60px) rotateY(-29deg) scale(0.82);
   }
 
 
-  /* hide second-level depth */
+  /* second depth — pushed far out so it fades off screen naturally */
+  .project-cover-card[data-offset="-2"] {
+    transform:
+      translate3d(-161%, -50%, -140px) rotateY(40deg) scale(0.67);
+  }
 
-  .project-cover-card[data-offset="-2"],
   .project-cover-card[data-offset="2"] {
-    opacity: 0 !important;
-
-    pointer-events: none;
+    transform:
+      translate3d(61%, -50%, -140px) rotateY(-40deg) scale(0.67);
   }
 
 
-  /* content */
+  /* ----------------------------------------------------------
+     CONTENT — tightened to fit the smaller card
+  ---------------------------------------------------------- */
 
   .project-cover-content {
-    padding:
-      22px 20px 30px;
+    padding: 18px 16px 26px;
+  }
+
+  .project-cover-kicker {
+    font-size: 0.48rem;
+    margin-bottom: 6px;
   }
 
   .project-cover-title {
-    font-size: 1.35rem;
+    font-size: 1.05rem;
+  }
+
+  .project-cover-index {
+    font-size: 0.56rem;
   }
 
   .project-cover-description {
-    font-size: 0.74rem;
+    font-size: 0.68rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
 
-    line-height: 1.55;
-
-    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .project-cover-meta {
-    gap: 10px;
+    gap: 8px;
+    padding: 8px 0;
+    margin-bottom: 10px;
+  }
 
-    padding: 11px 0;
-
-    margin-bottom: 13px;
+  .project-cover-meta span {
+    font-size: 0.44rem;
+    margin-bottom: 3px;
   }
 
   .project-cover-meta strong {
-    font-size: 0.62rem;
+    font-size: 0.56rem;
+  }
+
+  .project-cover-tags {
+    gap: 4px;
+    margin-bottom: 10px;
   }
 
   .project-cover-tag {
-    font-size: 0.5rem;
+    font-size: 0.46rem;
+    padding: 3px 5px;
+  }
 
-    padding:
-      4px 7px;
+  /* keep highlights visible — matches desktop */
+  .project-cover-highlights {
+    gap: 4px;
+    margin-bottom: 10px;
   }
 
   .project-cover-highlight {
-    font-size: 0.64rem;
+    font-size: 0.56rem;
+    line-height: 1.4;
   }
 
   .project-action-btn,
   .project-private-badge {
-    min-height: 32px;
+    min-height: 28px;
+    padding: 5px 9px;
+    font-size: 0.56rem;
+  }
 
-    padding: 6px 11px;
-
-    font-size: 0.62rem;
+  .project-cover-bottom {
+    left: 16px;
+    right: 16px;
+    bottom: 6px;
   }
 
 
-  /* arrows */
+  /* ----------------------------------------------------------
+     ARROWS — small, hug the edges
+  ---------------------------------------------------------- */
 
   .project-cover-arrow {
-    width: 42px;
-    height: 38px;
+    width: 36px;
+    height: 34px;
   }
 
   .project-cover-arrow span {
@@ -1255,15 +1279,17 @@
   }
 
   .project-cover-arrow-prev {
-    left: 4px;
+    left: 2px;
   }
 
   .project-cover-arrow-next {
-    right: 4px;
+    right: 2px;
   }
 
 
-  /* footer */
+  /* ----------------------------------------------------------
+     FOOTER
+  ---------------------------------------------------------- */
 
   .projects-cover-footer {
     margin-top: -4px;
@@ -1285,7 +1311,7 @@
 
 
 /* ============================================================
-   SMALL MOBILE
+   SMALL MOBILE — same treatment, one step smaller
    ============================================================ */
 
 @media (max-width: 480px) {
@@ -1295,75 +1321,103 @@
   }
 
   .projects-cinematic {
-    min-height: 600px;
+    min-height: 520px;
   }
 
   .projects-coverflow {
-    height: 525px;
+    top: 52%;
+    height: 440px;
   }
 
   .project-cover-card {
-    width: 78vw;
-
-    height: 515px;
+    width: 62vw;
+    max-width: 240px;
+    height: 380px;
   }
 
+  .project-cover-card-active {
+    transform:
+      translate3d(-50%, -50%, 110px) rotateY(0deg) scale(1);
+  }
+
+  /* keep the SAME angles as mobile/desktop — just narrower card */
   .project-cover-card-left {
     transform:
-      translate3d(-108%,
-        -50%,
-        -35px) rotateY(24deg) scale(0.76);
+      translate3d(-117%, -50%, -55px) rotateY(29deg) scale(0.82);
   }
 
   .project-cover-card-right {
     transform:
-      translate3d(8%,
-        -50%,
-        -35px) rotateY(-24deg) scale(0.76);
+      translate3d(17%, -50%, -55px) rotateY(-29deg) scale(0.82);
   }
 
+  .project-cover-card[data-offset="-2"] {
+    transform:
+      translate3d(-161%, -50%, -130px) rotateY(40deg) scale(0.67);
+  }
+
+  .project-cover-card[data-offset="2"] {
+    transform:
+      translate3d(61%, -50%, -130px) rotateY(-40deg) scale(0.67);
+  }
+
+
   .project-cover-content {
-    padding:
-      18px 17px 26px;
+    padding: 16px 14px 24px;
   }
 
   .project-cover-title {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
   }
 
   .project-cover-description {
-    font-size: 0.68rem;
-
-    margin-bottom: 11px;
+    font-size: 0.64rem;
+    margin-bottom: 8px;
+    -webkit-line-clamp: 2;
   }
 
   .project-cover-meta {
-    padding: 9px 0;
-
-    margin-bottom: 10px;
+    padding: 7px 0;
+    margin-bottom: 8px;
   }
 
+  .project-cover-tag {
+    font-size: 0.44rem;
+    padding: 2px 5px;
+  }
+
+  /* small phones: hide highlights to protect the layout */
   .project-cover-highlights {
     display: none;
   }
 
   .project-cover-actions {
-    gap: 6px;
+    gap: 5px;
   }
 
   .project-action-btn,
   .project-private-badge {
-    min-height: 30px;
+    min-height: 26px;
+    padding: 4px 8px;
+    font-size: 0.54rem;
+  }
 
-    padding:
-      5px 9px;
+  .project-cover-arrow {
+    width: 32px;
+    height: 30px;
+  }
 
-    font-size: 0.58rem;
+  .project-cover-arrow-prev {
+    left: 0;
+  }
+
+  .project-cover-arrow-next {
+    right: 0;
   }
 
   .project-cover-bottom {
-    left: 17px;
-    right: 17px;
+    left: 14px;
+    right: 14px;
   }
 
   .projects-cover-footer-row {
@@ -1371,7 +1425,6 @@
   }
 
 }
-
 
 /* ============================================================
    REDUCED MOTION
