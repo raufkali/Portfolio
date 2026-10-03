@@ -612,3 +612,101 @@
     width: 14px;
   }
 }
+
+/* ============================================================
+   "MORE" DROPDOWN — for secondary nav items
+   ============================================================ */
+
+.nav-more {
+  position: relative;
+  display: inline-flex;
+}
+
+.nav-more-trigger {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  gap: 6px;
+}
+
+.nav-more-chevron {
+  font-size: 9px;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.nav-more-open .nav-more-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.nav-more-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 200px;
+
+  background: #FFFFFF;
+  border: 1px solid var(--border, #E1E7ED);
+  border-radius: var(--radius-sm, 0.25rem);
+
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  z-index: 1200;
+
+  animation: navMoreIn 160ms ease both;
+}
+
+@keyframes navMoreIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-more-item {
+  display: block;
+  padding: 9px 12px;
+
+  font-family: var(--font-main, "Inter", sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+
+  color: var(--navy, #0F2F50);
+  border-radius: var(--radius-sm, 0.25rem);
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.nav-more-item:hover {
+  background: var(--surface-hover, #F5F7FA);
+}
+
+.nav-more-item-active {
+  background: var(--surface-hover, #F5F7FA);
+  font-weight: 600;
+}
+
+/* Optional: give the dropdown a subtle left rail on hover */
+.nav-more-item-active::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 12px;
+  background: var(--navy, #0F2F50);
+  margin-right: 8px;
+  vertical-align: middle;
+}

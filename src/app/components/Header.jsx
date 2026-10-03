@@ -1,25 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Header.css";
-const navItems = [
+
+/* ============================================================
+   NAV CONFIG
+   primaryItems   → always visible on desktop
+   secondaryItems → grouped under a "More" dropdown
+   ============================================================ */
+const primaryItems = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Work", href: "#projects" },
   { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+
+const secondaryItems = [
   { label: "Education", href: "#education" },
   { label: "Achievements", href: "#achievements" },
   { label: "Certifications", href: "#certifications" },
   { label: "Interests", href: "#hobbies" },
-  { label: "Contact", href: "#contact" },
 ];
+
+/* Full list — used for the mobile sidebar and scroll tracking */
+const navItems = [...primaryItems, ...secondaryItems];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
 
-  /* SCROLL + ACTIVE SECTION TRACKER */
+  const moreRef = useRef(null);
+
+  /* ------------------------------------------------------------
+     SCROLL + ACTIVE SECTION TRACKER
+  ------------------------------------------------------------ */
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 25);
@@ -32,9 +49,7 @@ const Header = () => {
 
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= 200) {
-          currentSection = section.id;
-        }
+        if (rect.top <= 200) currentSection = section.id;
       });
 
       setActiveSection(currentSection);
@@ -45,7 +60,9 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* BODY SCROLL LOCK */
+  /* ------------------------------------------------------------
+     BODY SCROLL LOCK (mobile sidebar)
+  ------------------------------------------------------------ */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -53,22 +70,53 @@ const Header = () => {
     };
   }, [menuOpen]);
 
-  /* ESC TO CLOSE */
+  /* ------------------------------------------------------------
+     ESC CLOSES DROPDOWN + SIDEBAR
+  ------------------------------------------------------------ */
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") setMenuOpen(false);
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        setMoreOpen(false);
+      }
     };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, []);
+
+  /* ------------------------------------------------------------
+     CLICK OUTSIDE CLOSES THE "MORE" DROPDOWN
+  ------------------------------------------------------------ */
+  useEffect(() => {
+    if (!moreOpen) return;
+
+    const onClick = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [moreOpen]);
 
   const closeMenu = () => setMenuOpen(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
+  const closeAll = () => {
+    setMenuOpen(false);
+    setMoreOpen(false);
+  };
+
+  /* Is any secondary item the active section? */
+  const secondaryActive = secondaryItems.some(
+    (item) => activeSection === item.href.replace("#", ""),
+  );
+
   return (
     <>
       {/* ============================================================
-          HEADER (backdrop-filter lives here — sidebar is NOT inside it)
+          HEADER — backdrop-filter lives here
           ============================================================ */}
       <header
         className={`site-header ${
@@ -80,7 +128,7 @@ const Header = () => {
           <a
             href="#about"
             className="header-brand"
-            onClick={closeMenu}
+            onClick={closeAll}
             aria-label="Rauf Ahmad Portfolio Home"
           >
             <span className="brand-mark">Rauf Ahmad</span>
@@ -89,24 +137,66 @@ const Header = () => {
 
           {/* DESKTOP NAVIGATION */}
           <nav className="desktop-navigation" aria-label="Main navigation">
-            {navItems.map((item, index) => {
-              const sectionId = item.href.replace("#", "");
-              const isActive = activeSection === sectionId;
+            {primaryItems.map((item) => {
+              const id = item.href.replace("#", "");
+              const isActive = activeSection === id;
 
               return (
                 <a
                   key={item.href}
                   href={item.href}
                   className={`nav-link ${isActive ? "nav-link-active" : ""}`}
-                  onClick={closeMenu}
+                  onClick={closeAll}
                 >
-                  <span className="nav-number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                   <span>{item.label}</span>
                 </a>
               );
             })}
+
+            {/* MORE DROPDOWN */}
+            <div
+              className={`nav-more ${moreOpen ? "nav-more-open" : ""}`}
+              ref={moreRef}
+            >
+              <button
+                type="button"
+                className={`nav-link nav-more-trigger ${
+                  secondaryActive ? "nav-link-active" : ""
+                }`}
+                onClick={() => setMoreOpen((v) => !v)}
+                aria-haspopup="true"
+                aria-expanded={moreOpen}
+              >
+                <span>More</span>
+                <i
+                  className="fas fa-chevron-down nav-more-chevron"
+                  aria-hidden="true"
+                />
+              </button>
+
+              {moreOpen && (
+                <div className="nav-more-menu" role="menu">
+                  {secondaryItems.map((item) => {
+                    const id = item.href.replace("#", "");
+                    const isActive = activeSection === id;
+
+                    return (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        role="menuitem"
+                        className={`nav-more-item ${
+                          isActive ? "nav-more-item-active" : ""
+                        }`}
+                        onClick={closeAll}
+                      >
+                        {item.label}
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* DESKTOP ACTIONS */}
@@ -124,8 +214,8 @@ const Header = () => {
               <span className="cv-btn-text">Download CV</span>
             </a>
 
-            <a href="#contact" className="header-contact" onClick={closeMenu}>
-              <span>Let's talk</span>
+            <a href="#contact" className="header-contact" onClick={closeAll}>
+              <span>Let&apos;s talk</span>
               <span className="contact-arrow" aria-hidden="true">
                 ↗
               </span>
@@ -148,7 +238,7 @@ const Header = () => {
       </header>
 
       {/* ============================================================
-          MOBILE BACKDROP — sibling of header, so it escapes backdrop-filter
+          MOBILE BACKDROP — sibling of header
           ============================================================ */}
       <div
         className={`mobile-backdrop ${
@@ -159,7 +249,7 @@ const Header = () => {
       />
 
       {/* ============================================================
-          MOBILE SIDEBAR — sibling of header, positioned relative to viewport
+          MOBILE SIDEBAR — sibling of header
           ============================================================ */}
       <aside
         id="mobile-navigation"
@@ -188,8 +278,8 @@ const Header = () => {
 
           <nav className="mobile-nav-list" aria-label="Mobile Navigation">
             {navItems.map((item, index) => {
-              const sectionId = item.href.replace("#", "");
-              const isActive = activeSection === sectionId;
+              const id = item.href.replace("#", "");
+              const isActive = activeSection === id;
 
               return (
                 <a
@@ -230,7 +320,7 @@ const Header = () => {
               className="mobile-contact-btn"
               onClick={closeMenu}
             >
-              <span>Let's talk</span>
+              <span>Let&apos;s talk</span>
               <span aria-hidden="true">↗</span>
             </a>
           </div>

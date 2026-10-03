@@ -1,318 +1,112 @@
 /* ============================================================
-   ABOUT INFO — NAVY + WHITE CLASSICAL
+   ABOUT INFO — 3 CENTERED CARDS ON NAVY
    ============================================================ */
 
 .about-info-section {
-  position: relative;
-  background: #F5F7FA;
-  border-top: 1px solid var(--border, #E1E7ED);
-  padding: 96px 0;
-  overflow: hidden;
+  background: var(--navy, #0F2F50) !important;
+  padding: 80px 0;
+  border-top: 1px solid var(--navy, #0F2F50);
 }
 
 .about-info-section .container {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
-
 
 /* ============================================================
-   SECTION HEADER
-   ============================================================ */
-
-.about-info-header {
-  max-width: 640px;
-  margin-bottom: 48px;
-}
-
-.about-info-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.eyebrow-rule {
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--navy, #0F2F50);
-}
-
-.eyebrow-text {
-  font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--navy, #0F2F50);
-}
-
-.about-info-title {
-  font-family: var(--font-display, "Amarante", serif);
-  font-style: normal;
-  font-weight: 400;
-  font-size: clamp(1.85rem, 4vw, 2.75rem);
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-  color: var(--navy, #0F2F50);
-  margin: 0 0 14px 0;
-}
-
-.about-info-subtitle {
-  font-family: var(--font-main, "Inter", sans-serif);
-  font-size: clamp(0.9rem, 1.4vw, 1rem);
-  line-height: 1.75;
-  color: var(--text-muted, #5A6B7D);
-  margin: 0;
-  max-width: 560px;
-}
-
-
-/* ============================================================
-   STATS ROW — flat, hairline-divided, no cards
+   STATS GRID — 3 centered white cards with gaps
    ============================================================ */
 
 .about-info-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0;
-  background: #FFFFFF;
-  border: 1px solid var(--border, #E1E7ED);
-  border-radius: var(--radius-md, 0.375rem);
-  overflow: hidden;
-  margin-bottom: 48px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
 }
+
+/* ============================================================
+   CARD — white, square, centered content
+   ============================================================ */
 
 .about-info-stat {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 28px 24px;
-  border-right: 1px solid var(--border, #E1E7ED);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: var(--radius-sm, 0.25rem);
+
+  padding: 32px 24px;
+  min-height: 180px;
+
+  transition: transform 0.2s ease;
 }
 
-.about-info-stat:last-child {
-  border-right: none;
+.about-info-stat:hover {
+  transform: translateY(-2px);
 }
 
+/* Index — small mono label on top */
 .stat-index {
   font-family: var(--font-code, "Fira Code", monospace);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--navy, #0F2F50);
   opacity: 0.55;
+  margin-bottom: 12px;
 }
 
+/* Number — Amarante serif, large */
 .stat-number {
   font-family: var(--font-display, "Amarante", serif);
+  font-style: normal;
   font-weight: 400;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 2.75rem);
   line-height: 1;
   letter-spacing: 0.01em;
   color: var(--navy, #0F2F50);
+  margin-bottom: 10px;
 }
 
+/* Label — Inter, small */
 .stat-label {
   font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: var(--text-muted, #5A6B7D);
   line-height: 1.5;
+  color: var(--text-muted, #5A6B7D);
 }
-
-
-/* ============================================================
-   PROFILE DETAILS PANEL
-   ============================================================ */
-
-.about-info-panel {
-  background: #FFFFFF;
-  border: 1px solid var(--border, #E1E7ED);
-  border-radius: var(--radius-md, 0.375rem);
-  overflow: hidden;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.about-info-panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 22px 28px;
-  border-bottom: 1px solid var(--border, #E1E7ED);
-  flex-wrap: wrap;
-}
-
-.panel-kicker {
-  display: block;
-  font-family: var(--font-code, "Fira Code", monospace);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--navy, #0F2F50);
-  opacity: 0.55;
-  margin-bottom: 4px;
-}
-
-.panel-title {
-  display: block;
-  font-family: var(--font-display, "Amarante", serif);
-  font-weight: 400;
-  font-size: 1.35rem;
-  letter-spacing: 0.01em;
-  color: var(--navy, #0F2F50);
-  line-height: 1.15;
-}
-
-.panel-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border: 1px solid var(--navy, #0F2F50);
-  border-radius: var(--radius-sm, 0.25rem);
-  font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--navy, #0F2F50);
-  background: #FFFFFF;
-}
-
-.panel-status-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--navy, #0F2F50);
-  border-radius: 0;
-}
-
-.about-info-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.about-info-row {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
-  padding: 18px 28px;
-  border-bottom: 1px solid var(--border, #E1E7ED);
-  align-items: baseline;
-  transition: background-color 0.15s ease;
-}
-
-.about-info-row:last-child {
-  border-bottom: none;
-}
-
-.about-info-row:hover {
-  background: var(--surface-hover, #F5F7FA);
-}
-
-.about-info-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--navy, #0F2F50);
-}
-
-.about-info-arrow {
-  display: inline-block;
-  font-size: 14px;
-  color: var(--navy, #0F2F50);
-  opacity: 0.4;
-  line-height: 1;
-}
-
-.about-info-value {
-  font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.88rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text-secondary, #3D5064);
-  word-break: break-word;
-}
-
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 
-@media (max-width: 991px) {
-  .about-info-section {
-    padding: 72px 0;
-  }
-
-  .about-info-header {
-    margin-bottom: 36px;
-  }
-
-  .about-info-stats {
-    grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 36px;
-  }
-
-  .about-info-stat {
-    border-right: 1px solid var(--border, #E1E7ED);
-    border-bottom: 1px solid var(--border, #E1E7ED);
-  }
-
-  .about-info-stat:nth-child(2n) {
-    border-right: none;
-  }
-
-  .about-info-stat:nth-last-child(-n + 2) {
-    border-bottom: none;
-  }
-}
-
-@media (max-width: 575px) {
+@media (max-width: 767px) {
   .about-info-section {
     padding: 64px 0;
   }
 
   .about-info-stats {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .about-info-stat {
-    border-right: none;
-    border-bottom: 1px solid var(--border, #E1E7ED);
-    padding: 24px 20px;
+    min-height: auto;
+    padding: 28px 20px;
   }
+}
 
-  .about-info-stat:last-child {
-    border-bottom: none;
-  }
-
-  .about-info-panel-header {
-    padding: 18px 20px;
-  }
-
-  .about-info-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding: 16px 20px;
-  }
-
-  .about-info-label {
-    font-size: 0.78rem;
-  }
-
-  .about-info-value {
-    font-size: 0.85rem;
+@media (min-width: 768px) and (max-width: 900px) {
+  .about-info-stat {
+    padding: 28px 18px;
   }
 }

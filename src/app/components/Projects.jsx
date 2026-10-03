@@ -11,138 +11,130 @@ const Projects = () => {
 
   const [filter, setFilter] = useState("All");
   const [activeIndex, setActiveIndex] = useState(0);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
+  const [direction, setDirection] = useState("next");
 
-  const trackRef = useRef(null);
-  const cardRefs = useRef([]);
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
 
-  /* ------------------------------------------------------------
-     AOS
-  ------------------------------------------------------------ */
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
+    AOS.init({
+      duration: 800,
+      once: false,
+    });
   }, []);
 
-  /* ------------------------------------------------------------
-     FILTER DATA
-  ------------------------------------------------------------ */
-  const allTechs = projects.flatMap((p) => p.technologies);
-  const technologies = ["All", ...new Set(allTechs)];
+  const technologies = [
+    "All",
+    ...new Set(projects.flatMap((project) => project.technologies)),
+  ];
 
   const filteredProjects =
     filter === "All"
       ? projects
-      : projects.filter((p) => p.technologies.includes(filter));
+      : projects.filter((project) => project.technologies.includes(filter));
 
-  /* ------------------------------------------------------------
-     FILTER CHANGE — reset carousel
-  ------------------------------------------------------------ */
+  const total = filteredProjects.length;
+
   useEffect(() => {
     setActiveIndex(0);
-    const track = trackRef.current;
-    if (track) {
-      track.scrollTo({ left: 0, behavior: "auto" });
-    }
+    setDirection("next");
   }, [filter]);
 
-  /* ------------------------------------------------------------
-     SCROLL → sync active dot + edge state
-  ------------------------------------------------------------ */
-  const syncScrollState = useCallback(() => {
-    const track = trackRef.current;
-    const firstCard = cardRefs.current[0];
-    if (!track || !firstCard) return;
+  const goTo = useCallback(
+    (index, dir = "next") => {
+      if (!total) return;
 
-    const cardWidth = firstCard.offsetWidth;
-    const gap = 24;
-    const idx = Math.round(track.scrollLeft / (cardWidth + gap));
-    const maxScroll = track.scrollWidth - track.clientWidth;
+      setDirection(dir);
 
-    setActiveIndex(Math.max(0, Math.min(idx, filteredProjects.length - 1)));
-    setAtStart(track.scrollLeft <= 4);
-    setAtEnd(track.scrollLeft >= maxScroll - 4);
-  }, [filteredProjects.length]);
+      setActiveIndex(((index % total) + total) % total);
+    },
+    [total],
+  );
+
+  const handleNext = useCallback(() => {
+    goTo(activeIndex + 1, "next");
+  }, [activeIndex, goTo]);
+
+  const handlePrev = useCallback(() => {
+    goTo(activeIndex - 1, "prev");
+  }, [activeIndex, goTo]);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
+    const handleKey = (event) => {
+      if (event.key === "ArrowRight") {
+        handleNext();
+      }
 
-    track.addEventListener("scroll", syncScrollState, { passive: true });
-    window.addEventListener("resize", syncScrollState);
+      if (event.key === "ArrowLeft") {
+        handlePrev();
+      }
+    };
 
-    // initial sync
-    syncScrollState();
+    window.addEventListener("keydown", handleKey);
 
     return () => {
-      track.removeEventListener("scroll", syncScrollState);
-      window.removeEventListener("resize", syncScrollState);
+      window.removeEventListener("keydown", handleKey);
     };
-  }, [syncScrollState]);
+  }, [handleNext, handlePrev]);
 
-  /* ------------------------------------------------------------
-     PROGRAMMATIC SCROLL
-  ------------------------------------------------------------ */
-  const scrollToCard = (idx) => {
-    const track = trackRef.current;
-    const card = cardRefs.current[idx];
-    if (!track || !card) return;
-    track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+    touchStartY.current = event.touches[0].clientY;
   };
 
-  const handlePrev = () => {
-    if (activeIndex > 0) scrollToCard(activeIndex - 1);
-  };
-
-  const handleNext = () => {
-    if (activeIndex < filteredProjects.length - 1) {
-      scrollToCard(activeIndex + 1);
+  const handleTouchEnd = (event) => {
+    if (touchStartX.current === null || touchStartY.current === null) {
+      return;
     }
+
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+
+    const deltaY = event.changedTouches[0].clientY - touchStartY.current;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 45) {
+      if (deltaX < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+
+    touchStartX.current = null;
+    touchStartY.current = null;
   };
 
-  /* ------------------------------------------------------------
-     KEYBOARD NAVIGATION
-  ------------------------------------------------------------ */
-  useEffect(() => {
-    const handleKey = (e) => {
-      // Only handle when the carousel section is in view (optional)
-      if (e.key === "ArrowRight") handleNext();
-      if (e.key === "ArrowLeft") handlePrev();
-    };
-    // We intentionally don't attach this globally — arrows on the carousel
-    // are the primary control. Keyboard users can still Tab to buttons.
-    // Remove the following two lines if you want global arrow keys.
-    // window.addEventListener("keydown", handleKey);
-    // return () => window.removeEventListener("keydown", handleKey);
-  }, [activeIndex, filteredProjects.length]);
+  const getOffset = (index) => {
+    if (!total) return 0;
 
-  /* ------------------------------------------------------------
-     STATUS CLASS HELPER
-  ------------------------------------------------------------ */
-  const getStatusClass = (status) => {
-    const map = {
-      Completed: "status-completed",
-      "In Development": "status-dev",
-      "In Progress": "status-progress",
-    };
-    return map[status] || "status-completed";
+    let offset = index - activeIndex;
+
+    if (offset > total / 2) {
+      offset -= total;
+    }
+
+    if (offset < -total / 2) {
+      offset += total;
+    }
+
+    return offset;
   };
 
-  /* ------------------------------------------------------------
-     PROGRESS BAR
-  ------------------------------------------------------------ */
-  const total = filteredProjects.length;
-  const progressPct = total <= 1 ? 100 : ((activeIndex + 1) / total) * 100;
+  if (!total) return null;
+
+  const currentNumber = String(activeIndex + 1).padStart(2, "0");
+  const totalNumber = String(total).padStart(2, "0");
 
   return (
     <section id="projects" className="projects-section">
       <div className="container">
         {/* =====================================================
-            SECTION HEADER
-            ===================================================== */}
+            HEADER
+        ===================================================== */}
+
         <div className="projects-header" data-aos="fade-down">
           <div className="projects-eyebrow">
             <span className="eyebrow-rule" aria-hidden="true" />
+
             <span className="eyebrow-text">Selected Works</span>
           </div>
 
@@ -155,8 +147,9 @@ const Projects = () => {
         </div>
 
         {/* =====================================================
-            FILTER PILLS
-            ===================================================== */}
+            FILTERS
+        ===================================================== */}
+
         <div
           className="projects-filters"
           data-aos="fade-up"
@@ -180,177 +173,246 @@ const Projects = () => {
         </div>
 
         {/* =====================================================
-            CAROUSEL
-            ===================================================== */}
-        <div className="projects-carousel" data-aos="fade-up">
-          {/* Prev button */}
-          <button
-            type="button"
-            className="carousel-arrow carousel-arrow-prev"
-            onClick={handlePrev}
-            disabled={atStart}
-            aria-label="Previous project"
-            title="Previous"
-          >
-            <i className="fas fa-chevron-left" aria-hidden="true" />
-          </button>
+            COVER FLOW
+        ===================================================== */}
 
-          {/* Next button */}
-          <button
-            type="button"
-            className="carousel-arrow carousel-arrow-next"
-            onClick={handleNext}
-            disabled={atEnd}
-            aria-label="Next project"
-            title="Next"
-          >
-            <i className="fas fa-chevron-right" aria-hidden="true" />
-          </button>
+        <div
+          className="projects-cinematic"
+          data-aos="fade-up"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="projects-cinematic-top">
+            <div className="projects-cinematic-label">PROJECT ARCHIVE</div>
 
-          {/* Track */}
-          <div className="projects-track" ref={trackRef}>
-            {filteredProjects.map((project, index) => (
-              <article
-                key={project.id}
-                className="project-card"
-                ref={(el) => {
-                  cardRefs.current[index] = el;
-                }}
-              >
-                {/* Card body */}
-                <div className="project-card-body">
-                  {/* Header row */}
-                  <div className="project-card-head">
-                    <h3 className="project-card-title">{project.title}</h3>
-                    <span
-                      className={`project-status ${getStatusClass(
-                        project.status,
-                      )}`}
-                    >
-                      {project.status}
-                    </span>
-                  </div>
+            <div className="projects-cinematic-counter">
+              <span>{currentNumber}</span>
+              <i />
+              <span>{totalNumber}</span>
+            </div>
+          </div>
 
-                  {/* Description */}
-                  <p className="project-card-desc">{project.description}</p>
+          <div className="projects-coverflow">
+            {/* Ambient floor */}
+            <div className="projects-coverflow-floor" aria-hidden="true" />
 
-                  {/* Meta */}
-                  <div className="project-card-meta">
-                    <span>
-                      <i className="far fa-calendar-alt" aria-hidden="true" />
-                      {project.startDate} – {project.endDate}
-                    </span>
-                    <span>
-                      <i className="fas fa-user-tag" aria-hidden="true" />
-                      {project.role}
-                    </span>
-                  </div>
+            {filteredProjects.map((project, index) => {
+              const offset = getOffset(index);
 
-                  {/* Tech badges */}
-                  <div className="project-card-tags">
-                    {project.technologies.map((tech, i) => (
-                      <span key={i} className="project-tag">
-                        {tech}
+              const isVisible = Math.abs(offset) <= 2;
+
+              if (!isVisible) return null;
+
+              const isActive = offset === 0;
+
+              return (
+                <article
+                  key={project.id}
+                  className={`project-cover-card ${
+                    isActive ? "project-cover-card-active" : ""
+                  } ${offset < 0 ? "project-cover-card-left" : ""} ${
+                    offset > 0 ? "project-cover-card-right" : ""
+                  }`}
+                  data-offset={offset}
+                  aria-hidden={!isActive}
+                  onClick={() => {
+                    if (offset < 0) {
+                      handlePrev();
+                    }
+
+                    if (offset > 0) {
+                      handleNext();
+                    }
+                  }}
+                >
+                  {/* =================================================
+                      PROJECT INFORMATION
+                  ================================================= */}
+
+                  <div className="project-cover-content">
+                    <div className="project-cover-heading">
+                      <div>
+                        <span className="project-cover-kicker">CASE STUDY</span>
+
+                        <h3 className="project-cover-title">{project.title}</h3>
+                      </div>
+
+                      <span className="project-cover-index">
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                    ))}
-                  </div>
+                    </div>
 
-                  {/* Highlights */}
-                  {project.highlights && project.highlights.length > 0 && (
-                    <ul className="project-card-highlights">
-                      {project.highlights.map((h, i) => (
-                        <li key={i}>
-                          <span className="highlight-bullet" aria-hidden="true">
-                            ›
-                          </span>
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+                    <p className="project-cover-description">
+                      {project.description}
+                    </p>
 
-                {/* Card actions */}
-                <div className="project-card-actions">
-                  {project.githubLink && (
-                    <>
-                      {project.githubLink === "private" ? (
-                        <span className="project-private-badge">
-                          <i className="fas fa-lock" aria-hidden="true" />
-                          Private Repo
+                    <div className="project-cover-meta">
+                      <div>
+                        <span>ROLE</span>
+                        <strong>{project.role}</strong>
+                      </div>
+
+                      <div>
+                        <span>PERIOD</span>
+                        <strong>
+                          {project.startDate} – {project.endDate}
+                        </strong>
+                      </div>
+                    </div>
+
+                    <div className="project-cover-tags">
+                      {project.technologies.slice(0, 5).map((tech, i) => (
+                        <span key={i} className="project-cover-tag">
+                          {tech}
                         </span>
-                      ) : (
+                      ))}
+                    </div>
+
+                    {project.highlights && project.highlights.length > 0 && (
+                      <div className="project-cover-highlights">
+                        {project.highlights.slice(0, 2).map((highlight, i) => (
+                          <div className="project-cover-highlight" key={i}>
+                            <span>+</span>
+                            <span>{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="project-cover-actions">
+                      {project.githubLink && (
+                        <>
+                          {project.githubLink === "private" ? (
+                            <span className="project-private-badge">
+                              <i className="fas fa-lock" aria-hidden="true" />
+                              Private Repo
+                            </span>
+                          ) : (
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="project-action-btn"
+                              onClick={(event) => event.stopPropagation()}
+                              aria-label={`View ${project.title} source code on GitHub`}
+                            >
+                              <i className="fab fa-github" aria-hidden="true" />
+                              Code
+                            </a>
+                          )}
+                        </>
+                      )}
+
+                      {project.liveDemo && (
                         <a
-                          href={project.githubLink}
+                          href={project.liveDemo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="project-action-btn"
-                          aria-label={`View ${project.title} source code on GitHub`}
+                          className="project-action-btn project-action-btn-primary"
+                          onClick={(event) => event.stopPropagation()}
+                          aria-label={`Visit live demo for ${project.title}`}
                         >
-                          <i className="fab fa-github" aria-hidden="true" />
-                          Code
+                          <i
+                            className="fas fa-arrow-up-right-from-square"
+                            aria-hidden="true"
+                          />
+                          Live Demo
                         </a>
                       )}
-                    </>
-                  )}
+                    </div>
+                  </div>
 
-                  {project.liveDemo && (
-                    <a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-action-btn project-action-btn-primary"
-                      aria-label={`Visit live demo for ${project.title}`}
-                    >
-                      <i
-                        className="fas fa-external-link-alt"
-                        aria-hidden="true"
-                      />
-                      Live Demo
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
+                  {/* Bottom rail */}
+                  <div className="project-cover-bottom">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+
+                    <div className="project-cover-bottom-line" />
+
+                    <span>{totalNumber}</span>
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
-          {/* Progress bar */}
-          <div className="carousel-progress" aria-hidden="true">
-            <div
-              className="carousel-progress-fill"
-              style={{ width: `${progressPct}%` }}
-            />
-          </div>
+          {/* =====================================================
+              NAVIGATION
+          ===================================================== */}
+
+          <button
+            type="button"
+            className="project-cover-arrow project-cover-arrow-prev"
+            onClick={handlePrev}
+            aria-label="Previous project"
+          >
+            <i className="fas fa-arrow-left" aria-hidden="true" />
+
+            <span>PREV</span>
+          </button>
+
+          <button
+            type="button"
+            className="project-cover-arrow project-cover-arrow-next"
+            onClick={handleNext}
+            aria-label="Next project"
+          >
+            <span>NEXT</span>
+
+            <i className="fas fa-arrow-right" aria-hidden="true" />
+          </button>
         </div>
 
         {/* =====================================================
-            FOOTER — counter + dots
-            ===================================================== */}
-        <div className="carousel-footer">
-          <div className="carousel-counter">
-            <span className="counter-current">
-              {String(activeIndex + 1).padStart(2, "0")}
-            </span>
-            <span className="counter-sep">/</span>
-            <span className="counter-total">
-              {String(filteredProjects.length).padStart(2, "0")}
-            </span>
+            FOOTER
+        ===================================================== */}
+
+        <div className="projects-cover-footer">
+          <div className="projects-cover-progress">
+            <span
+              style={{
+                width: `${
+                  total <= 1 ? 100 : ((activeIndex + 1) / total) * 100
+                }%`,
+              }}
+            />
           </div>
 
-          <div className="carousel-dots" role="tablist">
-            {filteredProjects.map((project, i) => (
-              <button
-                key={project.id}
-                type="button"
-                role="tab"
-                aria-selected={i === activeIndex}
-                aria-label={`Go to project ${i + 1}`}
-                className={`carousel-dot ${
-                  i === activeIndex ? "carousel-dot-active" : ""
-                }`}
-                onClick={() => scrollToCard(i)}
-              />
-            ))}
+          <div className="projects-cover-footer-row">
+            <div className="projects-cover-counter">
+              <span className="projects-cover-current">{currentNumber}</span>
+
+              <span>/</span>
+
+              <span className="projects-cover-total">{totalNumber}</span>
+            </div>
+
+            <div
+              className="projects-cover-dots"
+              role="tablist"
+              aria-label="Project navigation"
+            >
+              {filteredProjects.map((project, index) => (
+                <button
+                  key={project.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === activeIndex}
+                  aria-label={`Go to project ${index + 1}: ${project.title}`}
+                  className={`projects-cover-dot ${
+                    index === activeIndex ? "projects-cover-dot-active" : ""
+                  }`}
+                  onClick={() =>
+                    goTo(index, index > activeIndex ? "next" : "prev")
+                  }
+                />
+              ))}
+            </div>
+
+            <div className="projects-cover-swipe">
+              <span>DRAG / SWIPE</span>
+
+              <span className="projects-cover-swipe-arrows">← →</span>
+            </div>
           </div>
         </div>
       </div>
