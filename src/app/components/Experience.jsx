@@ -21,13 +21,16 @@ const Experience = () => {
 
       <div className="container">
         <div className="section-header-wrap" data-aos="fade-down">
+          <span className="section-kicker">CAREER PATH</span>
           <h2 className="section-title">Work Experience</h2>
-          <p className="section-subtitle">Professional career history, engineering roles, and real-world project impact</p>
+          <p className="section-subtitle">
+            Professional software development roles, engineering responsibilities, and production impact
+          </p>
         </div>
 
         <div className="exp-list">
           {experience.map((exp, index) => (
-            <div
+            <article
               key={exp.id}
               className="exp-card"
               data-aos="fade-up"
@@ -43,7 +46,7 @@ const Experience = () => {
                 <div className="exp-meta">
                   <span className="badge-exp-type">{exp.type}</span>
                   <span className="exp-duration">
-                    <i className="far fa-calendar-alt me-1"></i> {exp.duration}
+                    <i className="far fa-calendar-alt me-1" aria-hidden="true"></i> {exp.duration}
                   </span>
                 </div>
               </div>
@@ -51,17 +54,17 @@ const Experience = () => {
               <p className="exp-description">{exp.description}</p>
 
               <div className="exp-responsibilities-wrap">
-                <div className="responsibilities-title">Key Responsibilities & Achievements:</div>
+                <div className="responsibilities-title">Key Responsibilities & Deliverables:</div>
                 <ul className="exp-responsibilities">
                   {exp.responsibilities.map((item, i) => (
                     <li key={i}>
-                      <span className="exp-bullet">›</span>
+                      <span className="exp-bullet" aria-hidden="true">›</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

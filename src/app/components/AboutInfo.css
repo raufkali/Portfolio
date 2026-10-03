@@ -1,5 +1,5 @@
 /* ============================================================
-   ABOUT INFO / STATS DASHBOARD — MULTI-THEME
+   ABOUT INFO / STATS DASHBOARD — CLASSICAL WHITE & DARK BLUE
    ============================================================ */
 
 .about-info-section {
@@ -14,8 +14,11 @@
   position: relative;
   z-index: 2;
   border-radius: var(--radius-lg);
-  padding: 28px 20px;
+  padding: 30px 24px;
   text-align: center;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   height: 100%;
   display: flex;
@@ -24,64 +27,31 @@
   align-items: center;
 }
 
-/* 1. NEO-EXTREMISM Stat Card */
-[data-theme="neoextremism"] .stat-card {
-  background: #FFFFFF;
-  border: 2.5px solid #000000;
-  box-shadow: 5px 5px 0px #000000;
-}
-
-[data-theme="neoextremism"] .stat-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0px #000000;
-  border-color: #000000;
-}
-
-/* 2. MINIMALISM Stat Card */
-[data-theme="minimalism"] .stat-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="minimalism"] .stat-card:hover {
-  background: #FFFFFF;
-  border-color: #CBD5E1;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px);
-}
-
-/* 3. CYBERPUNK Stat Card */
-[data-theme="cyberpunk"] .stat-card {
-  background: rgba(16, 18, 38, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 255, 65, 0.2);
-  box-shadow: 0 0 25px rgba(0, 255, 65, 0.08);
-}
-
-[data-theme="cyberpunk"] .stat-card:hover {
-  border-color: var(--neon-cyan, #00FFFF);
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.25), 0 15px 40px rgba(0, 0, 0, 0.5);
+.stat-card:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--accent-blue-border);
+  box-shadow: 0 14px 30px -4px rgba(30, 64, 175, 0.1);
   transform: translateY(-4px);
 }
 
 .stat-number {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-size: clamp(2.4rem, 5.2vw, 3.6rem);
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
 }
 
 .stat-label {
   font-family: var(--font-main);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--accent-primary);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -93,57 +63,47 @@
   position: relative;
   z-index: 2;
   border-radius: var(--radius-lg);
-  padding: 24px 28px;
+  padding: 26px 30px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.04);
   transition: all 0.3s ease;
 }
 
-/* 1. NEO-EXTREMISM Info Card */
-[data-theme="neoextremism"] .info-list-card {
-  background: #FFFFFF;
-  border: 2.5px solid #000000;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-/* 2. MINIMALISM Info Card */
-[data-theme="minimalism"] .info-list-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
-}
-
-/* 3. CYBERPUNK Info Card */
-[data-theme="cyberpunk"] .info-list-card {
-  background: rgba(16, 18, 38, 0.65);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 255, 65, 0.2);
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.08);
+.info-list-card:hover {
+  border-color: var(--accent-blue-border);
+  box-shadow: 0 10px 30px -4px rgba(30, 64, 175, 0.08);
 }
 
 .info-list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 14px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .info-header-tag {
   font-family: var(--font-main);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-primary);
+  color: var(--accent-dark-blue);
 }
 
 .info-header-status {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
+  gap: 7px;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--accent-primary);
+  background: var(--accent-light-blue);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-blue-border);
 }
 
 .info-items-container {
@@ -155,9 +115,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
+  padding: 13px 0;
   border-bottom: 1px solid var(--border);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
 }
 
 .info-item:last-child {
@@ -165,21 +125,22 @@
 }
 
 .info-label {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-weight: 600;
   font-family: var(--font-main);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .info-arrow {
   color: var(--accent-secondary);
   font-weight: 800;
+  font-size: 1.15rem;
 }
 
 .info-value {
-  color: var(--text-primary);
+  color: var(--accent-dark-blue);
   font-weight: 700;
   text-align: right;
   font-family: var(--font-main);
@@ -190,11 +151,11 @@
    ============================================================ */
 @media (max-width: 768px) {
   .stat-card {
-    padding: 18px 12px;
+    padding: 20px 14px;
   }
 
   .info-list-card {
-    padding: 18px 16px;
+    padding: 20px 18px;
   }
 
   .info-item {

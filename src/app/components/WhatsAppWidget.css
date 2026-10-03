@@ -1,5 +1,5 @@
 /* ============================================================
-   WHATSAPP FLOATING WIDGET — MULTI-THEME SUPPORT
+   WHATSAPP FLOATING WIDGET — CLASSICAL WHITE LIGHT & DARK BLUE
    ============================================================ */
 
 .whatsapp-floating-widget {
@@ -16,16 +16,25 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 16px 8px 10px;
+  padding: 8px 18px 8px 10px;
   border-radius: var(--radius-pill);
   cursor: pointer;
   text-decoration: none;
-  border: none;
+  border: 1px solid var(--border);
   outline: none;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: #FFFFFF;
+  color: var(--accent-dark-blue);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
   font-family: var(--font-main);
   position: relative;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.whatsapp-float-btn:hover {
+  transform: translateY(-3px);
+  border-color: #86EFAC;
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.18);
+  background: #FFFFFF;
 }
 
 /* Icon Wrap */
@@ -40,16 +49,22 @@
   color: #FFFFFF;
   font-size: 1.45rem;
   flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
   transition: transform 0.3s ease;
+}
+
+.whatsapp-float-btn:hover .whatsapp-icon-wrap {
+  transform: scale(1.08);
 }
 
 .whatsapp-tooltip {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 0.82rem;
+  gap: 8px;
+  font-size: 0.84rem;
   font-weight: 700;
   white-space: nowrap;
+  color: var(--accent-dark-blue);
 }
 
 .whatsapp-pulse-dot {
@@ -57,69 +72,19 @@
   height: 7px;
   border-radius: 50%;
   background: #25D366;
-  box-shadow: 0 0 8px #25D366;
+  box-shadow: 0 0 8px rgba(37, 211, 102, 0.7);
   animation: waPulse 1.8s infinite;
 }
 
 @keyframes waPulse {
-  0%, 100% { opacity: 0.5; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.15); }
-}
-
-/* ------------------------------------------------------------
-   THEME SPECIFIC VARIATIONS
-   ------------------------------------------------------------ */
-
-/* 1. NEO-EXTREMISM (Light Neo-Brutalism) */
-[data-theme="neoextremism"] .whatsapp-float-btn {
-  background: #FFFFFF;
-  color: #000000;
-  border: 2.5px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-}
-
-[data-theme="neoextremism"] .whatsapp-float-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-  background: #FFFDF9;
-}
-
-[data-theme="neoextremism"] .whatsapp-icon-wrap {
-  border: 2px solid #000000;
-}
-
-/* 2. MINIMALISM (Light Luxury) */
-[data-theme="minimalism"] .whatsapp-float-btn {
-  background: #FFFFFF;
-  color: #0F172A;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-}
-
-[data-theme="minimalism"] .whatsapp-float-btn:hover {
-  transform: translateY(-3px);
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-}
-
-/* 3. CYBERPUNK (Dark Neon) */
-[data-theme="cyberpunk"] .whatsapp-float-btn {
-  background: rgba(10, 12, 30, 0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  color: #00FF41;
-  border: 1.5px solid #25D366;
-  box-shadow: 0 0 25px rgba(37, 211, 102, 0.35);
-  font-family: var(--font-code);
-}
-
-[data-theme="cyberpunk"] .whatsapp-float-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 45px rgba(37, 211, 102, 0.65);
-}
-
-[data-theme="cyberpunk"] .whatsapp-icon-wrap {
-  box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 /* ============================================================
@@ -127,7 +92,7 @@
    ============================================================ */
 @media (max-width: 768px) {
   .whatsapp-floating-widget {
-    bottom: 85px;
+    bottom: 82px;
     right: 20px;
   }
 
@@ -152,12 +117,12 @@
 
 @media (max-width: 480px) {
   .whatsapp-floating-widget {
-    bottom: 80px;
+    bottom: 78px;
     right: 16px;
   }
 
   .whatsapp-float-btn {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
   }
 }

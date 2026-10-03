@@ -1,5 +1,5 @@
 /* ============================================================
-   SKILLS SECTION — MULTI-THEME
+   SKILLS SECTION — CLASSICAL WHITE LIGHT & DARK BLUE
    ============================================================ */
 
 .skills-section {
@@ -11,48 +11,18 @@
   position: relative;
   z-index: 2;
   border-radius: var(--radius-lg);
-  padding: 24px 22px;
+  padding: 26px 24px;
   height: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
   transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 1. NEO-EXTREMISM Skill Card */
-[data-theme="neoextremism"] .skill-category-card {
+.skill-category-card:hover {
   background: #FFFFFF;
-  border: 2.5px solid #000000;
-  box-shadow: 5px 5px 0px #000000;
-}
-
-[data-theme="neoextremism"] .skill-category-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0px #000000;
-}
-
-/* 2. MINIMALISM Skill Card */
-[data-theme="minimalism"] .skill-category-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="minimalism"] .skill-category-card:hover {
-  background: #FFFFFF;
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px);
-}
-
-/* 3. CYBERPUNK Skill Card */
-[data-theme="cyberpunk"] .skill-category-card {
-  background: rgba(16, 18, 38, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 255, 65, 0.2);
-  box-shadow: 0 0 25px rgba(0, 255, 65, 0.06);
-}
-
-[data-theme="cyberpunk"] .skill-category-card:hover {
-  border-color: var(--neon-cyan, #00FFFF);
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.2), 0 15px 40px rgba(0, 0, 0, 0.5);
+  border-color: var(--accent-blue-border);
+  box-shadow: 0 14px 34px -4px rgba(30, 64, 175, 0.1);
   transform: translateY(-4px);
 }
 
@@ -60,50 +30,40 @@
 .skill-card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-  padding-bottom: 12px;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--border);
 }
 
 .skill-icon-wrap {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.35rem;
-  color: var(--text-primary);
-  background: var(--surface-hover);
-  border: 1px solid var(--border);
+  color: var(--accent-secondary);
+  background: var(--accent-light-blue);
+  border: 1px solid var(--accent-blue-border);
   flex-shrink: 0;
+  transition: all 0.25s ease;
 }
 
-[data-theme="neoextremism"] .skill-icon-wrap {
-  background: var(--accent-yellow);
-  color: #000000;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="minimalism"] .skill-icon-wrap {
-  background: #F8FAFC;
-  color: #0F172A;
-  border-color: #E2E8F0;
-}
-
-[data-theme="cyberpunk"] .skill-icon-wrap {
-  background: rgba(16, 18, 38, 0.9);
-  color: var(--neon-cyan, #00FFFF);
-  border-color: rgba(0, 255, 65, 0.3);
+.skill-category-card:hover .skill-icon-wrap {
+  background: var(--accent-secondary);
+  color: #FFFFFF;
+  border-color: var(--accent-secondary);
+  transform: scale(1.05);
 }
 
 .skill-category-title {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--accent-dark-blue);
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
 /* Tags */
@@ -114,10 +74,10 @@
 }
 
 .skill-tag-pill {
-  padding: 5px 14px;
+  padding: 6px 14px;
   border-radius: var(--radius-pill);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
   font-family: var(--font-code);
   color: var(--text-secondary);
   background: var(--surface-hover);
@@ -125,42 +85,9 @@
   transition: all 0.2s ease;
 }
 
-[data-theme="neoextremism"] .skill-tag-pill {
-  background: #FBF9F5;
-  color: #000000;
-  border: 1.5px solid #000000;
-}
-
-[data-theme="neoextremism"] .skill-tag-pill:hover {
-  background: var(--accent-yellow);
-  color: #000000;
-  transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="minimalism"] .skill-tag-pill {
-  background: #F8FAFC;
-  color: #334155;
-  border-color: #E2E8F0;
-}
-
-[data-theme="minimalism"] .skill-tag-pill:hover {
-  background: #0F172A;
-  color: #FFFFFF;
-  border-color: #0F172A;
-  transform: translateY(-2px);
-}
-
-[data-theme="cyberpunk"] .skill-tag-pill {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-secondary);
-  border-color: var(--border);
-}
-
-[data-theme="cyberpunk"] .skill-tag-pill:hover {
-  background: rgba(0, 255, 65, 0.15);
-  border-color: var(--neon-green, #00FF41);
-  color: var(--neon-green, #00FF41);
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
-  transform: translateY(-2px);
+.skill-tag-pill:hover {
+  background: var(--accent-light-blue);
+  color: var(--accent-primary);
+  border-color: var(--accent-blue-border);
+  transform: translateY(-1px);
 }

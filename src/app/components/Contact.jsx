@@ -47,8 +47,11 @@ const Contact = () => {
 
       <div className="container">
         <div className="section-header-wrap" data-aos="fade-down">
+          <span className="section-kicker">GET IN TOUCH</span>
           <h2 className="section-title">Let's Work Together</h2>
-          <p className="section-subtitle">Have a project idea, software inquiry, or engineering opportunity? Reach out directly</p>
+          <p className="section-subtitle">
+            Have a project in mind, engineering inquiry, or software opportunity? Let's build something remarkable.
+          </p>
         </div>
 
         <div className="row g-4">
@@ -57,13 +60,13 @@ const Contact = () => {
             <div className="contact-info-card">
               <h3 className="contact-card-title">Contact Information</h3>
               <p className="contact-card-subtitle">
-                I am actively open to discussing new software projects, web applications, or engineering roles.
+                Available for full-time engineering roles, freelance contracts, and production web and desktop applications.
               </p>
 
               <div className="contact-details-list">
                 {/* Email */}
                 <div className="contact-detail-item">
-                  <div className="contact-icon-box">
+                  <div className="contact-icon-box" aria-hidden="true">
                     <i className="fas fa-envelope"></i>
                   </div>
                   <div>
@@ -71,6 +74,7 @@ const Contact = () => {
                     <a
                       href={`mailto:${personal.email}`}
                       className="contact-detail-val"
+                      aria-label={`Send email to ${personal.email}`}
                     >
                       {personal.email}
                     </a>
@@ -79,7 +83,7 @@ const Contact = () => {
 
                 {/* WhatsApp */}
                 <div className="contact-detail-item">
-                  <div className="contact-icon-box text-success">
+                  <div className="contact-icon-box text-success" aria-hidden="true">
                     <i className="fab fa-whatsapp"></i>
                   </div>
                   <div>
@@ -89,6 +93,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="contact-detail-val"
+                      aria-label="Direct message on WhatsApp"
                     >
                       {personal.whatsapp}
                     </a>
@@ -97,7 +102,7 @@ const Contact = () => {
 
                 {/* Phone */}
                 <div className="contact-detail-item">
-                  <div className="contact-icon-box">
+                  <div className="contact-icon-box" aria-hidden="true">
                     <i className="fas fa-phone"></i>
                   </div>
                   <div>
@@ -108,7 +113,7 @@ const Contact = () => {
 
                 {/* LinkedIn */}
                 <div className="contact-detail-item">
-                  <div className="contact-icon-box">
+                  <div className="contact-icon-box" aria-hidden="true">
                     <i className="fab fa-linkedin-in"></i>
                   </div>
                   <div>
@@ -118,6 +123,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="contact-detail-val"
+                      aria-label="Visit LinkedIn Profile"
                     >
                       {personal.linkedin.replace("https://www.", "")}
                     </a>
@@ -126,7 +132,7 @@ const Contact = () => {
 
                 {/* GitHub */}
                 <div className="contact-detail-item">
-                  <div className="contact-icon-box">
+                  <div className="contact-icon-box" aria-hidden="true">
                     <i className="fab fa-github"></i>
                   </div>
                   <div>
@@ -136,6 +142,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="contact-detail-val"
+                      aria-label="Visit GitHub Profile"
                     >
                       {personal.github.replace("https://github.com/", "")}
                     </a>
@@ -149,8 +156,9 @@ const Contact = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-whatsapp-direct"
+                  aria-label="Start direct WhatsApp conversation"
                 >
-                  <i className="fab fa-whatsapp me-2"></i>
+                  <i className="fab fa-whatsapp me-2" aria-hidden="true"></i>
                   Direct WhatsApp Chat
                 </a>
               </div>
@@ -162,13 +170,14 @@ const Contact = () => {
             <div className="contact-form-card">
               <h3 className="contact-card-title">Send a Quick Message</h3>
               <p className="contact-card-subtitle">
-                Fill out the form below to initiate an instant conversation on WhatsApp.
+                Fill out the details below to initiate an instant conversation on WhatsApp.
               </p>
 
               <form onSubmit={handleSubmit} className="contact-form-body">
                 <div className="form-group mb-3">
-                  <label className="form-input-label">Your Name</label>
+                  <label htmlFor="contact-name" className="form-input-label">Your Name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     className="form-custom-input"
                     value={form.name}
@@ -179,8 +188,9 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group mb-3">
-                  <label className="form-input-label">Email Address</label>
+                  <label htmlFor="contact-email" className="form-input-label">Email Address</label>
                   <input
+                    id="contact-email"
                     type="email"
                     className="form-custom-input"
                     placeholder="Enter your email"
@@ -193,11 +203,12 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group mb-4">
-                  <label className="form-input-label">Message</label>
+                  <label htmlFor="contact-message" className="form-input-label">Message</label>
                   <textarea
+                    id="contact-message"
                     className="form-custom-input"
                     rows="5"
-                    placeholder="Tell me about your project or inquiry..."
+                    placeholder="Tell me about your project, idea, or inquiry..."
                     value={form.message}
                     onChange={(e) =>
                       setForm({ ...form, message: e.target.value })
@@ -210,15 +221,16 @@ const Contact = () => {
                   type="submit"
                   className="btn-submit-message"
                   disabled={submitted}
+                  aria-label="Send message via WhatsApp"
                 >
                   {submitted ? (
                     <>
-                      <span className="spinner-border spinner-border-sm me-2"></span>
+                      <span className="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
                       Opening WhatsApp...
                     </>
                   ) : (
                     <>
-                      <i className="fab fa-whatsapp me-2"></i>
+                      <i className="fab fa-whatsapp me-2" aria-hidden="true"></i>
                       Send Message via WhatsApp
                     </>
                   )}

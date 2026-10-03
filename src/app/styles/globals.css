@@ -1,244 +1,96 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap");
-
 /* ============================================================
-   1. THEME DEFINITIONS & CSS VARIABLES
+   CLASSICAL THEME — WHITE LIGHT & DARK BLUE
+   Unified Flow, Single Theme, Modern & High-Performance
    ============================================================ */
 
-/* ------------------------------------------------------------
-   THEME 1: NEO-EXTREMISM (Major Theme — Iconic Light Neo-Brutalism)
-   High contrast, creamy light paper background, pitch black ink,
-   thick 2.5px borders, hard 4px-6px drop shadows, electric pop colors
-   ------------------------------------------------------------ */
 :root,
-[data-theme="neoextremism"] {
-  --theme-name: "neoextremism";
+[data-theme="classic"] {
+  --theme-name: "classic";
 
-  /* Fonts */
-  --font-main: "Space Grotesk", "Plus Jakarta Sans", -apple-system, sans-serif;
+  /* Typography */
+  --font-main: "Plus Jakarta Sans", var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Plus Jakarta Sans", -apple-system, sans-serif;
   --font-code: "Fira Code", monospace;
-  --font-display: "Space Grotesk", sans-serif;
 
-  /* Light Canvas & Section Backgrounds */
-  --bg-hero: #FDFBF7;
-  --bg-about: #F7F4EC;
-  --bg-skills: #FDFBF7;
-  --bg-projects: #F4F0E6;
-  --bg-contact: #EDE8DC;
-  --bg-subtle: #E8E2D4;
+  /* White Light Canvas & Flowing Backgrounds */
+  --bg-page: #FFFFFF;
+  --bg-hero: #FFFFFF;
+  --bg-about: #F8FAFD;
+  --bg-skills: #F1F6FD;
+  --bg-projects: #FFFFFF;
+  --bg-experience: #F8FAFD;
+  --bg-hobbies: #F1F6FD;
+  --bg-contact: #FFFFFF;
+  --bg-subtle: #F0F6FF;
 
   /* Surfaces & Cards */
   --surface: #FFFFFF;
-  --surface-hover: #FFFDF9;
-  --surface-elevated: #FFFFFF;
-  --surface-card: #FFFFFF;
-
-  /* High-Contrast Neo-Brutalist Pop Colors */
-  --accent-yellow: #FFE600;
-  --accent-pink: #FF2E93;
-  --accent-cyan: #00F0FF;
-  --accent-green: #39FF14;
-  --accent-orange: #FF6B00;
-  --accent-purple: #B24BF3;
-
-  /* Primary Accents */
-  --accent-primary: #FFE600;
-  --accent-secondary: #FF2E93;
-  --accent-gradient: linear-gradient(135deg, #FF2E93 0%, #FFE600 50%, #00F0FF 100%);
-  --accent-gradient-alt: linear-gradient(135deg, #39FF14 0%, #00F0FF 100%);
-
-  /* Text Hierarchy */
-  --text-primary: #000000;
-  --text-secondary: #1F2430;
-  --text-muted: #5A6275;
-  --text-subtle: #7E889B;
-  --text-dark: #000000;
-
-  /* Brutalist Borders & Shadows */
-  --border-width: 2.5px;
-  --border: #000000;
-  --border-bold: #000000;
-  --border-accent: #FFE600;
-  --border-hover: #000000;
-
-  --shadow-brutal: 4px 4px 0px #000000;
-  --shadow-brutal-sm: 2px 2px 0px #000000;
-  --shadow-brutal-lg: 6px 6px 0px #000000;
-  --shadow-brutal-accent: 4px 4px 0px #FFE600;
-  --shadow-brutal-pink: 4px 4px 0px #FF2E93;
-  --glow-effect: none;
-
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-pill: 999px;
-  --section-padding: 95px;
-
-  /* Section Left Borders */
-  --section-border-w: 4px;
-  --accent-hero-border: #FFE600;
-  --accent-about-border: #FF2E93;
-  --accent-skills-border: #00F0FF;
-  --accent-projects-border: #39FF14;
-  --accent-contact-border: #FFE600;
-}
-
-/* ------------------------------------------------------------
-   THEME 2: MINIMALISM (2nd Theme — Clean Monochromatic Light Luxury)
-   Pristine white canvas, soft slate typography, subtle borders, airy spacing
-   ------------------------------------------------------------ */
-[data-theme="minimalism"] {
-  --theme-name: "minimalism";
-
-  /* Fonts */
-  --font-main: "Plus Jakarta Sans", -apple-system, sans-serif;
-  --font-code: "Fira Code", monospace;
-  --font-display: "Plus Jakarta Sans", sans-serif;
-
-  /* Light Minimal Backgrounds */
-  --bg-hero: #FAFAFA;
-  --bg-about: #F4F5F7;
-  --bg-skills: #FAFAFA;
-  --bg-projects: #F1F3F6;
-  --bg-contact: #EAECEF;
-  --bg-subtle: #E2E5E9;
-
-  /* Surfaces */
-  --surface: #FFFFFF;
   --surface-hover: #F8FAFC;
-  --surface-elevated: #FFFFFF;
   --surface-card: #FFFFFF;
+  --surface-card-hover: #F8FBFF;
+  --surface-elevated: #FFFFFF;
 
-  /* Accents */
-  --accent-yellow: #D97706;
-  --accent-pink: #DB2777;
-  --accent-cyan: #0284C7;
-  --accent-green: #059669;
-  --accent-orange: #EA580C;
-  --accent-purple: #7C3AED;
+  /* Dark Blue & Royal Navy Accents */
+  --accent-dark-blue: #0A192F;
+  --accent-navy: #0F172A;
+  --accent-deep-blue: #1E3A8A;
+  --accent-primary: #1E3A8A;
+  --accent-secondary: #2563EB;
+  --accent-royal: #1D4ED8;
+  --accent-blue-accent: #3B82F6;
+  --accent-light-blue: #EFF6FF;
+  --accent-blue-subtle: #DBEAFE;
+  --accent-blue-border: #BFDBFE;
 
-  /* Primary Theme Accents */
-  --accent-primary: #0F172A;
-  --accent-secondary: #475569;
-  --accent-gradient: linear-gradient(135deg, #0F172A 0%, #334155 100%);
-  --accent-gradient-alt: linear-gradient(135deg, #0284C7 0%, #4F46E5 100%);
+  /* Gradients */
+  --accent-gradient: linear-gradient(135deg, #0A192F 0%, #1E3A8A 50%, #2563EB 100%);
+  --accent-gradient-alt: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
+  --accent-gradient-soft: linear-gradient(180deg, rgba(239, 246, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
 
-  /* Text */
-  --text-primary: #0F172A;
+  /* Text Hierarchy — High Legibility & Contrast */
+  --text-primary: #0A192F;
+  --text-headings: #0A192F;
   --text-secondary: #334155;
   --text-muted: #64748B;
   --text-subtle: #94A3B8;
-  --text-dark: #020617;
+  --text-dark: #0A192F;
+  --text-inverse: #FFFFFF;
 
-  /* Minimal Borders & Shadows */
+  /* Subtle Elegant Borders */
   --border-width: 1px;
   --border: #E2E8F0;
+  --border-subtle: rgba(226, 232, 240, 0.9);
+  --border-blue: #DBEAFE;
   --border-bold: #CBD5E1;
-  --border-accent: #94A3B8;
-  --border-hover: #0F172A;
+  --border-hover: #93C5FD;
+  --border-accent: #2563EB;
 
-  --shadow-brutal: 0 10px 30px rgba(0, 0, 0, 0.06);
-  --shadow-brutal-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
-  --shadow-brutal-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
-  --shadow-brutal-accent: 0 0 20px rgba(15, 23, 42, 0.08);
-  --shadow-brutal-pink: 0 0 20px rgba(219, 39, 119, 0.1);
-  --glow-effect: 0 4px 20px rgba(0, 0, 0, 0.05);
+  /* Soft, Luxurious Shadows */
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  --shadow-lg: 0 16px 36px -4px rgba(30, 64, 175, 0.08), 0 4px 12px -2px rgba(30, 64, 175, 0.03);
+  --shadow-hover: 0 14px 34px -4px rgba(30, 58, 138, 0.12), 0 6px 14px -2px rgba(30, 58, 138, 0.06);
+  --shadow-blue-glow: 0 8px 24px rgba(37, 99, 235, 0.18);
+
+  /* Brutal replacement tokens for backward compatibility */
+  --shadow-brutal: var(--shadow-md);
+  --shadow-brutal-sm: var(--shadow-sm);
+  --shadow-brutal-lg: var(--shadow-lg);
+  --shadow-brutal-accent: var(--shadow-blue-glow);
+  --shadow-brutal-pink: var(--shadow-blue-glow);
+  --glow-effect: 0 4px 20px rgba(37, 99, 235, 0.08);
 
   /* Radii */
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-pill: 999px;
-  --section-padding: 100px;
-
-  /* Section Left Borders (Subtle) */
-  --section-border-w: 2px;
-  --accent-hero-border: #CBD5E1;
-  --accent-about-border: #CBD5E1;
-  --accent-skills-border: #CBD5E1;
-  --accent-projects-border: #CBD5E1;
-  --accent-contact-border: #CBD5E1;
-}
-
-/* ------------------------------------------------------------
-   THEME 3: CYBERPUNK (3rd Theme — Enhanced Dark Neon Matrix)
-   Deep indigo obsidian base, glowing matrix green, electric cyan, magenta
-   ------------------------------------------------------------ */
-[data-theme="cyberpunk"] {
-  --theme-name: "cyberpunk";
-
-  /* Fonts */
-  --font-main: "Fira Code", "Space Grotesk", monospace;
-  --font-code: "Fira Code", monospace;
-  --font-display: "Space Grotesk", monospace;
-
-  /* Backgrounds */
-  --bg-hero: #0a0b1a;
-  --bg-about: #0d0f2b;
-  --bg-skills: #111333;
-  --bg-projects: #0e1028;
-  --bg-contact: #080918;
-  --bg-subtle: #15183a;
-
-  /* Surfaces */
-  --surface: rgba(16, 18, 38, 0.75);
-  --surface-hover: rgba(28, 32, 64, 0.9);
-  --surface-elevated: rgba(37, 42, 90, 0.95);
-  --surface-card: rgba(16, 18, 36, 0.7);
-
-  /* Neon Accents */
-  --accent-yellow: #FFE600;
-  --accent-pink: #FF00FF;
-  --accent-cyan: #00FFFF;
-  --accent-green: #00FF41;
-  --accent-orange: #FF5500;
-  --accent-purple: #B388FF;
-
-  /* Primary Theme Accents */
-  --accent-primary: #00FF41;
-  --accent-secondary: #00FFFF;
-  --accent-gradient: linear-gradient(135deg, #00FF41 0%, #00FFFF 100%);
-  --accent-gradient-alt: linear-gradient(135deg, #FF00FF 0%, #00FFFF 100%);
-
-  /* Text */
-  --text-primary: #E8EDF5;
-  --text-secondary: #A0B0D0;
-  --text-muted: #6A7A9A;
-  --text-subtle: #3A4A6A;
-  --text-dark: #0A0B1A;
-
-  /* Neon Borders & Glows */
-  --border-width: 1px;
-  --border: rgba(0, 255, 65, 0.22);
-  --border-bold: rgba(0, 255, 65, 0.45);
-  --border-accent: #00FF41;
-  --border-hover: #00FFFF;
-
-  --shadow-brutal: 0 0 25px rgba(0, 255, 65, 0.25);
-  --shadow-brutal-sm: 0 0 15px rgba(0, 255, 65, 0.2);
-  --shadow-brutal-lg: 0 0 45px rgba(0, 255, 65, 0.35);
-  --shadow-brutal-accent: 0 0 35px rgba(0, 255, 255, 0.3);
-  --shadow-brutal-pink: 0 0 35px rgba(255, 0, 255, 0.3);
-  --glow-effect: 0 0 30px rgba(0, 255, 65, 0.35);
-
-  /* Radii */
-  --radius-sm: 6px;
-  --radius-md: 10px;
   --radius-lg: 16px;
-  --radius-pill: 999px;
-  --section-padding: 100px;
-
-  /* Section Left Neon Borders */
-  --section-border-w: 4px;
-  --accent-hero-border: #00FF41;
-  --accent-about-border: #00FFFF;
-  --accent-skills-border: #FF00FF;
-  --accent-projects-border: #B388FF;
-  --accent-contact-border: #FFE600;
+  --radius-xl: 22px;
+  --radius-pill: 9999px;
+  --section-padding: 96px;
 }
 
 /* ============================================================
-   2. GLOBAL RESETS & FOUNDATION
+   GLOBAL RESETS & FOUNDATION
    ============================================================ */
 *,
 *::before,
@@ -250,146 +102,160 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+  scroll-padding-top: 80px;
 }
 
 body {
   min-height: 100vh;
   font-family: var(--font-main);
-  background: var(--bg-hero);
+  background-color: var(--bg-page);
   color: var(--text-primary);
   line-height: 1.65;
   overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scanlines only for Cyberpunk theme */
-[data-theme="cyberpunk"] body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: repeating-linear-gradient(0deg,
-      rgba(0, 0, 0, 0) 0px,
-      rgba(0, 0, 0, 0) 2px,
-      rgba(0, 0, 0, 0.035) 2px,
-      rgba(0, 0, 0, 0.035) 4px);
-  z-index: 9999;
-}
-
-/* Neo-Extremism dot grid */
-[data-theme="neoextremism"] .grid-overlay {
+/* Unified Subtle Background Grid Overlay */
+.grid-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
-  opacity: 0.8;
+  background-image: radial-gradient(rgba(30, 58, 138, 0.04) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  opacity: 0.75;
 }
 
-/* Cyberpunk grid */
-[data-theme="cyberpunk"] .grid-overlay {
+/* Unified Ambient Background Glow Orbs */
+.theme-orb {
   position: absolute;
-  inset: 0;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  filter: blur(90px);
   pointer-events: none;
-  background-image:
-    linear-gradient(rgba(0, 255, 65, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 65, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black, transparent 70%);
-  -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+  opacity: 0.16;
 }
 
-/* Minimalist subtle grid */
-[data-theme="minimalism"] .grid-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.5;
+.theme-orb-1 {
+  top: -8%;
+  right: -5%;
+  background: radial-gradient(circle, #2563EB, transparent 70%);
+  animation: orbDrift 18s ease-in-out infinite alternate;
+}
+
+.theme-orb-2 {
+  bottom: -8%;
+  left: -5%;
+  background: radial-gradient(circle, #1E3A8A, transparent 70%);
+  animation: orbDrift 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orbDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(35px, -25px) scale(1.08);
+  }
 }
 
 /* ============================================================
-   3. SECTION HEADINGS & SUBTITLES UNDER TITLES
+   SEAMLESS FLOWING SECTIONS
+   Unified background transitions with NO jarring left borders
    ============================================================ */
 section {
   position: relative;
   padding: var(--section-padding) 0;
-  border-left: var(--section-border-w) solid transparent;
-  transition: background-color 0.4s ease, border-color 0.4s ease;
+  border-left: none; /* Eliminated jarring color-coded side borders */
+  transition: background-color 0.4s ease;
 }
 
+/* Flow: Clean white hero */
 #about {
-  background: var(--bg-hero);
-  border-left-color: var(--accent-hero-border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
 }
 
+/* Flow: Gentle soft light blue tint */
 #about-info {
-  background: var(--bg-about);
-  border-left-color: var(--accent-about-border);
+  background: linear-gradient(180deg, #F8FAFD 0%, #F0F6FF 100%);
 }
 
+/* Flow: Smooth transition to experience */
 #experience {
-  background: var(--bg-skills);
-  border-left-color: var(--accent-skills-border);
+  background: linear-gradient(180deg, #F0F6FF 0%, #FFFFFF 100%);
 }
 
+/* Flow: Pure white for project showcase */
 #projects {
-  background: var(--bg-projects);
-  border-left-color: var(--accent-projects-border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
 }
 
+/* Flow: Soft cool light blue for technical proficiencies */
 #skills {
-  background: var(--bg-skills);
-  border-left-color: var(--accent-skills-border);
+  background: linear-gradient(180deg, #F8FAFD 0%, #F0F6FF 100%);
 }
 
+/* Flow: Soft light blue for personal interests */
 #hobbies {
-  background: var(--bg-about);
-  border-left-color: var(--accent-about-border);
+  background: linear-gradient(180deg, #F0F6FF 0%, #FFFFFF 100%);
 }
 
+/* Flow: White to deep navy grounded footer */
 #contact {
-  background: var(--bg-contact);
-  border-left-color: var(--accent-contact-border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
 }
 
-/* Section Header Container with Subtitles UNDER Titles */
+/* ============================================================
+   UNIFIED SECTION HEADERS
+   Consistent, cohesive structure across all sections
+   ============================================================ */
 .section-header-wrap {
   text-align: center;
-  margin-bottom: 3.2rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  background: var(--accent-light-blue);
+  border: 1px solid var(--accent-blue-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
   font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.15;
-  margin-bottom: 8px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
   font-family: var(--font-main);
-  font-size: clamp(0.92rem, 1.8vw, 1.1rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
   color: var(--text-muted);
   font-weight: 500;
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-[data-theme="neoextremism"] .section-subtitle {
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-
-/* Typography */
+/* Typography Foundations */
 h1,
 h2,
 h3,
@@ -415,36 +281,12 @@ p {
   display: inline-block;
 }
 
-/* Neo-Extremism Highlight */
-[data-theme="neoextremism"] .gradient-text {
-  background: linear-gradient(135deg, #FF2E93 0%, #FF6B00 50%, #FFE600 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Cyberpunk Neon */
-[data-theme="cyberpunk"] .gradient-text {
-  background: linear-gradient(135deg, #00FF41 0%, #00FFFF 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.4));
-}
-
-/* Minimalist Clean */
-[data-theme="minimalism"] .gradient-text {
-  background: linear-gradient(135deg, #0F172A 0%, #475569 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* ============================================================
-   4. BUTTONS & INTERACTION TOKENS
+   BUTTONS & INTERACTION TOKENS
+   White Light & Dark Blue Classic Styling
    ============================================================ */
 
-/* Primary Button */
+/* Primary Action Button: Deep Dark Blue */
 .btn-primary-action {
   display: inline-flex;
   align-items: center;
@@ -457,66 +299,27 @@ p {
   text-decoration: none;
   border-radius: var(--radius-pill);
   cursor: pointer;
+  background: var(--accent-dark-blue);
+  color: #FFFFFF !important;
+  border: 1px solid var(--accent-dark-blue);
+  box-shadow: 0 4px 15px rgba(10, 25, 47, 0.15);
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   white-space: nowrap;
 }
 
-/* Neo-Extremism Primary */
-[data-theme="neoextremism"] .btn-primary-action {
-  background: var(--accent-yellow);
-  color: #000000;
-  border: 2.5px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-[data-theme="neoextremism"] .btn-primary-action:hover {
-  background: #FFF04D;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-  color: #000000;
-}
-
-[data-theme="neoextremism"] .btn-primary-action:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #000000;
-}
-
-/* Minimalism Primary */
-[data-theme="minimalism"] .btn-primary-action {
-  background: #0F172A;
-  color: #FFFFFF;
-  border: 1px solid #0F172A;
-  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
-}
-
-[data-theme="minimalism"] .btn-primary-action:hover {
-  background: #1E293B;
-  color: #FFFFFF;
+.btn-primary-action:hover {
+  background: var(--accent-deep-blue);
+  color: #FFFFFF !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.25);
+  border-color: var(--accent-deep-blue);
 }
 
-/* Cyberpunk Primary */
-[data-theme="cyberpunk"] .btn-primary-action {
-  background: rgba(0, 255, 65, 0.12);
-  color: #00FF41;
-  border: 1.5px solid #00FF41;
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-  font-family: var(--font-code);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.btn-primary-action:active {
+  transform: translateY(0);
 }
 
-[data-theme="cyberpunk"] .btn-primary-action:hover {
-  background: #00FF41;
-  color: #0A0B1A;
-  box-shadow: 0 0 45px rgba(0, 255, 65, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Secondary Button */
+/* Secondary Action Button: Pure White with Dark Blue Accent */
 .btn-secondary-action {
   display: inline-flex;
   align-items: center;
@@ -529,51 +332,23 @@ p {
   text-decoration: none;
   border-radius: var(--radius-pill);
   cursor: pointer;
+  background: #FFFFFF;
+  color: var(--accent-primary) !important;
+  border: 1.5px solid var(--accent-blue-border);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   white-space: nowrap;
 }
 
-[data-theme="neoextremism"] .btn-secondary-action {
-  background: #FFFFFF;
-  color: #000000;
-  border: 2.5px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-}
-
-[data-theme="neoextremism"] .btn-secondary-action:hover {
-  background: var(--accent-cyan);
-  color: #000000;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="minimalism"] .btn-secondary-action {
-  background: #FFFFFF;
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-}
-
-[data-theme="minimalism"] .btn-secondary-action:hover {
-  background: #F8FAFC;
-  border-color: #CBD5E1;
+.btn-secondary-action:hover {
+  background: var(--accent-light-blue);
+  color: var(--accent-royal) !important;
+  border-color: var(--accent-secondary);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1);
 }
 
-[data-theme="cyberpunk"] .btn-secondary-action {
-  background: transparent;
-  color: #00FFFF;
-  border: 1.5px solid #00FFFF;
-  font-family: var(--font-code);
-}
-
-[data-theme="cyberpunk"] .btn-secondary-action:hover {
-  background: #00FFFF;
-  color: #0A0B1A;
-  box-shadow: 0 0 45px rgba(0, 255, 255, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Download CV Button */
+/* CV Action Button: Light Blue with Royal Blue Border */
 .btn-cv-action {
   display: inline-flex;
   align-items: center;
@@ -586,61 +361,36 @@ p {
   text-decoration: none;
   border-radius: var(--radius-pill);
   cursor: pointer;
+  background: var(--accent-light-blue);
+  color: var(--accent-royal) !important;
+  border: 1.5px solid var(--accent-blue-border);
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   white-space: nowrap;
 }
 
-[data-theme="neoextremism"] .btn-cv-action {
-  background: var(--accent-pink);
-  color: #FFFFFF;
-  border: 2.5px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-}
-
-[data-theme="neoextremism"] .btn-cv-action:hover {
-  background: #FF4DAB;
-  color: #FFFFFF;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="minimalism"] .btn-cv-action {
-  background: #F0F9FF;
-  color: #0284C7;
-  border: 1px solid #BAE6FD;
-}
-
-[data-theme="minimalism"] .btn-cv-action:hover {
-  background: #E0F2FE;
-  color: #0369A1;
+.btn-cv-action:hover {
+  background: var(--accent-blue-subtle);
+  color: var(--accent-primary) !important;
+  border-color: var(--accent-royal);
   transform: translateY(-2px);
-}
-
-[data-theme="cyberpunk"] .btn-cv-action {
-  background: rgba(255, 0, 255, 0.1);
-  color: #FF00FF;
-  border: 1.5px solid #FF00FF;
-  font-family: var(--font-code);
-}
-
-[data-theme="cyberpunk"] .btn-cv-action:hover {
-  background: #FF00FF;
-  color: #0A0B1A;
-  box-shadow: 0 0 45px rgba(255, 0, 255, 0.5);
-  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
 }
 
 /* ============================================================
-   5. COMMON RESPONSIVE STYLES
+   RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
-  :root {
-    --section-padding: 70px;
+  :root,
+  [data-theme="classic"] {
+    --section-padding: 72px;
+  }
+
+  .section-header-wrap {
+    margin-bottom: 2.5rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

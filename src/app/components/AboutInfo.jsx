@@ -21,8 +21,11 @@ const AboutInfo = () => {
 
       <div className="container">
         <div className="section-header-wrap" data-aos="fade-down">
+          <span className="section-kicker">METRICS & ATTRIBUTES</span>
           <h2 className="section-title">Overview & Impact</h2>
-          <p className="section-subtitle">Key performance metrics and professional attributes</p>
+          <p className="section-subtitle">
+            Key engineering metrics, technical versatility, and professional credentials
+          </p>
         </div>
 
         {/* Stats Row */}

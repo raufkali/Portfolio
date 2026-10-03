@@ -1,5 +1,5 @@
 /* ============================================================
-   PROJECTS SHOWCASE — MULTI-THEME
+   PROJECTS SHOWCASE — CLASSICAL WHITE LIGHT & DARK BLUE
    ============================================================ */
 
 .projects-section {
@@ -13,79 +13,35 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 2.8rem;
+  margin-bottom: 3rem;
 }
 
 .project-filter-pill {
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: var(--radius-pill);
   font-family: var(--font-main);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
-  border: var(--border-width) solid var(--border);
-  background: var(--surface);
-  color: var(--text-muted);
-}
-
-/* 1. NEO-EXTREMISM Filters */
-[data-theme="neoextremism"] .project-filter-pill {
-  background: #FFFFFF;
-  color: #000000;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="neoextremism"] .project-filter-pill:hover {
-  background: #FFF04D;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="neoextremism"] .project-filter-pill.active {
-  background: var(--accent-yellow);
-  color: #000000;
-  box-shadow: 3px 3px 0px #000000;
-}
-
-/* 2. MINIMALISM Filters */
-[data-theme="minimalism"] .project-filter-pill {
-  background: #FFFFFF;
-  color: var(--text-muted);
-  border: 1px solid #E2E8F0;
-}
-
-[data-theme="minimalism"] .project-filter-pill:hover {
-  background: #F8FAFC;
-  color: #0F172A;
-  border-color: #CBD5E1;
-}
-
-[data-theme="minimalism"] .project-filter-pill.active {
-  background: #0F172A;
-  color: #FFFFFF;
-  border-color: #0F172A;
-}
-
-/* 3. CYBERPUNK Filters */
-[data-theme="cyberpunk"] .project-filter-pill {
-  background: rgba(16, 18, 38, 0.6);
-  color: var(--text-muted);
   border: 1px solid var(--border);
-  font-family: var(--font-code);
+  background: #FFFFFF;
+  color: var(--text-secondary);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
 }
 
-[data-theme="cyberpunk"] .project-filter-pill:hover {
-  border-color: var(--neon-cyan, #00FFFF);
-  color: var(--text-primary);
+.project-filter-pill:hover {
+  background: var(--accent-light-blue);
+  color: var(--accent-primary);
+  border-color: var(--accent-blue-border);
+  transform: translateY(-1px);
 }
 
-[data-theme="cyberpunk"] .project-filter-pill.active {
-  background: rgba(0, 255, 65, 0.15);
-  color: var(--neon-green, #00FF41);
-  border-color: var(--neon-green, #00FF41);
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.25);
+.project-filter-pill.active {
+  background: var(--accent-dark-blue);
+  color: #FFFFFF !important;
+  border-color: var(--accent-dark-blue);
+  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.2);
 }
 
 /* ============================================================
@@ -95,51 +51,21 @@
   position: relative;
   z-index: 2;
   border-radius: var(--radius-lg);
-  padding: 24px 22px;
+  padding: 26px 24px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
   transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 1. NEO-EXTREMISM Project Card */
-[data-theme="neoextremism"] .project-item-card {
+.project-item-card:hover {
   background: #FFFFFF;
-  border: 2.5px solid #000000;
-  box-shadow: 5px 5px 0px #000000;
-}
-
-[data-theme="neoextremism"] .project-item-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0px #000000;
-}
-
-/* 2. MINIMALISM Project Card */
-[data-theme="minimalism"] .project-item-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="minimalism"] .project-item-card:hover {
-  background: #FFFFFF;
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px);
-}
-
-/* 3. CYBERPUNK Project Card */
-[data-theme="cyberpunk"] .project-item-card {
-  background: rgba(16, 18, 38, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 255, 65, 0.2);
-  box-shadow: 0 0 25px rgba(0, 255, 65, 0.06);
-}
-
-[data-theme="cyberpunk"] .project-item-card:hover {
-  border-color: var(--neon-cyan, #00FFFF);
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.2), 0 15px 40px rgba(0, 0, 0, 0.5);
+  border-color: var(--accent-blue-border);
+  box-shadow: 0 16px 36px -4px rgba(30, 64, 175, 0.1);
   transform: translateY(-4px);
 }
 
@@ -157,56 +83,53 @@
 }
 
 .project-card-title {
-  font-size: 1.22rem;
+  font-size: 1.24rem;
   font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.3;
+  color: var(--accent-dark-blue);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
 }
 
 .project-status-tag {
   flex-shrink: 0;
   padding: 3px 10px;
   border-radius: var(--radius-pill);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-[data-theme="neoextremism"] .project-status-tag {
-  border: 1.5px solid #000000;
-}
-
 .status-completed {
-  background: rgba(37, 211, 102, 0.15);
-  color: #16A34A;
-  border: 1px solid rgba(22, 163, 74, 0.3);
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
 }
 
 .status-dev {
-  background: rgba(234, 179, 8, 0.15);
-  color: #CA8A04;
-  border: 1px solid rgba(202, 138, 4, 0.3);
+  background: #FFFBEB;
+  color: #D97706;
+  border: 1px solid #FDE68A;
 }
 
 .status-progress {
-  background: rgba(219, 39, 119, 0.15);
-  color: #DB2777;
-  border: 1px solid rgba(219, 39, 119, 0.3);
+  background: var(--accent-light-blue);
+  color: var(--accent-royal);
+  border: 1px solid var(--accent-blue-border);
 }
 
 .project-card-desc {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 12px;
+  line-height: 1.62;
+  margin-bottom: 14px;
 }
 
 .project-card-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   margin-bottom: 14px;
   font-family: var(--font-code);
@@ -223,10 +146,10 @@
 .project-tech-badge {
   padding: 3px 10px;
   border-radius: var(--radius-pill);
-  background: var(--surface-hover);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  font-size: 0.7rem;
+  background: var(--accent-light-blue);
+  border: 1px solid var(--accent-blue-subtle);
+  color: var(--accent-primary);
+  font-size: 0.72rem;
   font-weight: 600;
   font-family: var(--font-code);
 }
@@ -244,15 +167,16 @@
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  line-height: 1.45;
-  margin-bottom: 4px;
+  line-height: 1.48;
+  margin-bottom: 5px;
 }
 
 .highlight-bullet {
   color: var(--accent-secondary);
   font-weight: 800;
+  font-size: 1.1rem;
 }
 
 /* Actions Bottom */
@@ -260,7 +184,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-top: 14px;
+  padding-top: 16px;
   border-top: 1px solid var(--border);
   margin-top: auto;
 }
@@ -271,80 +195,45 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 14px;
+  padding: 7px 16px;
   border-radius: var(--radius-pill);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-[data-theme="neoextremism"] .project-action-link {
+.project-action-link {
   background: #FFFFFF;
-  color: #000000;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
+  color: var(--accent-primary);
+  border: 1.5px solid var(--accent-blue-border);
 }
 
-[data-theme="neoextremism"] .project-action-link:hover {
-  background: #F4F4F0;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #000000;
+.project-action-link:hover {
+  background: var(--accent-light-blue);
+  color: var(--accent-dark-blue);
+  border-color: var(--accent-secondary);
+  transform: translateY(-1px);
 }
 
-[data-theme="neoextremism"] .project-demo-link {
-  background: var(--accent-yellow);
-  color: #000000;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
+.project-demo-link {
+  background: var(--accent-dark-blue);
+  color: #FFFFFF !important;
+  border: 1px solid var(--accent-dark-blue);
+  box-shadow: 0 2px 8px rgba(10, 25, 47, 0.15);
 }
 
-[data-theme="neoextremism"] .project-demo-link:hover {
-  background: #FFF04D;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px #000000;
-}
-
-[data-theme="minimalism"] .project-action-link {
-  background: #FFFFFF;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-}
-
-[data-theme="minimalism"] .project-action-link:hover {
-  background: #F8FAFC;
-  color: #0F172A;
-}
-
-[data-theme="minimalism"] .project-demo-link {
-  background: #0F172A;
-  color: #FFFFFF;
-  border: 1px solid #0F172A;
-}
-
-[data-theme="minimalism"] .project-demo-link:hover {
-  background: #1E293B;
-}
-
-[data-theme="cyberpunk"] .project-action-link {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  font-family: var(--font-code);
-}
-
-[data-theme="cyberpunk"] .project-demo-link {
-  background: var(--accent-gradient);
-  color: #0A0B1A;
-  border: none;
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-  font-family: var(--font-code);
+.project-demo-link:hover {
+  background: var(--accent-deep-blue);
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(30, 58, 138, 0.25);
 }
 
 .project-private-badge {
-  background: rgba(0, 0, 0, 0.04);
+  background: #F8FAFC;
   color: var(--text-muted);
-  border: 1px dashed var(--border);
+  border: 1px dashed var(--border-bold);
   cursor: default;
 }

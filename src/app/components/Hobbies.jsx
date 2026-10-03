@@ -21,8 +21,11 @@ const Hobbies = () => {
 
       <div className="container">
         <div className="section-header-wrap" data-aos="fade-down">
+          <span className="section-kicker">INTERESTS & ACTIVITIES</span>
           <h2 className="section-title">Hobbies & Interests</h2>
-          <p className="section-subtitle">Personal pursuits, languages, and analytical activities beyond coding</p>
+          <p className="section-subtitle">
+            Strategic pursuits, language proficiencies, and creative interests beyond coding
+          </p>
         </div>
 
         <div className="row g-4 justify-content-center">
@@ -34,7 +37,7 @@ const Hobbies = () => {
               data-aos-delay={index * 50}
             >
               <div className="hobby-item-card">
-                <i className={`${hobby.icon} hobby-card-icon`}></i>
+                <i className={`${hobby.icon} hobby-card-icon`} aria-hidden="true"></i>
                 <p className="hobby-card-label">{hobby.label}</p>
               </div>
             </div>

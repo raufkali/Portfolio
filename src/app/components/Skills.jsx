@@ -21,8 +21,11 @@ const Skills = () => {
 
       <div className="container">
         <div className="section-header-wrap" data-aos="fade-down">
+          <span className="section-kicker">TECHNICAL ARSENAL</span>
           <h2 className="section-title">Skills & Proficiencies</h2>
-          <p className="section-subtitle">Core technical stack, modern frameworks, backend databases, and DevOps tools</p>
+          <p className="section-subtitle">
+            Core full-stack engineering stack, modern frameworks, cloud databases, and automation tools
+          </p>
         </div>
 
         <div className="row g-4">
@@ -31,12 +34,12 @@ const Skills = () => {
               className="col-lg-4 col-md-6"
               key={index}
               data-aos="fade-up"
-              data-aos-delay={index * 60}
+              data-aos-delay={index * 50}
             >
               <div className="skill-category-card">
                 <div className="skill-card-header">
                   <div className="skill-icon-wrap">
-                    <i className={category.icon}></i>
+                    <i className={category.icon} aria-hidden="true"></i>
                   </div>
                   <h3 className="skill-category-title">{category.category}</h3>
                 </div>

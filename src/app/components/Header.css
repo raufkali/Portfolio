@@ -1,538 +1,296 @@
 /* ============================================================
-   HEADER
-============================================================ */
+   HEADER — WHITE LIGHT & DARK BLUE CLASSICAL
+   ============================================================ */
 
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-
   width: 100%;
   z-index: 1000;
-
-  background: transparent;
-
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .site-header-scrolled {
-  background: var(--background, #ffffff);
-  border-bottom-color: var(--border, rgba(0, 0, 0, 0.08));
-
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom-color: rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 25px -4px rgba(15, 23, 42, 0.06);
 }
-
 
 /* ============================================================
    HEADER INNER
-============================================================ */
-
+   ============================================================ */
 .header-inner {
   width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
   height: 76px;
-
   padding: 0 32px;
-
   display: flex;
   align-items: center;
-
   gap: 24px;
 }
 
-
 /* ============================================================
    BRAND
-============================================================ */
-
+   ============================================================ */
 .header-brand {
   flex-shrink: 0;
-
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
-  color: var(--foreground, #111111);
-
+  color: var(--accent-dark-blue);
   text-decoration: none;
   white-space: nowrap;
 }
 
 .brand-mark {
-  font-family: var(--font-mono, monospace);
-
-  font-size: 14px;
+  font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 800;
-
-  letter-spacing: 0.12em;
-
+  letter-spacing: 0.08em;
+  color: var(--accent-dark-blue);
   transition: opacity 0.2s ease;
 }
 
 .header-brand:hover .brand-mark {
-  opacity: 0.65;
+  opacity: 0.85;
 }
 
 .brand-cursor {
-  width: 6px;
-  height: 6px;
-
-  background: var(--primary, currentColor);
-
+  width: 7px;
+  height: 7px;
+  background: var(--accent-secondary);
   border-radius: 50%;
-
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
   animation: brandPulse 1.8s ease-in-out infinite;
 }
 
 @keyframes brandPulse {
-
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
-
   50% {
-    opacity: 0.25;
+    opacity: 0.3;
+    transform: scale(0.85);
   }
 }
 
-
 /* ============================================================
    DESKTOP NAVIGATION
-============================================================ */
-
+   ============================================================ */
 .desktop-navigation {
   flex: 1;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  gap: 4px;
+  gap: 6px;
 }
 
 .nav-link {
   position: relative;
-
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-
-  padding: 9px 13px;
-
-  color: var(--muted-foreground, #777);
-
+  gap: 6px;
+  padding: 8px 14px;
+  color: var(--text-secondary);
   text-decoration: none;
-
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
-
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--foreground, #111);
+  color: var(--accent-dark-blue);
+  background-color: var(--accent-light-blue);
 }
 
 .nav-link-active {
-  color: var(--foreground, #111);
+  color: var(--accent-primary);
+  background-color: var(--accent-light-blue);
+  font-weight: 700;
 }
 
 .nav-link-active::after {
   content: "";
-
   position: absolute;
-
-  left: 13px;
-  right: 13px;
-  bottom: 3px;
-
+  left: 14px;
+  right: 14px;
+  bottom: 0px;
   height: 2px;
-
-  background: currentColor;
+  background: var(--accent-secondary);
+  border-radius: 2px;
 }
 
 .nav-number {
-  font-family: var(--font-mono, monospace);
-
-  font-size: 9px;
+  font-family: var(--font-code);
+  font-size: 10px;
   font-weight: 700;
-
-  opacity: 0.45;
+  color: var(--accent-royal);
+  opacity: 0.75;
 }
-
 
 /* ============================================================
    HEADER ACTIONS
-============================================================ */
-
+   ============================================================ */
 .header-actions {
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
-
-/* ============================================================
-   THEME SWITCHER
-============================================================ */
-
-.theme-switcher-container {
-  position: relative;
-}
-
-.theme-switcher-btn {
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 0 12px;
-
-  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
-  border-radius: 8px;
-
-  background: transparent;
-  color: var(--foreground, #111);
-
-  cursor: pointer;
-
-  font-size: 12px;
-  font-weight: 600;
-
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.theme-switcher-btn:hover {
-  background: var(--muted, rgba(0, 0, 0, 0.04));
-  border-color: var(--foreground, #111);
-}
-
-.theme-arrow {
-  font-size: 9px;
-
-  transition: transform 0.2s ease;
-}
-
-.theme-arrow.open {
-  transform: rotate(180deg);
-}
-
-
-/* ============================================================
-   THEME DROPDOWN
-============================================================ */
-
-.theme-dropdown-menu {
-  position: absolute;
-
-  top: calc(100% + 10px);
-  right: 0;
-
-  width: 250px;
-
-  padding: 7px;
-
-  background: var(--background, #fff);
-
-  border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
-  border-radius: 12px;
-
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.12);
-
-  animation: dropdownIn 0.18s ease;
-}
-
-@keyframes dropdownIn {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.theme-dropdown-header {
-  padding: 9px 10px 7px;
-
-  font-family: var(--font-mono, monospace);
-
-  font-size: 9px;
-  font-weight: 700;
-
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-
-  opacity: 0.5;
-}
-
-.theme-option {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 10px;
-
-  border: 0;
-  border-radius: 8px;
-
-  background: transparent;
-  color: var(--foreground, #111);
-
-  cursor: pointer;
-
-  text-align: left;
-
-  transition: background 0.2s ease;
-}
-
-.theme-option:hover,
-.theme-option.active {
-  background: var(--muted, rgba(0, 0, 0, 0.05));
-}
-
-.theme-option-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.theme-color-dot {
-  width: 8px;
-  height: 8px;
-
-  border-radius: 50%;
-
-  flex-shrink: 0;
-}
-
-.theme-option-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.theme-option-name {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.theme-option-sub {
-  font-size: 10px;
-
-  opacity: 0.5;
-}
-
-.theme-check {
-  font-size: 11px;
-}
-
-
-/* ============================================================
-   CV BUTTON
-============================================================ */
-
+/* CV Button */
 .header-cv-btn {
   height: 40px;
-
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
-  padding: 0 12px;
-
-  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
-  border-radius: 8px;
-
-  color: var(--foreground, #111);
-  background: transparent;
-
+  padding: 0 16px;
+  border: 1.5px solid var(--accent-blue-border);
+  border-radius: var(--radius-pill);
+  color: var(--accent-primary);
+  background: var(--accent-light-blue);
   text-decoration: none;
-
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .header-cv-btn:hover {
-  background: var(--foreground, #111);
-  color: var(--background, #fff);
-  border-color: var(--foreground, #111);
+  background: var(--accent-blue-subtle);
+  border-color: var(--accent-royal);
+  color: var(--accent-dark-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
 }
 
 .cv-download-icon {
-  font-size: 9px;
-  opacity: 0.55;
+  font-size: 10px;
+  opacity: 0.7;
 }
 
-
-/* ============================================================
-   CONTACT BUTTON
-============================================================ */
-
+/* Contact Button */
 .header-contact {
   height: 40px;
-
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-
-  padding: 0 14px;
-
-  border-radius: 8px;
-
-  background: var(--foreground, #111);
-  color: var(--background, #fff);
-
+  gap: 8px;
+  padding: 0 18px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-dark-blue);
+  color: #FFFFFF !important;
   text-decoration: none;
-
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.15);
+  transition: all 0.2s ease;
 }
 
 .header-contact:hover {
+  background: var(--accent-deep-blue);
+  color: #FFFFFF !important;
   transform: translateY(-1px);
-  opacity: 0.88;
+  box-shadow: 0 6px 18px rgba(30, 58, 138, 0.25);
 }
 
 .contact-arrow {
-  font-size: 14px;
+  font-size: 13px;
+  transition: transform 0.2s ease;
 }
 
+.header-contact:hover .contact-arrow {
+  transform: translate(2px, -2px);
+}
 
 /* ============================================================
-   MOBILE TOGGLE
-============================================================ */
-
+   MOBILE TOGGLE BUTTON
+   ============================================================ */
 .menu-toggle {
   display: none;
-
   width: 42px;
   height: 42px;
-
   margin-left: auto;
-
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 6px;
-
-  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
-  border-radius: 8px;
-
-  background: transparent;
-  color: var(--foreground, #111);
-
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--accent-dark-blue);
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: var(--accent-light-blue);
+  border-color: var(--accent-blue-border);
 }
 
 .menu-toggle span {
   display: block;
-
-  width: 17px;
-  height: 1.5px;
-
+  width: 18px;
+  height: 2px;
   background: currentColor;
-
-  transition:
-    transform 0.25s ease,
-    opacity 0.2s ease;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
 .menu-toggle-active span:first-child {
-  transform: translateY(3.75px) rotate(45deg);
+  transform: translateY(4px) rotate(45deg);
 }
 
 .menu-toggle-active span:last-child {
-  transform: translateY(-3.75px) rotate(-45deg);
+  transform: translateY(-4px) rotate(-45deg);
 }
-
 
 /* ============================================================
    MOBILE BACKDROP
-============================================================ */
-
+   ============================================================ */
 .mobile-backdrop {
   position: fixed;
-
   inset: 0;
-
-  background: rgba(0, 0, 0, 0.38);
-
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-
+  background: rgba(10, 25, 47, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   visibility: hidden;
-
   pointer-events: none;
-
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1050;
 }
 
 .mobile-backdrop-visible {
   opacity: 1;
   visibility: visible;
-
   pointer-events: auto;
 }
 
-
 /* ============================================================
    MOBILE SIDEBAR
-============================================================ */
-
+   ============================================================ */
 .mobile-navigation {
   position: fixed;
-
   top: 0;
   right: 0;
   bottom: 0;
-
-  width: min(390px, 88vw);
-
-  background: var(--background, #fff);
-
-  border-left: 1px solid var(--border, rgba(0, 0, 0, 0.1));
-
+  width: min(360px, 86vw);
+  background: #FFFFFF;
+  border-left: 1px solid var(--border);
+  box-shadow: -10px 0 40px rgba(10, 25, 47, 0.12);
   transform: translateX(100%);
-
   visibility: hidden;
-
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.35s ease;
-
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s ease;
   overflow-y: auto;
   overscroll-behavior: contain;
-
   z-index: 1100;
 }
 
@@ -543,154 +301,113 @@
 
 .mobile-navigation-inner {
   min-height: 100dvh;
-
   padding: 24px;
-
   display: flex;
   flex-direction: column;
 }
 
-
-/* ============================================================
-   SIDEBAR HEADER
-============================================================ */
-
+/* Sidebar Header */
 .mobile-sidebar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding-bottom: 26px;
-
-  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.08));
-}
-
-.mobile-sidebar-header>div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
 }
 
 .mobile-sidebar-kicker {
-  font-family: var(--font-mono, monospace);
-
-  font-size: 9px;
+  font-family: var(--font-code);
+  font-size: 10px;
   font-weight: 700;
-
   letter-spacing: 0.14em;
-
-  opacity: 0.45;
+  color: var(--accent-royal);
+  display: block;
 }
 
 .mobile-sidebar-title {
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 800;
+  color: var(--accent-dark-blue);
 }
 
 .mobile-close {
-  width: 40px;
-  height: 40px;
-
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-
-  gap: 0;
-
-  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
-  border-radius: 8px;
-
-  background: transparent;
-  color: var(--foreground, #111);
-
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--accent-dark-blue);
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-close:hover {
+  background: var(--accent-light-blue);
+  border-color: var(--accent-blue-border);
 }
 
 .mobile-close span {
-  width: 17px;
-  height: 1.5px;
-
+  width: 16px;
+  height: 2px;
   background: currentColor;
+  position: absolute;
 }
 
 .mobile-close span:first-child {
-  transform: rotate(45deg) translateY(1px);
+  transform: rotate(45deg);
 }
 
 .mobile-close span:last-child {
-  transform: rotate(-45deg) translateY(-1px);
+  transform: rotate(-45deg);
 }
 
-
-/* ============================================================
-   MOBILE NAV
-============================================================ */
-
+/* Navigation List */
 .mobile-nav-list {
   display: flex;
   flex-direction: column;
-
-  padding: 16px 0;
+  padding: 18px 0;
+  gap: 4px;
 }
 
 .mobile-nav-link {
   position: relative;
-
-  min-height: 62px;
-
+  min-height: 52px;
   display: grid;
-  grid-template-columns: 35px 1fr auto;
-
+  grid-template-columns: 32px 1fr auto;
   align-items: center;
   gap: 10px;
-
-  padding: 0 10px;
-
-  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.07));
-
-  color: var(--muted-foreground, #777);
-
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
   text-decoration: none;
-
-  transition:
-    color 0.2s ease,
-    padding 0.2s ease,
-    background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link-active {
-  color: var(--foreground, #111);
-
-  background: var(--muted, rgba(0, 0, 0, 0.035));
-}
-
-.mobile-nav-link:hover {
-  padding-left: 15px;
+  color: var(--accent-primary);
+  background: var(--accent-light-blue);
 }
 
 .mobile-nav-number {
-  font-family: var(--font-mono, monospace);
-
-  font-size: 10px;
-
-  opacity: 0.45;
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-royal);
 }
 
 .mobile-nav-text {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 
 .mobile-nav-arrow {
-  font-size: 16px;
-
-  opacity: 0.45;
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+  font-size: 15px;
+  opacity: 0.5;
+  transition: transform 0.2s ease;
 }
 
 .mobile-nav-link:hover .mobile-nav-arrow {
@@ -698,191 +415,75 @@
   transform: translate(2px, -2px);
 }
 
-.mobile-nav-link-active::before {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  top: 50%;
-
-  width: 3px;
-  height: 24px;
-
-  transform: translateY(-50%);
-
-  background: currentColor;
-
-  border-radius: 0 3px 3px 0;
-}
-
-
-/* ============================================================
-   MOBILE THEME
-============================================================ */
-
-.mobile-theme-section {
-  padding: 22px 0;
-}
-
-.mobile-menu-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  margin-bottom: 13px;
-
-  font-family: var(--font-mono, monospace);
-
-  font-size: 9px;
-  font-weight: 700;
-
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-
-  opacity: 0.5;
-}
-
-.mobile-menu-line {
-  width: 22px;
-  height: 1px;
-
-  background: currentColor;
-}
-
-.mobile-theme-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 7px;
-}
-
-.mobile-theme-pill {
-  min-height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
-  border-radius: 8px;
-
-  background: transparent;
-  color: var(--foreground, #111);
-
-  cursor: pointer;
-
-  font-size: 11px;
-  font-weight: 700;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.mobile-theme-pill:hover,
-.mobile-theme-pill.active {
-  background: var(--foreground, #111);
-  color: var(--background, #fff);
-  border-color: var(--foreground, #111);
-}
-
-
-/* ============================================================
-   MOBILE ACTIONS
-============================================================ */
-
+/* Mobile Actions */
 .mobile-action-buttons {
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 8px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-top: auto;
+  padding-top: 24px;
 }
 
 .mobile-cv-btn,
 .mobile-contact-btn {
   min-height: 46px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
-  border-radius: 8px;
-
+  border-radius: var(--radius-pill);
   text-decoration: none;
-
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
+  transition: all 0.2s ease;
 }
 
 .mobile-cv-btn {
-  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
-
-  color: var(--foreground, #111);
+  border: 1.5px solid var(--accent-blue-border);
+  background: var(--accent-light-blue);
+  color: var(--accent-primary);
 }
 
 .mobile-contact-btn {
-  background: var(--foreground, #111);
-  color: var(--background, #fff);
+  background: var(--accent-dark-blue);
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 15px rgba(10, 25, 47, 0.15);
 }
 
-
-/* ============================================================
-   MOBILE FOOTER
-============================================================ */
-
+/* Mobile Menu Footer */
 .mobile-menu-footer {
   margin-top: 24px;
-  padding-top: 17px;
-
+  padding-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  border-top: 1px solid var(--border, rgba(0, 0, 0, 0.08));
-
-  font-family: var(--font-mono, monospace);
-
-  font-size: 9px;
-
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-
-  opacity: 0.5;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 .mobile-availability {
   display: flex;
   align-items: center;
   gap: 7px;
+  font-weight: 600;
+  color: #16A34A;
 }
 
 .availability-dot {
-  width: 6px;
-  height: 6px;
-
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-
-  background: #35b86b;
-
-  box-shadow: 0 0 0 3px rgba(53, 184, 107, 0.12);
+  background: #16A34A;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
 }
 
-
 /* ============================================================
-   TABLET / MOBILE
-============================================================ */
-
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 900px) {
-
   .header-inner {
     height: 68px;
-
     padding: 0 20px;
   }
 
@@ -894,63 +495,14 @@
   .menu-toggle {
     display: flex;
   }
-
 }
 
-
-/* ============================================================
-   SMALL MOBILE
-============================================================ */
-
 @media (max-width: 480px) {
-
   .header-inner {
-    padding: 0 15px;
+    padding: 0 16px;
   }
 
   .brand-mark {
-    font-size: 12px;
+    font-size: 13.5px;
   }
-
-  .mobile-navigation {
-    width: min(360px, 92vw);
-  }
-
-  .mobile-navigation-inner {
-    padding: 20px;
-  }
-
-  .mobile-nav-link {
-    min-height: 58px;
-  }
-
-  .mobile-action-buttons {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-
-/* ============================================================
-   REDUCE MOTION
-============================================================ */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .site-header,
-  .mobile-navigation,
-  .mobile-backdrop,
-  .menu-toggle span,
-  .nav-link,
-  .mobile-nav-link,
-  .theme-option,
-  .theme-switcher-btn,
-  .header-contact {
-    transition: none !important;
-  }
-
-  .brand-cursor {
-    animation: none;
-  }
-
 }

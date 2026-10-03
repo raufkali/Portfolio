@@ -1,5 +1,5 @@
 /* ============================================================
-   EXPERIENCE SECTION — MULTI-THEME
+   EXPERIENCE SECTION — CLASSICAL WHITE LIGHT & DARK BLUE
    ============================================================ */
 
 .experience-section {
@@ -22,47 +22,17 @@
   position: relative;
   z-index: 2;
   border-radius: var(--radius-lg);
-  padding: 30px 28px;
+  padding: 32px 30px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
   transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 1. NEO-EXTREMISM Exp Card (Light Neo-Brutalism) */
-[data-theme="neoextremism"] .exp-card {
+.exp-card:hover {
   background: #FFFFFF;
-  border: 2.5px solid #000000;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-[data-theme="neoextremism"] .exp-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0px #000000;
-}
-
-/* 2. MINIMALISM Exp Card (Light Minimalism) */
-[data-theme="minimalism"] .exp-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="minimalism"] .exp-card:hover {
-  background: #FFFFFF;
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px);
-}
-
-/* 3. CYBERPUNK Exp Card (Dark Neon) */
-[data-theme="cyberpunk"] .exp-card {
-  background: rgba(16, 18, 38, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 255, 65, 0.22);
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.06);
-}
-
-[data-theme="cyberpunk"] .exp-card:hover {
-  border-color: var(--neon-cyan, #00FFFF);
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.2), 0 15px 40px rgba(0, 0, 0, 0.5);
+  border-color: var(--accent-blue-border);
+  box-shadow: 0 14px 34px -4px rgba(30, 64, 175, 0.1);
   transform: translateY(-4px);
 }
 
@@ -73,32 +43,26 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .exp-position {
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 2px;
+  color: var(--accent-dark-blue);
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
 }
 
 .exp-company {
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-weight: 700;
-  color: var(--text-secondary);
-}
-
-[data-theme="neoextremism"] .exp-company span {
   color: var(--accent-secondary);
 }
 
-[data-theme="minimalism"] .exp-company span {
-  color: #0284C7;
-}
-
-[data-theme="cyberpunk"] .exp-company {
-  color: var(--neon-cyan, #00FFFF);
+.exp-company span {
+  color: var(--accent-primary);
+  font-weight: 600;
 }
 
 .exp-meta {
@@ -106,7 +70,7 @@
   align-items: center;
   gap: 12px;
   font-family: var(--font-main);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 
 .badge-exp-type {
@@ -115,53 +79,39 @@
   font-weight: 700;
   font-size: 0.72rem;
   text-transform: uppercase;
-}
-
-[data-theme="neoextremism"] .badge-exp-type {
-  background: var(--accent-yellow);
-  color: #000000;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000000;
-}
-
-[data-theme="minimalism"] .badge-exp-type {
-  background: #F1F5F9;
-  color: #0F172A;
-  border: 1px solid #CBD5E1;
-}
-
-[data-theme="cyberpunk"] .badge-exp-type {
-  background: rgba(0, 255, 65, 0.12);
-  color: var(--neon-green, #00FF41);
-  border: 1px solid var(--neon-green, #00FF41);
-  font-family: var(--font-code);
+  letter-spacing: 0.04em;
+  background: var(--accent-light-blue);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-blue-border);
 }
 
 .exp-duration {
   color: var(--text-muted);
   font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 .exp-description {
   font-size: 0.96rem;
   color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 16px;
+  line-height: 1.68;
+  margin-bottom: 18px;
 }
 
 /* Responsibilities */
 .exp-responsibilities-wrap {
   border-top: 1px solid var(--border);
-  padding-top: 14px;
+  padding-top: 16px;
 }
 
 .responsibilities-title {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--accent-dark-blue);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
 }
 
 .exp-responsibilities {
@@ -170,7 +120,7 @@
   margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 24px;
+  gap: 10px 24px;
 }
 
 .exp-responsibilities li {
@@ -185,7 +135,7 @@
 .exp-bullet {
   color: var(--accent-secondary);
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1;
   flex-shrink: 0;
 }
@@ -195,7 +145,7 @@
    ============================================================ */
 @media (max-width: 768px) {
   .exp-card {
-    padding: 22px 18px;
+    padding: 24px 20px;
   }
 
   .exp-responsibilities {
@@ -204,6 +154,6 @@
   }
 
   .exp-position {
-    font-size: 1.15rem;
+    font-size: 1.18rem;
   }
 }

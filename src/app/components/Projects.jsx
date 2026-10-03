@@ -40,18 +40,22 @@ const Projects = () => {
 
       <div className="container">
         <div className="section-header-wrap" data-aos="fade-down">
+          <span className="section-kicker">SELECTED WORKS</span>
           <h2 className="section-title">Featured Projects</h2>
-          <p className="section-subtitle">A showcase of full-stack platforms, desktop applications, and web systems</p>
+          <p className="section-subtitle">
+            A comprehensive showcase of production web applications, desktop platforms, and automation systems
+          </p>
         </div>
 
         {/* Filter Buttons */}
-        <div className="project-filters-wrap" data-aos="fade-up">
+        <div className="project-filters-wrap" data-aos="fade-up" role="tablist" aria-label="Project technology filters">
           {technologies.map((tech) => (
             <button
               key={tech}
               type="button"
               className={`project-filter-pill ${filter === tech ? "active" : ""}`}
               onClick={() => setFilter(tech)}
+              aria-pressed={filter === tech}
             >
               {tech}
             </button>
@@ -65,9 +69,9 @@ const Projects = () => {
               className="col-lg-4 col-md-6"
               key={project.id}
               data-aos="fade-up"
-              data-aos-delay={index * 60}
+              data-aos-delay={index * 50}
             >
-              <div className="project-item-card">
+              <article className="project-item-card">
                 <div className="project-card-top">
                   <div className="project-title-row">
                     <h3 className="project-card-title">{project.title}</h3>
@@ -82,11 +86,11 @@ const Projects = () => {
 
                   <div className="project-card-meta">
                     <span>
-                      <i className="far fa-calendar-alt me-1"></i>
+                      <i className="far fa-calendar-alt me-1" aria-hidden="true"></i>
                       {project.startDate} – {project.endDate}
                     </span>
                     <span>
-                      <i className="fas fa-user-tag me-1"></i>
+                      <i className="fas fa-user-tag me-1" aria-hidden="true"></i>
                       {project.role}
                     </span>
                   </div>
@@ -105,7 +109,7 @@ const Projects = () => {
                     <ul className="project-highlights-list">
                       {project.highlights.map((highlight, i) => (
                         <li key={i}>
-                          <span className="highlight-bullet">›</span>
+                          <span className="highlight-bullet" aria-hidden="true">›</span>
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -119,7 +123,7 @@ const Projects = () => {
                     <>
                       {project.githubLink === "private" ? (
                         <span className="project-private-badge">
-                          <i className="fas fa-lock me-1"></i> Private Repo
+                          <i className="fas fa-lock me-1" aria-hidden="true"></i> Private Repo
                         </span>
                       ) : (
                         <a
@@ -129,7 +133,7 @@ const Projects = () => {
                           className="project-action-link"
                           aria-label={`View ${project.title} source code on GitHub`}
                         >
-                          <i className="fab fa-github"></i> Code
+                          <i className="fab fa-github" aria-hidden="true"></i> Code
                         </a>
                       )}
                     </>
@@ -143,11 +147,11 @@ const Projects = () => {
                       className="project-demo-link"
                       aria-label={`Visit live demo for ${project.title}`}
                     >
-                      <i className="fas fa-external-link-alt"></i> Live Demo
+                      <i className="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo
                     </a>
                   )}
                 </div>
-              </div>
+              </article>
             </div>
           ))}
         </div>
