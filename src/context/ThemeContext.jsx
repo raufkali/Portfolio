@@ -6,10 +6,10 @@ export const THEMES = [
   {
     id: "classic",
     name: "Classical",
-    subtitle: "White Light & Dark Blue",
+    subtitle: "Navy & White",
     icon: "fa-solid fa-gem",
-    color: "#0A192F",
-    accent: "#2563EB",
+    color: "#0F2F50",
+    accent: "#1A4A7A",
   },
 ];
 
@@ -24,18 +24,18 @@ export const ThemeProvider = ({ children }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Set single classic theme
+    // Lock to single classical theme on mount
     document.documentElement.setAttribute("data-theme", "classic");
     try {
       localStorage.setItem("portfolio-theme", "classic");
     } catch (e) {
-      // Ignore localStorage errors
+      // Ignore localStorage errors (e.g. private mode)
     }
     setMounted(true);
   }, []);
 
   const setTheme = () => {
-    // Single theme locked to classic
+    // Single theme locked — no-op
     document.documentElement.setAttribute("data-theme", "classic");
   };
 

@@ -1,233 +1,247 @@
 /* ============================================================
-   ABOUT / HERO SECTION — CLASSICAL WHITE LIGHT & DARK BLUE
+   ABOUT — NAVY + WHITE CLASSICAL
    ============================================================ */
 
 .about-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   position: relative;
+  background: #FFFFFF;
   overflow: hidden;
-  padding-top: 88px;
 }
+
+.about-section .container {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* ============================================================
-   CONTENT CARD
+   LEFT COLUMN — copy
    ============================================================ */
-.about-content-card {
-  position: relative;
-  z-index: 2;
-  border-radius: var(--radius-xl);
-  padding: 3.2rem 2.8rem;
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 4px 28px -4px rgba(15, 23, 42, 0.05);
-  transition: all 0.35s ease;
+
+.about-content {
+  max-width: 620px;
 }
 
-/* Status Pill */
-.about-status-pill {
+/* Eyebrow — rule + uppercase label, replaces the green pill */
+.about-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-main);
-  font-size: 0.78rem;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.eyebrow-rule {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--navy, #0F2F50);
+}
+
+.eyebrow-text {
+  font-family: var(--font-main, "Inter", sans-serif);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  background: var(--accent-light-blue);
-  color: var(--accent-primary);
-  border: 1px solid var(--accent-blue-border);
+  color: var(--navy, #0F2F50);
 }
 
-.status-live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #16A34A;
-  box-shadow: 0 0 8px rgba(22, 163, 74, 0.6);
-  animation: pulseDot 2s infinite;
+/* Headline — Amarante serif, single color */
+.about-headline {
+  font-family: var(--font-display, "Amarante", serif);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--navy, #0F2F50);
+  margin: 0 0 16px 0;
 }
 
-@keyframes pulseDot {
-  0%, 100% {
-    transform: scale(0.9);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 1;
-  }
+.about-name {
+  color: var(--navy, #0F2F50);
+  /* remove the gradient-text treatment — solid navy */
 }
 
-/* Headings */
-.hero-title {
-  font-size: clamp(2.4rem, 5.2vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--text-primary);
-  letter-spacing: -0.025em;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+/* Subtitle — role line, muted, sans */
+.about-subtitle {
+  font-family: var(--font-main, "Inter", sans-serif);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
   font-weight: 600;
-  color: var(--accent-secondary);
-  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--navy, #0F2F50);
+  margin: 0 0 20px 0;
 }
 
-.hero-tagline {
-  font-size: 1.02rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
+/* Tagline — long description, muted grey */
+.about-tagline {
+  font-family: var(--font-main, "Inter", sans-serif);
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text-muted, #5A6B7D);
+  margin: 0 0 32px 0;
+  max-width: 560px;
 }
 
-/* CTA Group */
-.hero-cta-group {
+/* Divider — thin navy rule before CTAs */
+.about-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--navy, #0F2F50);
+  margin: 0 0 32px 0;
+}
+
+/* CTA group */
+.about-cta-group {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  align-items: center;
 }
 
+.about-cta-group .btn-primary-action,
+.about-cta-group .btn-secondary-action,
+.about-cta-group .btn-cv-action {
+  font-size: 0.85rem;
+  padding: 11px 22px;
+  border-radius: var(--radius-sm, 0.25rem);
+  font-family: var(--font-main, "Inter", sans-serif);
+  letter-spacing: 0.02em;
+}
+
+.about-cta-group .btn-primary-action i,
+.about-cta-group .btn-secondary-action i,
+.about-cta-group .btn-cv-action i {
+  font-size: 12px;
+}
+
+
 /* ============================================================
-   PROFILE PHOTO PRESENTATION
+   RIGHT COLUMN — portrait + social
    ============================================================ */
-.hero-profile-wrapper {
+
+.about-portrait-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 2;
+  gap: 24px;
 }
 
-.profile-frame {
+/* Portrait frame — flat, single hairline, no card */
+.about-portrait {
   position: relative;
-  width: 300px;
-  height: 300px;
-}
-
-.profile-img-inner {
   width: 100%;
-  height: 100%;
+  max-width: 360px;
+  aspect-ratio: 6 / 7;
+  border: 1px solid var(--navy, #0F2F50);
   overflow: hidden;
-  border-radius: 28px;
-  border: 3px solid #FFFFFF;
-  outline: 1.5px solid var(--accent-blue-border);
-  box-shadow: 0 20px 45px -10px rgba(30, 58, 138, 0.16), 0 4px 15px rgba(15, 23, 42, 0.04);
-  background: var(--accent-light-blue);
-  transition: all 0.35s ease;
 }
 
-.profile-img-inner:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 25px 50px -10px rgba(30, 58, 138, 0.22);
-  outline-color: var(--accent-secondary);
-}
-
-.profile-photo {
+.about-portrait-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* Floating Badge on Photo */
-.profile-floating-badge {
+/* Corner tag — replaces pulsing badge */
+.about-portrait-tag {
   position: absolute;
-  bottom: 8px;
-  right: 4px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 15px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-main);
-  font-size: 0.74rem;
+  top: 0;
+  left: 0;
+  background: var(--navy, #0F2F50);
+  color: #FFFFFF;
+  font-family: var(--font-main, "Inter", sans-serif);
+  font-size: 0.68rem;
   font-weight: 700;
-  white-space: nowrap;
-  background: #FFFFFF;
-  color: var(--accent-dark-blue);
-  border: 1px solid var(--accent-blue-border);
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
-  z-index: 3;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 0;
 }
 
-.badge-pulse-indicator {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #16A34A;
-  box-shadow: 0 0 6px rgba(22, 163, 74, 0.6);
-}
-
-/* ============================================================
-   SOCIAL BUTTONS
-   ============================================================ */
-.hero-social-links {
+/* Social links — flat squares, hairline border */
+.about-social {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  justify-content: center;
 }
 
-.hero-social-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: var(--radius-md);
-  display: flex;
+.about-social-btn {
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  text-decoration: none;
-  cursor: pointer;
+
+  border: 1px solid var(--navy, #0F2F50);
+  border-radius: var(--radius-sm, 0.25rem);
   background: #FFFFFF;
-  color: var(--accent-dark-blue);
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
-  transition: all 0.25s ease;
+  color: var(--navy, #0F2F50);
+
+  font-size: 15px;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.hero-social-btn:hover {
-  background: var(--accent-primary);
-  color: #FFFFFF !important;
-  border-color: var(--accent-primary);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2);
+.about-social-btn:hover {
+  background: var(--navy, #0F2F50);
+  color: #FFFFFF;
+  border-color: var(--navy, #0F2F50);
 }
+
+.about-social-btn i {
+  line-height: 1;
+}
+
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 992px) {
-  .about-content-card {
-    padding: 2.4rem 2rem;
+
+@media (max-width: 991px) {
+  .about-content {
+    max-width: 100%;
   }
 
-  .profile-frame {
-    width: 250px;
-    height: 250px;
+  .about-headline {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  .about-cta-group {
+    gap: 10px;
   }
 }
 
-@media (max-width: 768px) {
-  .about-section {
-    padding-top: 64px;
-  }
-
-  .hero-cta-group {
+@media (max-width: 575px) {
+  .about-cta-group {
     flex-direction: column;
-    width: 100%;
+    align-items: stretch;
   }
 
-  .hero-cta-group .btn-primary-action,
-  .hero-cta-group .btn-secondary-action,
-  .hero-cta-group .btn-cv-action {
+  .about-cta-group .btn-primary-action,
+  .about-cta-group .btn-secondary-action,
+  .about-cta-group .btn-cv-action {
     width: 100%;
+    justify-content: center;
   }
 
-  .profile-frame {
-    width: 210px;
-    height: 210px;
+  .about-portrait {
+    max-width: 300px;
+  }
+
+  .about-social {
+    gap: 8px;
+  }
+
+  .about-social-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
   }
 }

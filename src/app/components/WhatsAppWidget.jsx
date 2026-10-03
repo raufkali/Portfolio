@@ -8,16 +8,16 @@ const WhatsAppWidget = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { personal } = portfolioData;
 
-  // Show after a brief delay
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 1500);
+    const timer = setTimeout(() => setIsVisible(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
   const handleClick = () => {
-    const number = (personal.whatsapp || "+923469258704").replace(/[^0-9]/g, "");
+    const number = (personal.whatsapp || "+923469258704").replace(
+      /[^0-9]/g,
+      "",
+    );
     const message = `Hello Rauf! I visited your portfolio and I'm interested in discussing a project.`;
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
@@ -26,19 +26,21 @@ const WhatsAppWidget = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="whatsapp-floating-widget" data-aos="zoom-in">
+    <div className="wa-widget">
       <button
-        className="whatsapp-float-btn"
+        type="button"
+        className="wa-btn"
         onClick={handleClick}
         aria-label="Chat with Rauf on WhatsApp"
-        title="Chat with Rauf Ahmad on WhatsApp"
+        title="Chat on WhatsApp"
       >
-        <span className="whatsapp-icon-wrap">
-          <i className="fab fa-whatsapp"></i>
+        <span className="wa-icon" aria-hidden="true">
+          <i className="fab fa-whatsapp" />
         </span>
-        <span className="whatsapp-tooltip">
-          <span className="whatsapp-pulse-dot"></span>
-          Chat on WhatsApp
+
+        <span className="wa-label">
+          <span className="wa-dot" aria-hidden="true" />
+          <span className="wa-label-text">WhatsApp</span>
         </span>
       </button>
     </div>

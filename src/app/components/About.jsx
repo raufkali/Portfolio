@@ -16,40 +16,43 @@ const About = () => {
 
   return (
     <section id="about" className="about-section">
-      <div className="grid-overlay"></div>
-
-      {/* Glow / decorative shapes */}
-      <div className="theme-orb theme-orb-1"></div>
-      <div className="theme-orb theme-orb-2"></div>
-
       <div className="container">
         <div className="row align-items-center min-vh-100 py-5">
-          {/* Left Content */}
+          {/* =====================================================
+              LEFT — Copy + CTAs
+              ===================================================== */}
           <div className="col-lg-7 order-lg-1 order-2" data-aos="fade-right">
-            <div className="about-content-card">
-              {/* Status Badge */}
-              <div className="about-status-pill mb-4">
-                <span className="status-live-dot"></span>
-                <span>Available for Projects & Full-Time Roles</span>
+            <div className="about-content">
+              {/* Eyebrow */}
+              <div className="about-eyebrow">
+                <span className="eyebrow-rule" aria-hidden="true" />
+                <span className="eyebrow-text">
+                  Available for projects &amp; full-time roles
+                </span>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="hero-title mb-3">
-                Hi, I'm <span className="gradient-text">{name}</span>
+              {/* Headline */}
+              <h1 className="about-headline">
+                Hi, I'm <span className="about-name">{name}</span>
               </h1>
 
-              <h2 className="hero-subtitle mb-4">{title}</h2>
+              {/* Subtitle */}
+              <p className="about-subtitle">{title}</p>
 
-              <p className="hero-tagline mb-4">{tagline}</p>
+              {/* Tagline */}
+              <p className="about-tagline">{tagline}</p>
 
-              {/* Action Buttons: Hire Me, View Work, Download CV */}
-              <div className="hero-cta-group">
+              {/* Divider */}
+              <div className="about-divider" aria-hidden="true" />
+
+              {/* CTAs */}
+              <div className="about-cta-group">
                 <a href="#contact" className="btn-primary-action">
-                  <i className="fas fa-paper-plane"></i>
+                  <i className="fas fa-paper-plane" aria-hidden="true" />
                   <span>Hire Me</span>
                 </a>
                 <a href="#projects" className="btn-secondary-action">
-                  <i className="fas fa-briefcase"></i>
+                  <i className="fas fa-briefcase" aria-hidden="true" />
                   <span>View Work</span>
                 </a>
                 <a
@@ -61,83 +64,80 @@ const About = () => {
                   aria-label="Download CV"
                   title="Download Rauf Ahmad's CV"
                 >
-                  <i className="fas fa-file-pdf"></i>
+                  <i className="fas fa-file-pdf" aria-hidden="true" />
                   <span>Download CV</span>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Profile Image */}
+          {/* =====================================================
+              RIGHT — Portrait + Social
+              ===================================================== */}
           <div
-            className="col-lg-5 order-lg-2 order-1 text-center mb-5 mb-lg-0"
+            className="col-lg-5 order-lg-2 order-1 mb-5 mb-lg-0"
             data-aos="fade-left"
           >
-            <div className="hero-profile-wrapper">
-              {/* Profile Image Frame */}
-              <div className="profile-frame">
-                <div className="profile-img-inner">
-                  <Image
-                    src="/images/profile.jpg"
-                    alt={`${name} - Software Engineer & Full-Stack Developer`}
-                    className="profile-photo"
-                    width={320}
-                    height={320}
-                    priority
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
+            <div className="about-portrait-wrap">
+              {/* Portrait frame — single hairline, no card */}
+              <div className="about-portrait">
+                <Image
+                  src="/images/profile.jpg"
+                  alt={`${name} — ${title}`}
+                  className="about-portrait-photo"
+                  width={360}
+                  height={420}
+                  priority
+                />
 
-                {/* Floating Status Pill */}
-                <div className="profile-floating-badge">
-                  <span className="badge-pulse-indicator"></span>
+                {/* Corner tag — replaces pulsing badge */}
+                <div className="about-portrait-tag">
                   <span>Full Stack Dev</span>
                 </div>
               </div>
 
-              {/* Social Links */}
-              <div className="hero-social-links mt-4">
+              {/* Social links */}
+              <div className="about-social">
                 <a
                   href={portfolioData.personal.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-social-btn"
-                  aria-label="GitHub Profile"
+                  className="about-social-btn"
+                  aria-label="GitHub"
                   title="GitHub"
                 >
-                  <i className="fab fa-github"></i>
+                  <i className="fab fa-github" aria-hidden="true" />
                 </a>
                 <a
                   href={portfolioData.personal.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-social-btn"
-                  aria-label="LinkedIn Profile"
+                  className="about-social-btn"
+                  aria-label="LinkedIn"
                   title="LinkedIn"
                 >
-                  <i className="fab fa-linkedin-in"></i>
+                  <i className="fab fa-linkedin-in" aria-hidden="true" />
                 </a>
                 <a
-                  href={`https://wa.me/${portfolioData.personal.whatsapp.replace(/[^0-9]/g, "")}`}
+                  href={`https://wa.me/${portfolioData.personal.whatsapp.replace(
+                    /[^0-9]/g,
+                    "",
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-social-btn"
-                  aria-label="WhatsApp Chat"
+                  className="about-social-btn"
+                  aria-label="WhatsApp"
                   title="WhatsApp"
                 >
-                  <i className="fab fa-whatsapp"></i>
+                  <i className="fab fa-whatsapp" aria-hidden="true" />
                 </a>
                 <a
                   href={`mailto:${portfolioData.personal.email}`}
-                  className="hero-social-btn"
-                  aria-label="Send Email"
+                  className="about-social-btn"
+                  aria-label="Email"
                   title="Email"
                 >
-                  <i className="fas fa-envelope"></i>
+                  <i className="fas fa-envelope" aria-hidden="true" />
                 </a>
               </div>
             </div>

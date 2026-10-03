@@ -15,52 +15,71 @@ const AboutInfo = () => {
 
   return (
     <section className="about-info-section" id="about-info">
-      <div className="grid-overlay"></div>
-      <div className="theme-orb theme-orb-1"></div>
-      <div className="theme-orb theme-orb-2"></div>
-
       <div className="container">
-        <div className="section-header-wrap" data-aos="fade-down">
-          <span className="section-kicker">METRICS & ATTRIBUTES</span>
-          <h2 className="section-title">Overview & Impact</h2>
-          <p className="section-subtitle">
-            Key engineering metrics, technical versatility, and professional credentials
+        {/* =====================================================
+            SECTION HEADER
+            ===================================================== */}
+        <div className="about-info-header" data-aos="fade-down">
+          <div className="about-info-eyebrow">
+            <span className="eyebrow-rule" aria-hidden="true" />
+            <span className="eyebrow-text">Metrics &amp; Attributes</span>
+          </div>
+
+          <h2 className="about-info-title">Overview &amp; Impact</h2>
+
+          <p className="about-info-subtitle">
+            Key engineering metrics, technical versatility, and professional
+            credentials.
           </p>
         </div>
 
-        {/* Stats Row */}
-        <div className="row g-4" data-aos="fade-up">
+        {/* =====================================================
+            STATS — flat row, hairline dividers, no cards
+            ===================================================== */}
+        <div className="about-info-stats" data-aos="fade-up">
           {stats.map((stat, index) => (
-            <div className="col-md-4 col-6" key={index}>
-              <div className="stat-card">
-                <div className="stat-number">{stat.number}</div>
-                <div className="stat-label">{stat.label}</div>
-              </div>
+            <div className="about-info-stat" key={index}>
+              <span className="stat-index">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="stat-number">{stat.number}</span>
+              <span className="stat-label">{stat.label}</span>
             </div>
           ))}
         </div>
 
-        {/* Info List */}
-        <div className="row mt-5" data-aos="fade-up" data-aos-delay="150">
-          <div className="col-lg-9 mx-auto">
-            <div className="info-list-card">
-              <div className="info-list-header">
-                <span className="info-header-tag">Quick Profile Details</span>
-                <span className="info-header-status">
-                  <span className="status-live-dot"></span> Available for Work
-                </span>
-              </div>
-              <div className="info-items-container">
-                {aboutDetails.map((item, index) => (
-                  <div className="info-item" key={index}>
-                    <span className="info-label">
-                      <span className="info-arrow">›</span> {item.label}
-                    </span>
-                    <span className="info-value">{item.value}</span>
-                  </div>
-                ))}
-              </div>
+        {/* =====================================================
+            PROFILE DETAILS — single flat panel, row-based list
+            ===================================================== */}
+        <div
+          className="about-info-panel"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <div className="about-info-panel-header">
+            <div>
+              <span className="panel-kicker">Profile Details</span>
+              <span className="panel-title">At a Glance</span>
             </div>
+
+            <span className="panel-status">
+              <span className="panel-status-dot" aria-hidden="true" />
+              Available for Work
+            </span>
+          </div>
+
+          <div className="about-info-list">
+            {aboutDetails.map((item, index) => (
+              <div className="about-info-row" key={index}>
+                <span className="about-info-label">
+                  <span className="about-info-arrow" aria-hidden="true">
+                    ›
+                  </span>
+                  {item.label}
+                </span>
+                <span className="about-info-value">{item.value}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

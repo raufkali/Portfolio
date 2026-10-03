@@ -19,77 +19,114 @@ const ScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const { personal } = portfolioData;
+
   return (
     <>
       {visible && (
         <button
+          type="button"
           onClick={scrollToTop}
           className="scroll-to-top-btn"
           aria-label="Scroll back to top of page"
           title="Scroll to top"
         >
-          <i className="fas fa-arrow-up" aria-hidden="true"></i>
+          <i className="fas fa-arrow-up" aria-hidden="true" />
         </button>
       )}
 
       <footer className="site-footer" role="contentinfo">
         <div className="container">
-          <div className="footer-top-row">
-            <div className="footer-brand-wrap">
-              <span className="footer-brand-name">{portfolioData.personal.name}</span>
+          {/* =====================================================
+              TOP ROW — brand + nav + social
+              ===================================================== */}
+          <div className="footer-top">
+            {/* Brand */}
+            <div className="footer-brand">
+              <span className="footer-brand-name">{personal.name}</span>
               <p className="footer-brand-tagline">
-                Software Engineer & Full-Stack Developer building scalable web and desktop applications.
+                Software Engineer &amp; Full-Stack Developer building scalable
+                web and desktop applications.
               </p>
             </div>
 
-            <div className="footer-nav-links">
-              <a href="#about">About</a>
-              <a href="#experience">Experience</a>
-              <a href="#projects">Work</a>
-              <a href="#skills">Skills</a>
-              <a href="#contact">Contact</a>
-            </div>
+            {/* Nav links */}
+            <nav className="footer-nav" aria-label="Footer navigation">
+              <a href="#about" className="footer-nav-link">
+                About
+              </a>
+              <a href="#experience" className="footer-nav-link">
+                Experience
+              </a>
+              <a href="#projects" className="footer-nav-link">
+                Work
+              </a>
+              <a href="#skills" className="footer-nav-link">
+                Skills
+              </a>
+              <a href="#contact" className="footer-nav-link">
+                Contact
+              </a>
+            </nav>
 
-            <div className="footer-social-wrap">
+            {/* Social icons */}
+            <div className="footer-social">
               <a
-                href={portfolioData.personal.github}
+                href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="footer-social-btn"
                 aria-label="GitHub Profile"
+                title="GitHub"
               >
-                <i className="fab fa-github" aria-hidden="true"></i>
+                <i className="fab fa-github" aria-hidden="true" />
               </a>
               <a
-                href={portfolioData.personal.linkedin}
+                href={personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="footer-social-btn"
                 aria-label="LinkedIn Profile"
+                title="LinkedIn"
               >
-                <i className="fab fa-linkedin-in" aria-hidden="true"></i>
+                <i className="fab fa-linkedin-in" aria-hidden="true" />
               </a>
               <a
-                href={`https://wa.me/${portfolioData.personal.whatsapp.replace(/[^0-9]/g, "")}`}
+                href={`https://wa.me/${personal.whatsapp.replace(
+                  /[^0-9]/g,
+                  "",
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="footer-social-btn"
                 aria-label="WhatsApp Chat"
+                title="WhatsApp"
               >
-                <i className="fab fa-whatsapp" aria-hidden="true"></i>
+                <i className="fab fa-whatsapp" aria-hidden="true" />
               </a>
               <a
-                href={`mailto:${portfolioData.personal.email}`}
+                href={`mailto:${personal.email}`}
+                className="footer-social-btn"
                 aria-label="Send Email"
+                title="Email"
               >
-                <i className="fas fa-envelope" aria-hidden="true"></i>
+                <i className="fas fa-envelope" aria-hidden="true" />
               </a>
             </div>
           </div>
 
-          <div className="footer-bottom-row">
-            <p className="footer-copyright mb-0">
-              © {new Date().getFullYear()} {portfolioData.personal.name}. All rights reserved.
+          {/* Hairline rule */}
+          <div className="footer-rule" aria-hidden="true" />
+
+          {/* =====================================================
+              BOTTOM ROW — copyright + credits
+              ===================================================== */}
+          <div className="footer-bottom">
+            <p className="footer-copyright">
+              © {new Date().getFullYear()} {personal.name}. All rights reserved.
             </p>
-            <p className="footer-subtext mb-0">
-              Designed & Built with <i className="fas fa-heart text-danger mx-1" aria-hidden="true"></i> using Next.js & React
+            <p className="footer-credit">
+              Designed &amp; built with Next.js &amp; React
             </p>
           </div>
         </div>

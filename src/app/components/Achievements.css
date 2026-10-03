@@ -1,0 +1,285 @@
+/* ============================================================
+   ACHIEVEMENTS — SECTION
+   ============================================================ */
+
+.achievements-section {
+    position: relative;
+    background: #FFFFFF;
+    padding: 96px 0;
+    overflow: hidden;
+}
+
+.achievements-section .container {
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.achievements-header {
+    max-width: 640px;
+    margin-bottom: 40px;
+}
+
+.achievements-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.eyebrow-rule {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--navy, #0F2F50);
+}
+
+.eyebrow-text {
+    font-family: var(--font-main, "Inter", sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy, #0F2F50);
+}
+
+.achievements-title {
+    font-family: var(--font-display, "Amarante", serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(1.85rem, 4vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    color: var(--navy, #0F2F50);
+    margin: 0 0 14px 0;
+}
+
+.achievements-subtitle {
+    font-family: var(--font-main, "Inter", sans-serif);
+    font-size: clamp(0.9rem, 1.4vw, 1rem);
+    line-height: 1.75;
+    color: var(--text-muted, #5A6B7D);
+    margin: 0;
+    max-width: 560px;
+}
+
+/* Filters */
+.achievements-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.achievements-filter {
+    padding: 6px 14px;
+    font-family: var(--font-main, "Inter", sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--navy, #0F2F50);
+    background: #FFFFFF;
+    border: 1px solid var(--border, #E1E7ED);
+    border-radius: var(--radius-sm, 0.25rem);
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.achievements-filter:hover {
+    border-color: var(--navy, #0F2F50);
+}
+
+.achievements-filter-active {
+    background: var(--navy, #0F2F50);
+    color: #FFFFFF;
+    border-color: var(--navy, #0F2F50);
+}
+
+/* Grid */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Card */
+.achievement-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--border, #E1E7ED);
+    border-radius: var(--radius-md, 0.375rem);
+    padding: 26px 24px 24px;
+    transition: border-color 0.2s ease, transform 0.25s ease;
+}
+
+.achievement-card:hover {
+    border-color: var(--navy, #0F2F50);
+    transform: translateY(-2px);
+}
+
+.achievement-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.achievement-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--navy, #0F2F50);
+    background: var(--surface-hover, #F5F7FA);
+    border: 1px solid var(--border, #E1E7ED);
+    border-radius: var(--radius-sm, 0.25rem);
+    font-size: 17px;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.achievement-card:hover .achievement-icon {
+    border-color: var(--navy, #0F2F50);
+    background: #FFFFFF;
+}
+
+.achievement-icon i {
+    line-height: 1;
+}
+
+.achievement-index-fallback {
+    font-family: var(--font-code, "Fira Code", monospace);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.achievement-index {
+    font-family: var(--font-code, "Fira Code", monospace);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy, #0F2F50);
+    opacity: 0.55;
+}
+
+.achievement-title {
+    font-family: var(--font-display, "Amarante", serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    color: var(--navy, #0F2F50);
+    margin: 0 0 10px 0;
+}
+
+.achievement-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+    font-family: var(--font-main, "Inter", sans-serif);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted, #5A6B7D);
+}
+
+.achievement-meta-sep {
+    opacity: 0.5;
+}
+
+.achievement-tag {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 3px 8px;
+    margin-bottom: 14px;
+    font-family: var(--font-code, "Fira Code", monospace);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy, #0F2F50);
+    background: var(--surface-hover, #F5F7FA);
+    border: 1px solid var(--border, #E1E7ED);
+    border-radius: var(--radius-sm, 0.25rem);
+}
+
+.achievement-desc {
+    font-family: var(--font-main, "Inter", sans-serif);
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--text-secondary, #3D5064);
+    margin: 0;
+}
+
+/* Empty */
+.achievements-empty {
+    padding: 64px 24px;
+    text-align: center;
+    background: #FFFFFF;
+    border: 1px solid var(--border, #E1E7ED);
+    border-radius: var(--radius-md, 0.375rem);
+}
+
+.empty-kicker {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-family: var(--font-code, "Fira Code", monospace);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted, #5A6B7D);
+}
+
+.empty-title {
+    font-family: var(--font-display, "Amarante", serif);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--navy, #0F2F50);
+    margin: 0 0 10px 0;
+}
+
+.empty-text {
+    font-family: var(--font-main, "Inter", sans-serif);
+    font-size: 0.85rem;
+    color: var(--text-muted, #5A6B7D);
+    margin: 0;
+}
+
+.empty-text code {
+    font-family: var(--font-code, "Fira Code", monospace);
+    font-size: 0.82rem;
+    padding: 2px 6px;
+    background: var(--surface-hover, #F5F7FA);
+    border: 1px solid var(--border, #E1E7ED);
+    border-radius: var(--radius-sm, 0.25rem);
+    color: var(--navy, #0F2F50);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .achievements-section {
+        padding: 72px 0;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .achievement-card {
+        padding: 22px 20px 20px;
+    }
+
+    .achievement-title {
+        font-size: 1.15rem;
+    }
+}

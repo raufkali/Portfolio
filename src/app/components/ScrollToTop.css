@@ -1,33 +1,45 @@
 /* ============================================================
-   SCROLL TO TOP & SITE FOOTER — CLASSICAL WHITE LIGHT & DARK BLUE
+   SCROLL TO TOP — floats ABOVE the WhatsApp widget
+   WhatsApp btn:  bottom 24px  |  height ~48px  |  right 24px
+   ScrollToTop:   bottom 88px  |  size 46px      |  right 24px
    ============================================================ */
 
 .scroll-to-top-btn {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
+  right: 24px;
+  bottom: 88px;
+  z-index: 998;
+  /* below WhatsApp widget (999) */
+
+  width: 46px;
+  height: 46px;
+
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
+
+  background: var(--navy, #0F2F50);
+  color: #FFFFFF;
+  border: 1px solid var(--navy, #0F2F50);
+  border-radius: var(--radius-sm, 0.25rem);
+
+  font-size: 14px;
   cursor: pointer;
-  z-index: 9997;
-  background: var(--accent-dark-blue);
-  color: #FFFFFF !important;
-  border: 1px solid var(--accent-dark-blue);
-  box-shadow: 0 4px 16px rgba(10, 25, 47, 0.25);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  animation: fadeInUp 0.3s ease;
+  box-shadow: none;
+
+  animation: scrollBtnIn 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-@keyframes fadeInUp {
+@keyframes scrollBtnIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -35,151 +47,256 @@
 }
 
 .scroll-to-top-btn:hover {
-  background: var(--accent-deep-blue);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.35);
+  background: var(--navy-light, #1A4A7A);
+  border-color: var(--navy-light, #1A4A7A);
 }
+
+.scroll-to-top-btn:active {
+  transform: translateY(1px);
+}
+
+.scroll-to-top-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+.scroll-to-top-btn i {
+  line-height: 1;
+}
+
 
 /* ============================================================
-   SITE FOOTER — GROUNDED DARK NAVY
+   SITE FOOTER — darker navy closing band
    ============================================================ */
+
 .site-footer {
-  background: #0A192F;
-  color: #E2E8F0;
-  padding: 50px 0 30px;
-  border-top: 1px solid #1E293B;
   position: relative;
-  z-index: 1;
+  background: #0A1F36;
+  color: #FFFFFF;
+  padding: 56px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-top-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.site-footer .container {
+  max-width: 1200px;
 }
 
-.footer-brand-wrap {
-  max-width: 380px;
+
+/* ============================================================
+   TOP ROW — 3 columns
+   ============================================================ */
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  align-items: start;
+  gap: 40px;
+  padding-bottom: 32px;
+}
+
+
+/* Brand column */
+
+.footer-brand {
+  min-width: 0;
+  max-width: 420px;
 }
 
 .footer-brand-name {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
   display: block;
-  margin-bottom: 6px;
+  font-family: var(--font-display, "Amarante", serif);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin-bottom: 10px;
 }
 
 .footer-brand-tagline {
-  font-size: 0.88rem;
-  color: #94A3B8;
-  line-height: 1.5;
+  font-family: var(--font-main, "Inter", sans-serif);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0;
 }
 
-.footer-nav-links {
+
+/* Nav links column */
+
+.footer-nav {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.footer-nav-links a {
-  color: #94A3B8;
-  text-decoration: none;
-  font-size: 0.9rem;
+.footer-nav-link {
+  display: inline-block;
+  width: fit-content;
+
+  font-family: var(--font-code, "Fira Code", monospace);
+  font-size: 0.72rem;
   font-weight: 600;
-  transition: color 0.2s ease;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+
+  transition: color 0.15s ease;
 }
 
-.footer-nav-links a:hover {
+.footer-nav-link:hover {
   color: #FFFFFF;
 }
 
-.footer-social-wrap {
+
+/* Social icons column */
+
+.footer-social {
   display: flex;
-  gap: 12px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
-.footer-social-wrap a {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
+.footer-social-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #E2E8F0;
-  font-size: 1.05rem;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
 
-.footer-social-wrap a:hover {
-  background: var(--accent-secondary);
+  width: 38px;
+  height: 38px;
+
   color: #FFFFFF;
-  border-color: var(--accent-secondary);
-  transform: translateY(-2px);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm, 0.25rem);
+
+  font-size: 14px;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.footer-bottom-row {
+.footer-social-btn:hover {
+  background: #FFFFFF;
+  color: var(--navy, #0F2F50);
+  border-color: #FFFFFF;
+}
+
+.footer-social-btn i {
+  line-height: 1;
+}
+
+
+/* ============================================================
+   HAIRLINE RULE
+   ============================================================ */
+
+.footer-rule {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 22px;
+}
+
+
+/* ============================================================
+   BOTTOM ROW — copyright + credit
+   ============================================================ */
+
+.footer-bottom {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   flex-wrap: wrap;
-  gap: 14px;
-  padding-top: 24px;
 }
 
-.footer-copyright {
-  color: #94A3B8;
-  font-family: var(--font-main);
-  font-size: 0.86rem;
+.footer-copyright,
+.footer-credit {
+  font-family: var(--font-code, "Fira Code", monospace);
+  font-size: 0.68rem;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
 }
 
-.footer-subtext {
-  color: #64748B;
-  font-family: var(--font-code);
-  font-size: 0.78rem;
-}
-
-.footer-subtext .text-danger {
-  color: #F43F5E !important;
-}
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 900px) {
-  .footer-top-row {
-    flex-direction: column;
-    align-items: flex-start;
+
+@media (max-width: 991px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 
-  .footer-nav-links {
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-bottom-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .footer-social {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .site-footer {
+    padding: 48px 0 28px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 26px;
+  }
+
+  .footer-social {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
   .scroll-to-top-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 1rem;
+    right: 16px;
+    bottom: 80px;
+    /* matches WhatsApp collapse: 16 bottom + 48 height + 16 gap */
+    width: 42px;
+    height: 42px;
+    font-size: 13px;
+  }
+
+  .site-footer {
+    padding: 40px 0 24px;
+  }
+
+  .footer-brand-name {
+    font-size: 1.2rem;
+  }
+
+  .footer-brand-tagline {
+    font-size: 0.78rem;
+  }
+
+  .footer-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .footer-social-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }

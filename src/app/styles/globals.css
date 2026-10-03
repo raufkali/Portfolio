@@ -1,76 +1,102 @@
 /* ============================================================
-   CLASSICAL THEME — WHITE LIGHT & DARK BLUE
-   Unified Flow, Single Theme, Modern & High-Performance
+   MT ACADEMY THEME — NAVY + WHITE CLASSICAL
+   Single theme. Flat surfaces. Hairline borders. Serif headings.
    ============================================================ */
 
 :root,
 [data-theme="classic"] {
   --theme-name: "classic";
 
-  /* Typography */
-  --font-main: "Plus Jakarta Sans", var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Plus Jakarta Sans", -apple-system, sans-serif;
-  --font-code: "Fira Code", monospace;
+  /* --------------------------------------------------------
+     Typography
+     -------------------------------------------------------- */
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Amarante", serif;
+  --font-code: "Fira Code", ui-monospace, monospace;
 
-  /* White Light Canvas & Flowing Backgrounds */
+  /* --------------------------------------------------------
+     Canvas — white + off-white surfaces only
+     -------------------------------------------------------- */
   --bg-page: #FFFFFF;
   --bg-hero: #FFFFFF;
-  --bg-about: #F8FAFD;
-  --bg-skills: #F1F6FD;
+  --bg-about: #FFFFFF;
+  --bg-skills: #F5F7FA;
   --bg-projects: #FFFFFF;
-  --bg-experience: #F8FAFD;
-  --bg-hobbies: #F1F6FD;
-  --bg-contact: #FFFFFF;
-  --bg-subtle: #F0F6FF;
+  --bg-experience: #F5F7FA;
+  --bg-hobbies: #FFFFFF;
+  --bg-contact: #0F2F50;
+  --bg-subtle: #EDF1F6;
 
-  /* Surfaces & Cards */
+  /* --------------------------------------------------------
+     Surfaces & Cards — flat, no elevation
+     -------------------------------------------------------- */
   --surface: #FFFFFF;
-  --surface-hover: #F8FAFC;
+  --surface-hover: #F5F7FA;
   --surface-card: #FFFFFF;
-  --surface-card-hover: #F8FBFF;
+  --surface-card-hover: #F5F7FA;
   --surface-elevated: #FFFFFF;
+  --surface-navy: #0F2F50;
 
-  /* Dark Blue & Royal Navy Accents */
-  --accent-dark-blue: #0A192F;
-  --accent-navy: #0F172A;
-  --accent-deep-blue: #1E3A8A;
-  --accent-primary: #1E3A8A;
-  --accent-secondary: #2563EB;
-  --accent-royal: #1D4ED8;
-  --accent-blue-accent: #3B82F6;
-  --accent-light-blue: #EFF6FF;
-  --accent-blue-subtle: #DBEAFE;
-  --accent-blue-border: #BFDBFE;
+  /* --------------------------------------------------------
+     Navy palette — two colors only
+     -------------------------------------------------------- */
+  --navy: #0F2F50;
+  --navy-light: #1A4A7A;
+  --navy-dark: #0A1F36;
 
-  /* Gradients */
-  --accent-gradient: linear-gradient(135deg, #0A192F 0%, #1E3A8A 50%, #2563EB 100%);
-  --accent-gradient-alt: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
-  --accent-gradient-soft: linear-gradient(180deg, rgba(239, 246, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  --accent-dark-blue: #0F2F50;
+  --accent-navy: #0F2F50;
+  --accent-deep-blue: #1A4A7A;
+  --accent-primary: #0F2F50;
+  --accent-secondary: #1A4A7A;
+  --accent-royal: #0F2F50;
+  --accent-blue-accent: #1A4A7A;
+  --accent-light-blue: #F5F7FA;
+  --accent-blue-subtle: #EDF1F6;
+  --accent-blue-border: #E1E7ED;
 
-  /* Text Hierarchy — High Legibility & Contrast */
-  --text-primary: #0A192F;
-  --text-headings: #0A192F;
-  --text-secondary: #334155;
-  --text-muted: #64748B;
-  --text-subtle: #94A3B8;
-  --text-dark: #0A192F;
+  /* Gradients — disabled (classical = flat) */
+  --accent-gradient: none;
+  --accent-gradient-alt: none;
+  --accent-gradient-soft: none;
+
+  /* --------------------------------------------------------
+     Text hierarchy
+     -------------------------------------------------------- */
+  --text-primary: #0F2F50;
+  --text-headings: #0F2F50;
+  --text-secondary: #3D5064;
+  --text-muted: #5A6B7D;
+  --text-subtle: #8B9AAB;
+  --text-dark: #0F2F50;
   --text-inverse: #FFFFFF;
 
-  /* Subtle Elegant Borders */
+  /* --------------------------------------------------------
+     Borders — hairline-first
+     -------------------------------------------------------- */
   --border-width: 1px;
-  --border: #E2E8F0;
-  --border-subtle: rgba(226, 232, 240, 0.9);
-  --border-blue: #DBEAFE;
-  --border-bold: #CBD5E1;
-  --border-hover: #93C5FD;
-  --border-accent: #2563EB;
+  --border: #E1E7ED;
+  --border-subtle: #EDF1F6;
+  --border-blue: #E1E7ED;
+  --border-bold: #C9D6E3;
+  --border-hover: #0F2F50;
+  --border-accent: #0F2F50;
 
-  /* Soft, Luxurious Shadows */
-  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
-  --shadow-lg: 0 16px 36px -4px rgba(30, 64, 175, 0.08), 0 4px 12px -2px rgba(30, 64, 175, 0.03);
-  --shadow-hover: 0 14px 34px -4px rgba(30, 58, 138, 0.12), 0 6px 14px -2px rgba(30, 58, 138, 0.06);
-  --shadow-blue-glow: 0 8px 24px rgba(37, 99, 235, 0.18);
+  /* --------------------------------------------------------
+     Shadows — navy-tinted, subtle (no glow)
+     -------------------------------------------------------- */
+  --shadow-sm:
+    0 1px 2px rgba(15, 47, 80, 0.04);
+  --shadow-md:
+    0 2px 8px rgba(15, 47, 80, 0.05),
+    0 1px 2px rgba(15, 47, 80, 0.03);
+  --shadow-lg:
+    0 8px 24px rgba(15, 47, 80, 0.07),
+    0 2px 6px rgba(15, 47, 80, 0.04);
+  --shadow-hover:
+    0 4px 12px rgba(15, 47, 80, 0.08);
+  --shadow-blue-glow:
+    0 4px 12px rgba(15, 47, 80, 0.10);
 
   /* Brutal replacement tokens for backward compatibility */
   --shadow-brutal: var(--shadow-md);
@@ -78,20 +104,25 @@
   --shadow-brutal-lg: var(--shadow-lg);
   --shadow-brutal-accent: var(--shadow-blue-glow);
   --shadow-brutal-pink: var(--shadow-blue-glow);
-  --glow-effect: 0 4px 20px rgba(37, 99, 235, 0.08);
+  --glow-effect: none;
 
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 22px;
-  --radius-pill: 9999px;
+  /* --------------------------------------------------------
+     Radii — classical = flatter corners
+     -------------------------------------------------------- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-pill: 0.25rem;
+
   --section-padding: 96px;
 }
+
 
 /* ============================================================
    GLOBAL RESETS & FOUNDATION
    ============================================================ */
+
 *,
 *::before,
 *::after {
@@ -117,100 +148,89 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Unified Subtle Background Grid Overlay */
+/* Background grid overlay — disabled for classical flatness */
 .grid-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(30, 58, 138, 0.04) 1.2px, transparent 1.2px);
-  background-size: 28px 28px;
-  opacity: 0.75;
+  display: none;
 }
 
-/* Unified Ambient Background Glow Orbs */
+/* Ambient glow orbs — disabled */
 .theme-orb {
-  position: absolute;
-  width: 460px;
-  height: 460px;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  opacity: 0.16;
+  display: none;
 }
 
-.theme-orb-1 {
-  top: -8%;
-  right: -5%;
-  background: radial-gradient(circle, #2563EB, transparent 70%);
-  animation: orbDrift 18s ease-in-out infinite alternate;
-}
-
+.theme-orb-1,
 .theme-orb-2 {
-  bottom: -8%;
-  left: -5%;
-  background: radial-gradient(circle, #1E3A8A, transparent 70%);
-  animation: orbDrift 22s ease-in-out infinite alternate-reverse;
+  display: none;
 }
 
-@keyframes orbDrift {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(35px, -25px) scale(1.08);
-  }
-}
 
 /* ============================================================
-   SEAMLESS FLOWING SECTIONS
-   Unified background transitions with NO jarring left borders
+   SEAMLESS SECTIONS — flat white + off-white alternation
    ============================================================ */
+
 section {
   position: relative;
   padding: var(--section-padding) 0;
-  border-left: none; /* Eliminated jarring color-coded side borders */
+  border-left: none;
   transition: background-color 0.4s ease;
 }
 
-/* Flow: Clean white hero */
 #about {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
+  background: #FFFFFF;
 }
 
-/* Flow: Gentle soft light blue tint */
 #about-info {
-  background: linear-gradient(180deg, #F8FAFD 0%, #F0F6FF 100%);
+  background: #F5F7FA;
+  border-top: 1px solid var(--border);
 }
 
-/* Flow: Smooth transition to experience */
 #experience {
-  background: linear-gradient(180deg, #F0F6FF 0%, #FFFFFF 100%);
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
 }
 
-/* Flow: Pure white for project showcase */
 #projects {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
 }
 
-/* Flow: Soft cool light blue for technical proficiencies */
 #skills {
-  background: linear-gradient(180deg, #F8FAFD 0%, #F0F6FF 100%);
+  background: #F5F7FA;
+  border-top: 1px solid var(--border);
 }
 
-/* Flow: Soft light blue for personal interests */
 #hobbies {
-  background: linear-gradient(180deg, #F0F6FF 0%, #FFFFFF 100%);
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
 }
 
-/* Flow: White to deep navy grounded footer */
 #contact {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
+  background: #0F2F50;
+  border-top: 1px solid var(--border);
+  color: #FFFFFF;
 }
+
+#contact .section-title,
+#contact .section-subtitle,
+#contact h1,
+#contact h2,
+#contact h3,
+#contact h4,
+#contact h5,
+#contact h6,
+#contact p {
+  color: #FFFFFF;
+}
+
+#contact .section-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
 
 /* ============================================================
-   UNIFIED SECTION HEADERS
-   Consistent, cohesive structure across all sections
+   SECTION HEADERS
    ============================================================ */
+
 .section-header-wrap {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -222,37 +242,38 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 16px;
+  padding: 5px 14px;
   background: var(--accent-light-blue);
   border: 1px solid var(--accent-blue-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   font-family: var(--font-main);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--navy);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 2.85rem);
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.2;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
 }
 
 .section-subtitle {
   font-family: var(--font-main);
-  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 400;
   max-width: 620px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* Typography Foundations */
@@ -263,123 +284,294 @@ h4,
 h5,
 h6 {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--navy);
 }
 
 p {
   color: var(--text-secondary);
 }
 
+/* Gradient text — disabled, replaced with solid navy */
 .gradient-text {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+  color: var(--navy);
   display: inline-block;
 }
 
+
 /* ============================================================
-   BUTTONS & INTERACTION TOKENS
-   White Light & Dark Blue Classic Styling
+   BUTTONS — flat, navy + white only
    ============================================================ */
 
-/* Primary Action Button: Deep Dark Blue */
 .btn-primary-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 13px 28px;
+  padding: 12px 26px;
   font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.92rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-decoration: none;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  background: var(--accent-dark-blue);
+  background: var(--navy);
   color: #FFFFFF !important;
-  border: 1px solid var(--accent-dark-blue);
-  box-shadow: 0 4px 15px rgba(10, 25, 47, 0.15);
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 1px solid var(--navy);
+  box-shadow: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
   white-space: nowrap;
 }
 
 .btn-primary-action:hover {
-  background: var(--accent-deep-blue);
+  background: var(--navy-light);
+  border-color: var(--navy-light);
   color: #FFFFFF !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.25);
-  border-color: var(--accent-deep-blue);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-primary-action:active {
-  transform: translateY(0);
+  transform: translateY(1px);
 }
 
-/* Secondary Action Button: Pure White with Dark Blue Accent */
 .btn-secondary-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 13px 28px;
+  padding: 12px 26px;
   font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.92rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-decoration: none;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   background: #FFFFFF;
-  color: var(--accent-primary) !important;
-  border: 1.5px solid var(--accent-blue-border);
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: var(--navy) !important;
+  border: 1px solid var(--navy);
+  box-shadow: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
   white-space: nowrap;
 }
 
 .btn-secondary-action:hover {
-  background: var(--accent-light-blue);
-  color: var(--accent-royal) !important;
-  border-color: var(--accent-secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1);
+  background: var(--navy);
+  color: #FFFFFF !important;
+  border-color: var(--navy);
+  transform: none;
+  box-shadow: none;
 }
 
-/* CV Action Button: Light Blue with Royal Blue Border */
 .btn-cv-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 13px 28px;
+  padding: 12px 26px;
   font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.92rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-decoration: none;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  background: var(--accent-light-blue);
-  color: var(--accent-royal) !important;
-  border: 1.5px solid var(--accent-blue-border);
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: #FFFFFF;
+  color: var(--navy) !important;
+  border: 1px solid var(--navy);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
   white-space: nowrap;
 }
 
 .btn-cv-action:hover {
-  background: var(--accent-blue-subtle);
-  color: var(--accent-primary) !important;
-  border-color: var(--accent-royal);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
+  background: var(--navy);
+  color: #FFFFFF !important;
+  border-color: var(--navy);
+  transform: none;
+  box-shadow: none;
 }
+
+
+/* ============================================================
+   CARDS — flat, navy left rail optional, hairline border
+   ============================================================ */
+
+.card,
+.surface-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover,
+.surface-card:hover {
+  border-color: var(--navy);
+  box-shadow: none;
+}
+
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+
+.badge,
+.badge-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 4px 10px;
+  background: var(--accent-light-blue);
+  color: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+
+input,
+textarea,
+select,
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  color: var(--navy);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  transition: border-color 0.15s ease;
+  box-shadow: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-subtle);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--border-bold);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--navy);
+  box-shadow: none;
+}
+
+
+/* ============================================================
+   DIVIDERS
+   ============================================================ */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  border: none;
+}
+
+.divider-accent {
+  width: 48px;
+  height: 2px;
+  background: var(--navy);
+  border: none;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C9D6E3 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9D6E3;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B9AAB;
+}
+
+
+/* ============================================================
+   SELECTION & FOCUS
+   ============================================================ */
+
+::selection {
+  background: var(--accent-blue-subtle);
+  color: var(--navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+
+a {
+  color: var(--navy);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--navy-light);
+}
+
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+
 @media (max-width: 768px) {
+
   :root,
   [data-theme="classic"] {
     --section-padding: 72px;
@@ -390,11 +582,32 @@ p {
   }
 }
 
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+#achievements {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
+}
+
+#certifications {
+  background: #F5F7FA;
+  border-top: 1px solid var(--border);
+}
+
+#education {
+  background: #F5F7FA;
+  border-top: 1px solid var(--border);
 }

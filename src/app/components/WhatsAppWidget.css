@@ -1,128 +1,143 @@
 /* ============================================================
-   WHATSAPP FLOATING WIDGET — CLASSICAL WHITE LIGHT & DARK BLUE
+   WHATSAPP WIDGET — NAVY + WHITE CLASSICAL
    ============================================================ */
 
-.whatsapp-floating-widget {
+.wa-widget {
   position: fixed;
-  bottom: 95px;
-  right: 28px;
-  z-index: 9998;
-  display: flex;
-  align-items: center;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+
+  animation: waIn 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Float Button Base */
-.whatsapp-float-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 18px 8px 10px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  text-decoration: none;
-  border: 1px solid var(--border);
-  outline: none;
-  background: #FFFFFF;
-  color: var(--accent-dark-blue);
-  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
-  font-family: var(--font-main);
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.whatsapp-float-btn:hover {
-  transform: translateY(-3px);
-  border-color: #86EFAC;
-  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.18);
-  background: #FFFFFF;
-}
-
-/* Icon Wrap */
-.whatsapp-icon-wrap {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #25D366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFF;
-  font-size: 1.45rem;
-  flex-shrink: 0;
-  box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.whatsapp-float-btn:hover .whatsapp-icon-wrap {
-  transform: scale(1.08);
-}
-
-.whatsapp-tooltip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.84rem;
-  font-weight: 700;
-  white-space: nowrap;
-  color: var(--accent-dark-blue);
-}
-
-.whatsapp-pulse-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #25D366;
-  box-shadow: 0 0 8px rgba(37, 211, 102, 0.7);
-  animation: waPulse 1.8s infinite;
-}
-
-@keyframes waPulse {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(0.9);
+@keyframes waIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
-  50% {
+
+  to {
     opacity: 1;
-    transform: scale(1.2);
+    transform: translateY(0);
   }
 }
+
 
 /* ============================================================
-   RESPONSIVE
+   BUTTON — flat navy rectangle
    ============================================================ */
-@media (max-width: 768px) {
-  .whatsapp-floating-widget {
-    bottom: 82px;
-    right: 20px;
+
+.wa-btn {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 16px 11px 12px;
+
+  font-family: var(--font-main, "Inter", sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  color: #FFFFFF;
+  background: var(--navy, #0F2F50);
+  border: 1px solid var(--navy, #0F2F50);
+  border-radius: var(--radius-sm, 0.25rem);
+
+  cursor: pointer;
+  box-shadow: none;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.wa-btn:hover {
+  background: var(--navy-light, #1A4A7A);
+  border-color: var(--navy-light, #1A4A7A);
+}
+
+.wa-btn:active {
+  transform: translateY(1px);
+}
+
+.wa-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+
+/* Icon */
+
+.wa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+
+  color: var(--navy, #0F2F50);
+  background: #FFFFFF;
+  border-radius: var(--radius-sm, 0.25rem);
+
+  font-size: 14px;
+  line-height: 1;
+}
+
+
+/* Label — dot + uppercase text */
+
+.wa-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wa-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #FFFFFF;
+  border-radius: 0;
+  opacity: 0.85;
+}
+
+.wa-label-text {
+  font-family: var(--font-code, "Fira Code", monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+
+/* ============================================================
+   RESPONSIVE — collapse to icon-only on small screens
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .wa-widget {
+    right: 16px;
+    bottom: 16px;
   }
 
-  .whatsapp-tooltip {
+  .wa-btn {
+    padding: 10px;
+    gap: 0;
+  }
+
+  .wa-label {
     display: none;
   }
 
-  .whatsapp-float-btn {
-    padding: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    justify-content: center;
-  }
-
-  .whatsapp-icon-wrap {
-    width: 100%;
-    height: 100%;
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .whatsapp-floating-widget {
-    bottom: 78px;
-    right: 16px;
-  }
-
-  .whatsapp-float-btn {
-    width: 44px;
-    height: 44px;
+  .wa-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
   }
 }
