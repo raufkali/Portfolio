@@ -8,7 +8,7 @@ import "./Skills.css";
 
 const Skills = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
+    AOS.init({ duration: 800, easing: "ease-out-cubic", once: false });
   }, []);
 
   const { skills } = portfolioData;

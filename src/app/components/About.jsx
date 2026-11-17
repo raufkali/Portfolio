@@ -5,17 +5,19 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { portfolioData } from "../../../lib/portfolioData";
+import ThreeCanvasBg from "./ThreeCanvasBg";
 import "./About.css";
 
 const About = () => {
   useEffect(() => {
-    AOS.init({ duration: 900, once: false });
+    AOS.init({ duration: 800, easing: "ease-out-cubic", once: false });
   }, []);
 
   const { name, title, tagline } = portfolioData.personal;
 
   return (
     <section id="about" className="about-section">
+      <ThreeCanvasBg variant="hero" className="about-3d-bg" />
       <div className="container">
         <div className="row align-items-center min-vh-100 py-5">
           {/* =====================================================
@@ -90,7 +92,7 @@ const About = () => {
                   priority
                 />
 
-                {/* Corner tag — replaces pulsing badge */}
+                {/* Corner tag */}
                 <div className="about-portrait-tag">
                   <span>Full Stack Dev</span>
                 </div>

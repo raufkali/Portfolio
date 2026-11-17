@@ -1,10 +1,41 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { portfolioData } from "../../../lib/portfolioData";
+import ThreeCanvasBg from "./ThreeCanvasBg";
 import "./Projects.css";
+
+const ProjectCard3D = dynamic(() => import("./ProjectCard3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="project-3d-fallback" aria-hidden="true">
+      <div className="project-3d-cube">
+        <i className="fas fa-cube" />
+      </div>
+      <span>INITIALIZING 3D MODEL</span>
+    </div>
+  ),
+});
+
+function getProjectIcon(project) {
+  const title = (project.title || "").toLowerCase();
+  if (title.includes("x ai") || title.includes("whatsapp")) return "fas fa-robot";
+  if (title.includes("e-commerce") || title.includes("cosmetics")) return "fas fa-bag-shopping";
+  if (title.includes("finance") || title.includes("accountant")) return "fas fa-chart-line";
+  if (title.includes("clinic")) return "fas fa-heart-pulse";
+  if (title.includes("student") || title.includes("gdc") || title.includes("mtacademy")) return "fas fa-graduation-cap";
+  if (title.includes("linkedin")) return "fab fa-linkedin-in";
+  if (title.includes("binance")) return "fas fa-coins";
+  if (title.includes("api")) return "fas fa-server";
+  if (title.includes("wanderly") || title.includes("travel")) return "fas fa-globe";
+  if (title.includes("event")) return "fas fa-ticket";
+  if (title.includes("construction")) return "fas fa-building";
+  if (title.includes("admin")) return "fas fa-gauge-high";
+  return "fas fa-cube";
+}
 
 const Projects = () => {
   const { projects } = portfolioData;
@@ -19,6 +50,7 @@ const Projects = () => {
   useEffect(() => {
     AOS.init({
       duration: 800,
+      easing: "ease-out-cubic",
       once: false,
     });
   }, []);
@@ -78,6 +110,7 @@ const Projects = () => {
   }, [handleNext, handlePrev]);
 
   const handleTouchStart = (event) => {
+    if (event.target.closest?.(".project-3d-stage")) return;
     touchStartX.current = event.touches[0].clientX;
     touchStartY.current = event.touches[0].clientY;
   };
@@ -103,6 +136,22 @@ const Projects = () => {
     touchStartY.current = null;
   };
 
+  const handleCardMouseMove = (event) => {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const nx = (event.clientX - rect.left) / rect.width - 0.5;
+    const ny = (event.clientY - rect.top) / rect.height - 0.5;
+    card.style.setProperty("--card-ry", `${(nx * 5.5).toFixed(2)}deg`);
+    card.style.setProperty("--card-rx", `${(-ny * 4.5).toFixed(2)}deg`);
+  };
+
+  const handleCardMouseLeave = (event) => {
+    const card = event.currentTarget;
+    card.style.setProperty("--card-ry", "0deg");
+    card.style.setProperty("--card-rx", "0deg");
+  };
+
   const getOffset = (index) => {
     if (!total) return 0;
 
@@ -126,6 +175,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="projects-section">
+      <ThreeCanvasBg variant="projects" className="projects-3d-bg" />
       <div className="container">
         {/* =====================================================
             HEADER
@@ -204,6 +254,7 @@ const Projects = () => {
               if (!isVisible) return null;
 
               const isActive = offset === 0;
+              const iconClass = getProjectIcon(project);
 
               return (
                 <article
@@ -215,6 +266,8 @@ const Projects = () => {
                   }`}
                   data-offset={offset}
                   aria-hidden={!isActive}
+                  onMouseMove={isActive ? handleCardMouseMove : undefined}
+                  onMouseLeave={isActive ? handleCardMouseLeave : undefined}
                   onClick={() => {
                     if (offset < 0) {
                       handlePrev();
@@ -225,6 +278,26 @@ const Projects = () => {
                     }
                   }}
                 >
+                  {/* =================================================
+                      BESPOKE 3D MODEL STAGE
+                  ================================================= */}
+                  <div className="project-cover-visual">
+                    {isActive ? (
+                      <ProjectCard3D project={project} />
+                    ) : (
+                      <div className="project-3d-fallback" aria-hidden="true">
+                        <div className="project-3d-cube">
+                          <i className={iconClass} />
+                        </div>
+                        <span>3D MODEL · {project.role}</span>
+                      </div>
+                    )}
+
+                    <span className="project-cover-visual-badge">
+                      {project.status || "Completed"}
+                    </span>
+                  </div>
+
                   {/* =================================================
                       PROJECT INFORMATION
                   ================================================= */}

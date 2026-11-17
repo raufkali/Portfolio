@@ -10,7 +10,18 @@
 
 .about-section .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+.about-3d-bg {
+  z-index: 0;
+  opacity: 0.96;
+}
+
+@media (max-width: 991px) {
+  .about-3d-bg {
+    opacity: 0.42;
+  }
 }
 
 
@@ -104,7 +115,7 @@
 .about-cta-group .btn-cv-action {
   font-size: 0.85rem;
   padding: 11px 22px;
-  border-radius: var(--radius-sm, 0.25rem);
+  border-radius: 4px;
   font-family: var(--font-main, "Inter", sans-serif);
   letter-spacing: 0.02em;
 }
@@ -112,7 +123,14 @@
 .about-cta-group .btn-primary-action i,
 .about-cta-group .btn-secondary-action i,
 .about-cta-group .btn-cv-action i {
-  font-size: 12px;
+  font-size: 13px;
+  filter: drop-shadow(0 2px 2px rgba(10, 31, 54, 0.25));
+  transition: transform 0.2s ease;
+}
+
+.about-cta-group a:hover i,
+.about-cta-group button:hover i {
+  transform: translateY(-1px) scale(1.1);
 }
 
 
@@ -127,14 +145,28 @@
   gap: 24px;
 }
 
-/* Portrait frame — flat, single hairline, no card */
+/* Portrait frame — tactile 3D tilt frame */
 .about-portrait {
   position: relative;
   width: 100%;
   max-width: 360px;
   aspect-ratio: 6 / 7;
   border: 1px solid var(--navy, #0F2F50);
+  border-radius: 6px;
+  box-shadow:
+    0 8px 0 rgba(15, 47, 80, 0.14),
+    0 18px 36px rgba(15, 47, 80, 0.14);
   overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-portrait:hover {
+  transform: perspective(1000px) translate3d(0, -5px, 12px) rotateX(3deg) rotateY(-3deg);
+  box-shadow:
+    0 12px 0 rgba(15, 47, 80, 0.18),
+    0 26px 48px rgba(15, 47, 80, 0.22);
 }
 
 .about-portrait-photo {
@@ -142,6 +174,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-portrait:hover .about-portrait-photo {
+  transform: scale(1.03);
 }
 
 /* Corner tag — replaces pulsing badge */
@@ -160,43 +197,60 @@
   border-radius: 0;
 }
 
-/* Social links — flat squares, hairline border */
+/* Social links — 3D beveled keycap squares */
 .about-social {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
 }
 
 .about-social-btn {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   border: 1px solid var(--navy, #0F2F50);
-  border-radius: var(--radius-sm, 0.25rem);
-  background: #FFFFFF;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF3F8 100%);
   color: var(--navy, #0F2F50);
+  box-shadow: var(--shadow-3d-white);
 
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
 
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-social-btn:hover {
-  background: var(--navy, #0F2F50);
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
   color: #FFFFFF;
   border-color: var(--navy, #0F2F50);
+  box-shadow: var(--shadow-3d-white-hover);
+  transform: translateY(-3px) perspective(320px) rotateX(8deg);
+}
+
+.about-social-btn:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-3d-white-active);
 }
 
 .about-social-btn i {
   line-height: 1;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.7));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.about-social-btn:hover i {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
 }
 
 

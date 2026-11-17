@@ -283,6 +283,18 @@ export default function RootLayout({ children }) {
                   position: 1,
                   item: {
                     "@type": "SoftwareApplication",
+                    name: "X AI Automation Agent",
+                    description:
+                      "Autonomous X (Twitter) AI publishing agent with WhatsApp user verification and multilingual regeneration in Urdu, Roman Urdu, or a new post.",
+                    applicationCategory: "DeveloperApplication",
+                    operatingSystem: "Cloud / Node.js",
+                  },
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  item: {
+                    "@type": "SoftwareApplication",
                     name: "Smart E-Commerce Marketplace",
                     description:
                       "Multi-vendor marketplace platform with real-time chat, payment gateway integration, and dispute management.",
@@ -292,7 +304,7 @@ export default function RootLayout({ children }) {
                 },
                 {
                   "@type": "ListItem",
-                  position: 2,
+                  position: 3,
                   item: {
                     "@type": "SoftwareApplication",
                     name: "GDC Gulabad Website Portal",
@@ -305,7 +317,7 @@ export default function RootLayout({ children }) {
                 },
                 {
                   "@type": "ListItem",
-                  position: 3,
+                  position: 4,
                   item: {
                     "@type": "SoftwareApplication",
                     name: "Reshine Cosmetics E-Commerce Store",
@@ -318,7 +330,7 @@ export default function RootLayout({ children }) {
                 },
                 {
                   "@type": "ListItem",
-                  position: 4,
+                  position: 5,
                   item: {
                     "@type": "SoftwareApplication",
                     name: "Finance Management Desktop App",
@@ -330,7 +342,7 @@ export default function RootLayout({ children }) {
                 },
                 {
                   "@type": "ListItem",
-                  position: 5,
+                  position: 6,
                   item: {
                     "@type": "SoftwareApplication",
                     name: "LinkedIn Auto Posting Bot",

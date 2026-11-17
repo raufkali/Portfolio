@@ -3,20 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000 -H 0.0.0.0",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3000 -H 0.0.0.0",
     "lint": "next lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
+    "@react-three/fiber": "^9.8.2",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.7",
     "framer-motion": "^12.42.0",
     "next": "^15.4.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-intersection-observer": "^10.0.3"
+    "react-intersection-observer": "^10.0.3",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

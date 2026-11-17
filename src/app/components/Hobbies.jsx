@@ -8,7 +8,7 @@ import "./Hobbies.css";
 
 const Hobbies = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
+    AOS.init({ duration: 800, easing: "ease-out-cubic", once: false });
   }, []);
 
   const { hobbies } = portfolioData;

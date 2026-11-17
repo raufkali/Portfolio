@@ -81,6 +81,32 @@
   opacity: 0.6;
 }
 
+/* React Three Fiber Low-Poly Robot Stage */
+.header-robot-stage,
+.header-robot-fallback {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: radial-gradient(circle at 50% 45%, rgba(15, 47, 80, 0.06), transparent 72%);
+  overflow: hidden;
+}
+
+.header-robot-stage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.header-robot-fallback {
+  color: var(--navy, #0F2F50);
+  font-size: 18px;
+}
+
 
 /* ============================================================
    DESKTOP NAVIGATION
@@ -157,7 +183,7 @@
   gap: 10px;
 }
 
-/* CV Button — outline navy */
+/* CV Button — 3D beveled outline navy */
 .header-cv-btn {
   height: 38px;
   display: inline-flex;
@@ -166,9 +192,10 @@
   padding: 0 16px;
 
   border: 1px solid var(--navy, #0F2F50);
-  border-radius: var(--radius-sm, 0.25rem);
+  border-radius: 4px;
   color: var(--navy, #0F2F50);
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF3F8 100%);
+  box-shadow: var(--shadow-3d-white);
 
   text-decoration: none;
   font-family: var(--font-main, "Inter", sans-serif);
@@ -179,25 +206,41 @@
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .header-cv-btn:hover {
-  background: var(--navy, #0F2F50);
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
   color: #FFFFFF;
   border-color: var(--navy, #0F2F50);
+  box-shadow: var(--shadow-3d-white-hover);
+  transform: translateY(-2px);
+}
+
+.header-cv-btn:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-3d-white-active);
 }
 
 .header-cv-btn i {
   font-size: 11px;
-  opacity: 0.85;
+  opacity: 0.92;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.65));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.header-cv-btn:hover i {
+  transform: translateY(1px);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
 }
 
 .cv-btn-text {
   white-space: nowrap;
 }
 
-/* Contact Button — solid navy */
+/* Contact Button — 3D extruded navy */
 .header-contact {
   height: 38px;
   display: inline-flex;
@@ -206,9 +249,10 @@
   padding: 0 16px;
 
   border: 1px solid var(--navy, #0F2F50);
-  border-radius: var(--radius-sm, 0.25rem);
-  background: var(--navy, #0F2F50);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
   color: #FFFFFF !important;
+  box-shadow: var(--shadow-3d-navy);
 
   text-decoration: none;
   font-family: var(--font-main, "Inter", sans-serif);
@@ -218,27 +262,37 @@
 
   transition:
     background-color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .header-contact:hover {
-  background: var(--navy-light, #1A4A7A);
+  background: linear-gradient(180deg, #1E548A 0%, #143D66 100%);
   border-color: var(--navy-light, #1A4A7A);
   color: #FFFFFF !important;
+  box-shadow: var(--shadow-3d-navy-hover);
+  transform: translateY(-2px);
+}
+
+.header-contact:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-3d-navy-active);
 }
 
 .contact-arrow {
-  font-size: 12px;
+  font-size: 13px;
+  text-shadow: 0 2px 0 rgba(5, 16, 30, 0.5);
   transition: transform 0.2s ease;
 }
 
 .header-contact:hover .contact-arrow {
-  transform: translate(2px, -2px);
+  transform: translate(2px, -2px) scale(1.1);
 }
 
 
 /* ============================================================
-   MOBILE TOGGLE BUTTON
+   MOBILE TOGGLE BUTTON — 3D KEYCAP
    ============================================================ */
 
 .menu-toggle {
@@ -253,16 +307,28 @@
   gap: 6px;
 
   border: 1px solid var(--navy, #0F2F50);
-  border-radius: var(--radius-sm, 0.25rem);
-  background: #FFFFFF;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF3F8 100%);
   color: var(--navy, #0F2F50);
+  box-shadow: var(--shadow-3d-white);
   cursor: pointer;
 
-  transition: background-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
 }
 
 .menu-toggle:hover {
-  background: var(--surface-hover, #F5F7FA);
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-3d-white-hover);
+  transform: translateY(-1px);
+}
+
+.menu-toggle:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-3d-white-active);
 }
 
 .menu-toggle span {
@@ -322,13 +388,15 @@
 
   background: #FFFFFF;
   border-left: 1px solid var(--navy, #0F2F50);
+  box-shadow: -16px 0 42px rgba(10, 31, 54, 0.24);
 
-  transform: translateX(100%);
+  transform-origin: right center;
+  transform: perspective(1200px) translate3d(100%, 0, -40px) rotateY(-12deg);
   visibility: hidden;
 
   transition:
-    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.32s ease;
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.38s ease;
 
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -336,7 +404,7 @@
 }
 
 .mobile-navigation-open {
-  transform: translateX(0);
+  transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg);
   visibility: visible;
 }
 
@@ -389,16 +457,28 @@
   justify-content: center;
 
   border: 1px solid var(--navy, #0F2F50);
-  border-radius: var(--radius-sm, 0.25rem);
-  background: #FFFFFF;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF3F8 100%);
   color: var(--navy, #0F2F50);
+  box-shadow: var(--shadow-3d-white);
   cursor: pointer;
 
-  transition: background-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
 }
 
 .mobile-close:hover {
-  background: var(--surface-hover, #F5F7FA);
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-3d-white-hover);
+  transform: translateY(-1px);
+}
+
+.mobile-close:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-3d-white-active);
 }
 
 .mobile-close span {
@@ -481,13 +561,14 @@
 
 .mobile-nav-arrow {
   font-size: 14px;
-  opacity: 0.4;
+  opacity: 0.55;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 3px rgba(15, 47, 80, 0.18);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .mobile-nav-link:hover .mobile-nav-arrow {
-  opacity: 0.9;
-  transform: translate(2px, -2px);
+  opacity: 1;
+  transform: translate(2px, -2px) scale(1.1);
 }
 
 
@@ -509,7 +590,7 @@
   justify-content: center;
   gap: 8px;
 
-  border-radius: var(--radius-sm, 0.25rem);
+  border-radius: 4px;
   text-decoration: none;
   font-family: var(--font-main, "Inter", sans-serif);
   font-size: 13px;
@@ -519,30 +600,48 @@
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .mobile-cv-btn {
   border: 1px solid var(--navy, #0F2F50);
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF3F8 100%);
   color: var(--navy, #0F2F50);
+  box-shadow: var(--shadow-3d-white);
 }
 
 .mobile-cv-btn:hover {
-  background: var(--navy, #0F2F50);
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
   color: #FFFFFF;
+  box-shadow: var(--shadow-3d-white-hover);
+  transform: translateY(-2px);
+}
+
+.mobile-cv-btn:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-3d-white-active);
 }
 
 .mobile-contact-btn {
   border: 1px solid var(--navy, #0F2F50);
-  background: var(--navy, #0F2F50);
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
   color: #FFFFFF !important;
+  box-shadow: var(--shadow-3d-navy);
 }
 
 .mobile-contact-btn:hover {
-  background: var(--navy-light, #1A4A7A);
+  background: linear-gradient(180deg, #1E548A 0%, #143D66 100%);
   border-color: var(--navy-light, #1A4A7A);
   color: #FFFFFF !important;
+  box-shadow: var(--shadow-3d-navy-hover);
+  transform: translateY(-2px);
+}
+
+.mobile-contact-btn:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-3d-navy-active);
 }
 
 
@@ -604,6 +703,12 @@
     padding: 0 16px;
   }
 
+  .header-robot-stage,
+  .header-robot-fallback {
+    width: 44px;
+    height: 44px;
+  }
+
   .brand-mark {
     font-size: 16px;
   }
@@ -624,15 +729,35 @@
 
 .nav-more-trigger {
   cursor: pointer;
-  background: transparent;
-  border: 0;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF3F8 100%);
+  border: 1px solid #C5D2E0;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    0 2px 0 #C5D2E0;
   font-family: inherit;
   gap: 6px;
+  padding: 6px 11px;
+  color: var(--navy, #0F2F50);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-more-trigger:hover {
+  border-color: var(--navy, #0F2F50);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    0 3px 0 #0F2F50;
 }
 
 .nav-more-chevron {
   font-size: 9px;
-  opacity: 0.6;
+  opacity: 0.78;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
   transition: transform 0.2s ease;
 }
 
@@ -640,7 +765,7 @@
   transform: rotate(180deg);
 }
 
-/* Dropdown menu */
+/* Dropdown menu — 3D hinge unfold */
 .nav-more-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -650,6 +775,9 @@
   background: #FFFFFF;
   border: 1px solid var(--border, #E1E7ED);
   border-radius: var(--radius-sm, 0.25rem);
+  box-shadow:
+    0 14px 32px rgba(15, 47, 80, 0.14),
+    0 4px 0 rgba(15, 47, 80, 0.08);
 
   padding: 6px;
   display: flex;
@@ -658,18 +786,19 @@
 
   z-index: 1200;
 
-  animation: navMoreIn 160ms ease both;
+  transform-origin: top right;
+  animation: navMoreIn 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes navMoreIn {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: perspective(700px) translate3d(0, -10px, -28px) rotateX(-16deg) scale(0.96);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: perspective(700px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
   }
 }
 

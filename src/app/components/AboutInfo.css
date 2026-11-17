@@ -1,11 +1,12 @@
 /* ============================================================
-   ABOUT INFO — 3 CENTERED CARDS ON NAVY
+   ABOUT INFO — 3 ANIMATED 3D STAT CARDS ON NAVY
    ============================================================ */
 
 .about-info-section {
   background: var(--navy, #0F2F50) !important;
   padding: 80px 0;
   border-top: 1px solid var(--navy, #0F2F50);
+  perspective: 1200px;
 }
 
 .about-info-section .container {
@@ -24,34 +25,57 @@
   gap: 24px;
   justify-content: center;
   align-items: stretch;
+  perspective: 1100px;
 }
 
 /* ============================================================
-   CARD — white, square, centered content
+   CARD — 3D elevated white card with animated counter & meter
    ============================================================ */
 
 .about-info-stat {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  background: #FFFFFF;
-  border: 1px solid #FFFFFF;
-  border-radius: var(--radius-sm, 0.25rem);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F4F7FB 100%);
+  border: 1px solid #D7E1EC;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    0 5px 0 #07192D,
+    0 14px 28px rgba(4, 14, 26, 0.28);
 
-  padding: 32px 24px;
-  min-height: 180px;
+  padding: 26px 24px 24px;
+  min-height: 204px;
 
-  transition: transform 0.2s ease;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease !important;
 }
 
 .about-info-stat:hover {
-  transform: translateY(-2px);
+  border-color: #FFFFFF;
+  transform: perspective(900px) translate3d(0, -6px, 14px) rotateX(6deg) !important;
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    0 8px 0 #07192D,
+    0 22px 38px rgba(4, 14, 26, 0.38);
 }
 
-/* Index — small mono label on top */
+.stat-card-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+/* Index — small mono label */
 .stat-index {
   font-family: var(--font-code, "Fira Code", monospace);
   font-size: 10px;
@@ -59,30 +83,100 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--navy, #0F2F50);
-  opacity: 0.55;
-  margin-bottom: 12px;
+  opacity: 0.6;
 }
 
-/* Number — Amarante serif, large */
+.stat-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 5px;
+  color: var(--navy, #0F2F50);
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF2F7 100%);
+  border: 1px solid #C5D2E0;
+  box-shadow: var(--shadow-3d-keycap);
+  font-size: 13px;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.about-info-stat:hover .stat-icon-box {
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
+  border-color: #0F2F50;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-3d-keycap-hover);
+  transform: translateY(-2px) rotateX(10deg);
+}
+
+/* Number — Amarante serif, large, animated tabular count-up */
 .stat-number {
   font-family: var(--font-display, "Amarante", serif);
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(2.2rem, 4.2vw, 2.95rem);
   line-height: 1;
   letter-spacing: 0.01em;
   color: var(--navy, #0F2F50);
+  text-shadow: 0 2px 0 rgba(15, 47, 80, 0.08);
   margin-bottom: 10px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Label — Inter, small */
+.about-info-stat.is-visible .stat-number {
+  animation: statPopIn 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes statPopIn {
+  0% {
+    opacity: 0.25;
+    transform: perspective(600px) translate3d(0, 12px, -30px) rotateX(16deg) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(600px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
+  }
+}
+
+/* Label — Inter, crisp */
 .stat-label {
   font-family: var(--font-main, "Inter", sans-serif);
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: 0.84rem;
+  font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.5;
-  color: var(--text-muted, #5A6B7D);
+  color: var(--text-secondary, #3D5064);
+  margin-bottom: 16px;
+}
+
+/* Bottom animated progress bar */
+.stat-meter-track {
+  width: 100%;
+  height: 4px;
+  background: #DCE5EF;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.stat-meter-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #0F2F50 0%, #1E548A 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-info-stat.is-visible .stat-meter-fill {
+  transform: scaleX(1);
 }
 
 /* ============================================================
@@ -101,12 +195,26 @@
 
   .about-info-stat {
     min-height: auto;
-    padding: 28px 20px;
+    padding: 24px 20px 22px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 900px) {
   .about-info-stat {
-    padding: 28px 18px;
+    padding: 24px 18px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-info-stat,
+  .stat-icon-box,
+  .stat-number,
+  .stat-meter-fill {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .stat-meter-fill {
+    transform: scaleX(1);
   }
 }

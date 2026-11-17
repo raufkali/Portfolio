@@ -11,7 +11,7 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
+    AOS.init({ duration: 800, easing: "ease-out-cubic", once: false });
   }, []);
 
   const handleSubmit = (e) => {

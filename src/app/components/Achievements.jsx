@@ -11,7 +11,7 @@ const Achievements = () => {
   const [filter, setFilter] = useState("All");
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
+    AOS.init({ duration: 800, easing: "ease-out-cubic", once: false });
   }, []);
 
   const categories = useMemo(() => {

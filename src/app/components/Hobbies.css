@@ -21,27 +21,69 @@
   min-height: 145px;
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
-  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow:
+    0 3px 0 #DCE4EE,
+    0 8px 20px -2px rgba(15, 23, 42, 0.05);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hobby-item-card:hover {
   background: #FFFFFF;
-  border-color: var(--accent-blue-border);
-  box-shadow: 0 14px 34px -4px rgba(30, 64, 175, 0.1);
-  transform: translateY(-4px);
+  border-color: var(--navy, #0F2F50);
+  box-shadow:
+    0 6px 0 #C5D2E0,
+    0 18px 36px -4px rgba(15, 47, 80, 0.14);
+  transform: perspective(850px) translate3d(0, -6px, 14px) rotateX(6deg);
 }
 
 .hobby-card-icon {
-  font-size: 2.3rem;
-  color: var(--accent-secondary);
-  margin-bottom: 12px;
-  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  font-size: 1.75rem;
+  color: var(--navy, #0F2F50);
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF2F7 100%);
+  border: 1px solid #C5D2E0;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    inset 0 -1px 0 rgba(15, 47, 80, 0.08),
+    0 4px 0 #C5D2E0,
+    0 10px 18px rgba(15, 47, 80, 0.12);
+  margin-bottom: 14px;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hobby-card-icon i {
+  line-height: 1;
+  filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.85));
+  transition: transform 0.35s ease, filter 0.3s ease;
 }
 
 .hobby-item-card:hover .hobby-card-icon {
-  transform: scale(1.15);
-  color: var(--accent-royal);
+  transform: translateY(-4px) perspective(460px) rotateX(12deg) rotateY(-8deg) scale(1.06);
+  background: linear-gradient(180deg, #174473 0%, #0F2F50 100%);
+  border-color: var(--navy, #0F2F50);
+  color: #FFFFFF;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 6px 0 #07192D,
+    0 14px 24px rgba(15, 47, 80, 0.24);
+}
+
+.hobby-item-card:hover .hobby-card-icon i {
+  transform: scale(1.08);
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
 }
 
 .hobby-card-label {

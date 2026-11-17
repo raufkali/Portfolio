@@ -1,7 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import "./Header.css";
+
+const HeaderRobotCanvas = dynamic(() => import("./HeaderRobotCanvas"), {
+  ssr: false,
+  loading: () => (
+    <span className="header-robot-fallback" aria-hidden="true">
+      <i className="fas fa-robot" />
+    </span>
+  ),
+});
 
 /* ============================================================
    NAV CONFIG
@@ -131,6 +141,7 @@ const Header = () => {
             onClick={closeAll}
             aria-label="Rauf Ahmad Portfolio Home"
           >
+            <HeaderRobotCanvas />
             <span className="brand-mark">Rauf Ahmad</span>
             <span className="brand-rule" aria-hidden="true" />
           </a>

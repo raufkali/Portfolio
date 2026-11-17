@@ -11,7 +11,7 @@ const Education = () => {
   const total = String(education.length).padStart(2, "0");
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
+    AOS.init({ duration: 800, easing: "ease-out-cubic", once: false });
   }, []);
 
   return (
